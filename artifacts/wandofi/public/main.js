@@ -56,7 +56,7 @@
   heroTl
     .from(".display__solid, .display__outline", { yPercent: 115, duration: 1.1, stagger: 0.08 }, 0.1)
     .from(".hero__portrait", { opacity: 0, scale: 1.04, duration: 1.3, ease: "power2.out" }, 0.45)
-    .from(".hero__status, .eyebrow, .hero__intro .lead, .hero__actions, .hero__social", {
+    .from(".eyebrow, .hero__actions, .hero__social", {
       opacity: 0, y: 24, duration: 0.8, stagger: 0.08
     }, 0.7);
 
