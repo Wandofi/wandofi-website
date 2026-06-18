@@ -1,0 +1,9 @@
+.acc-focus-ring:focus-visible {
+  outline: 4px solid #e1251b;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.acc-red-light {
+  background: radial-gradient(circle at 50% 50%, rgba(225, 37, 27, 0.45) 0%, rgba(225, 37, 27, 0.1) 45%, transparent 75%);
+}
