@@ -20,7 +20,6 @@
   /* Type */
   --display: "Fraunces", Georgia, serif;
   --ui: "Inter", system-ui, -apple-system, sans-serif;
-  --serif: "PT Serif", Georgia, serif;
   --script: "Petit Formal Script", "Fraunces", cursive;
 
   /* Rhythm */
@@ -143,7 +142,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 .lead {
-  font-family: var(--serif);
+  font-family: var(--ui);
   font-size: clamp(1.05rem, 1.6vw, 1.4rem);
   line-height: 1.55;
   color: #d7d7d6;
@@ -151,7 +150,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   letter-spacing: 0;
 }
 
-.body { font-family: var(--serif); color: var(--mute); font-size: 1rem; line-height: 1.7; margin: 0; }
+.body { font-family: var(--ui); color: var(--mute); font-size: 1rem; line-height: 1.7; margin: 0; }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -621,7 +620,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   height: auto;
 }
 
-.footer__line { font-family: var(--serif); color: var(--mute-2); font-size: 0.85rem; margin: 0; }
+.footer__line { font-family: var(--ui); color: var(--mute-2); font-size: 0.85rem; margin: 0; }
 .footer__line a { transition: color 0.3s var(--ease); }
 .footer__line a:hover { color: var(--white); }
 
