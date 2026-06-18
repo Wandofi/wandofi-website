@@ -287,7 +287,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   justify-content: space-between;
   align-items: baseline;
   width: 100%;
-  max-width: min(1180px, 94vw);
+  max-width: min(940px, 82vw);
   margin-inline: auto;
   font-family: var(--display);
   font-weight: 500;
@@ -316,7 +316,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   left: 50%;
   top: 76%;
   transform: translate(-50%, -50%);
-  width: clamp(240px, 32vw, 460px);
+  width: clamp(320px, 40vw, 580px);
   z-index: 2; /* face fills the centre gap of the wordmark */
   pointer-events: none;
 }
