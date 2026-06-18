@@ -404,8 +404,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 /* ---------- SIGNAL ---------- */
 .signal__anchor {
-  font-family: var(--display);
-  font-weight: 400;
+  font-family: var(--ui);
+  font-weight: 500;
   font-size: clamp(1.6rem, 4vw, 3rem);
   line-height: 1.18;
   letter-spacing: -0.02em;
