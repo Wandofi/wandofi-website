@@ -8,28 +8,31 @@ description: Which Wandofi hero composition is approved vs. which canvas explora
 The **current** live hero is the approved one: centered top nav, the split
 display wordmark `WAN ... DOFI` (Fraunces) with the transparent cutout portrait
 centered between the two halves, and the bottom meta row (eyebrow + "Vamos falar"
-/ "Ver trabalho" buttons left, social column right). Plus the single red **horizon
-line** (`.hero__line`) crossing the wordmark centre — see below.
+/ "Ver trabalho" buttons left, social column right). Plus a red **light-framing
+treatment** behind the subject — currently the "portal/threshold" (see below).
 
 **Why:** the owner reviewed canvas explorations and said "keep design like this"
 while pointing at the live site (no red box frame, centered composition); then
-later approved the "Linha — luz única literal" red-light treatment.
+began iterating on red-light framing variants on top of that base.
 
-# Adopted: single red horizon line (graduated from canvas)
+# Adopted: red light "portal/threshold" hero (graduated from canvas)
 
 The owner explored "light AS the framing device" (questioning RedFrame's literal
-box) and picked **Horizon / "Linha — luz única literal"**: one glowing horizontal
-red line crossing the hero through the wordmark/subject. It was graduated into the
-live site and kept *alongside* the scroll-scrubbed `#spotlight` (not replacing the
-brand's single-light motif). The two sibling variants — **Spotlight ("Holofote")**
-and **Threshold ("Limiar — portal de luz")** — were NOT chosen.
+box). They first graduated **Horizon / "Linha — luz única literal"** (one
+horizontal line), then changed their mind and switched to **Threshold / "Limiar —
+portal de luz"**: two vertical red light pillars + top lintel + floor reflection
+forming a doorway the subject stands inside. The portal is the *current* live
+hero treatment, kept *alongside* the scroll-scrubbed `#spotlight` (not replacing
+the brand's single-light motif). **Spotlight ("Holofote")** was never chosen.
 
-**Why:** the owner wanted the "single red light" reinterpreted as its most
-restrained, literal form. Implementation mechanics live in `replit.md`.
+**Why:** the owner is iterating on which red-light framing reads best; the choice
+has flipped between siblings, so don't assume the line — check the live hero.
+Implementation mechanics live in `replit.md`.
 
-**How to apply:** the line is tuned to cross the wordmark centre at desktop
-(~1920); on mobile the stacked layout drops it to a subtle base glow — that is
-acceptable, do not chase pixel-perfect cross-breakpoint alignment unless asked.
+**How to apply:** the portal is anchored to the absolute desktop portrait
+(`top:76%`) and tuned at ~1920; it is hidden at ≤880px where the portrait goes
+static. If asked to switch variants again, the rejected ones still live as canvas
+mockups in `artifacts/mockup-sandbox/src/components/mockups/wandofi-redlight/`.
 
 # Rejected explorations (do NOT re-apply unless asked)
 
