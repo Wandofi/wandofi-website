@@ -228,12 +228,14 @@ ul { list-style: none; margin: 0; padding: 0; }
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 1.75rem;
-  font-size: 0.9rem;
-  color: var(--mute);
+  align-items: baseline;
+  gap: 2rem;
+  font-family: var(--script);
+  font-size: clamp(1.05rem, 1.5vw, 1.45rem);
+  color: var(--white);
 }
-.nav__links a { transition: color 0.3s var(--ease); }
-.nav__links a:hover { color: var(--white); }
+.nav__links a { color: var(--white); transition: color 0.3s var(--ease), opacity 0.3s var(--ease); }
+.nav__links a:hover { opacity: 0.65; }
 .nav__count { color: var(--red); font-variant-numeric: tabular-nums; }
 .nav__cta { margin-left: auto; padding: 0.6rem 1.15rem; font-size: 0.85rem; }
 
@@ -355,7 +357,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   left: 50%;
   top: 76%;
   transform: translate(-50%, -50%);
-  width: clamp(240px, 30vw, 400px);
+  width: clamp(210px, 26vw, 340px);
+  max-height: 80vh;
   z-index: 2; /* face fills the centre gap of the wordmark */
   pointer-events: none;
 }
