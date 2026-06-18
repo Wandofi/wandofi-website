@@ -560,49 +560,22 @@ ul { list-style: none; margin: 0; padding: 0; }
   z-index: 3;
 }
 .signature { display: flex; justify-content: center; margin-bottom: 2.5rem; }
-.signature__logo {
+/* The real WANDOFI PM logo, preserved exactly as delivered, on a clean plate
+   so its dark wordmark stays legible over the near-black footer. */
+.signature__plate {
   display: inline-flex;
-  align-items: center;
-  gap: 1.1rem;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: clamp(1.1rem, 3vw, 1.9rem) clamp(1.6rem, 4vw, 2.6rem);
+  box-shadow:
+    0 24px 60px -24px rgba(0, 0, 0, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 40px rgba(225, 37, 27, 0.12);
 }
-.sig-mark {
-  width: clamp(58px, 8vw, 84px);
+.signature__logo {
+  display: block;
+  width: clamp(180px, 26vw, 280px);
   height: auto;
-  filter:
-    drop-shadow(0 6px 10px rgba(0, 0, 0, 0.55))
-    drop-shadow(0 2px 0 var(--red-deep))
-    drop-shadow(0 0 24px rgba(225, 37, 27, 0.35));
-}
-.sig-mark__hex { transform-box: fill-box; transform-origin: center; }
-
-.signature__type { text-align: left; line-height: 1; }
-.signature__word {
-  display: block;
-  font-family: var(--ui);
-  font-weight: 700;
-  font-size: clamp(1.6rem, 4.5vw, 2.6rem);
-  letter-spacing: 0.02em;
-  color: #ffffff;
-  /* 3D extruded depth */
-  text-shadow:
-    1px 1px 0 #d5d5d3,
-    2px 2px 0 #b9b9b6,
-    3px 3px 0 #97110b,
-    4px 4px 0 #7d0d08,
-    5px 6px 12px rgba(0, 0, 0, 0.7);
-}
-.signature__pm { color: var(--red); text-shadow:
-    1px 1px 0 #b01a12,
-    2px 2px 0 #8c120c,
-    3px 3px 0 #6e0d08,
-    4px 5px 12px rgba(0, 0, 0, 0.7); }
-.signature__sub {
-  display: block;
-  margin-top: 0.5rem;
-  font-size: clamp(0.62rem, 1.4vw, 0.78rem);
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: var(--mute);
 }
 
 .footer__line { color: var(--mute-2); font-size: 0.85rem; margin: 0; }
