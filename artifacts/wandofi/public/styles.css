@@ -357,8 +357,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   left: 50%;
   top: 76%;
   transform: translate(-50%, -50%);
-  width: clamp(210px, 26vw, 340px);
-  max-height: 80vh;
+  width: clamp(240px, 30vw, 400px);
   z-index: 2; /* face fills the centre gap of the wordmark */
   pointer-events: none;
 }
