@@ -1,24 +1,353 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-PT">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Wandofi</title>
-    <meta name="description" content="Wandofi — built on Replit. Update this description to reflect the app." />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Wandofi" />
-    <meta property="og:description" content="Wandofi — built on Replit. Update this description to reflect the app." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Wandofi — Migração, criação de sites, SEO e automações · Lisboa</title>
+    <meta name="description" content="Project manager operacional em Lisboa. Migração e criação de sites, SEO técnico e automações para negócios em formação. Marca um diagnóstico." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://wandofi.pt/" />
+
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://wandofi.pt/" />
+    <meta property="og:title" content="Wandofi — Migração, criação de sites, SEO e automações · Lisboa" />
+    <meta property="og:description" content="Project manager operacional em Lisboa. Migração e criação de sites, SEO técnico e automações para negócios em formação." />
+    <meta property="og:image" content="https://wandofi.pt/assets/portrait.png" />
+    <meta property="og:locale" content="pt_PT" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Wandofi" />
-    <meta name="twitter:description" content="Wandofi — built on Replit. Update this description to reflect the app." />
+    <meta name="twitter:title" content="Wandofi — project manager operacional · Lisboa" />
+    <meta name="twitter:description" content="Migração e criação de sites, SEO técnico e automações para negócios em formação." />
+    <meta name="twitter:image" content="https://wandofi.pt/assets/portrait.png" />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="preload" as="image" href="/assets/portrait.png" />
+    <link rel="stylesheet" href="/styles.css" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "name": "Mauro Cordeiro",
+          "jobTitle": "Project Manager",
+          "worksFor": { "@type": "Organization", "name": "Wandofi" },
+          "url": "https://wandofi.pt/",
+          "email": "main@wandofi.pt",
+          "knowsAbout": ["Migração de sites", "SEO técnico", "Automação de processos", "LMS", "Estrutura de negócio"],
+          "sameAs": [
+            "https://www.linkedin.com/",
+            "https://github.com/",
+            "https://www.instagram.com/"
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "name": "Wandofi",
+          "url": "https://wandofi.pt/",
+          "email": "main@wandofi.pt",
+          "areaServed": "Portugal",
+          "serviceType": [
+            "Migração de sites",
+            "Criação de sites",
+            "SEO técnico",
+            "Automações e integrações",
+            "Estrutura e burocracia",
+            "Plataformas e LMS"
+          ],
+          "founder": { "@type": "Person", "name": "Mauro Cordeiro" }
+        }
+      ]
+    }
+    </script>
   </head>
+
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script>document.documentElement.classList.add("js");</script>
+    <!-- Studio atmosphere layers -->
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="#hero" class="nav__brand" aria-label="Wandofi — início">Wandofi</a>
+        <nav class="nav__links" aria-label="Navegação principal">
+          <a href="#trabalho">Trabalho <span class="nav__count">[6]</span></a>
+          <a href="#servicos">Serviços <span class="nav__count">[6]</span></a>
+          <a href="#experiencia">Experiência</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <a href="#contacto" class="btn btn--primary nav__cta">Vamos falar <span class="arrow">↗</span></a>
+      </div>
+    </header>
+
+    <main>
+      <!-- 1. HERO -->
+      <section class="hero" id="hero">
+        <div class="hero__grid">
+          <div class="hero__status reveal">
+            <span class="status-pill"><span class="status-dot"></span> Disponível para projecto</span>
+          </div>
+
+          <h1 class="hero__title">
+            <span class="display" aria-hidden="true">
+              <span class="display__solid">WAN</span><span class="display__outline">DOFI</span>
+            </span>
+            <span class="hero__seo">Wandofi — project manager operacional em Lisboa</span>
+          </h1>
+
+          <figure class="hero__portrait">
+            <img src="/assets/portrait.png" width="900" height="1200"
+                 alt="Mauro Cordeiro, project manager operacional — Wandofi"
+                 fetchpriority="high" decoding="async" />
+          </figure>
+
+          <div class="hero__intro">
+            <p class="eyebrow reveal">Project Manager Operacional</p>
+            <p class="lead reveal">Desenho, migro e automatizo a infraestrutura digital e administrativa de negócios em formação. Do papel ao funcionamento.</p>
+            <div class="hero__actions reveal">
+              <a href="#contacto" class="btn btn--primary">Vamos falar <span class="arrow">↗</span></a>
+              <a href="#trabalho" class="btn btn--ghost">Ver trabalho</a>
+            </div>
+          </div>
+
+          <ul class="hero__social reveal" aria-label="Links sociais">
+            <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="mailto:main@wandofi.pt">main@wandofi.pt</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 2. POSICIONAMENTO -->
+      <section class="section signal" id="signal">
+        <div class="container">
+          <p class="signal__anchor reveal">A maioria dos negócios pequenos não falha por falta de talento. Falha por falta de <em>infraestrutura</em> que o sustente.</p>
+          <ul class="signal__list">
+            <li class="reveal"><span class="signal__num">01</span><p>Traduzir o que está na cabeça em estrutura concreta.</p></li>
+            <li class="reveal"><span class="signal__num">02</span><p>Escolher ferramentas que o cliente usa de facto.</p></li>
+            <li class="reveal"><span class="signal__num">03</span><p>Documentar decisões para o conhecimento não viver na memória.</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3. SERVIÇOS -->
+      <section class="section services" id="servicos">
+        <div class="container">
+          <header class="section__head reveal">
+            <p class="eyebrow">O que faço</p>
+            <h2 class="h2">Infraestrutura antes da escala</h2>
+          </header>
+          <div class="services__grid">
+            <article class="card reveal">
+              <h3 class="h3">Migração de sites</h3>
+              <p class="body">Mover um site para uma stack moderna sem perder SEO, histórico nem email. Astro, Cloudflare Pages, GitHub. Preservar MX, redireccionamentos e indexação.</p>
+            </article>
+            <article class="card reveal">
+              <h3 class="h3">Construção de raiz</h3>
+              <p class="body">Sites novos, rápidos e indexáveis, feitos para durar e para o cliente gerir.</p>
+            </article>
+            <article class="card reveal">
+              <h3 class="h3">SEO técnico</h3>
+              <p class="body">Schema, canonicals, sitemaps, correcção de indexação e tracking de conversão.</p>
+            </article>
+            <article class="card reveal">
+              <h3 class="h3">Automações e integrações</h3>
+              <p class="body">Apps Script, CRM, reconciliação bancária e fluxos documentais.</p>
+            </article>
+            <article class="card reveal">
+              <h3 class="h3">Estrutura e burocracia</h3>
+              <p class="body">Forma jurídica, registos, contabilidade, fiscalidade, contratos e compliance. Construído por dentro de uma prática regulada.</p>
+            </article>
+            <article class="card reveal">
+              <h3 class="h3">Plataformas e LMS</h3>
+              <p class="body">Áreas de cliente, escolas online (Moodle), pagamentos (Stripe) e certificação.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. TRABALHO -->
+      <section class="section work" id="trabalho">
+        <div class="container">
+          <header class="section__head reveal">
+            <p class="eyebrow">Trabalho</p>
+            <h2 class="h2">Casos</h2>
+          </header>
+
+          <!-- Destaque 1 — Lexia -->
+          <article class="case case--lexia reveal">
+            <div class="case__meta">
+              <span class="tag tag--accent">Produto · Build próprio</span>
+            </div>
+            <h3 class="case__title">Lexia</h3>
+            <p class="lead">SaaS de investigação jurídica para profissionais do direito em Portugal. Build do conceito ao produto: arquitectura search-first, pipeline anti-alucinação para jurisprudência, autenticação, planos e checkout.</p>
+            <div class="case__visual" aria-hidden="true">
+              <span class="case__visual-label">Lexia</span>
+            </div>
+          </article>
+
+          <!-- Destaque 2 — VPA -->
+          <article class="case case--vpa reveal">
+            <div class="case__meta">
+              <span class="tag">Reorganização · Automação</span>
+            </div>
+            <h3 class="case__title case__title--sm">Escritório de advogados · Lisboa</h3>
+            <p class="body">Sistema integrado em Apps Script: Drive + QR tracking + CRM (Avaza) + reconciliação BPI/Millennium ↔ TOConline por chave referencial.</p>
+            <div class="stats">
+              <div class="stat-block">
+                <span class="stat" data-count="92" data-suffix="%" data-prefix="~">~0%</span>
+                <span class="stat__label">reconciliação automática</span>
+              </div>
+              <div class="stat-block">
+                <span class="stat stat--text">5h <span class="stat__to">→</span> 20<span class="stat__unit">min</span></span>
+                <span class="stat__label">fecho mensal</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Mais trabalho — lista subtil -->
+          <div class="worklist">
+            <p class="eyebrow reveal">Mais trabalho</p>
+            <ul>
+              <li class="worklist__row reveal">
+                <span class="worklist__cap">Automações e integrações</span>
+                <span class="worklist__desc">Fluxos documentais, CRM e reconciliação bancária em Apps Script.</span>
+                <span class="worklist__tag">Apps Script</span>
+              </li>
+              <li class="worklist__row reveal">
+                <span class="worklist__cap">SEO técnico</span>
+                <span class="worklist__desc">Schema, canonicals, indexação e tracking de conversão.</span>
+                <span class="worklist__tag">Gabinete de contabilidade</span>
+              </li>
+              <li class="worklist__row reveal">
+                <span class="worklist__cap">Criação de sites e plataformas</span>
+                <span class="worklist__desc">Sites rápidos e indexáveis; LMS Moodle + Stripe + compliance DGERT para uma escola de línguas; sites de serviços locais com SEO local. Identidade e conteúdo para a Zone 7 Esports.</span>
+                <span class="worklist__tag">Moodle · Stripe</span>
+              </li>
+              <li class="worklist__row reveal">
+                <span class="worklist__cap">Migração de sites</span>
+                <span class="worklist__desc">Mudança para stack moderna (Astro + Cloudflare + GitHub) sem downtime nem perda de posições, MX/SPF preservados.</span>
+                <span class="worklist__tag">Astro · Cloudflare</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. EXPERIÊNCIA -->
+      <section class="section experience" id="experiencia">
+        <div class="container">
+          <header class="section__head reveal">
+            <p class="eyebrow">Experiência</p>
+            <h2 class="h2">Percurso</h2>
+          </header>
+          <ul class="timeline">
+            <li class="timeline__row reveal">
+              <span class="timeline__role">Assistente administrativo</span>
+              <span class="timeline__ctx">Escritório de advogados, Lisboa</span>
+              <span class="timeline__period">2023 — presente</span>
+            </li>
+            <li class="timeline__row reveal">
+              <span class="timeline__role">Fundador / Project manager</span>
+              <span class="timeline__ctx">Wandofi</span>
+              <span class="timeline__period">2024 — presente</span>
+            </li>
+            <li class="timeline__row reveal">
+              <span class="timeline__role">Formação em contabilidade</span>
+              <span class="timeline__ctx">Curso profissional (Bélgica) + universidade</span>
+              <span class="timeline__period">em curso</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6. PROCESSO -->
+      <section class="section process" id="processo">
+        <div class="container">
+          <header class="section__head reveal">
+            <p class="eyebrow">Processo</p>
+            <h2 class="h2">Do diagnóstico à entrega</h2>
+          </header>
+          <div class="process__grid">
+            <article class="step reveal">
+              <span class="step__num">01</span>
+              <h3 class="h3">Diagnóstico</h3>
+              <p class="body">Conversa guiada e leitura dos documentos, ferramentas e bloqueios.</p>
+            </article>
+            <article class="step reveal">
+              <span class="step__num">02</span>
+              <h3 class="h3">Sprint</h3>
+              <p class="body">Priorização, implementação e coordenação dos fornecedores.</p>
+            </article>
+            <article class="step reveal">
+              <span class="step__num">03</span>
+              <h3 class="h3">Entrega</h3>
+              <p class="body">Sistema pronto, decisões documentadas, próximos passos claros.</p>
+            </article>
+          </div>
+          <p class="process__seal reveal">Três passos. Sem retainer obrigatório, sem propostas longas.</p>
+        </div>
+      </section>
+
+      <!-- 7. SOBRE -->
+      <section class="section about" id="sobre">
+        <div class="container container--narrow">
+          <p class="eyebrow reveal">Sobre</p>
+          <p class="about__text reveal">Sou o Mauro. Trabalho como assistente administrativo num escritório de advogados em Lisboa e tenho formação em contabilidade — curso profissional na Bélgica e estudos em curso na universidade. Construí a Wandofi para aplicar essa combinação a outros negócios: operação dentro de uma prática regulada somada a capacidade técnica e digital. PMs raramente constroem. Agências raramente entendem fiscalidade. Contabilistas raramente fazem marca ou web. Junto as três camadas.</p>
+        </div>
+      </section>
+
+      <!-- 8. CTA FINAL -->
+      <section class="section cta" id="contacto">
+        <div class="container container--narrow">
+          <h2 class="h2 cta__title reveal">Vamos falar do teu projecto</h2>
+          <p class="lead reveal">Migração, rebuild, automação ou estrutura de raiz — começa com um diagnóstico.</p>
+          <div class="cta__actions reveal">
+            <a href="mailto:main@wandofi.pt?subject=Diagn%C3%B3stico%20Wandofi" class="btn btn--red">Marcar diagnóstico <span class="arrow">↗</span></a>
+            <a href="mailto:main@wandofi.pt" class="cta__email">main@wandofi.pt</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 9. FOOTER / ASSINATURA -->
+    <footer class="footer" id="footer">
+      <div class="signature" id="signature">
+        <div class="signature__logo">
+          <svg class="sig-mark" viewBox="0 0 120 120" role="img" aria-label="Wandofi PM">
+            <g class="sig-mark__hex">
+              <path d="M60 4 L106 30 L106 90 L60 116 L14 90 L14 30 Z" fill="#E1251B"/>
+            </g>
+            <g class="sig-mark__bars" fill="#ffffff">
+              <rect x="38" y="62" width="13" height="34" rx="2"/>
+              <rect x="56" y="48" width="13" height="48" rx="2"/>
+              <rect x="74" y="34" width="13" height="62" rx="2"/>
+            </g>
+            <path class="sig-mark__arrow" d="M34 78 L62 54 L78 40" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path class="sig-mark__arrowhead" d="M66 38 L82 36 L80 52" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="signature__type">
+            <span class="signature__word">WANDOFI <span class="signature__pm">PM</span></span>
+            <span class="signature__sub">Project Management</span>
+          </div>
+        </div>
+      </div>
+      <p class="footer__line">© 2026 Wandofi PM · wandofi.pt · <a href="mailto:main@wandofi.pt">main@wandofi.pt</a></p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js" defer></script>
+    <script src="/main.js" defer></script>
   </body>
 </html>
