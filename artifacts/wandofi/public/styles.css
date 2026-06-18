@@ -300,10 +300,10 @@ ul { list-style: none; margin: 0; padding: 0; }
 .hero__portrait {
   margin: 0;
   position: absolute;
-  right: clamp(1rem, 8vw, 7rem);
+  right: clamp(0rem, 3vw, 2.5rem);
   top: 50%;
   transform: translateY(-46%);
-  width: clamp(220px, 30vw, 440px);
+  width: clamp(320px, 50vw, 740px);
   z-index: 1; /* sits beneath the wordmark and all hero text */
   pointer-events: none;
 }
