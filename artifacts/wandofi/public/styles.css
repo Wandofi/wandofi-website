@@ -275,42 +275,47 @@ ul { list-style: none; margin: 0; padding: 0; }
   min-height: clamp(340px, 52vh, 600px);
 }
 
-/* The single red light, taken literally: one glowing horizon line through the subject */
-.hero__line {
+/* The single red light, taken as architecture: a glowing portal/threshold around the subject */
+.hero__portal {
   position: absolute;
-  top: 50%;
   left: 50%;
-  width: 100vw;
+  top: 76%; /* shares the portrait's anchor so the frame brackets the figure */
   transform: translate(-50%, -50%);
+  width: clamp(260px, 33vw, 440px);
+  aspect-ratio: 372 / 540;
   z-index: 0; /* behind wordmark (z-index 1) and portrait (z-index 2) */
   pointer-events: none;
 }
-.hero__line::before {
-  content: "";
-  display: block;
-  height: 2px;
-  width: 100%;
-  background: var(--red);
-  box-shadow: 0 0 120px 20px rgba(225, 37, 27, 0.4), 0 0 40px 5px var(--red-glow);
-}
-.hero__line::after {
-  content: "";
+.hero__portal-lintel {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: clamp(280px, 46vh, 500px);
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(225, 37, 27, 0.08) 45%,
-    rgba(225, 37, 27, 0.15) 50%,
-    rgba(225, 37, 27, 0.08) 55%,
-    transparent
-  );
+  left: -20%;
+  right: -20%;
+  top: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--red) 20%, var(--red) 80%, transparent);
+  box-shadow: 0 0 60px 15px var(--red-glow), 0 0 20px 4px var(--red);
+}
+.hero__portal-pillar {
+  position: absolute;
+  top: 0;
+  bottom: -10%;
+  width: 2px;
+  background: linear-gradient(180deg, var(--red) 0%, var(--red) 70%, transparent);
+  box-shadow: 0 0 50px 15px var(--red-glow), 0 0 15px 3px var(--red);
+}
+.hero__portal-pillar--l { left: 0; }
+.hero__portal-pillar--r { right: 0; }
+.hero__portal-floor {
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140%;
+  height: 60px;
+  background: radial-gradient(ellipse at center, var(--red-glow) 0%, transparent 70%);
+  filter: blur(15px);
   mix-blend-mode: screen;
-  pointer-events: none;
+  opacity: 0.8;
 }
 .status-dot {
   width: 7px; height: 7px; border-radius: 50%;
@@ -690,6 +695,8 @@ ul { list-style: none; margin: 0; padding: 0; }
     width: min(66vw, 300px);
     margin-inline: auto;
   }
+  /* portal is anchored to the absolute portrait; the static mobile layout drops it */
+  .hero__portal { display: none; }
   .hero__meta { flex-direction: column; align-items: stretch; gap: 1.75rem; }
   .hero__social {
     flex-direction: row;
