@@ -1,0 +1,1 @@
+- [Hero design decision](hero-design-decision.md) — current centered WAN/DOFI + portrait hero is approved; red-frame & usability variants were rejected explorations.
