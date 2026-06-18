@@ -1,0 +1,425 @@
+# Wandofi — Brief de construção (v2) para o Replit
+### Site de marca pessoal + portfólio · wandofi.pt · cenário de estúdio escuro com luz vermelha
+
+> Cola este documento inteiro no agente do Replit. É a especificação completa. A secção 9 (prompts de imagem) é a única que **não** faz parte do site.
+
+---
+
+## 0. O que mudou em relação à v1 (decisões do Mauro)
+
+1. **Nome no site:** o hero é **WANDOFI** (marca pessoal). O logótipo **Wandofi PM** aparece só no fim da página, como assinatura. Inversão consciente da convenção comercial.
+2. **Estética:** invertida em relação à referência (Dymas Alfin, fundo claro/nublado). A minha é **escura** — um cenário de estúdio fotográfico com uma única luz vermelha, vindo do retrato que forneci.
+3. **Retrato:** usar a minha foto (homem, t-shirt preta, óculos, luz vermelha à direita, fundo escuro). **Não recortar** — ela já tem fundo escuro; deve emergir da sombra e fundir-se com o fundo da página.
+4. **Animação:** rica e intencional, com smooth scroll, reveals em stagger, contador de números e a assinatura Wandofi PM desenhada no fim. `prefers-reduced-motion` respeitado.
+
+---
+
+## 1. Conceito visual — o cenário de estúdio
+
+A página inteira vive dentro da mesma cena do retrato: **fundo quase-preto, uma luz vermelha-sangue a entrar de cima/direita, falloff suave para sombra, grão fino e vinheta subtil.** O retrato não está "colado" num site — o site é uma extensão do estúdio onde o retrato foi tirado.
+
+- Fundo base site-inteiro: `#050505`.
+- **Holofote vermelho:** não é um glow estático. É uma luz viva que percorre a página com o scroll, acende as letras e elementos por onde passa, e **só se apaga no fim**, quando a assinatura Wandofi PM entra (mecânica completa em 6.2 e 6.4).
+- Cards e blocos elevados em `#161616`.
+- Texto branco/quase-branco. Vermelho `#E1251B` só como acento.
+- **Regra de ouro:** vermelho é luz e acento, nunca preenchimento de áreas grandes. Se o vermelho cobrir mais de ~10% do ecrã, está errado.
+
+---
+
+## 2. Desconstrução da referência (e como a invertemos)
+
+A referência (Dymas Alfin / Mikan Team) funciona por estas regras. Mantemos a **estrutura**, invertemos o **tom**:
+
+| Camada | Referência (clara) | A nossa (escura) |
+|---|---|---|
+| **Grelha/layout** | Hero centrado: nome partido em dois (contorno + sólido), retrato recortado a sobrepor o nome; coluna esquerda com cargo+CTA, direita com links sociais | Mesma lógica editorial, mas retrato meio-corpo a emergir da sombra à direita; "WANDOFI" gigante atrás; cargo+CTA em baixo-esquerda; links à direita |
+| **Tipo** | Grotesca pesada all-caps, contraste contorno/preenchido | Fraunces (display) para "WANDOFI" com o mesmo truque contorno/sólido; Inter para tudo o resto |
+| **Cor** | Branco/nuvem, tipo quase-preto, ponto verde de status | Preto `#050505`, tipo branco, luz vermelha `#E1251B`, ponto vermelho de status |
+| **Editorial** | Contadores entre parêntesis: Work [40], Service [4], Experience [9y+] | Trabalho [6], Serviços [6], Experiência — contadores reais, sem inventar |
+| **Movimento** | Editorial limpo | Holofote vermelho que percorre a página, reveals em stagger, contadores, e a luz a apagar-se na assinatura final |
+
+O **truque-assinatura** da referência é o contraste contorno/preenchido no nome. Replicamo-lo: metade de "WANDOFI" em contorno (stroke 2px, transparente por dentro), metade sólida branca. O retrato sobrepõe a costura entre as duas metades, criando profundidade (z-layering).
+
+---
+
+## 3. Sistema de marca (obrigatório)
+
+### Cores
+
+```css
+:root{
+  --ink:      #050505; /* fundo base de toda a página */
+  --charcoal: #0b0b0b;
+  --coal:     #161616; /* cards/blocos elevados */
+  --paper:    #FFFFFF; /* texto sobre escuro */
+  --near:     #F2F2F2; /* corpo de texto sobre escuro (conforto) */
+  --red:      #E1251B; /* ACENTO/LUZ ÚNICO */
+  --red-deep: #99140F; /* hover do CTA vermelho */
+  --muted:    #9a9a9a; /* labels/secundário sobre escuro */
+  --line:     rgba(255,255,255,0.14); /* divisórias sobre escuro */
+  --shadow:   0 22px 70px rgba(0,0,0,0.55);
+  --radius:   8px;
+}
+```
+60-30-10: ~60% fundo escuro, ~30% cards/texto, ~10% vermelho. Contraste de texto sempre **WCAG AA** (branco sobre `#050505` passa folgado; verificar acentos vermelhos em texto pequeno).
+
+### Tipografia — sistema completo
+
+Aplicação da técnica (pairing → escala → leading → tracking → medida), ancorada nas fontes que a marca já fixa. **Duas famílias, nunca mais.**
+
+**Pairing (porquê estas duas).** Serif de display + sans de corpo é o par evergreen — classificações opostas, não competem. **Fraunces** é uma serif moderna de alto contraste com o eixo `SOFT` a dar carácter sem ser ornamental (não é editorial-luxe como a Playfair da Lexia; é confident-industrial). **Inter** é uma grotesca neutra, perfeita para UI e corpo longo. O contraste display/UI separa visualmente a marca da Lexia ao mesmo tempo que partilha a Inter ao nível técnico. *(Estudo: ver deployments de Fraunces em fontsinuse.com antes de afinar.)*
+
+```css
+:root{
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-ui:      "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, Menlo, monospace; /* badges técnicos */
+}
+/* Fraunces é variable: controlar opsz/SOFT/wght por font-variation-settings */
+```
+
+**Escala modular (perfect fourth ~1.333, fluida com `clamp`).** Salto H1↔corpo muito acima de 1.5× — a escada lê-se à distância.
+
+| Nível | Fonte / eixos | Tamanho (`clamp`) | Line-height | Tracking | Peso |
+|---|---|---|---|---|---|
+| **Display** "WANDOFI" | Fraunces · opsz 144 · SOFT 72 | `clamp(56px, 14vw, 200px)` | `0.9` | `-0.03em` | 600 |
+| **H2** títulos de secção | Fraunces · opsz 72 · SOFT 56 | `clamp(2rem, 4vw, 3.25rem)` | `1.05` | `-0.02em` | 500 |
+| **H3** título de caso (Lexia/VPA) | Fraunces · opsz 40 · SOFT 56 | `clamp(1.3rem, 2.2vw, 1.75rem)` | `1.15` | `-0.01em` | 500 |
+| **Lead** (frase de abertura) | Inter | `clamp(1.125rem, 1.6vw, 1.375rem)` | `1.5` | `0` | 400 |
+| **Corpo** | Inter | `clamp(1rem, 0.6vw + 0.9rem, 1.125rem)` | `1.6` | `0` | 400 |
+| **Stat** números (92%, 5h→20min) | Fraunces · SOFT 56 · `tabular-nums` | `clamp(2rem, 5vw, 3.5rem)` | `1.0` | `-0.02em` | 600 |
+| **Small / caption / nav** | Inter | `0.9375rem` (15px) | `1.45` | `0` | 500 |
+| **Eyebrow / label** | Inter | `0.78rem` (~12.5px) | `1` | `+0.04em` | 700 |
+| **Badge técnico** | mono | `0.75rem` | `1` | `+0.02em` | 500 |
+
+**Leading.** Display compacta (`0.9`); H2/H3 entre `1.05–1.15`; corpo confortável `1.6` (dentro de 1.5–1.7); lead `1.5`. Quanto maior o tipo, mais apertado o leading.
+
+**Tracking.** Display e títulos em negativo (`-0.01` a `-0.03em`) — tamanhos grandes "abrem" sozinhos. Corpo a `0`. **Eyebrows uppercase a `+0.04em`** — nota de reconciliação: a regra geral pede +50–100 em all-caps, mas a Inter 700 a tamanho pequeno lê melhor com tracking ligeiro; `+0.04em` é o meio-termo (a marca abandonou os `0.22em` antigos por serem barulho). Nunca corpo em caixa alta.
+
+**Medida (line length).** Corpo entre **50–75 caracteres**, alvo ~65. Limitar blocos de parágrafo a `max-width: 62ch` (≈640px). Leads podem ser mais curtos para impacto.
+
+**Hierarquia de peso.** O peso faz trabalho onde o tamanho não chega: Fraunces 600 no display/stats, 500 nos títulos; Inter 400 corpo, 500 nav/small, 600 botões secundários, 700 eyebrows. Sem usar 300 (some sobre escuro).
+
+```css
+/* classes prontas */
+.display{font-family:var(--font-display);font-variation-settings:"opsz"144,"SOFT"72,"WONK"0;
+  font-weight:600;font-size:clamp(56px,14vw,200px);line-height:.9;letter-spacing:-.03em}
+.h2{font-family:var(--font-display);font-variation-settings:"opsz"72,"SOFT"56;
+  font-weight:500;font-size:clamp(2rem,4vw,3.25rem);line-height:1.05;letter-spacing:-.02em}
+.h3{font-family:var(--font-display);font-variation-settings:"opsz"40,"SOFT"56;
+  font-weight:500;font-size:clamp(1.3rem,2.2vw,1.75rem);line-height:1.15;letter-spacing:-.01em}
+.lead{font-family:var(--font-ui);font-weight:400;
+  font-size:clamp(1.125rem,1.6vw,1.375rem);line-height:1.5}
+.body{font-family:var(--font-ui);font-weight:400;
+  font-size:clamp(1rem,.6vw + .9rem,1.125rem);line-height:1.6;max-width:62ch}
+.stat{font-family:var(--font-display);font-variation-settings:"SOFT"56;font-variant-numeric:tabular-nums;
+  font-weight:600;font-size:clamp(2rem,5vw,3.5rem);line-height:1;letter-spacing:-.02em}
+.eyebrow{font-family:var(--font-ui);font-weight:700;text-transform:uppercase;
+  font-size:.78rem;line-height:1;letter-spacing:.04em;color:var(--muted)}
+```
+
+**Carregamento (perf + CLS).** Auto-alojar a Fraunces **variable** (um WOFF2, subset latin) e a Inter dá mais controlo; alternativa: Google Fonts com `display=swap` + `preconnect` a `fonts.gstatic.com`. Importar **só** os eixos/pesos usados. Fallbacks na stack (Georgia / system-ui) reduzem o salto enquanto a fonte carrega — idealmente com `size-adjust`/`ascent-override` no `@font-face`. `font-display: swap` sempre.
+
+**Checklist de tipografia (antes de entregar).**
+- [ ] Corpo ≥ 16px · line-height 1.5–1.7 · medida 50–75 car.
+- [ ] Só 2 famílias (Fraunces + Inter); mono é fallback de sistema, não conta.
+- [ ] Display/títulos com leading apertado (0.9–1.15) e tracking negativo.
+- [ ] Salto H1↔corpo bem acima de 1.5×; cada nível distinto do seguinte.
+- [ ] Eyebrows uppercase com tracking ligeiro, nunca corpo em caixa alta.
+
+### Botões
+```
+Primário "Vamos falar" (sobre escuro): fundo #FFFFFF · texto #050505 · sombra · hover translateY(-2px)
+Secundário "Ver trabalho":            transparente · borda 1px rgba(255,255,255,0.48) · texto branco
+CTA vermelho (fecho):                 fundo #E1251B · texto #FFFFFF · hover #99140F  (só no CTA final)
+Comum: altura mín 52px · radius 8px · Inter 700 · transição 180ms
+```
+**Nunca:** `rounded-full`, gradientes em botões, glow neon, bronze, fundos creme.
+
+---
+
+## 4. Estrutura do site (ordem) e layout do hero
+
+Nav sticky no topo: wordmark **Wandofi** (pequeno, esquerda) · **Trabalho [6] · Serviços [6] · Experiência · Contacto** · botão `Vamos falar ↗` (direita).
+
+Secções:
+1. Hero
+2. Posicionamento (signal)
+3. Serviços / capacidades
+4. Trabalho (portfólio)
+5. Experiência (percurso)
+6. Processo
+7. Sobre (o operador)
+8. CTA final + contacto
+9. Footer com **assinatura Wandofi PM**
+
+### Layout do hero (zona a zona)
+- **Topo-esquerda:** pill de status `● Disponível para projecto` (ponto vermelho).
+- **Centro/fundo:** "WANDOFI" gigante (contorno + sólido). O retrato emerge da sombra, ancorado à direita/baixo, com a luz vermelha a sair para fora do enquadramento. Tipo parcialmente atrás do retrato.
+- **Baixo-esquerda:** label `PROJECT MANAGER OPERACIONAL` + lead + 2 botões (`Vamos falar` / `Ver trabalho`).
+- **Direita (coluna):** links empilhados — LinkedIn · GitHub · Instagram · Email.
+- **Fundo:** `#050505` + glow vermelho radial no canto superior-direito (alinhado à luz do retrato) + grão + vinheta.
+
+---
+
+## 5. Copy por secção (usar tal e qual; PT pré-acordo)
+
+### 5.1 Hero
+- Status: `● Disponível para projecto`
+- Wordmark: `WANDOFI` (metade contorno + metade sólida)
+- Label: `PROJECT MANAGER OPERACIONAL`
+- Lead: "Desenho, migro e automatizo a infraestrutura digital e administrativa de negócios em formação. Do papel ao funcionamento."
+- Botões: `Vamos falar ↗` (primário) · `Ver trabalho` (secundário)
+- Links: LinkedIn · GitHub · Instagram · main@wandofi.pt
+
+### 5.2 Posicionamento (signal)
+- Âncora: "A maioria dos negócios pequenos não falha por falta de talento. Falha por falta de infraestrutura que o sustente."
+- Três compromissos:
+  1. Traduzir o que está na cabeça em estrutura concreta.
+  2. Escolher ferramentas que o cliente usa de facto.
+  3. Documentar decisões para o conhecimento não viver na memória.
+
+### 5.3 Serviços / capacidades
+Eyebrow `O QUE FAÇO` · Título `Infraestrutura antes da escala` · grid de 6 cards:
+
+- **Migração de sites** — Mover um site para uma stack moderna sem perder SEO, histórico nem email. Astro, Cloudflare Pages, GitHub. Preservar MX, redireccionamentos e indexação.
+- **Construção de raiz** — Sites novos, rápidos e indexáveis, feitos para durar e para o cliente gerir.
+- **SEO técnico** — Schema, canonicals, sitemaps, correcção de indexação e tracking de conversão.
+- **Automações e integrações** — Apps Script, CRM, reconciliação bancária e fluxos documentais.
+- **Estrutura e burocracia** — Forma jurídica, registos, contabilidade, fiscalidade, contratos e compliance. Construído por dentro de uma prática regulada.
+- **Plataformas e LMS** — Áreas de cliente, escolas online (Moodle), pagamentos (Stripe) e certificação.
+
+### 5.4 Trabalho (portfólio)
+Eyebrow `TRABALHO` · Título `Casos`.
+
+**Princípio de hierarquia — a escada.** Dois casos com escala no topo (Lexia, depois VPA), e o resto desce para uma **lista subtil e leve** — sem cards pesados, só tipo, finas divisórias e tags. A escala usa-se com parcimónia: se tudo for grande, nada se destaca. A ordem desce assim:
+
+```
+Lexia  →  VPA  →  Automações  →  SEO  →  Criação de sites  →  Migração
+(produto)  (reorg)        ........ lista subtil ........
+```
+
+> ⚠️ Lexia é meu — livre. **VPA é o meu empregador**: tê-lo como caso público enquanto lá trabalho é delicado; por defeito fica anónimo ("Escritório de advogados · Lisboa"). Atlas e gabinete de contabilidade são clientes externos — também anónimos até teres autorização.
+
+#### Destaque 1 — Lexia *(o maior bloco da secção)*
+**Lexia — produto próprio.** SaaS de investigação jurídica para profissionais do direito em Portugal. Build do conceito ao produto: arquitectura search-first, pipeline anti-alucinação para jurisprudência, autenticação, planos e checkout. *Produto · Build próprio*
+- Tratamento: bloco grande, com espaço, imagem/visual do produto, e o título em Fraunces a uma escala superior à dos outros.
+
+#### Destaque 2 — VPA *(segundo bloco, escala menor que Lexia)*
+**Escritório de advogados · Lisboa.** Sistema integrado em Apps Script: Drive + QR tracking + CRM (Avaza) + reconciliação BPI/Millennium ↔ TOConline por chave referencial. *Reorganização · Automação*
+- `~92%` reconciliação automática · `5h → 20 min` fecho mensal *(contadores que sobem no scroll)*
+
+#### Mais trabalho *(lista subtil — tipo menor, divisórias finas, sem cards)*
+Linhas compactas, a descer por capacidade. Cada linha: capacidade — uma frase — exemplo discreto.
+
+- **Automações e integrações** — Fluxos documentais, CRM e reconciliação bancária em Apps Script.
+- **SEO técnico** — Schema, canonicals, indexação e tracking de conversão. *(ex.: gabinete de contabilidade)*
+- **Criação de sites e plataformas** — Sites rápidos e indexáveis; LMS Moodle + Stripe + compliance DGERT para uma escola de línguas *(Atlas)*; sites de serviços locais com telefone e SEO local. Identidade e conteúdo para a Zone 7 Esports.
+- **Migração de sites** — Mudança para stack moderna (Astro + Cloudflare + GitHub) sem downtime nem perda de posições, MX/SPF preservados. *(ex.: gabinete de contabilidade)*
+
+**Layout da escada:** Destaque 1 ocupa largura quase total. Destaque 2 entra abaixo, mais contido. "Mais trabalho" é uma lista de larguras iguais com divisórias `1px var(--line)`, tipo a ~0.9rem, tags em `--muted`, acento vermelho só no hover. O contraste de escala entre os destaques e a lista é o que comunica a hierarquia — não a cor.
+
+### 5.5 Experiência (percurso)
+Eyebrow `EXPERIÊNCIA` · lista editorial limpa (cargo · contexto · período). **Preencher datas reais — não inventar.**
+- Assistente administrativo — Escritório de advogados, Lisboa — *[período]*
+- Fundador / Project manager — Wandofi — *[período]*
+- Formação em contabilidade — Curso profissional (Bélgica) + universidade — *em curso*
+
+### 5.6 Processo
+Eyebrow `PROCESSO` · Título `Do diagnóstico à entrega`.
+- **01. Diagnóstico** — Conversa guiada e leitura dos documentos, ferramentas e bloqueios.
+- **02. Sprint** — Priorização, implementação e coordenação dos fornecedores.
+- **03. Entrega** — Sistema pronto, decisões documentadas, próximos passos claros.
+- Selo: "Três passos. Sem retainer obrigatório, sem propostas longas."
+
+### 5.7 Sobre (o operador)
+Eyebrow `SOBRE` · "Sou o Mauro. Trabalho como assistente administrativo num escritório de advogados em Lisboa e tenho formação em contabilidade — curso profissional na Bélgica e estudos em curso na universidade. Construí a Wandofi para aplicar essa combinação a outros negócios: operação dentro de uma prática regulada somada a capacidade técnica e digital. PMs raramente constroem. Agências raramente entendem fiscalidade. Contabilistas raramente fazem marca ou web. Junto as três camadas."
+- **Nunca** escrever advogado, jurista, contabilista certificado ou técnico oficial.
+
+### 5.8 CTA final + contacto
+Título `Vamos falar do teu projecto` · subtexto "Migração, rebuild, automação ou estrutura de raiz — começa com um diagnóstico." · CTA vermelho `Marcar diagnóstico` · email main@wandofi.pt.
+
+### 5.9 Footer / assinatura
+Mínimo, escuro. **Aqui entra o logótipo Wandofi PM** como assinatura (ver animação 6.4). Linha: `© 2026 Wandofi PM · wandofi.pt · main@wandofi.pt`.
+
+---
+
+## 6. Animação e micro-interacções (a parte central desta versão)
+
+Princípio: **movimento com significado** — sinalizar estado, criar profundidade, guiar o olho. Nunca decoração gratuita. Easing por defeito `cubic-bezier(.2,.8,.2,1)`. Tudo dentro de `@media (prefers-reduced-motion: reduce)` colapsa para fade simples ou estático.
+
+### 6.1 Sequência de entrada (load do hero)
+1. Fundo `#050505` já presente; o **holofote vermelho acende** (bloom: opacity 0→1, scale 0.9→1) em 900ms — fica aceso a partir daqui.
+2. "WANDOFI" entra letra a letra (ou por metades contorno/sólido), `translateY(24px)` + fade, stagger 60ms.
+3. O **retrato** revela-se da sombra (fade + leve `scale(1.04→1)` e clip da escuridão para a luz) em 1.1s.
+4. Label → lead → botões → links em fadeUp escalonado (stagger 90ms).
+
+### 6.2 O holofote vermelho — luz que percorre a página (mecânica-mestra)
+A página é um estúdio com **um único holofote vermelho aceso**. A luz não é decoração estática: percorre o design ao longo do scroll e os elementos por onde passa ganham um **reflexo vermelho** nas letras e nas arestas. Fica aceso de cima a baixo e **só se apaga no fim**, no momento exacto em que a assinatura Wandofi PM se desenha (ver 6.4).
+
+Implementação:
+- **Camada de luz:** overlay full-height com `radial-gradient` vermelho suave (`#E1251B` a baixa opacidade sobre transparente), por cima do conteúdo, com `mix-blend-mode: screen` (ou `soft-light`). Onde o gradiente é denso, as letras e elementos por baixo acendem a vermelho — o reflexo é gerado automaticamente pelo blend, não pintado à mão.
+- **Movimento ligado ao scroll:** o foco do holofote desloca-se com o progresso do scroll (GSAP ScrollTrigger / valor do Lenis), descendo a página (`transform: translateY` ou `background-position` do gradiente, de ~-10% a 110%). A luz varre o ecrã enquanto se desce.
+- **Reflexo nas letras:** "WANDOFI" e os títulos H2 levam preenchimento por gradiente (`background-clip: text`) cujo brilho vermelho se desloca com a luz — o reflexo passa pela palavra. Linhas, arestas de cards e divisórias recebem `box-shadow`/`border` vermelho subtil quando estão sob o foco, e voltam ao neutro quando a luz sai.
+- **Respiração:** dentro disto, a luz pulsa muito ao de leve (opacity 0.9↔1, 6s ease-in-out) — sente-se, não se vê.
+- **Restrição de marca:** mesmo a varrer, o vermelho visível não cobre mais de ~10% do ecrã num dado momento. É um foco, não um banho.
+- **`prefers-reduced-motion`:** a luz pára de se mover — fica um glow suave fixo no topo, sem varrimento nem respiração.
+
+### 6.3 Scroll
+- **Reveals:** cada secção entra com fadeUp `translateY(20px)`, stagger 0.1–0.6s, via IntersectionObserver (ou ScrollTrigger).
+- **Contadores:** `~92%`, `5h → 20 min`, `3`, `6` contam a subir quando entram no ecrã.
+- **Parallax subtil:** retrato e bandas de imagem movem-se a ~0.9× do scroll. Sem exageros.
+- **Smooth scroll:** Lenis para inércia suave (a sensação "award-winning").
+
+### 6.4 O fecho — a luz apaga-se e a assinatura entra
+É o **único** momento em que o holofote se apaga. Ao chegar ao footer (ScrollTrigger no bloco de assinatura), uma timeline:
+1. **A luz corta:** a camada do holofote faz fade da opacidade para `0` em ~0.8s; todo o reflexo vermelho das letras e elementos esvai-se e a página assenta em `#050505` puro. O estúdio desliga.
+2. **A assinatura desenha-se:** logo a seguir, o logótipo **Wandofi PM** entra no escuro — traço a preencher (`stroke-dashoffset` 1→0) ou fade+rise lento, 1.2s, easing suave. Em branco/neutro, para o contraste do "luzes apagadas".
+3. *(Opcional, último beat)* um único lampejo vermelho subtil sob o wordmark — o reflexo final antes do negro total.
+
+Narrativa: a página pessoal (WANDOFI) viveu sob a luz; quando o trabalho assina (Wandofi PM), a luz apaga-se. É o gesto do estúdio no fim da sessão. Em reduced-motion: a luz faz fade simples e a assinatura aparece sem desenho.
+
+### 6.5 Hover / micro-interacções
+- Botões: `translateY(-2px)` + sombra a assentar (180ms).
+- Links de destaque: `border-bottom` que faz wipe para vermelho (200ms).
+- Cards de caso: lift `-2px` + linha de acento vertical vermelha à esquerda (`scaleY 0→1`, 400ms).
+- Setas em CTAs: `translateX(4px)` no hover do pai.
+- Nav: underline que cresce do centro.
+- (Opcional) cursor-dot personalizado que aumenta sobre elementos clicáveis — manter acessível e desligável; público é touch-first, por isso é polish, não estrutura.
+
+---
+
+## 7. Instruções técnicas
+
+- **Stack:** HTML + CSS + JS. Animação com **GSAP + ScrollTrigger + Lenis** (única dependência externa, justificada pela exigência de movimento). Importar via CDN. Tudo o resto vanilla.
+- **Responsivo mobile-first.** No telemóvel: "WANDOFI" reduz, retrato passa a topo, links viram linha. Testar 360 / 768 / 1280px.
+- **Fontes:** Fraunces (eixos opsz/SOFT/wght) + Inter via Google Fonts, `font-display: swap`.
+- **Performance:** retrato em JPEG/WebP progressivo, ≤1600px, `loading="lazy"` (excepto hero), dimensões explícitas; glow e grão em CSS/SVG, não imagens pesadas.
+- **Acessibilidade:** contraste AA, `:focus-visible` visível, HTML semântico, `alt` em todas as imagens, `prefers-reduced-motion` em todas as animações.
+- **SEO/head:** ver **secção 8 (SEO)** para a implementação completa (title, meta, canonical, robots, sitemap, JSON-LD, OG). Resumo: `<html lang="pt-PT">`, um único `<h1>` com keyword, `og:locale=pt_PT`.
+- **Exportável** para Cloudflare Pages sem reescrever.
+
+### Anti (não fazer)
+Stock photos genéricas · gradientes purple-to-pink/blue-to-cyan · `rounded-full` em cards/botões · buzzwords (transformar, revolucionar, alavancar, escalar) · pontos de exclamação em copy de produto · emojis · bronze · fundos creme · animação sem `prefers-reduced-motion`.
+
+---
+
+## 8. SEO — pronto para indexar e rankear
+
+Implementar **durante** a construção, não depois. Objectivo duplo: a página entra no índice limpa (é aceite) e compete nos termos certos (rankeia). Tudo ancorado em serviços reais — sem claims inventados, sem keyword stuffing, sem buzzwords. O gate de voz da marca manda sempre.
+
+### 8.1 Contexto da estratégia
+Negócio **Wandofi** · `https://wandofi.pt` · Lisboa / Portugal (pt-PT). Oferta real: migração de sites, criação de sites, SEO técnico, automações/integrações, estrutura e burocracia, plataformas/LMS. Objectivo primário: **pedidos de diagnóstico** (lead/BOFU); secundário: autoridade. Sociais: LinkedIn, GitHub, Instagram.
+
+### 8.2 Mapa de keywords (cluster → secção → intenção)
+Uma keyword primária por secção, colocada com naturalidade no H2 e na primeira frase. Só entra se corresponder a algo que faço mesmo; priorizar intenção × credibilidade, não volume inventado.
+- **Hero (H1)** — "project manager operacional" + Lisboa *(marca/comercial)*
+- **Migração** — "migração de sites sem perder SEO", "migrar site para nova plataforma" *(BOFU)*
+- **Criação de sites** — "criação de sites rápidos", "sites para pequenos negócios" *(comercial)*
+- **SEO técnico** — "SEO técnico", "indexação e schema", "corrigir indexação" *(comercial/informacional)*
+- **Automações** — "automação de processos", "automação com Apps Script", "reconciliação bancária" *(comercial)*
+- **Estrutura/burocracia** — "apoio a ENI", "estrutura para abrir negócio" *(informacional/BOFU)*
+- **Plataformas/LMS** — "criar escola online", "plataforma de formação Moodle" *(comercial)*
+
+### 8.3 On-page (colocação)
+- **Title** (≤60 car.): `Wandofi — Migração, criação de sites, SEO e automações · Lisboa`
+- **Meta description** (≤155 car.): `Project manager operacional em Lisboa. Migração e criação de sites, SEO técnico e automações para negócios em formação. Marca um diagnóstico.`
+- **H1 único, com keyword no markup** — visualmente "WANDOFI" gigante, mas o `<h1>` é `Wandofi — project manager operacional em Lisboa`, com "Wandofi" em display grande e o resto em `<span>` estilizado (visualmente menor, **nunca** escondido com `display:none` — texto oculto é risco de penalização).
+- **Um H2 por secção** com a keyword do cluster (ex.: "Migração de sites sem perder SEO").
+- **Alt text** descritivo em todas as imagens (retrato: `Mauro Cordeiro, project manager operacional — Wandofi`). Nada de `alt` vazio ou "img1".
+- **Anchor text** descritivo, nunca "clica aqui": "ver trabalho", "marcar diagnóstico".
+- Keyword na primeira frase de cada secção, densidade natural. **Sem stuffing.**
+
+### 8.4 Técnico — indexação limpa
+- **Canonical autorreferente** em cada página: `<link rel="canonical" href="https://wandofi.pt/">`. Escolher **um** host (recomendo **sem www**) e 301 do outro — evita o loop www↔não-www e a indexação duplicada.
+- `<meta name="robots" content="index,follow">` — confirmar que **não** fica `noindex` herdado do preview do Replit.
+- **robots.txt** que permite crawl e aponta o sitemap:
+  ```
+  User-agent: *
+  Allow: /
+  Sitemap: https://wandofi.pt/sitemap.xml
+  ```
+- **sitemap.xml** válido (XML real, resposta **200**, não soft-404), com a URL e `<lastmod>`.
+- `<html lang="pt-PT">` + hreflang autorreferente pt-PT.
+- HTTPS forçado; URL limpa sem parâmetros.
+- **Open Graph / Twitter:** `og:type=website`, `og:url` (canónica), `og:title`, `og:description`, `og:image` (retrato, ≥1200×630), **`og:locale=pt_PT`** (nunca en_US), `twitter:card=summary_large_image`.
+
+### 8.5 Dados estruturados (JSON-LD no `<head>`)
+- **Person** — `name` "Mauro Cordeiro", `jobTitle` "Project Manager" *(nunca advogado/contabilista certificado)*, marca "Wandofi", `sameAs` com os links reais, `knowsAbout` (migração de sites, SEO técnico, automação, LMS).
+- **ProfessionalService** — `name` "Wandofi", `url`, `email` main@wandofi.pt, `areaServed` "Portugal", `serviceType`/`makesOffer` com a lista de serviços, `founder` = Person.
+- *(Opcional)* **FAQPage** se acrescentares 3–4 perguntas reais ("Quanto tempo demora uma migração?", "Trabalhas com ENIs?") — boa alavanca para queries de pergunta. Só respostas verdadeiras.
+
+### 8.6 Core Web Vitals (factor de ranking)
+- **LCP:** o retrato é provavelmente o LCP — `preload` da imagem do hero, formato moderno (WebP/AVIF), dimensões explícitas, **não** `lazy` no hero; `preconnect` ao Google Fonts.
+- **CLS:** `width`/`height` em todas as imagens, `font-display: swap`, nada a empurrar conteúdo já carregado.
+- **INP:** JS mínimo, `defer` no GSAP/Lenis, animar via `transform`/`opacity` (compositor), não layout; IntersectionObserver para reveals.
+
+### 8.7 Sinais locais (Portugal)
+NAP consistente — "Wandofi", main@wandofi.pt, Lisboa — iguais no site, LinkedIn e GitHub. `areaServed` Portugal no schema, pt-PT em tudo. Próximo passo off-site: criar/alinhar Google Business Profile e manter o mesmo nome nas redes (reforça a entidade).
+
+### 8.8 Checklist pós-launch (para ser "aceite" e indexar)
+1. 200 na URL e 301 do host alternativo (www↔não-www resolvido).
+2. Canonical correcto e **sem** `noindex`.
+3. Submeter sitemap no Google Search Console + Bing Webmaster.
+4. Inspecção de URL → **Pedir indexação**.
+5. Validar JSON-LD no Rich Results Test.
+6. Lighthouse: Performance / SEO / Best Practices / Acessibilidade ≥ 90.
+
+### 8.9 Crescimento (fora do MVP)
+O site fica index-ready agora. Para rankear além da homepage, o motor de conteúdo (clusters → títulos → rascunhos → distribuição) entra **depois**, quando houver tracção — a marca não abre com blog.
+
+---
+
+## 9. Imagens
+
+O **retrato é o asset principal** (hero + og:image). Não precisas de gerar imagem para o hero.
+
+Se quiseres estender o cenário de estúdio com uma textura vermelha subtil atrás de secções, gera no ChatGPT:
+```
+Extreme close-up photograph of a dark studio backdrop with a single soft
+blood-red light glow bleeding in from one corner, near-black background, very
+subtle film grain, gentle vignette, no objects, no text, no logos. High
+contrast, monochromatic red-on-black, photorealistic, 3:2 aspect, designed as
+a dark website background where white text will sit on top.
+```
+Depois alinha o vermelho com `#E1251B` (hue shift ~0–5°, +contraste leve, overlay vermelho 4–6%). Nenhum gerador é totalmente "indetectável" — o objectivo é que leia como fotografia de estúdio real.
+
+---
+
+## 10. Deploy (GitHub → Cloudflare)
+
+Fonte de verdade: **GitHub**. Replit é o editor; a Cloudflare faz o deploy contínuo. Recomendado: **Cloudflare Pages** (mesmo fluxo dos outros sites). *Nota: a Cloudflare está a empurrar projectos novos para Workers, mas Pages continua válido e mais simples para estático.*
+
+**Estrutura do repo (o agente deve preparar assim):**
+- `index.html` na raiz · `styles.css` · `main.js` · `assets/`
+- `robots.txt` e `sitemap.xml` na raiz (ver secção 8)
+- `_redirects` na raiz com a regra canónica (Pages e Workers suportam-no nativamente):
+  ```
+  https://www.wandofi.pt/*  https://wandofi.pt/:splat  301
+  ```
+- *(Opcional)* `_headers` para cache e segurança.
+- Sem build step (estático puro). Se evoluir para Astro, output = `dist`.
+
+**Passos (uma vez):**
+1. Push do repo para GitHub (`Wandofi/wandofi-site`), `index.html` na raiz, branch `main`.
+2. Cloudflare → Workers & Pages → Create → **Pages → Connect to Git** → escolher o repo.
+3. Build: framework preset **None**, build command **vazio**, output **`/`**. Deploy → `*.pages.dev`.
+4. Domínio: adicionar `wandofi.pt` como zona na Cloudflare e mudar os nameservers no **one.com** para os da Cloudflare; depois Pages → **Custom domains** → `wandofi.pt` + `www`.
+5. Confirmar HTTPS forçado e o 301 `www` → apex activo.
+
+**Fluxo contínuo:** editar no Replit → push para `main` → deploy automático. Cada branch/PR ganha um preview URL.
+
+**Alternativa future-proof (Workers static assets):** ligar o repo a **Workers Builds** e juntar um `wrangler.jsonc` com `compatibility_date` e `assets.directory`; deploy via `wrangler deploy`. Para este site a diferença é marginal.
+
+Pós-deploy → ligar ao checklist de SEO (8.8): submeter sitemap no Search Console, pedir indexação, validar canonical/redirect.
+
+---
+
+## 11. Pendentes (responde quando puderes)
+1. **Autorização** para nomear o gabinete de contabilidade e a escola de línguas (por defeito anónimos). VPA fica anónimo por seres empregado.
+2. **Datas reais** da secção Experiência.
+3. **Links sociais** verdadeiros (LinkedIn / GitHub / Instagram) — entram no `sameAs` do schema.
+4. Queres o cursor-dot personalizado ou deixamos de fora (público mobile)?
+5. O retrato fica à direita do hero (recomendado, segue a luz) ou ao centro como na referência?
+6. **Host canónico:** confirmas `wandofi.pt` sem www como principal (301 do www)?
+7. Tens acesso ao **Google Search Console** de wandofi.pt, ou crio-te o passo-a-passo para o pós-launch?

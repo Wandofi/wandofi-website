@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "s_wi5Ex927RDdJTmTTQPh"
+uri = "file://artifacts/wandofi/public/assets/portrait.png"
+type = "image"
+title = "wandofi studio portrait"
