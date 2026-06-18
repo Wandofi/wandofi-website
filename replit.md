@@ -12,7 +12,7 @@ Dark, single-red-light personal brand site for Mauro Cordeiro (Wandofi) — a pr
 
 - Vanilla HTML + CSS + JS — no framework, no bundled app code. The page is plain static.
 - Motion: GSAP + ScrollTrigger + Lenis, all loaded from CDN as `window` globals (the only external runtime deps).
-- Fonts: Fraunces (display) + Inter (UI) via Google Fonts.
+- Fonts: Fraunces (display) + Inter (UI) + Petit Formal Script (section titles `.h2`) via Google Fonts.
 - Hosted in a Vite (react-vite scaffold) artifact for the Replit preview, but the deliverable is framework-free and exportable to Cloudflare Pages without a rewrite.
 
 ## Where things live
@@ -20,14 +20,14 @@ Dark, single-red-light personal brand site for Mauro Cordeiro (Wandofi) — a pr
 - `artifacts/wandofi/index.html` — all markup + SEO head (canonical, OG/Twitter, JSON-LD Person + ProfessionalService).
 - `artifacts/wandofi/public/styles.css` — all styling, palette and type scale (CSS custom properties at `:root`).
 - `artifacts/wandofi/public/main.js` — all motion (vanilla, uses the CDN globals; full `prefers-reduced-motion` fallback).
-- `artifacts/wandofi/public/assets/` — `portrait.png` (real photo) and `wandofi-pm-logo.png` (reference; footer logo is recreated as inline SVG + styled text).
+- `artifacts/wandofi/public/assets/` — `portrait.png` (real photo) and `wandofi-pm-logo.png` (the original logo, used as-is in the footer).
 - `artifacts/wandofi/public/` — `robots.txt`, `sitemap.xml`, `_redirects`, `_headers` (Cloudflare-ready, copied verbatim on build).
 - `artifacts/wandofi/src/global.d.ts` — stub only, so `tsc --noEmit` has an input. No app code in `src/`.
 
 ## Architecture decisions
 
 - Built framework-free on purpose: the brief requires a Cloudflare-Pages-exportable site with GSAP/ScrollTrigger/Lenis as the only external deps. Everything lives in `public/` so Vite serves it untransformed and copies it verbatim on build.
-- The footer "WANDOFI PM" logo is rendered as an inline SVG hexagon mark + HTML text (light fill + layered `text-shadow` for 3D depth), not the raster PNG, so colours/shadow are controllable on the dark background.
+- The footer "WANDOFI PM" logo is the original raster PNG (`wandofi-pm-logo.png`), used untouched and shown on a white plate (`.signature__plate`) so its dark wordmark stays legible over the near-black footer.
 - The single red light is one fixed radial overlay (`#spotlight`, `mix-blend-mode: screen`) whose vertical position is scrubbed by scroll and dimmed near the footer.
 - Key/visible elements (logo wordmark) are never hidden behind animation timing — only enhanced — so a direct deep-link (e.g. `#footer`) never shows a blank logo.
 

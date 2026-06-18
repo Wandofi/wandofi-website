@@ -20,6 +20,7 @@
   /* Type */
   --display: "Fraunces", Georgia, serif;
   --ui: "Inter", system-ui, -apple-system, sans-serif;
+  --script: "Petit Formal Script", "Fraunces", cursive;
 
   /* Rhythm */
   --section-pad: clamp(5rem, 12vh, 11rem);
@@ -123,13 +124,12 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 .h2 {
-  font-family: var(--display);
-  font-weight: 500;
-  font-size: clamp(2.2rem, 6vw, 4.2rem);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
+  font-family: var(--script);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 6.5vw, 4.8rem);
+  line-height: 1.12;
+  letter-spacing: 0;
   margin: 0;
-  font-variation-settings: "opsz" 96, "SOFT" 30;
 }
 
 .h3 {
