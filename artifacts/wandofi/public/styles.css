@@ -248,6 +248,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   position: relative;
 }
 
+.hero__status,
+.hero__intro,
+.hero__social { position: relative; z-index: 2; }
 .hero__status { margin-bottom: 1.5rem; }
 .status-pill {
   display: inline-flex;
@@ -268,7 +271,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 
-.hero__title { margin: 0; position: relative; }
+.hero__title { margin: 0; position: relative; z-index: 2; }
 .display {
   display: block;
   font-family: var(--display);
@@ -299,17 +302,36 @@ ul { list-style: none; margin: 0; padding: 0; }
   top: 50%;
   transform: translateY(-46%);
   width: clamp(220px, 30vw, 440px);
-  z-index: 4;
+  z-index: 1; /* sits beneath the wordmark and all hero text */
   pointer-events: none;
+  isolation: isolate; /* contain the colour-blend so it only affects the photo */
 }
 .hero__portrait img {
   width: 100%;
+  display: block;
   border-radius: 2px;
-  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%),
-    linear-gradient(to left, #000 80%, transparent 100%);
+  /* Dissolve every edge into the near-black background so the figure has no seam */
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, #000 13%, #000 62%, transparent 100%),
+    linear-gradient(to left, transparent 0%, #000 24%, #000 100%);
   -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-  filter: contrast(1.05) brightness(0.96);
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, #000 13%, #000 62%, transparent 100%),
+    linear-gradient(to left, transparent 0%, #000 24%, #000 100%);
+  mask-composite: intersect;
+  filter: contrast(1.07) brightness(0.9) saturate(1.06);
+}
+/* Wash the photo with the same single red light as the rest of the studio */
+.hero__portrait::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(78% 60% at 80% 20%, rgba(225, 37, 27, 0.34), transparent 60%),
+    radial-gradient(60% 50% at 18% 78%, rgba(225, 37, 27, 0.08), transparent 70%);
 }
 
 .hero__intro {
