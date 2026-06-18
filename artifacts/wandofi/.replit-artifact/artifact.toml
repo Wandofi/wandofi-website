@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Wandofi"
+version = "1.0.0"
+id = "artifacts/wandofi"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25471
+
+[services.development]
+run = "pnpm --filter @workspace/wandofi run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/wandofi", "run", "build" ]
+publicDir = "artifacts/wandofi/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25471"
+BASE_PATH = "/"
