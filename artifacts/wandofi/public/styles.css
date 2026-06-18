@@ -290,8 +290,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .status-dot {
   width: 7px; height: 7px; border-radius: 50%;
-  background: var(--red);
-  box-shadow: 0 0 10px 1px var(--red-glow);
+  background: #2fbf57;
+  box-shadow: 0 0 10px 1px rgba(47, 191, 87, 0.55);
   animation: pulse 2.4s var(--ease) infinite;
 }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
@@ -371,7 +371,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   left: 50%;
   top: 76%;
   transform: translate(-50%, -50%);
-  width: clamp(240px, 30vw, 400px);
+  width: clamp(320px, 40vw, 580px);
   z-index: 2; /* face fills the centre gap of the wordmark */
   pointer-events: none;
 }
