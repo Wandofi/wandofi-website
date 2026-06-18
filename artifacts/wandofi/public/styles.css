@@ -274,6 +274,44 @@ ul { list-style: none; margin: 0; padding: 0; }
   justify-content: center;
   min-height: clamp(340px, 52vh, 600px);
 }
+
+/* The single red light, taken literally: one glowing horizon line through the subject */
+.hero__line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  transform: translate(-50%, -50%);
+  z-index: 0; /* behind wordmark (z-index 1) and portrait (z-index 2) */
+  pointer-events: none;
+}
+.hero__line::before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--red);
+  box-shadow: 0 0 120px 20px rgba(225, 37, 27, 0.4), 0 0 40px 5px var(--red-glow);
+}
+.hero__line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: clamp(280px, 46vh, 500px);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(225, 37, 27, 0.08) 45%,
+    rgba(225, 37, 27, 0.15) 50%,
+    rgba(225, 37, 27, 0.08) 55%,
+    transparent
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
 .status-dot {
   width: 7px; height: 7px; border-radius: 50%;
   background: var(--red);

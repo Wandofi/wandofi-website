@@ -8,10 +8,28 @@ description: Which Wandofi hero composition is approved vs. which canvas explora
 The **current** live hero is the approved one: centered top nav, the split
 display wordmark `WAN ... DOFI` (Fraunces) with the transparent cutout portrait
 centered between the two halves, and the bottom meta row (eyebrow + "Vamos falar"
-/ "Ver trabalho" buttons left, social column right).
+/ "Ver trabalho" buttons left, social column right). Plus the single red **horizon
+line** (`.hero__line`) crossing the wordmark centre — see below.
 
 **Why:** the owner reviewed canvas explorations and said "keep design like this"
-while pointing at the live site (no red frame, centered composition).
+while pointing at the live site (no red box frame, centered composition); then
+later approved the "Linha — luz única literal" red-light treatment.
+
+# Adopted: single red horizon line (graduated from canvas)
+
+The owner explored "light AS the framing device" (questioning RedFrame's literal
+box) and picked **Horizon / "Linha — luz única literal"**: one glowing horizontal
+red line crossing the hero through the wordmark/subject. It was graduated into the
+live site and kept *alongside* the scroll-scrubbed `#spotlight` (not replacing the
+brand's single-light motif). The two sibling variants — **Spotlight ("Holofote")**
+and **Threshold ("Limiar — portal de luz")** — were NOT chosen.
+
+**Why:** the owner wanted the "single red light" reinterpreted as its most
+restrained, literal form. Implementation mechanics live in `replit.md`.
+
+**How to apply:** the line is tuned to cross the wordmark centre at desktop
+(~1920); on mobile the stacked layout drops it to a subtle base glow — that is
+acceptable, do not chase pixel-perfect cross-breakpoint alignment unless asked.
 
 # Rejected explorations (do NOT re-apply unless asked)
 
