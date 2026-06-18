@@ -304,34 +304,12 @@ ul { list-style: none; margin: 0; padding: 0; }
   width: clamp(220px, 30vw, 440px);
   z-index: 1; /* sits beneath the wordmark and all hero text */
   pointer-events: none;
-  isolation: isolate; /* contain the colour-blend so it only affects the photo */
 }
+/* Background-removed cutout shown naturally, just grounded with a soft shadow */
 .hero__portrait img {
   width: 100%;
   display: block;
-  border-radius: 2px;
-  /* Dissolve every edge into the near-black background so the figure has no seam */
-  -webkit-mask-image:
-    linear-gradient(to bottom, transparent 0%, #000 13%, #000 62%, transparent 100%),
-    linear-gradient(to left, transparent 0%, #000 24%, #000 100%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(to bottom, transparent 0%, #000 13%, #000 62%, transparent 100%),
-    linear-gradient(to left, transparent 0%, #000 24%, #000 100%);
-  mask-composite: intersect;
-  filter: contrast(1.07) brightness(0.9) saturate(1.06);
-}
-/* Wash the photo with the same single red light as the rest of the studio */
-.hero__portrait::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 2px;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  background:
-    radial-gradient(78% 60% at 80% 20%, rgba(225, 37, 27, 0.34), transparent 60%),
-    radial-gradient(60% 50% at 18% 78%, rgba(225, 37, 27, 0.08), transparent 70%);
+  filter: drop-shadow(0 26px 50px rgba(0, 0, 0, 0.55));
 }
 
 .hero__intro {
@@ -603,7 +581,6 @@ ul { list-style: none; margin: 0; padding: 0; }
     width: min(64vw, 300px);
     margin: 2.5rem 0 0 auto;
   }
-  .hero__portrait img { -webkit-mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); mask-image: linear-gradient(to bottom, #000 78%, transparent 100%); }
   .signal__list,
   .services__grid,
   .process__grid { grid-template-columns: 1fr; }
