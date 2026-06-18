@@ -281,6 +281,46 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
 
+/* ---------- RED EMBERS (right side) ---------- */
+.embers {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(38%, 520px);
+  z-index: 1; /* above the bg radial, behind the wordmark */
+  pointer-events: none;
+  overflow: hidden;
+}
+.ember {
+  position: absolute;
+  bottom: -20px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 8px 2px var(--red-glow), 0 0 14px 4px rgba(225, 37, 27, 0.35);
+  opacity: 0;
+  animation: ember-rise var(--dur, 9s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+.ember:nth-child(1)  { right: 8%;  --dur: 9s;  --delay: 0s;   --drift: -22px; width: 3px; height: 3px; }
+.ember:nth-child(2)  { right: 22%; --dur: 11s; --delay: 1.4s; --drift: 18px;  width: 5px; height: 5px; }
+.ember:nth-child(3)  { right: 35%; --dur: 8s;  --delay: 2.8s; --drift: -14px; }
+.ember:nth-child(4)  { right: 14%; --dur: 12s; --delay: 4.1s; --drift: 26px;  width: 3px; height: 3px; }
+.ember:nth-child(5)  { right: 48%; --dur: 10s; --delay: 0.7s; --drift: -28px; }
+.ember:nth-child(6)  { right: 28%; --dur: 13s; --delay: 3.3s; --drift: 12px;  width: 6px; height: 6px; }
+.ember:nth-child(7)  { right: 5%;  --dur: 9.5s;--delay: 5.5s; --drift: -16px; }
+.ember:nth-child(8)  { right: 40%; --dur: 11.5s;--delay: 2.1s;--drift: 22px;  width: 3px; height: 3px; }
+.ember:nth-child(9)  { right: 18%; --dur: 10.5s;--delay: 6.2s;--drift: -20px; }
+@keyframes ember-rise {
+  0%   { transform: translate(0, 0) scale(1);   opacity: 0; }
+  10%  { opacity: 0.9; }
+  50%  { transform: translate(calc(var(--drift, 0px) * 0.5), -52vh) scale(0.9); opacity: 0.7; }
+  80%  { opacity: 0.5; }
+  100% { transform: translate(var(--drift, 0px), -98vh) scale(0.4); opacity: 0; }
+}
+
 .hero__title { margin: 0; position: relative; z-index: 1; width: 100%; }
 .display {
   display: flex;
@@ -640,5 +680,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   .reveal { opacity: 1; transform: none; }
   .spotlight { transition: none; }
   .status-dot { animation: none; }
+  .embers { display: none; }
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
