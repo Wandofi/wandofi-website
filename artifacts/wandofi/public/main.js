@@ -118,42 +118,15 @@
     });
   });
 
-  /* ---------- Footer signature: mark draws + lifts as the light fades ---------- */
-  var sigMark = document.querySelector(".sig-mark");
-  if (sigMark) {
-    var strokes = sigMark.querySelectorAll(".sig-mark__arrow, .sig-mark__arrowhead");
-    strokes.forEach(function (p) {
-      var len = p.getTotalLength ? p.getTotalLength() : 200;
-      p.style.strokeDasharray = len;
-      p.style.strokeDashoffset = len;
-    });
-
-    // Build the reveal paused, then play it the moment the signature enters view.
-    // Using an explicit onEnter callback (rather than a scrollTrigger-bound from())
-    // guarantees it also fires when the page is opened directly at #footer.
-    var sigTl = gsap.timeline({ paused: true });
-    sigTl
-      .from(".sig-mark__hex", { scale: 0.6, opacity: 0, transformOrigin: "center", duration: 0.7, ease: "back.out(1.7)" })
-      .from(".sig-mark__bars rect", { scaleY: 0, transformOrigin: "bottom", duration: 0.5, stagger: 0.1, ease: "power3.out" }, "-=0.3")
-      .to(strokes, { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" }, "-=0.2");
-
-    // The wordmark itself (the logo) stays fully visible at all times — never gated
-    // behind animation timing. We only animate a soft upward drift from a visible
-    // start, so even if the trigger never fires the text is still shown.
-    gsap.from(".signature__type", {
-      y: 16, duration: 0.8, ease: "power3.out",
+  /* ---------- Footer signature: the real logo lifts in as the light fades ---------- */
+  // The logo image is preserved exactly as delivered; we only drift it up from a
+  // fully-visible start, so even if the trigger never fires the logo is still shown.
+  var sigPlate = document.querySelector(".signature__plate");
+  if (sigPlate) {
+    gsap.from(sigPlate, {
+      y: 18, scale: 0.97, duration: 0.9, ease: "power3.out",
       scrollTrigger: { trigger: "#signature", start: "top 92%", once: true }
     });
-
-    window.ScrollTrigger.create({
-      trigger: "#signature",
-      start: "top 90%",
-      once: true,
-      onEnter: function () { sigTl.play(); }
-    });
-
-    // Hard safety net: never leave the logo hidden if the trigger never fires.
-    setTimeout(function () { if (sigTl.progress() === 0) sigTl.progress(1); }, 4000);
   }
 
   window.ScrollTrigger.refresh();
