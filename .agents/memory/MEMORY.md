@@ -1,1 +1,1 @@
-- [Hero design decision](hero-design-decision.md) — current centered WAN/DOFI + portrait hero is approved; red-frame & usability variants were rejected explorations.
+- [Hero design decision](hero-design-decision.md) — live hero is the Affordance layout (left content · right framed portrait, `WANDOFi` h1); centered wordmark + portal/red-frame variants superseded.

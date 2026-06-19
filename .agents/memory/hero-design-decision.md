@@ -1,65 +1,39 @@
 ---
 name: Hero design decision
-description: Which Wandofi hero composition is approved vs. which canvas explorations were rejected.
+description: Which Wandofi hero composition is approved vs. which canvas explorations were rejected, and why.
 ---
 
-# Approved hero
+# Approved hero (current): the "Afordância & interação" / Affordance layout
 
-The **current** live hero is the approved one: centered top nav, the split
-display wordmark `WAN ... DOFI` (Fraunces) with the transparent cutout portrait
-centered between the two halves, and the bottom meta row (eyebrow + "Vamos falar"
-/ "Ver trabalho" buttons left, social column right). Plus a red **light-framing
-treatment** behind the subject — currently the "portal/threshold" (see below).
+The live hero is a **left content column + right framed portrait**, graduated from
+the canvas mockup `wandofi-usability/Affordance.tsx`. It fully replaced the earlier
+centered `WAN | DOFI` split-wordmark + "portal de luz" doorway hero. Implementation
+mechanics (markup, classes, breakpoints) live in `replit.md` — read those, not here.
 
-**Why:** the owner reviewed canvas explorations and said "keep design like this"
-while pointing at the live site (no red box frame, centered composition); then
-began iterating on red-light framing variants on top of that base.
+**Why:** the owner reviewed the canvas usability explorations and explicitly chose
+the Affordance variant, asking to apply it faithfully to `artifacts/wandofi`.
 
-# Adopted: red light "portal/threshold" hero (graduated from canvas)
+**How to apply:** judge the hero at ~1920x1080. Unlike the old centered version, the
+portrait is now anchored to the section corner (not the wordmark), so it is far less
+viewport-sensitive — don't shrink it to "fix" clipping seen only at odd widths.
 
-The owner explored "light AS the framing device" (questioning RedFrame's literal
-box). They first graduated **Horizon / "Linha — luz única literal"** (one
-horizontal line), then changed their mind and switched to **Threshold / "Limiar —
-portal de luz"**: two vertical red light pillars + top lintel + floor reflection
-forming a doorway the subject stands inside. The portal is the *current* live
-hero treatment, kept *alongside* the scroll-scrubbed `#spotlight` (not replacing
-the brand's single-light motif). **Spotlight ("Holofote")** was never chosen.
+# Headline reads `WANDOFi`, not "Mauro Cordeiro"
 
-**Why:** the owner is iterating on which red-light framing reads best; the choice
-has flipped between siblings, so don't assume the line — check the live hero.
-Implementation mechanics live in `replit.md`.
+The visible `<h1>` is the brand wordmark `WANDOFi`, matching the rendered mockup and
+the owner's reference screenshot — even though the `Affordance.tsx` source string
+says "Mauro Cordeiro". An inline visually-hidden span keeps the h1 SEO-descriptive.
 
-**How to apply:** the portal is anchored to the absolute desktop portrait
-(`top:76%`) and tuned at ~1920; it is hidden at ≤880px where the portrait goes
-static. If asked to switch variants again, the rejected ones still live as canvas
-mockups in `artifacts/mockup-sandbox/src/components/mockups/wandofi-redlight/`.
+**Why:** the rendered design and the owner's screenshot both show the wordmark; the
+.tsx source string was stale. Trust the approved visual over the mockup source.
 
-# Rejected explorations (do NOT re-apply unless asked)
+# Superseded / rejected treatments (do NOT re-apply unless asked)
 
-These were canvas-only mockups in `artifacts/mockup-sandbox`, not adopted:
+Earlier *live* hero (now removed): centered nav + split `WAN | DOFI` wordmark with a
+red **portal/threshold** doorway behind the subject. Also explored and rejected:
+**Horizon** (single light line), **Spotlight/Holofote**, the literal **RedFrame**
+box, and the sibling usability mockups `Hierarchy.tsx` / `Accessible.tsx`. These
+survive only as canvas mockups under `artifacts/mockup-sandbox`.
 
-- **Red frame around the portrait** (`wandofi-hero/RedFrame.tsx`).
-- **3 usability variants** in `wandofi-usability/`: `Hierarchy.tsx`
-  (info hierarchy), `Affordance.tsx` (interaction affordance), `Accessible.tsx`
-  (accessibility/readability).
-
-**How to apply:** keep the existing hero markup/styles in `artifacts/wandofi`
-as-is. The mockup-sandbox variants remain on the canvas purely as reference.
-
-# Hero portrait is viewport-sensitive — do NOT shrink it to "fix" clipping
-
-The hero portrait is absolutely positioned with a percentage `top` while the
-`WAN|DOFI` wordmark is flex-centered, so the two drift apart at different aspect
-ratios. The composition is tuned to look right at ~1920x1080 (the size the owner
-views it at on the canvas iframe and in their approved print): full head on top,
-face in the wordmark gap, crossed arms below.
-
-**Why:** a previous attempt "fixed" perceived forehead-clipping (seen only when
-screenshotting at 1280x720) by shrinking the portrait + adding `max-height` — this
-cut off the crossed arms and broke the approved print composition; the owner
-pushed back. The clipping was a screenshot-size artifact, not a real bug.
-
-**How to apply:** judge the hero at 1920x1080, not at arbitrary widths. Keep the
-portrait at `width: clamp(240px, 30vw, 400px)`, `top: 76%`, no `max-height`. If
-real cross-viewport robustness is ever needed, re-anchor the portrait to the
-wordmark/stage center rather than shrinking it.
+**Why:** the owner iterated through several red-light framings before settling on the
+Affordance layout, and the choice flipped repeatedly — so never assume from history;
+check the live hero before changing it.
