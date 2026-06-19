@@ -1,1 +1,1 @@
-- [Hero design decision](hero-design-decision.md) — live hero is the Affordance layout (left content · right framed portrait, `WANDOFi` h1); centered wordmark + portal/red-frame variants superseded.
+- [GitHub Pages deploy (wandofi.pt)](github-pages-deploy.md) — site deploys from a gh-pages branch (not Actions) because the GitHub OAuth token lacks `workflow` scope.

@@ -8,6 +8,15 @@ Dark, single-red-light personal brand site for Mauro Cordeiro (Wandofi) — a pr
 - `pnpm --filter @workspace/wandofi run typecheck` — typecheck the artifact
 - `pnpm --filter @workspace/wandofi run build` — production build (needs workflow-provided `PORT`/`BASE_PATH`)
 
+### Deploy to wandofi.pt (GitHub Pages)
+
+Live site is published to GitHub Pages from the **`gh-pages` branch** of `github.com/Wandofi/wandofi-website` (Pages source = deploy-from-branch `gh-pages` / root, custom domain `wandofi.pt`, HTTPS enforced). It is **not** GitHub Actions: the Replit GitHub connection's OAuth token lacks the `workflow` scope, so `.github/workflows/*` files cannot be pushed.
+
+To publish updated content (manual — `gh-pages` does not auto-update from `main`):
+1. Build: `PORT=3000 BASE_PATH=/ NODE_ENV=production pnpm --filter @workspace/wandofi run build` → outputs `artifacts/wandofi/dist/public/` (includes `CNAME`).
+2. Publish the built output to the `gh-pages` branch root (add a `.nojekyll` file so files are served as-is). The branch root must contain `CNAME` = `wandofi.pt`.
+3. Verify `https://wandofi.pt/` returns 200 with real content (not the GitHub Pages 404).
+
 ## Stack
 
 - Vanilla HTML + CSS + JS — no framework, no bundled app code. The page is plain static.
