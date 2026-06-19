@@ -12,7 +12,6 @@ export function Affordance() {
           mixBlendMode: "screen"
         }}
       />
-
       {/* Nav */}
       <header className="relative z-30 w-full max-w-[1440px] mx-auto px-8 py-6 flex justify-between items-center">
         {/* Availability Pill */}
@@ -34,7 +33,6 @@ export function Affordance() {
           ))}
         </nav>
       </header>
-
       {/* Main Content */}
       <main className="relative z-20 flex-1 w-full max-w-[1440px] mx-auto px-8 flex items-center">
         {/* Left: Content */}
@@ -48,7 +46,7 @@ export function Affordance() {
             Mauro Cordeiro
           </h1>
 
-          <p className="text-lg text-[#9a9a9d] leading-relaxed mb-10 max-w-xl">
+          <p className="text-lg leading-relaxed mb-10 max-w-xl text-muted-foreground">
             A maioria dos negócios não falha por falta de talento, mas por falta de <strong className="text-[#f4f4f3] font-semibold">infraestrutura</strong>. Eu ajudo a traduzir o que está na tua cabeça em estrutura concreta.
           </p>
 
@@ -100,7 +98,6 @@ export function Affordance() {
           </div>
         </div>
       </main>
-
       {/* Socials - Fixed to bottom right for clear affordance */}
       <div className="absolute bottom-8 right-8 z-30 flex gap-3">
         {[

@@ -54,11 +54,11 @@
   /* ---------- Hero entrance ---------- */
   var heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
   heroTl
-    .from(".display__solid, .display__outline", { yPercent: 115, duration: 1.1, stagger: 0.08 }, 0.1)
-    .from(".hero__portrait", { opacity: 0, scale: 1.04, duration: 1.3, ease: "power2.out" }, 0.45)
-    .from(".eyebrow, .hero__actions, .hero__social", {
+    .from(".hero__headline", { yPercent: 6, opacity: 0, duration: 1.0 }, 0.1)
+    .from(".hero__portrait", { opacity: 0, scale: 1.04, duration: 1.3, ease: "power2.out" }, 0.35)
+    .from(".hero__eyebrow, .hero__lead, .hero__actions, .hero__contact, .hero__social", {
       opacity: 0, y: 24, duration: 0.8, stagger: 0.08
-    }, 0.7);
+    }, 0.55);
 
   // mark hero reveals so they don't double-hide
   document.querySelectorAll(".hero .reveal").forEach(function (el) { el.classList.add("is-in"); });
