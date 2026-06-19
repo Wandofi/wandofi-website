@@ -18,7 +18,7 @@ Dark, single-red-light personal brand site for Mauro Cordeiro (Wandofi) — a pr
 ## Where things live
 
 - `artifacts/wandofi/index.html` — all markup + SEO head (canonical, OG/Twitter, JSON-LD Person + ProfessionalService).
-- `artifacts/wandofi/public/styles.css` — all styling, palette and type scale (CSS custom properties at `:root`).
+- `artifacts/wandofi/public/styles.css` — all styling. The `:root` "TYPE SYSTEM" block is the single source of truth for every font property: families (`--display/--ui/--script`), weights (`--fw-*`), font sizes (fixed `--fs-2xs…--fs-step` + fluid `--fs-lead…--fs-display-sm`), line-heights (`--lh-*`), and tracking (`--track-*`). Every rule references these tokens — never hard-code type values (the only allowed literal is `.stat__unit`'s `0.45em`, which is relative to its parent).
 - `artifacts/wandofi/public/main.js` — all motion (vanilla, uses the CDN globals; full `prefers-reduced-motion` fallback).
 - `artifacts/wandofi/public/assets/` — `portrait.png` (real photo, background removed → transparent cutout for the hero), `og-portrait.png` (original with background, used only for OG/Twitter social cards), and `wandofi-pm-logo.png` (the original logo, used as-is in the footer).
 - `artifacts/wandofi/public/` — `robots.txt`, `sitemap.xml`, `_redirects`, `_headers` (Cloudflare-ready, copied verbatim on build).
