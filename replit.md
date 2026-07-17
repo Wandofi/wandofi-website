@@ -31,6 +31,7 @@ To publish updated content (manual — `gh-pages` does not auto-update from `mai
 - `artifacts/wandofi/public/main.js` — all motion (vanilla, uses the CDN globals; full `prefers-reduced-motion` fallback).
 - `artifacts/wandofi/public/assets/` — `portrait.webp` (78 KB transparent cutout for the hero), `og-card.jpg` (1200×630 JPEG for OG/Twitter cards), and `wandofi-pm-logo.webp` (41 KB footer logo). The heavy originals (`portrait.png` 2 MB, `og-portrait.png` 1.8 MB, `wandofi-pm-logo.png` 285 KB, old `opengraph.jpg`) live in `attached_assets/originals/` so they don't ship in the build.
 - `artifacts/wandofi/public/` — `robots.txt`, `sitemap.xml`, `_redirects`, `_headers` (Cloudflare-ready, copied verbatim on build).
+- Favicons: `favicon.ico` (48/32/16), `favicon-96.png`, `apple-touch-icon.png` (180, flattened on `#050505`) — all derived from the hexagon icon in `attached_assets/originals/wandofi-pm-logo.png` (arrow is a transparent cutout, like the footer logo). The old placeholder `favicon.svg` was removed.
 - `artifacts/wandofi/src/global.d.ts` — stub only, so `tsc --noEmit` has an input. No app code in `src/`.
 
 ## Architecture decisions
