@@ -4,29 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Wandofi — Migração, criação de sites, SEO e automações · Lisboa</title>
-    <meta name="description" content="Project manager operacional em Lisboa. Migração e criação de sites, SEO técnico e automações para negócios em formação. Marca um diagnóstico." />
+    <title>Wandofi PM — Migração, criação de sites, SEO e automações · Lisboa</title>
+    <meta name="description" content="O parceiro operacional para negócios em formação. Migração e criação de sites, SEO técnico e automações, em Lisboa. Marca um diagnóstico." />
     <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#050505" />
     <link rel="canonical" href="https://wandofi.pt/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://wandofi.pt/" />
-    <meta property="og:title" content="Wandofi — Migração, criação de sites, SEO e automações · Lisboa" />
-    <meta property="og:description" content="Project manager operacional em Lisboa. Migração e criação de sites, SEO técnico e automações para negócios em formação." />
-    <meta property="og:image" content="https://wandofi.pt/assets/og-portrait.png" />
+    <meta property="og:site_name" content="Wandofi PM" />
+    <meta property="og:title" content="Wandofi PM — Migração, criação de sites, SEO e automações · Lisboa" />
+    <meta property="og:description" content="O parceiro operacional para negócios em formação. Migração e criação de sites, SEO técnico e automações, em Lisboa." />
+    <meta property="og:image" content="https://wandofi.pt/assets/og-card.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="pt_PT" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Wandofi — project manager operacional · Lisboa" />
-    <meta name="twitter:description" content="Migração e criação de sites, SEO técnico e automações para negócios em formação." />
-    <meta name="twitter:image" content="https://wandofi.pt/assets/og-portrait.png" />
+    <meta name="twitter:title" content="Wandofi PM — project manager operacional · Lisboa" />
+    <meta name="twitter:description" content="O parceiro operacional para negócios em formação. Migração e criação de sites, SEO técnico e automações." />
+    <meta name="twitter:image" content="https://wandofi.pt/assets/og-card.jpg" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Inter:wght@400;500;600;700&family=Petit+Formal+Script&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-    <link rel="preload" as="image" href="/assets/portrait.png" />
+    <link rel="preload" as="image" href="/assets/portrait.webp" />
     <link rel="stylesheet" href="/styles.css" />
 
     <script type="application/ld+json">
@@ -37,7 +41,7 @@
           "@type": "Person",
           "name": "Mauro Cordeiro",
           "jobTitle": "Project Manager",
-          "worksFor": { "@type": "Organization", "name": "Wandofi" },
+          "worksFor": { "@type": "Organization", "name": "Wandofi PM" },
           "url": "https://wandofi.pt/",
           "email": "main@wandofi.pt",
           "knowsAbout": ["Migração de sites", "SEO técnico", "Automação de processos", "LMS", "Estrutura de negócio"],
@@ -49,7 +53,7 @@
         },
         {
           "@type": "ProfessionalService",
-          "name": "Wandofi",
+          "name": "Wandofi PM",
           "url": "https://wandofi.pt/",
           "email": "main@wandofi.pt",
           "areaServed": "Portugal",
@@ -70,6 +74,7 @@
 
   <body>
     <script>document.documentElement.classList.add("js");</script>
+    <a class="skip-link" href="#main">Saltar para o conteúdo</a>
     <!-- Studio atmosphere layers -->
     <div class="grain" aria-hidden="true"></div>
     <div class="vignette" aria-hidden="true"></div>
@@ -78,17 +83,18 @@
     <!-- Navigation -->
     <header class="nav" id="nav">
       <div class="nav__inner">
+        <a class="nav__brand" href="#hero" aria-label="Wandofi PM — início">W<span class="nav__brand-dot">.</span></a>
         <span class="nav__status"><span class="status-dot"></span> Disponível para projecto</span>
         <nav class="nav__links" aria-label="Navegação principal">
           <a href="#trabalho">Trabalho <span class="nav__count">[6]</span></a>
-          <a href="#servicos">Serviços <span class="nav__count">[6]</span></a>
-          <a href="#experiencia">Experiência</a>
+          <a href="#servicos" class="nav__link--extra">Serviços <span class="nav__count">[6]</span></a>
+          <a href="#experiencia" class="nav__link--extra">Experiência</a>
           <a href="#contacto">Contacto</a>
         </nav>
       </div>
     </header>
 
-    <main>
+    <main id="main">
       <!-- 1. HERO -->
       <section class="hero" id="hero">
         <div class="hero__glow" aria-hidden="true"></div>
@@ -117,7 +123,7 @@
 
           <figure class="hero__portrait">
             <span class="hero__portrait-frame" aria-hidden="true"></span>
-            <img src="/assets/portrait.png" width="900" height="1200"
+            <img src="/assets/portrait.webp" width="1023" height="1537"
                  alt="Mauro Cordeiro, project manager operacional — Wandofi"
                  fetchpriority="high" decoding="async" />
           </figure>
@@ -199,8 +205,10 @@
             </div>
             <h3 class="case__title">Lexia</h3>
             <p class="lead">SaaS de investigação jurídica para profissionais do direito em Portugal. Build do conceito ao produto: arquitectura search-first, pipeline anti-alucinação para jurisprudência, autenticação, planos e checkout.</p>
-            <div class="case__visual" aria-hidden="true">
-              <span class="case__visual-label">Lexia</span>
+            <div class="case__visual case__visual--shot">
+              <img src="/assets/lexia-app.webp" width="1600" height="926"
+                   alt="Interface da Lexia em tema escuro — nova consulta jurídica com filtros de jurisdição, fontes e período"
+                   loading="lazy" decoding="async" />
             </div>
           </article>
 
@@ -332,7 +340,7 @@
     <footer class="footer" id="footer">
       <div class="signature" id="signature">
         <div class="signature__plate">
-          <img class="signature__logo" src="/assets/wandofi-pm-logo.png" width="300" height="240" alt="Wandofi PM — Project Management" />
+          <img class="signature__logo" src="/assets/wandofi-pm-logo-light.webp" width="600" height="470" loading="lazy" decoding="async" alt="Wandofi PM — Project Management" />
         </div>
       </div>
       <p class="footer__line">© 2026 Wandofi PM · wandofi.pt · <a href="mailto:main@wandofi.pt">main@wandofi.pt</a></p>
@@ -340,7 +348,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js" defer></script>
     <script src="/main.js" defer></script>
   </body>
 </html>
