@@ -5,7 +5,8 @@
 (function () {
   "use strict";
 
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    window.location.search.indexOf("nomotion") > -1;
   var hasGSAP = typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
 
   /* ---------- Nav: solidify on scroll ---------- */
@@ -64,11 +65,22 @@
   document.querySelectorAll(".hero .reveal").forEach(function (el) { el.classList.add("is-in"); });
 
   /* ---------- Section reveals ---------- */
+  /* Siblings that enter together (grid cards, list items) cascade by index
+     instead of popping in as one flat wall. */
   gsap.utils.toArray(".reveal:not(.hero .reveal)").forEach(function (el) {
+    var delay = 0;
+    if (el.parentElement) {
+      var peers = Array.prototype.filter.call(el.parentElement.children, function (c) {
+        return c.classList && c.classList.contains("reveal");
+      });
+      var idx = peers.indexOf(el);
+      if (idx > 0) delay = Math.min(idx * 0.07, 0.35);
+    }
     gsap.to(el, {
       opacity: 1,
       y: 0,
       duration: 0.9,
+      delay: delay,
       ease: "power3.out",
       scrollTrigger: { trigger: el, start: "top 85%", once: true },
       onStart: function () { el.classList.add("is-in"); }
