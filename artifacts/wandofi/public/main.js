@@ -5,6 +5,10 @@
 (function () {
   "use strict";
 
+  /* ---------- Always start at the top (unless a deep-link hash is present) ---------- */
+  if ("scrollRestoration" in window.history) window.history.scrollRestoration = "manual";
+  if (!window.location.hash) window.scrollTo(0, 0);
+
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
     window.location.search.indexOf("nomotion") > -1;
   var hasGSAP = typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
