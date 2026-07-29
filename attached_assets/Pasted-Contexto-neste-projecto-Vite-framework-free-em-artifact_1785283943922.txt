@@ -1,0 +1,42 @@
+Contexto: neste projecto (Vite framework-free em artifacts/wandofi/), foram
+adicionadas e publicadas 21 páginas novas em artifacts/wandofi/public/ — os hubs
+/seo/, /gestao-de-trafego/ e /criacao-de-sites/, os clusters do SEO, e ainda
+/automacoes/, /casos/, /sobre/, /contactos/ e /blog/. Falta ligá-las a partir da
+barra de navegação da home.
+
+Tarefa: edita APENAS artifacts/wandofi/index.html. Não cries páginas novas, não
+mexas em public/styles.css nem nas fontes.
+
+1) Barra de navegação (<nav class="nav__links">): mantém o menu de página única,
+   mas acrescenta ligações às páginas novas, com caminhos absolutos e barra final.
+   O menu deve ficar assim, por esta ordem:
+     - Trabalho  -> #trabalho
+     - SEO       -> /seo/
+     - Tráfego   -> /gestao-de-trafego/
+     - Sites     -> /criacao-de-sites/
+     - Contacto  -> #contacto
+   Usa as mesmas classes já existentes (as de "nav__links a"). Remove os
+   contadores [6] que deixem de fazer sentido.
+   Responsivo: a regra actual esconde os .nav__link--extra em ecrãs <=880px. Para
+   as páginas novas continuarem acessíveis no telemóvel, mantém "SEO" SEMPRE
+   visível (NÃO o marques como .nav__link--extra); marca apenas "Tráfego" e
+   "Sites" com class="nav__link--extra". Se necessário, ajusta o breakpoint para
+   o menu não ficar apertado, mas nunca deixes o telemóvel sem acesso a /seo/.
+
+2) (Recomendado) Secção Serviços (#servicos, os 6 .card): liga cada cartão à
+   página correspondente — envolve o .card num <a> ou acrescenta um link
+   "Saber mais" no rodapé do cartão, reutilizando as classes de link já usadas:
+     - "SEO técnico"                         -> /seo/seo-tecnico/
+     - "Migração de sites" e "Construção de raiz" -> /criacao-de-sites/
+     - "Automações e integrações"            -> /automacoes/
+   Deixa "Estrutura e burocracia" e "Plataformas e LMS" como estão. Por baixo da
+   grelha, acrescenta um link discreto: "Ver todos os serviços de SEO -> /seo/".
+
+Regras: português europeu, pré-acordo. Sem emojis. Sem novas fontes, cores ou
+dependências — reutiliza os tokens e as classes existentes. Não marques os links
+novos com .reveal se isso os esconder (o GSAP só revela .reveal com .is-in).
+Mantém os aria-labels e a acessibilidade.
+
+No fim: corre  pnpm --filter @workspace/scripts run publish-wandofi  e confirma
+que wandofi.pt responde 200 e que os itens SEO, Tráfego e Sites do menu abrem
+/seo/, /gestao-de-trafego/ e /criacao-de-sites/.
