@@ -49,7 +49,7 @@ The script (`scripts/src/publish-wandofi.ts`) builds the production site, pushes
 
 ## Product
 
-Single-page site: Hero, Posicionamento, Serviços (6), Trabalho (Lexia + VPA case + worklist), Experiência, Processo, Sobre, CTA/contacto, Footer signature.
+Homepage (single-page: Hero, Posicionamento, Serviços (6), Trabalho (Lexia + VPA case + worklist), Experiência, Processo, Sobre, CTA/contacto, Footer signature) plus 22 static interior pages delivered as an owner-provided drop-in (2026-07-29): `/sobre/`, `/contactos/`, `/blog/`, `/casos/`, `/criacao-de-sites/`, `/automacoes/`, `/gestao-de-trafego/` (+ google-ads, meta-ads) and the `/seo/` cluster (12 pages). Interior pages are plain HTML in `public/<path>/index.html`, styled by `public/pages.css` on top of `styles.css` tokens; `sitemap.xml` covers all pages.
 
 ## User preferences
 
