@@ -97,6 +97,11 @@
 .card__num { font-family: var(--mono); font-size: var(--fs-2xs); letter-spacing: var(--track-caps-sm); color: var(--red); }
 .card__more { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: var(--track-caps-sm); text-transform: uppercase; color: var(--red); display: inline-flex; gap: 0.4rem; margin-top: 1rem; }
 .card__more:hover { color: var(--white); }
+/* Os overlays decorativos do cartão não devem bloquear cliques (bug: link "Ver" não clicável) */
+.grid .card::before, .grid .card::after { pointer-events: none; }
+/* Cartão inteiro clicável: o ::after do único link estica-se sobre o cartão */
+.grid .card { position: relative; cursor: pointer; }
+.grid .card .card__more::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 
 /* ---------- Proof stats ---------- */
 .proof { display: flex; gap: clamp(1.8rem, 5vw, 3.6rem); flex-wrap: wrap; margin-top: 1.8rem; }
