@@ -1,0 +1,34 @@
+# Wandofi PM
+
+> Project management operacional em Lisboa. SEO, GEO/AEO, gestão de tráfego pago e criação de sites para negócios em Portugal, construídos por dentro de práticas reguladas: jurídico, contabilidade, saúde e educação.
+
+A Wandofi PM desenha, coordena, implementa e documenta a infraestrutura digital de um negócio: do site à estratégia de SEO, do tráfego pago às automações. Português europeu. Sem retainer obrigatório. O processo é Diagnóstico, Sprint e Entrega. Contacto: main@wandofi.pt.
+
+## Serviços
+- [Agência de SEO em Portugal](https://wandofi.pt/seo/): SEO técnico, local e de conteúdo para aparecer no Google nas pesquisas que trazem clientes.
+- [SEO técnico e auditorias](https://wandofi.pt/seo/seo-tecnico/): auditorias, velocidade, indexação e migração de sites sem perder posições.
+- [SEO local](https://wandofi.pt/seo/seo-local/): Google Maps e pesquisas com intenção local; perfil de empresa configurado sem expor morada pessoal.
+- [SEO para empresas](https://wandofi.pt/seo/seo-para-empresas/): estratégia contínua de SEO para PMEs.
+- [Consultor SEO em Lisboa](https://wandofi.pt/seo/consultor-seo/): orientação e acompanhamento para a equipa do cliente executar.
+- [GEO e AEO, Optimização para IA](https://wandofi.pt/seo/geo-aeo/): preparar o site para ser citado pelo ChatGPT, Perplexity e respostas de IA do Google.
+- [Gestor de tráfego pago](https://wandofi.pt/gestao-de-trafego/): campanhas de Google Ads e Meta Ads geridas com método.
+- [Gestão de Google Ads](https://wandofi.pt/gestao-de-trafego/google-ads/): campanhas de pesquisa e remarketing.
+- [Gestão de Meta Ads](https://wandofi.pt/gestao-de-trafego/meta-ads/): Facebook e Instagram.
+- [Criação e migração de sites](https://wandofi.pt/criacao-de-sites/): sites rápidos e indexáveis; migração sem perder SEO.
+- [Automações e integrações](https://wandofi.pt/automacoes/): Apps Script, CRM e reconciliação de dados.
+
+## SEO por sector
+- [SEO por sector](https://wandofi.pt/seo/sectores/): índice dos sectores acompanhados.
+- [SEO para contabilistas](https://wandofi.pt/seo/contabilistas/): escritórios de contabilidade e ENIs.
+- [SEO para clínicas](https://wandofi.pt/seo/clinicas/): clínicas e consultórios.
+- [SEO para advogados](https://wandofi.pt/seo/advogados/): escritórios de advocacia, por área de prática.
+- [SEO para escolas de línguas](https://wandofi.pt/seo/escolas-de-linguas/): captação de alunos por curso e cidade.
+
+## Localização
+- [Agência de SEO em Lisboa](https://wandofi.pt/seo/agencia-seo-lisboa/)
+- [Agência de SEO no Porto](https://wandofi.pt/seo/agencia-seo-porto/)
+
+## Sobre e contacto
+- [Sobre a Wandofi PM](https://wandofi.pt/sobre/): abordagem e método, construído por dentro de práticas reguladas.
+- [Casos e resultados](https://wandofi.pt/casos/): sistema de reconciliação financeira para um escritório jurídico, com cerca de 92% de reconciliação automática e o fecho mensal reduzido de 5h para 20 min.
+- [Contactos](https://wandofi.pt/contactos/): main@wandofi.pt, Lisboa e todo o país.
