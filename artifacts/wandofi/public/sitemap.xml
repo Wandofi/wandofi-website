@@ -31,6 +31,21 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://wandofi.pt/criacao-de-sites/sintra/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wandofi.pt/criacao-de-sites/queluz/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wandofi.pt/criacao-de-sites/marvila/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://wandofi.pt/gestao-de-trafego/google-ads/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
