@@ -23,6 +23,7 @@ A Wandofi PM desenha, coordena, implementa e documenta a infraestrutura digital 
 - [SEO para clínicas](https://wandofi.pt/seo/clinicas/): clínicas e consultórios.
 - [SEO para advogados](https://wandofi.pt/seo/advogados/): escritórios de advocacia, por área de prática.
 - [SEO para escolas de línguas](https://wandofi.pt/seo/escolas-de-linguas/): captação de alunos por curso e cidade.
+- [SEO para imobiliárias](https://wandofi.pt/seo/imobiliarias/): mediação e imobiliárias, clientes diretos e menos dependência dos portais.
 
 ## Localização
 - [Agência de SEO em Lisboa](https://wandofi.pt/seo/agencia-seo-lisboa/)
