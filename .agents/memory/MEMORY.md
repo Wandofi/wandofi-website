@@ -1,1 +1,2 @@
 - [GitHub Pages deploy (wandofi.pt)](github-pages-deploy.md) — site deploys from a gh-pages branch (not Actions) because the GitHub OAuth token lacks `workflow` scope.
+- [Wandofi drop-in zips](wandofi-dropins.md) — owner zips come from a stale base; diff and re-apply known fixes (nav brand, Zaask badge, worklist/skip-link/scroll fixes) before publishing.
