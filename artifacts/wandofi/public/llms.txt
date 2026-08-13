@@ -2,7 +2,7 @@
 
 > Project management operacional em Lisboa. SEO, GEO/AEO, gestão de tráfego pago e criação de sites para negócios em Portugal, construídos por dentro de práticas reguladas: jurídico, contabilidade, saúde e educação.
 
-A Wandofi PM desenha, coordena, implementa e documenta a infraestrutura digital de um negócio: do site à estratégia de SEO, do tráfego pago às automações. Português europeu. Sem retainer obrigatório. O processo é Diagnóstico, Sprint e Entrega. Contacto: main@wandofi.pt.
+A Wandofi PM desenha, coordena, implementa e documenta a infraestrutura digital de um negócio: do site à estratégia de SEO, do tráfego pago às automações. Português europeu. Sem retainer obrigatório. O processo é Diagnóstico, Sprint e Entrega. Contacto: geral@wandofi.pt.
 
 ## Serviços
 - [Agência de SEO em Portugal](https://wandofi.pt/seo/): SEO técnico, local e de conteúdo para aparecer no Google nas pesquisas que trazem clientes.
@@ -38,4 +38,4 @@ Site essencial de uma página a preço fixo, desde 350€, com SEO local incluí
 ## Sobre e contacto
 - [Sobre a Wandofi PM](https://wandofi.pt/sobre/): abordagem e método, construído por dentro de práticas reguladas.
 - [Casos e resultados](https://wandofi.pt/casos/): sistema de reconciliação financeira para um escritório jurídico, com cerca de 92% de reconciliação automática e o fecho mensal reduzido de 5h para 20 min.
-- [Contactos](https://wandofi.pt/contactos/): main@wandofi.pt, Lisboa e todo o país.
+- [Contactos](https://wandofi.pt/contactos/): geral@wandofi.pt, Lisboa e todo o país.
