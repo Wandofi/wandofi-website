@@ -375,6 +375,9 @@ ul { list-style: none; margin: 0; padding: 0; }
 .nav__links a:hover { background: rgba(255, 255, 255, 0.08); color: var(--white); }
 .nav__count { font-family: var(--mono); color: var(--red); font-size: var(--fs-2xs); font-weight: var(--fw-medium); margin-left: 0.3rem; font-variant-numeric: tabular-nums; }
 
+/* Full navigation is available from a compact disclosure on phones. */
+.nav__mobile { display: none; }
+
 /* ---------- HERO (left content · right portrait) ---------- */
 .hero {
   position: relative;
@@ -882,9 +885,93 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 @media (max-width: 880px) {
-  /* Phone nav: brand mark left, essentials (Trabalho · Contacto) right */
-  .nav__link--extra { display: none; }
+  /* Phone nav: a concise trigger opens the complete five-link navigation. */
+  .nav__links { display: none; }
   .nav__inner { padding-block: 0.9rem; }
+  .nav__mobile {
+    display: block;
+    position: relative;
+  }
+  .nav__mobile summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 2.65rem;
+    padding: 0.5rem 0.8rem 0.5rem 0.95rem;
+    background: var(--ink-2);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--white);
+    cursor: pointer;
+    font-family: var(--mono);
+    font-size: var(--fs-2xs);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--track-caps-sm);
+    list-style: none;
+    text-transform: uppercase;
+  }
+  .nav__mobile summary::-webkit-details-marker { display: none; }
+  .nav__mobile summary:focus-visible {
+    outline: 2px solid var(--red);
+    outline-offset: 3px;
+  }
+  .nav__mobile-icon,
+  .nav__mobile-icon::before {
+    display: block;
+    width: 1rem;
+    height: 1px;
+    background: var(--red);
+    content: "";
+    transition: transform 0.25s var(--ease);
+  }
+  .nav__mobile-icon { position: relative; }
+  .nav__mobile-icon::before { position: absolute; top: -0.3rem; left: 0; }
+  .nav__mobile[open] .nav__mobile-icon { transform: rotate(45deg); }
+  .nav__mobile[open] .nav__mobile-icon::before { transform: rotate(90deg) translateX(0.3rem); }
+  .nav__mobile-links {
+    position: absolute;
+    top: calc(100% + 0.8rem);
+    right: 0;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(19rem, calc(100vw - (var(--gutter) * 2)));
+    gap: 0.45rem;
+    padding: 0.55rem;
+    background: rgba(16, 16, 18, 0.98);
+    border: 1px solid var(--line-strong);
+    border-radius: 1rem;
+    box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+  .nav__mobile-links a {
+    min-height: 3rem;
+    padding: 0.8rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 0.65rem;
+    color: var(--mute);
+    font-family: var(--ui);
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    transition: border-color 0.25s var(--ease), color 0.25s var(--ease), background-color 0.25s var(--ease);
+  }
+  .nav__mobile-links a:hover,
+  .nav__mobile-links a:focus-visible {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--line-strong);
+    color: var(--white);
+    outline: none;
+  }
+  .nav__mobile-links a:last-child {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(225, 37, 27, 0.12);
+    border-color: rgba(225, 37, 27, 0.4);
+    color: var(--white);
+  }
+  .nav__mobile-links a:last-child span { color: var(--red); }
   .hero {
     flex-direction: column;
     justify-content: center;
