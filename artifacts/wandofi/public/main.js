@@ -22,6 +22,16 @@
   onScrollNav();
   window.addEventListener("scroll", onScrollNav, { passive: true });
 
+  /* ---------- Phone navigation: close after choosing an in-page destination ---------- */
+  var mobileNav = document.querySelector(".nav__mobile");
+  if (mobileNav) {
+    mobileNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        mobileNav.removeAttribute("open");
+      });
+    });
+  }
+
   /* ---------- Reduced motion: reveal everything, skip the rest ---------- */
   if (reduceMotion || !hasGSAP) {
     document.querySelectorAll(".reveal").forEach(function (el) {
