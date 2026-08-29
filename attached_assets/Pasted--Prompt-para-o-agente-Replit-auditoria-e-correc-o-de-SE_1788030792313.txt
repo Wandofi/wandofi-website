@@ -1,0 +1,87 @@
+# Prompt para o agente Replit — auditoria e correcção de SEO técnico (wandofi.pt)
+
+Auditoria de SEO técnico ao site wandofi.pt. Trabalha em duas fases e não passes à fase 2 sem me mostrares a fase 1.
+
+## Contexto
+
+O site não está indexado no Google. Uma pesquisa pelo próprio domínio "wandofi.pt" não devolve o site. Zero keywords posicionadas. A hipótese principal é indexabilidade bloqueada ou renderização só no cliente, não é falta de conteúdo nem de backlinks. Trata isto como um diagnóstico, não como uma optimização.
+
+## FASE 1 — Diagnóstico (só leitura, não alteres nada)
+
+Percorre o repositório e o output do build e responde a cada ponto com o ficheiro e a linha exactos. Se não conseguires verificar alguma coisa, di-lo em vez de assumires.
+
+**1. Stack e renderização**
+- Que framework, bundler e modo de deploy estão em uso.
+- O HTML servido na resposta inicial contém o texto visível das páginas, ou só um div vazio hidratado por JavaScript. Confirma isto olhando para o HTML gerado no build, não para o DOM do browser.
+- Existe SSR, SSG ou pré-render configurado.
+
+**2. Bloqueios de indexação**
+- Conteúdo do robots.txt e se está a ser servido em produção.
+- Qualquer meta name="robots" com noindex ou nofollow, em qualquer layout, página ou componente partilhado.
+- Header HTTP X-Robots-Tag.
+- Qualquer flag de ambiente que injecte noindex fora de produção e que possa estar activa em produção por engano.
+- Autenticação, password ou splash a bloquear o acesso anónimo.
+
+**3. Sitemap e canonicals**
+- Existe sitemap.xml, está actualizado, lista URLs absolutos e está referenciado no robots.txt.
+- Cada página tem link rel="canonical" com URL absoluto e auto-referente.
+
+**4. Head por página**
+- Title único por página, entre 50 e 60 caracteres.
+- Meta description única por página, entre 140 e 160 caracteres.
+- html lang="pt-PT".
+- Open Graph e Twitter card com imagem que resolva.
+- Confirma se estas tags são estáticas no HTML ou injectadas por JavaScript depois do carregamento.
+
+**5. Estrutura semântica**
+- Exactamente um H1 por página e hierarquia H1 a H3 sem saltos.
+- Uso de header, nav, main, footer.
+- Todas as imagens com alt descritivo. Imagens decorativas com alt vazio.
+
+**6. Rotas**
+- Lista todas as rotas públicas e o URL correspondente.
+- Sinaliza qualquer conteúdo que só exista dentro de uma single page com âncoras, sem URL próprio.
+- Confirma que não há hash routing.
+
+**7. Higiene de domínio**
+- Redireccionamento 301 consistente entre www e sem www, e HTTP para HTTPS.
+- Consistência de trailing slash.
+- Existe página 404 real que devolve status 404.
+
+**8. Dados estruturados**
+- Existe JSON-LD. Se sim, valida-o mentalmente contra o schema.org.
+
+**9. Performance**
+- Tamanho do bundle, imagens não optimizadas, fontes bloqueantes, ausência de lazy loading.
+
+Entrega a fase 1 como uma lista de problemas ordenada por impacto, separando o que impede a indexação do que apenas prejudica o ranking. Não proponhas ainda o código.
+
+## FASE 2 — Correcção (só depois da minha aprovação)
+
+Aplica as correcções por esta ordem, e não avances de bloco sem me dizeres o que mudaste.
+
+**Bloco A, desbloqueio**
+1. Remove qualquer noindex de produção.
+2. Corrige o robots.txt para permitir o rastreio e apontar para o sitemap.
+3. Garante que o HTML inicial contém o conteúdo visível. Se o site for uma SPA pura, implementa SSG ou pré-render das rotas públicas.
+
+**Bloco B, metadados**
+4. Sistema de head por rota, com title, description e canonical estáticos no HTML servido.
+5. sitemap.xml gerado a partir das rotas reais.
+6. lang="pt-PT", Open Graph e Twitter card.
+
+**Bloco C, estrutura**
+7. Um H1 por página, hierarquia corrigida, HTML semântico, alts em falta.
+8. JSON-LD com ProfessionalService e LocalBusiness: nome Wandofi PM, email main@wandofi.pt, área servida Lisboa, url, logo, sameAs para os perfis sociais existentes.
+
+**Bloco D, performance e higiene**
+9. Imagens em formato moderno, lazy loading abaixo da dobra, fontes com font-display swap.
+10. 404 real, redirects canónicos.
+
+## Regras
+
+- Não inventes conteúdo, keywords, morada, telefone nem números. Se um campo do JSON-LD precisar de um dado que não está no repositório, deixa um TODO explícito e pergunta-me.
+- Não alteres copy existente, paleta, tipografia nem layout. Isto é uma intervenção técnica.
+- Português europeu, ortografia pré-acordo, em todo o texto visível que criares ou alterares.
+- Não uses travessões em nenhum texto visível.
+- No fim, entrega um resumo do que foi alterado, ficheiro a ficheiro, e uma lista separada do que não conseguiste corrigir e porquê.
