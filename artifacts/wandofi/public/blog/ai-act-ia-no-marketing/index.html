@@ -26,6 +26,199 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/pages.css" />
+    <style id="blog-read">
+/* ============================================================
+   WANDOFI, leitura do blog (posts)
+   Zona de leitura clara com texto preto, dentro do site escuro.
+   Transição suave preto→vermelho→branco (melt) à entrada e à saída.
+   Aplica-se só às páginas de artigo (que carregam este ficheiro),
+   depois de styles.css e pages.css, para poder sobrepor o escuro.
+   ============================================================ */
+
+:root {
+  --post-paper: #f7f5f1;
+  --post-ink: #141210;
+  --post-text: #3a3632;
+  --post-lead: #1c1a18;
+  --post-line: #e4ded4;
+  --post-red: #e1251b;
+  --post-red-ink: #b91d15;
+}
+
+.page-hero { border-bottom: none; }
+
+.post__melt {
+  position: relative;
+  z-index: 4;
+  height: 170px;
+  background: linear-gradient(
+    180deg,
+    #050505 0%, #2a0a07 20%, #7a1710 44%,
+    #c11f14 60%, #e1251b 70%, #e88a82 86%, var(--post-paper) 100%
+  );
+}
+.post__melt--down {
+  height: 150px;
+  background: linear-gradient(
+    180deg,
+    var(--post-paper) 0%, #e88a82 14%, #e1251b 28%,
+    #c11f14 40%, #7a1710 62%, #2a0a07 82%, #050505 100%
+  );
+}
+
+.post__read {
+  position: relative;
+  z-index: 4;
+  background: var(--post-paper);
+  color: var(--post-text);
+  padding: 0 0.9rem;
+}
+
+.post__rail {
+  max-width: 42rem;
+  margin: 0 auto;
+  border-left: 2px solid var(--post-red);
+  border-right: 2px solid var(--post-red);
+  padding: 1.4rem 1.7rem 1.8rem;
+}
+
+.post__read .section {
+  padding-block: 0;
+  background: transparent;
+  z-index: auto;
+}
+.post__read .section + .section { margin-top: 1.5rem; }
+.post__read .section--panel { background: transparent; }
+.post__read .section--panel::before { display: none; }
+.post__read .container {
+  max-width: none;
+  width: 100%;
+  padding-inline: 0;
+  margin-inline: 0;
+}
+.post__read .prose { max-width: none; }
+.post__read .section__head { margin-bottom: 0.3rem; }
+
+.post__read .eyebrow {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--post-red);
+  margin: 0 0 0.2rem;
+}
+
+.post__read .h2 {
+  font-family: var(--display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3.6vw, 2.2rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--post-ink);
+  margin: 0 0 0.4rem;
+}
+
+.post__read .lead-answer {
+  font-family: var(--ui);
+  font-size: 1.28rem;
+  line-height: 1.4;
+  color: var(--post-lead);
+  font-weight: 400;
+  margin: 0 0 1rem;
+}
+
+.post__read .body {
+  font-family: var(--ui);
+  font-size: 1.1rem;
+  line-height: 1.62;
+  color: var(--post-text);
+  margin: 0 0 0.9rem;
+}
+.post__read .body:last-child { margin-bottom: 0; }
+.post__read .body strong,
+.post__read .body b { color: var(--post-ink); font-weight: 600; }
+
+.post__read .body a,
+.post__read .prose a:not(.btn) {
+  color: var(--post-red-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.post__read .body a:hover,
+.post__read .prose a:not(.btn):hover { color: var(--post-red); }
+
+.post__read .deliver {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  max-width: none;
+  margin: 0.2rem 0 0.9rem;
+}
+.post__read .deliver li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-family: var(--ui);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--post-text);
+}
+.post__read .deliver li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--post-red);
+}
+.post__read .deliver li b { color: var(--post-ink); font-weight: 600; }
+
+.post__read .faq { max-width: none; border-top: 1px solid var(--post-line); }
+.post__read .faq details {
+  border-top: none;
+  border-bottom: 1px solid var(--post-line);
+  padding: 0.85rem 0;
+}
+.post__read .faq details:last-child { border-bottom: 1px solid var(--post-line); }
+.post__read .faq summary {
+  font-family: var(--ui);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--post-ink);
+}
+.post__read .faq summary::after { content: "+"; color: var(--post-red); }
+.post__read .faq details[open] summary::after { content: "\2013"; }
+.post__read .faq .a {
+  color: var(--post-text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: none;
+  margin-top: 0.6rem;
+}
+.post__read .faq .a p { margin: 0 0 0.6rem; }
+.post__read .faq .a p:last-child { margin-bottom: 0; }
+
+.post__read .related a {
+  border: 1px solid var(--post-line);
+  border-radius: 2rem;
+  color: var(--post-text);
+  padding: 0.5rem 1rem;
+  font-size: 0.92rem;
+}
+.post__read .related a:hover { border-color: var(--post-red); color: var(--post-red); }
+
+.post__read ::selection { background: var(--post-red); color: #fff; }
+
+@media (max-width: 760px) {
+  .post__read { padding: 0 0.5rem; }
+  .post__rail { padding: 1.1rem 1.15rem 1.4rem; }
+  .post__read .deliver { grid-template-columns: 1fr; }
+}
+    </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "IA no marketing e o AI Act: o que está em causa", "description": "Desde agosto de 2026 há regras europeias para quem usa IA. Em linguagem simples, o que o AI Act muda para o marketing do seu negócio, sem alarmismo.", "inLanguage": "pt-PT", "datePublished": "2026-08-31", "dateModified": "2026-08-31", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/ai-act-ia-no-marketing/", "url": "https://wandofi.pt/blog/ai-act-ia-no-marketing/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Isto abrange um negócio pequeno?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. As regras não são só para as grandes tecnológicas, valem para quem usa e implementa IA, seja qual for o tamanho. O que muda é o esforço, não a existência das obrigações."}}, {"@type": "Question", "name": "Tenho de dizer que uso IA para escrever os meus textos?", "acceptedAnswer": {"@type": "Answer", "text": "Depende. A copy comercial normal, revista por si, não cai na regra do texto de interesse público. Mas imagens e vídeos gerados, deepfakes e chatbots têm de ser assinalados. Na dúvida, assinalar peca por seguro."}}, {"@type": "Question", "name": "E se ignorar as regras?", "acceptedAnswer": {"@type": "Answer", "text": "As coimas são pesadas. Segundo o regulamento, chegam a 35 milhões de euros ou 7 por cento do volume de negócios mundial nas práticas proibidas, e a 15 milhões ou 3 por cento nas restantes obrigações, aplicadas pela autoridade nacional."}}]}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wandofi.pt/blog/"}, {"@type": "ListItem", "position": 3, "name": "IA no marketing e o AI Act", "item": "https://wandofi.pt/blog/ai-act-ia-no-marketing/"}]}</script>
@@ -56,6 +249,9 @@
           <p class="page-hero__lead">Desde agosto de 2026 há regras europeias para quem usa inteligência artificial, e o marketing é dos sítios onde mais se nota. Explico, em linguagem simples e sem alarmismo, o que muda para o seu negócio. Não sou advogado, por isso isto é o mapa prático, não aconselhamento jurídico.</p>
         </div>
       </section>
+
+      <div class="post__melt" aria-hidden="true"></div>
+      <div class="post__read"><div class="post__rail">
 
       <section class="section"><div class="container"><div class="prose">
         <p class="lead-answer">A IA entrou no marketing pela porta grande: texto, imagens, chatbots, personalização. O que mudou é que agora existe um enquadramento legal europeu, o AI Act, e parte das obrigações já está em vigor. Não é para assustar, é para saber onde está.</p>
@@ -97,6 +293,9 @@
       </div></div></section>
 
       <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><div class="related"><a href="/automacoes/">Automações</a><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/blog/">Blog</a><a href="/contactos/">Contactos</a></div></div></section>
+
+      </div></div>
+      <div class="post__melt post__melt--down" aria-hidden="true"></div>
 
       <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Usa IA no seu marketing e quer estar em regra?</h2><p class="lead">Monto as automações e o conteúdo com estas regras à cabeça, e para a parte jurídica encaminho para quem trata disso. Começamos por um diagnóstico.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow">↗</span></a><a class="final__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
     </main>
