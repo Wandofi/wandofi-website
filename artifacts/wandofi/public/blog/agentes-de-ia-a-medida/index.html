@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3YC59FZPG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Q3YC59FZPG');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentes de IA à medida: skills, workflows e implementação remota | Wandofi PM</title>
+    <meta name="description" content="Construo agentes de IA à medida para pessoas e empresas: skills, workflows, instalação e implementação remota. Autónomos ou de acompanhamento, ligados às suas ferramentas." />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#050505" />
+    <link rel="canonical" href="https://wandofi.pt/blog/agentes-de-ia-a-medida/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://wandofi.pt/blog/agentes-de-ia-a-medida/" />
+    <meta property="og:site_name" content="Wandofi PM" />
+    <meta property="og:title" content="Agentes de IA à medida: skills, workflows e implementação remota" />
+    <meta property="og:description" content="Construo agentes de IA à medida para pessoas e empresas: skills, workflows, instalação e implementação remota. Autónomos ou de acompanhamento, ligados às suas ferramentas." />
+    <meta property="og:image" content="https://wandofi.pt/assets/og-card.jpg" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Agentes de IA à medida: skills, workflows e implementação remota" />
+    <meta name="twitter:description" content="Construo agentes de IA à medida para pessoas e empresas: skills, workflows, instalação e implementação remota. Autónomos ou de acompanhamento, ligados às suas ferramentas." />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/pages.css" />
+    <style id="blog-read">
+/* ============================================================
+   WANDOFI, leitura do blog (posts)
+   Zona de leitura clara com texto preto, dentro do site escuro.
+   Transição suave preto→vermelho→branco (melt) à entrada e à saída.
+   Aplica-se só às páginas de artigo (que carregam este ficheiro),
+   depois de styles.css e pages.css, para poder sobrepor o escuro.
+   ============================================================ */
+
+:root {
+  --post-paper: #f7f5f1;
+  --post-ink: #141210;
+  --post-text: #3a3632;
+  --post-lead: #1c1a18;
+  --post-line: #e4ded4;
+  --post-red: #e1251b;
+  --post-red-ink: #b91d15;
+}
+
+/* O hero escuro encosta ao melt: sem risco de linha entre eles */
+.page-hero { border-bottom: none; }
+
+/* ---------- MELT: preto → vermelho → branco ---------- */
+.post__melt {
+  position: relative;
+  z-index: 4;
+  height: 170px;
+  background: linear-gradient(
+    180deg,
+    #050505 0%, #2a0a07 20%, #7a1710 44%,
+    #c11f14 60%, #e1251b 70%, #e88a82 86%, var(--post-paper) 100%
+  );
+}
+.post__melt--down {
+  height: 150px;
+  background: linear-gradient(
+    180deg,
+    var(--post-paper) 0%, #e88a82 14%, #e1251b 28%,
+    #c11f14 40%, #7a1710 62%, #2a0a07 82%, #050505 100%
+  );
+}
+
+/* ---------- ZONA DE LEITURA: fundo claro, texto preto ---------- */
+.post__read {
+  position: relative;
+  z-index: 4;
+  background: var(--post-paper);
+  color: var(--post-text);
+  padding: 0 0.9rem;
+}
+
+/* Coluna central com o aro vermelho a abraçar o texto pela lateral */
+.post__rail {
+  max-width: 42rem;
+  margin: 0 auto;
+  border-left: 2px solid var(--post-red);
+  border-right: 2px solid var(--post-red);
+  padding: 1.4rem 1.7rem 1.8rem;
+}
+
+/* Anular a estrutura escura das secções dentro da zona clara */
+.post__read .section {
+  padding-block: 0;
+  background: transparent;
+  z-index: auto;
+}
+.post__read .section + .section { margin-top: 1.5rem; }
+.post__read .section--panel { background: transparent; }
+.post__read .section--panel::before { display: none; }
+.post__read .container {
+  max-width: none;
+  width: 100%;
+  padding-inline: 0;
+  margin-inline: 0;
+}
+.post__read .prose { max-width: none; }
+.post__read .section__head { margin-bottom: 0.3rem; }
+
+/* Rótulo mono vermelho (eyebrow) */
+.post__read .eyebrow {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--post-red);
+  margin: 0 0 0.2rem;
+}
+
+/* Títulos: Instrument Serif escuro, colados ao corpo */
+.post__read .h2 {
+  font-family: var(--display);
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.7rem, 3.6vw, 2.2rem);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--post-ink);
+  margin: 0 0 0.4rem;
+}
+
+/* Parágrafo de abertura (resposta directa) */
+.post__read .lead-answer {
+  font-family: var(--ui);
+  font-size: 1.28rem;
+  line-height: 1.4;
+  color: var(--post-lead);
+  font-weight: 400;
+  margin: 0 0 1rem;
+}
+
+/* Corpo do texto */
+.post__read .body {
+  font-family: var(--ui);
+  font-size: 1.1rem;
+  line-height: 1.62;
+  color: var(--post-text);
+  margin: 0 0 0.9rem;
+}
+.post__read .body:last-child { margin-bottom: 0; }
+.post__read .body strong,
+.post__read .body b { color: var(--post-ink); font-weight: 600; }
+
+/* Ligações dentro do texto: vermelho sublinhado */
+.post__read .body a,
+.post__read .prose a:not(.btn) {
+  color: var(--post-red-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+}
+.post__read .body a:hover,
+.post__read .prose a:not(.btn):hover { color: var(--post-red); }
+
+/* Listas (deliverables) na versão clara */
+.post__read .deliver {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  max-width: none;
+  margin: 0.2rem 0 0.9rem;
+}
+.post__read .deliver li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-family: var(--ui);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--post-text);
+}
+.post__read .deliver li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--post-red);
+}
+.post__read .deliver li b { color: var(--post-ink); font-weight: 600; }
+
+/* FAQ na versão clara */
+.post__read .faq { max-width: none; border-top: 1px solid var(--post-line); }
+.post__read .faq details {
+  border-top: none;
+  border-bottom: 1px solid var(--post-line);
+  padding: 0.85rem 0;
+}
+.post__read .faq details:last-child { border-bottom: 1px solid var(--post-line); }
+.post__read .faq summary {
+  font-family: var(--ui);
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--post-ink);
+}
+.post__read .faq summary::after { content: "+"; color: var(--post-red); }
+.post__read .faq details[open] summary::after { content: "\2013"; }
+.post__read .faq .a {
+  color: var(--post-text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: none;
+  margin-top: 0.6rem;
+}
+.post__read .faq .a p { margin: 0 0 0.6rem; }
+.post__read .faq .a p:last-child { margin-bottom: 0; }
+
+/* Chips "a seguir" na versão clara */
+.post__read .related a {
+  border: 1px solid var(--post-line);
+  border-radius: 2rem;
+  color: var(--post-text);
+  padding: 0.5rem 1rem;
+  font-size: 0.92rem;
+}
+.post__read .related a:hover { border-color: var(--post-red); color: var(--post-red); }
+
+/* A selecção de texto continua vermelha, texto branco no seu topo */
+.post__read ::selection { background: var(--post-red); color: #fff; }
+
+@media (max-width: 760px) {
+  .post__read { padding: 0 0.5rem; }
+  .post__rail { padding: 1.1rem 1.15rem 1.4rem; }
+  .post__read .deliver { grid-template-columns: 1fr; }
+}
+    </style>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Agentes de IA à medida: skills, workflows e implementação remota", "description": "Construo agentes de IA à medida para pessoas e empresas: skills, workflows, instalação e implementação remota. Autónomos ou de acompanhamento, ligados às suas ferramentas.", "inLanguage": "pt-PT", "datePublished": "2026-09-03", "dateModified": "2026-09-03", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/agentes-de-ia-a-medida/", "url": "https://wandofi.pt/blog/agentes-de-ia-a-medida/"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que é uma skill de um agente de IA?", "acceptedAnswer": {"@type": "Answer", "text": "É uma capacidade concreta que o agente aprende a fazer bem, com as regras e o contexto do seu caso. Em vez de respostas genéricas, o agente executa uma tarefa específica do jeito que o seu negócio precisa."}}, {"@type": "Question", "name": "Um agente funciona nos chats que já uso, como o ChatGPT ou o Claude?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Ligo o agente por conectores para poder ser chamado a partir desses chats, sem trocar de ferramenta. Fala com ele onde já trabalha."}}, {"@type": "Question", "name": "Preciso de deixar o computador ligado?", "acceptedAnswer": {"@type": "Answer", "text": "Não. A implementação é remota, num servidor, por isso o agente corre a qualquer hora, mesmo com o seu computador desligado."}}, {"@type": "Question", "name": "O agente trabalha sozinho ou preciso de o supervisionar?", "acceptedAnswer": {"@type": "Answer", "text": "Conforme escolher. Pode ser autónomo, de ponta a ponta, ou de acompanhamento, em que prepara e sugere e você aprova. Começo pelo modo que der mais confiança e segurança."}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wandofi.pt/blog/"}, {"@type": "ListItem", "position": 3, "name": "Agentes de IA à medida", "item": "https://wandofi.pt/blog/agentes-de-ia-a-medida/"}]}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar para o conteúdo</a>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="spotlight" id="spotlight" aria-hidden="true"></div>
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a class="nav__brand" href="/" aria-label="Wandofi PM · início">W<span class="nav__brand-dot">.</span></a>
+        <span class="nav__status"><span class="status-dot"></span> Disponível para projecto</span>
+        <nav class="nav__links" aria-label="Navegação principal">
+          <a href="/seo/">SEO</a>
+          <a href="/gestao-de-trafego/" class="nav__link--extra">Tráfego</a>
+          <a href="/criacao-de-sites/" class="nav__link--extra">Sites</a>
+          <a href="/#contacto">Contacto</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <section class="page-hero">
+        <div class="container">
+          <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/agentes-de-ia-a-medida/">Agentes de IA à medida</a></p>
+          <p class="page-hero__eyebrow">Agentes à medida</p>
+          <h1 class="page-hero__title">Agentes de IA à medida: skills, workflows e implementação remota.</h1>
+          <p class="page-hero__lead">Construo agentes de IA para pessoas e empresas, com as skills e os workflows certos, instalados e a correr onde precisa. Autónomos ou a acompanhar os seus processos, sempre à medida do que o negócio exige.</p>
+        </div>
+      </section>
+
+      <div class="post__melt" aria-hidden="true"></div>
+      <div class="post__read"><div class="post__rail">
+
+      <section class="section"><div class="container"><div class="prose">
+        <p class="lead-answer">Um agente de IA à medida é um assistente digital construído para o seu caso, não uma ferramenta genérica. Eu desenho as skills e os workflows, ligo o agente às suas ferramentas, e deixo o agente a correr de forma remota, pronto a trabalhar sozinho ou ao seu lado.</p>
+        <p class="body">Passo os dias a montar isto. Não vendo a IA da moda, construo o agente que resolve um problema concreto seu e entrego a funcionar. A seguir explico, sem jargão, o que isto é e como trabalho, do princípio ao fim.</p>
+      </div></div></section>
+
+      <section class="section section--panel"><div class="container"><div class="prose">
+        <p class="eyebrow">O essencial</p>
+        <h2 class="h2">Skills e workflows, o que faz a diferença</h2>
+        <p class="body">A distância entre um chat genérico e um agente a sério está em duas coisas: as skills e os workflows. Uma skill é uma capacidade que ensino ao agente, uma tarefa que ele passa a saber fazer bem, com as suas regras e o seu contexto. Um workflow é a sequência, a ordem dos passos que o agente segue para levar um processo do início ao fim. É a diferença entre uma ferramenta que responde e um assistente que executa.</p>
+      </div></div></section>
+
+      <section class="section"><div class="container"><div class="prose">
+        <p class="eyebrow">Para quem</p>
+        <h2 class="h2">Pessoais ou empresariais</h2>
+        <p class="body">Construo dois tipos, conforme quem vai usar e o que está em jogo:</p>
+        <ul class="deliver">
+          <li><b>Agente pessoal</b>: organiza o seu dia, trata do email, faz pesquisa, prepara documentos e assume o trabalho repetitivo que lhe rouba tempo.</li>
+          <li><b>Agente empresarial</b>: trata de pedidos, apoia a equipa, mantém processos a andar e liga aos sistemas da empresa, sempre com as suas regras.</li>
+        </ul>
+      </div></div></section>
+
+      <section class="section section--panel"><div class="container"><div class="prose">
+        <p class="eyebrow">Como trabalha</p>
+        <h2 class="h2">Autónomos ou de acompanhamento</h2>
+        <p class="body">Há dois modos, e escolhemos pelo risco e pela confiança que a tarefa pede:</p>
+        <ul class="deliver">
+          <li><b>Autónomo</b>: o agente faz a tarefa de ponta a ponta, sem precisar de si a cada passo. Ideal para o que é repetitivo e bem definido.</li>
+          <li><b>De acompanhamento</b>: o agente prepara e sugere, você aprova. Ideal para decisões que ainda querem olho humano.</li>
+        </ul>
+      </div></div></section>
+
+      <section class="section"><div class="container"><div class="prose">
+        <p class="eyebrow">Ligado e remoto</p>
+        <h2 class="h2">Conectados e com implementação remota</h2>
+        <p class="body">Um agente só vale se estiver onde você trabalha. Por isso ligo os agentes às ferramentas que já usa e deixo os agentes a correr de forma remota, num servidor, e não presos ao seu computador. Assim funcionam a qualquer hora, mesmo com o portátil desligado, e podem ser chamados a partir dos chats que já usa, seja o ChatGPT, o Claude ou outro. A instalação e a manutenção ficam do meu lado.</p>
+      </div></div></section>
+
+      <section class="section section--panel"><div class="container"><div class="prose">
+        <p class="eyebrow">O método</p>
+        <h2 class="h2">Como construo, à medida das suas exigências</h2>
+        <p class="body">Não há duas empresas iguais, por isso não há agentes de prateleira. O caminho é sempre o mesmo, e passa por si em cada passo:</p>
+        <ul class="deliver">
+          <li><b>Percebo o processo</b>: onde perde tempo, onde há erros, o que se repete.</li>
+          <li><b>Escrevo as skills e o workflow</b>: as capacidades e a sequência, com as suas regras.</li>
+          <li><b>Ligo às ferramentas</b>: email, folhas, site, o que já faz parte do seu dia.</li>
+          <li><b>Testo e ajusto</b>: tudo montado e verificado antes de ir para produção, para não haver surpresas.</li>
+          <li><b>Entrego a funcionar</b>: com implementação remota, e fico para a manutenção.</li>
+        </ul>
+      </div></div></section>
+
+      <section class="section"><div class="container"><div class="prose">
+        <p class="eyebrow">Onde encaixa</p>
+        <h2 class="h2">Uma peça no seu negócio, não um brinquedo à parte</h2>
+        <p class="body">Um agente raramente vive sozinho. Encaixa nas suas <a href="/automacoes/">automações</a>, no site e nos processos que já tem. Trato de tudo em conjunto, para o agente ser mais uma peça que trabalha, e não uma experiência solta. Se quer o panorama do que está a mudar na IA em Portugal, escrevi sobre as <a href="/blog/tendencias-de-ia-em-portugal/">tendências de IA para 2026</a>.</p>
+      </div></div></section>
+
+      <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Perguntas frequentes</p><h2 class="h2">Perguntas frequentes</h2></header><div class="faq">
+        <details><summary>O que é uma skill de um agente de IA?</summary><div class="a"><p>É uma capacidade concreta que o agente aprende a fazer bem, com as regras e o contexto do seu caso. Em vez de respostas genéricas, o agente executa uma tarefa específica do jeito que o seu negócio precisa.</p></div></details>
+        <details><summary>Um agente funciona nos chats que já uso, como o ChatGPT ou o Claude?</summary><div class="a"><p>Sim. Ligo o agente por conectores para poder ser chamado a partir desses chats, sem trocar de ferramenta. Fala com ele onde já trabalha.</p></div></details>
+        <details><summary>Preciso de deixar o computador ligado?</summary><div class="a"><p>Não. A implementação é remota, num servidor, por isso o agente corre a qualquer hora, mesmo com o seu computador desligado.</p></div></details>
+        <details><summary>O agente trabalha sozinho ou preciso de o supervisionar?</summary><div class="a"><p>Conforme escolher. Pode ser autónomo, de ponta a ponta, ou de acompanhamento, em que prepara e sugere e você aprova. Começo pelo modo que der mais confiança e segurança.</p></div></details>
+      </div></div></section>
+
+      <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><div class="related"><a href="/automacoes/">Automações</a><a href="/blog/tendencias-de-ia-em-portugal/">Tendências de IA</a><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/contactos/">Contactos</a></div></div></section>
+
+      </div></div>
+      <div class="post__melt post__melt--down" aria-hidden="true"></div>
+
+      <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Quer um agente de IA feito para o seu processo?</h2><p class="lead">Construo à medida, das skills à implementação remota, e fico para a manutenção. Começamos por um diagnóstico, sem compromisso.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow">↗</span></a><a class="final__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
+    </main>
+    <footer class="footer" id="footer">
+      <div class="signature" id="signature">
+        <div class="signature__plate">
+          <img class="signature__logo" src="/assets/wandofi-pm-logo-light.webp" width="600" height="470" loading="lazy" decoding="async" alt="Wandofi PM · Project Management" />
+        </div>
+      </div>
+      <p class="footer__line">© 2026 Wandofi PM · wandofi.pt · <a href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></p>
+    </footer>
+  </body>
+</html>
