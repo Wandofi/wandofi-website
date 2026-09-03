@@ -52,6 +52,8 @@
   --post-line: #e4ded4;
   --post-red: #e1251b;
   --post-red-ink: #b91d15;
+   --post-edge-gutter: clamp(1rem, 4vw, 2rem);
+   --post-rail-gutter: clamp(1.25rem, 4vw, 2.75rem);
 }
 
 /* O hero escuro encosta ao melt: sem risco de linha entre eles */
@@ -83,7 +85,7 @@
   z-index: 4;
   background: var(--post-paper);
   color: var(--post-text);
-  padding: 0 0.9rem;
+   padding-inline: var(--post-edge-gutter);
 }
 
 /* Coluna central com o aro vermelho a abraçar o texto pela lateral */
@@ -92,7 +94,7 @@
   margin: 0 auto;
   border-left: 2px solid var(--post-red);
   border-right: 2px solid var(--post-red);
-  padding: 1.4rem 1.7rem 1.8rem;
+   padding: clamp(1.75rem, 4vw, 2.4rem) var(--post-rail-gutter) clamp(2.25rem, 5vw, 3rem);
 }
 
 /* Anular a estrutura escura das secções dentro da zona clara */
@@ -101,7 +103,7 @@
   background: transparent;
   z-index: auto;
 }
-.post__read .section + .section { margin-top: 1.5rem; }
+ .post__read .section + .section { margin-top: clamp(1.75rem, 4vw, 2.75rem); }
 .post__read .section--panel { background: transparent; }
 .post__read .section--panel::before { display: none; }
 .post__read .container {
@@ -237,8 +239,7 @@
 .post__read ::selection { background: var(--post-red); color: #fff; }
 
 @media (max-width: 760px) {
-  .post__read { padding: 0 0.5rem; }
-  .post__rail { padding: 1.1rem 1.15rem 1.4rem; }
+   .post__read { --post-edge-gutter: 0.75rem; --post-rail-gutter: 1.15rem; }
   .post__read .deliver { grid-template-columns: 1fr; }
 }
     </style>
