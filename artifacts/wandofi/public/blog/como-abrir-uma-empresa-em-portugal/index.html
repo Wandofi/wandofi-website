@@ -52,12 +52,12 @@
   --post-line: #e4ded4;
   --post-red: #e1251b;
   --post-red-ink: #b91d15;
-   --post-edge-gutter: clamp(1rem, 4vw, 2rem);
-   --post-rail-gutter: clamp(1.25rem, 4vw, 2.75rem);
 }
 
+/* O hero escuro encosta ao melt: sem risco de linha entre eles */
 .page-hero { border-bottom: none; }
 
+/* ---------- MELT: preto → vermelho → branco ---------- */
 .post__melt {
   position: relative;
   z-index: 4;
@@ -77,28 +77,31 @@
   );
 }
 
+/* ---------- ZONA DE LEITURA: fundo claro, texto preto ---------- */
 .post__read {
   position: relative;
   z-index: 4;
   background: var(--post-paper);
   color: var(--post-text);
-   padding-inline: var(--post-edge-gutter);
+  padding: 0 0.9rem;
 }
 
+/* Coluna central com o aro vermelho a abraçar o texto pela lateral */
 .post__rail {
   max-width: 42rem;
   margin: 0 auto;
   border-left: 2px solid var(--post-red);
   border-right: 2px solid var(--post-red);
-   padding: clamp(1.75rem, 4vw, 2.4rem) var(--post-rail-gutter) clamp(2.25rem, 5vw, 3rem);
+  padding: 1.4rem 1.7rem 1.8rem;
 }
 
+/* Anular a estrutura escura das secções dentro da zona clara */
 .post__read .section {
   padding-block: 0;
   background: transparent;
   z-index: auto;
 }
- .post__read .section + .section { margin-top: clamp(1.75rem, 4vw, 2.75rem); }
+.post__read .section + .section { margin-top: 1.5rem; }
 .post__read .section--panel { background: transparent; }
 .post__read .section--panel::before { display: none; }
 .post__read .container {
@@ -110,6 +113,7 @@
 .post__read .prose { max-width: none; }
 .post__read .section__head { margin-bottom: 0.3rem; }
 
+/* Rótulo mono vermelho (eyebrow) */
 .post__read .eyebrow {
   font-family: var(--mono);
   text-transform: uppercase;
@@ -120,6 +124,7 @@
   margin: 0 0 0.2rem;
 }
 
+/* Títulos: Instrument Serif escuro, colados ao corpo */
 .post__read .h2 {
   font-family: var(--display);
   font-style: normal;
@@ -131,6 +136,7 @@
   margin: 0 0 0.4rem;
 }
 
+/* Parágrafo de abertura (resposta directa) */
 .post__read .lead-answer {
   font-family: var(--ui);
   font-size: 1.28rem;
@@ -140,6 +146,7 @@
   margin: 0 0 1rem;
 }
 
+/* Corpo do texto */
 .post__read .body {
   font-family: var(--ui);
   font-size: 1.1rem;
@@ -151,6 +158,7 @@
 .post__read .body strong,
 .post__read .body b { color: var(--post-ink); font-weight: 600; }
 
+/* Ligações dentro do texto: vermelho sublinhado */
 .post__read .body a,
 .post__read .prose a:not(.btn) {
   color: var(--post-red-ink);
@@ -161,6 +169,7 @@
 .post__read .body a:hover,
 .post__read .prose a:not(.btn):hover { color: var(--post-red); }
 
+/* Listas (deliverables) na versão clara */
 .post__read .deliver {
   display: grid;
   grid-template-columns: 1fr;
@@ -187,6 +196,7 @@
 }
 .post__read .deliver li b { color: var(--post-ink); font-weight: 600; }
 
+/* FAQ na versão clara */
 .post__read .faq { max-width: none; border-top: 1px solid var(--post-line); }
 .post__read .faq details {
   border-top: none;
@@ -213,6 +223,7 @@
 .post__read .faq .a p { margin: 0 0 0.6rem; }
 .post__read .faq .a p:last-child { margin-bottom: 0; }
 
+/* Chips "a seguir" na versão clara */
 .post__read .related a {
   border: 1px solid var(--post-line);
   border-radius: 2rem;
@@ -222,11 +233,83 @@
 }
 .post__read .related a:hover { border-color: var(--post-red); color: var(--post-red); }
 
+/* A selecção de texto continua vermelha, texto branco no seu topo */
 .post__read ::selection { background: var(--post-red); color: #fff; }
 
 @media (max-width: 760px) {
-   .post__read { --post-edge-gutter: 0.75rem; --post-rail-gutter: 1.15rem; }
+  .post__read { padding: 0 0.5rem; }
+  .post__rail { padding: 1.1rem 1.15rem 1.4rem; }
   .post__read .deliver { grid-template-columns: 1fr; }
+}
+
+/* ---------- Fonte preferida no Google ----------
+   Bloco isolado, logo a seguir ao corpo do artigo (momento de maior
+   envolvimento). Regra "um pedido, uma acção": nada de outros CTA ao lado. */
+.post__prefsrc {
+  margin: 2.2rem 0 0.6rem;
+  padding: 1.5rem 1.4rem 1.4rem;
+  background: #fffdf9;
+  border: 1px solid var(--post-line);
+  border-left: 3px solid var(--post-red);
+}
+.post__prefsrc .prefsrc__label {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--post-red);
+  margin: 0 0 0.5rem;
+}
+.post__prefsrc .prefsrc__pitch {
+  font-family: var(--ui);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--post-text);
+  margin: 0 0 1.1rem;
+}
+.post__prefsrc a.prefsrc__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--post-red);
+  color: #fff;
+  font-family: var(--ui);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.95rem 1.35rem;
+  border-radius: 0.4rem;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.post__prefsrc a.prefsrc__btn:hover {
+  background: var(--post-red-ink);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.post__prefsrc .prefsrc__note {
+  font-family: var(--ui);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #726b63;
+  margin: 0.9rem 0 0;
+}
+@media (max-width: 760px) {
+  .post__prefsrc { padding: 1.2rem 1.1rem; }
+  .post__prefsrc a.prefsrc__btn { width: 100%; justify-content: center; }
+}
+
+/* URLs e código dentro do texto */
+.post__read .mono-inline {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: #efeae2;
+  padding: 0.12em 0.36em;
+  border-radius: 3px;
+  color: var(--post-ink);
+  word-break: break-word;
 }
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Como abrir uma empresa em Portugal, passo a passo", "description": "Guia prático para abrir uma empresa em Portugal. O que decidir antes, como criar a empresa na hora ou online, e o que tratar nos primeiros dias.", "inLanguage": "pt-PT", "datePublished": "2026-08-20", "dateModified": "2026-08-20", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/", "url": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/"}</script>
@@ -309,6 +392,15 @@
         <p class="body">A parte jurídica, escolher a forma certa, redigir um pacto à sua medida em vez de um modelo igual para todos, e os acordos entre sócios, é trabalho de advogado. Nesses casos trabalho ao lado de escritórios de direito societário como a <a href="https://vpa.pt/" target="_blank" rel="noopener">VPA, Venture Partners Advogados</a>, em Lisboa. A parte fiscal e a contabilidade são do contabilista certificado, e vale a pena ter um de confiança antes de facturar o primeiro euro.</p>
         <p class="body">É aqui que eu entro. Depois de a empresa existir, monto a operação à volta dela: o <a href="/criacao-de-sites/">site</a>, as ferramentas que vai usar todos os dias, as <a href="/automacoes/">automações</a> que poupam horas e os processos que evitam que o conhecimento viva só na sua cabeça. Trato da estrutura para o negócio começar organizado, e não improvisado.</p>
       </div></div></section>
+
+      <section class="section"><div class="container">
+        <div class="post__prefsrc">
+          <p class="prefsrc__label">Gostou de ler isto?</p>
+          <p class="prefsrc__pitch">Carregue no botão e o Google passa a dar prioridade aos artigos da Wandofi nos seus resultados, nas notícias em destaque e nas respostas de IA da Pesquisa. Leva um segundo, e pode desfazer quando quiser.</p>
+          <a class="prefsrc__btn" href="https://www.google.com/preferences/source?q=wandofi.pt" target="_blank" rel="noopener">Tornar a Wandofi uma fonte preferida <span aria-hidden="true">&#8599;</span></a>
+          <p class="prefsrc__note">Abre as definições do Google numa nova janela. A escolha fica guardada na sua conta Google e não me dá acesso a dados seus.</p>
+        </div>
+      </div></section>
 
       <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Perguntas frequentes</p><h2 class="h2">Perguntas frequentes</h2></header><div class="faq">
         <details><summary>É preciso advogado para abrir uma empresa?</summary><div class="a"><p>Para a constituição em si não é obrigatório. Pode usar os modelos de pacto do Estado, na Empresa na Hora ou online. O advogado passa a compensar quando há vários sócios, acordos a definir, ou uma estrutura menos comum. Aí, um pacto à medida evita problemas que só aparecem anos depois.</p></div></details>

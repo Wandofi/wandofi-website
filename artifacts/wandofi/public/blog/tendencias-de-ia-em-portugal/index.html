@@ -52,8 +52,6 @@
   --post-line: #e4ded4;
   --post-red: #e1251b;
   --post-red-ink: #b91d15;
-   --post-edge-gutter: clamp(1rem, 4vw, 2rem);
-   --post-rail-gutter: clamp(1.25rem, 4vw, 2.75rem);
 }
 
 /* O hero escuro encosta ao melt: sem risco de linha entre eles */
@@ -85,7 +83,7 @@
   z-index: 4;
   background: var(--post-paper);
   color: var(--post-text);
-   padding-inline: var(--post-edge-gutter);
+  padding: 0 0.9rem;
 }
 
 /* Coluna central com o aro vermelho a abraçar o texto pela lateral */
@@ -94,7 +92,7 @@
   margin: 0 auto;
   border-left: 2px solid var(--post-red);
   border-right: 2px solid var(--post-red);
-   padding: clamp(1.75rem, 4vw, 2.4rem) var(--post-rail-gutter) clamp(2.25rem, 5vw, 3rem);
+  padding: 1.4rem 1.7rem 1.8rem;
 }
 
 /* Anular a estrutura escura das secções dentro da zona clara */
@@ -103,7 +101,7 @@
   background: transparent;
   z-index: auto;
 }
- .post__read .section + .section { margin-top: clamp(1.75rem, 4vw, 2.75rem); }
+.post__read .section + .section { margin-top: 1.5rem; }
 .post__read .section--panel { background: transparent; }
 .post__read .section--panel::before { display: none; }
 .post__read .container {
@@ -239,8 +237,79 @@
 .post__read ::selection { background: var(--post-red); color: #fff; }
 
 @media (max-width: 760px) {
-   .post__read { --post-edge-gutter: 0.75rem; --post-rail-gutter: 1.15rem; }
+  .post__read { padding: 0 0.5rem; }
+  .post__rail { padding: 1.1rem 1.15rem 1.4rem; }
   .post__read .deliver { grid-template-columns: 1fr; }
+}
+
+/* ---------- Fonte preferida no Google ----------
+   Bloco isolado, logo a seguir ao corpo do artigo (momento de maior
+   envolvimento). Regra "um pedido, uma acção": nada de outros CTA ao lado. */
+.post__prefsrc {
+  margin: 2.2rem 0 0.6rem;
+  padding: 1.5rem 1.4rem 1.4rem;
+  background: #fffdf9;
+  border: 1px solid var(--post-line);
+  border-left: 3px solid var(--post-red);
+}
+.post__prefsrc .prefsrc__label {
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--post-red);
+  margin: 0 0 0.5rem;
+}
+.post__prefsrc .prefsrc__pitch {
+  font-family: var(--ui);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--post-text);
+  margin: 0 0 1.1rem;
+}
+.post__prefsrc a.prefsrc__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--post-red);
+  color: #fff;
+  font-family: var(--ui);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.95rem 1.35rem;
+  border-radius: 0.4rem;
+  text-decoration: none;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.post__prefsrc a.prefsrc__btn:hover {
+  background: var(--post-red-ink);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+.post__prefsrc .prefsrc__note {
+  font-family: var(--ui);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #726b63;
+  margin: 0.9rem 0 0;
+}
+@media (max-width: 760px) {
+  .post__prefsrc { padding: 1.2rem 1.1rem; }
+  .post__prefsrc a.prefsrc__btn { width: 100%; justify-content: center; }
+}
+
+/* URLs e código dentro do texto */
+.post__read .mono-inline {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: #efeae2;
+  padding: 0.12em 0.36em;
+  border-radius: 3px;
+  color: var(--post-ink);
+  word-break: break-word;
 }
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Tendências de IA em Portugal em 2026: o que está em alta", "description": "O que está mesmo em alta na inteligência artificial em Portugal em 2026: agentes de IA, ferramentas, automação e marketing. Um guia prático, sem jargão, para o seu negócio.", "inLanguage": "pt-PT", "datePublished": "2026-09-03", "dateModified": "2026-09-03", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/", "url": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/"}</script>
@@ -333,6 +402,15 @@
         <h2 class="h2">A IA ao serviço do negócio, não ao contrário</h2>
         <p class="body">Não vendo IA pela IA. Monto a operação à volta do seu negócio com as ferramentas certas: o <a href="/criacao-de-sites/">site</a>, as automações, o conteúdo e o <a href="/seo/">SEO</a>, com a IA a fazer o trabalho pesado onde faz sentido. O objectivo não é ter a tecnologia mais nova, é ter o negócio a andar melhor, mais organizado e mais visível. Começamos por perceber onde está o aperto, e resolvemos esse primeiro.</p>
       </div></div></section>
+
+      <section class="section"><div class="container">
+        <div class="post__prefsrc">
+          <p class="prefsrc__label">Gostou de ler isto?</p>
+          <p class="prefsrc__pitch">Carregue no botão e o Google passa a dar prioridade aos artigos da Wandofi nos seus resultados, nas notícias em destaque e nas respostas de IA da Pesquisa. Leva um segundo, e pode desfazer quando quiser.</p>
+          <a class="prefsrc__btn" href="https://www.google.com/preferences/source?q=wandofi.pt" target="_blank" rel="noopener">Tornar a Wandofi uma fonte preferida <span aria-hidden="true">&#8599;</span></a>
+          <p class="prefsrc__note">Abre as definições do Google numa nova janela. A escolha fica guardada na sua conta Google e não me dá acesso a dados seus.</p>
+        </div>
+      </div></section>
 
       <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Perguntas frequentes</p><h2 class="h2">Perguntas frequentes</h2></header><div class="faq">
         <details><summary>O que é um agente de IA, em palavras simples?</summary><div class="a"><p>É um assistente de software que não se limita a responder, executa. Recebe um objectivo, decide os passos, usa outras ferramentas e entrega o resultado. Pense num colaborador digital para uma tarefa específica, como triar pedidos ou preparar orçamentos.</p></div></details>
