@@ -1,11 +1,13 @@
 # Wandofi PM
 
-> Project management operacional em Lisboa. SEO, GEO/AEO, gestão de tráfego pago e criação de sites para negócios em Portugal, construídos por dentro de práticas reguladas: jurídico, contabilidade, saúde e educação.
+> A Wandofi PM é a actividade de project management de Mauro Cordeiro, com implementação de sites e automações. Baseada em Lisboa, trabalha remotamente para Portugal. Presta apoio técnico e operacional, não aconselhamento jurídico ou contabilístico.
 
 A Wandofi PM desenha, coordena, implementa e documenta a infraestrutura digital de um negócio: do site à estratégia de SEO, do tráfego pago às automações. Português europeu. Sem retainer obrigatório. O processo é Diagnóstico, Sprint e Entrega. Contacto: geral@wandofi.pt.
 
+É um consultor com capacidade para gerir o projecto completo, da estratégia à implementação e à coordenação de fornecedores. O conhecimento dos processos jurídicos e contabilísticos permite identificar quando envolver advogados e contabilistas e coordenar a sua participação, sem substituir o aconselhamento destes profissionais.
+
 ## Serviços
-- [Agência de SEO em Portugal](https://wandofi.pt/seo/): SEO técnico, local e de conteúdo para aparecer no Google nas pesquisas que trazem clientes.
+- [Consultoria de SEO em Portugal](https://wandofi.pt/seo/): SEO técnico, local e de conteúdo para aparecer no Google nas pesquisas que trazem clientes.
 - [SEO técnico e auditorias](https://wandofi.pt/seo/seo-tecnico/): auditorias, velocidade, indexação e migração de sites sem perder posições.
 - [SEO local](https://wandofi.pt/seo/seo-local/): Google Maps e pesquisas com intenção local; perfil de empresa configurado sem expor morada pessoal.
 - [SEO para empresas](https://wandofi.pt/seo/seo-para-empresas/): estratégia contínua de SEO para PMEs.
@@ -26,8 +28,8 @@ A Wandofi PM desenha, coordena, implementa e documenta a infraestrutura digital 
 - [SEO para imobiliárias](https://wandofi.pt/seo/imobiliarias/): mediação e imobiliárias, clientes diretos e menos dependência dos portais.
 
 ## Localização
-- [Agência de SEO em Lisboa](https://wandofi.pt/seo/agencia-seo-lisboa/)
-- [Agência de SEO no Porto](https://wandofi.pt/seo/agencia-seo-porto/)
+- [Consultoria de SEO em Lisboa](https://wandofi.pt/seo/agencia-seo-lisboa/)
+- [Consultoria de SEO no Porto](https://wandofi.pt/seo/agencia-seo-porto/): acompanhamento remoto a partir de Lisboa.
 
 ## Criação de sites por zona
 Site essencial de uma página a preço fixo, desde 350€, com SEO local incluído. Páginas extra e loja online em orçamento à parte.

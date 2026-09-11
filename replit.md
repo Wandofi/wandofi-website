@@ -1,6 +1,12 @@
 # Wandofi
 
-Dark, single-red-light personal brand site for Mauro Cordeiro (Wandofi) — a project manager operacional in Lisbon offering site migration/creation, technical SEO, automations and business structure. Portuguese (pt-PT), built as a portfolio/landing page at wandofi.pt.
+Light-theme personal brand site for Mauro Cordeiro (Wandofi). Portuguese (pt-PT), built as a portfolio/landing page at wandofi.pt.
+
+## Positioning
+
+Wandofi PM is Mauro Cordeiro's project management activity, including site implementation and automations. One consultant capable of managing a complete engagement, not an agency. Based in Lisbon, serving Portugal remotely. Provides technical and operational support, not legal or accounting advice; knowledge of those processes supports identifying when to involve lawyers and accountants and coordinating their participation.
+
+The Porto SEO page should be indexable and remain in the sitemap (owner's decision, 2026-09-11). Homepage result figures are animated counters: compare their final targets, not intermediate screenshot values.
 
 ## Run & Operate
 
