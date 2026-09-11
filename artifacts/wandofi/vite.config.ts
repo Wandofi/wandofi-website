@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
+import { existsSync } from "node:fs";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 const rawPort = process.env.PORT;
@@ -28,7 +29,36 @@ if (!basePath) {
 
 export default defineConfig({
   base: basePath,
+  appType: "mpa",
   plugins: [
+    {
+      name: "static-page-directory-routes",
+      configureServer(server) {
+        // Match GitHub Pages directory URLs without changing public links.
+        server.middlewares.use((req, _res, next) => {
+          if (!req.url || !["GET", "HEAD"].includes(req.method ?? "")) {
+            return next();
+          }
+          const url = new URL(req.url, "http://localhost");
+          let pathname: string;
+          try {
+            pathname = decodeURIComponent(url.pathname);
+          } catch {
+            return next();
+          }
+          const publicDir = path.resolve(import.meta.dirname, "public");
+          const page = path.resolve(publicDir, `.${pathname}`, "index.html");
+          if (
+            pathname !== "/" &&
+            page.startsWith(publicDir + path.sep) &&
+            existsSync(page)
+          ) {
+            req.url = `${url.pathname.replace(/\/$/, "")}/index.html${url.search}`;
+          }
+          next();
+        });
+      },
+    },
     react(),
     tailwindcss(),
     runtimeErrorOverlay(),
