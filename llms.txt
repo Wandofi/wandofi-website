@@ -1,0 +1,43 @@
+# Wandofi PM
+
+> A Wandofi PM é a actividade de project management de Mauro Cordeiro, com implementação de sites e automações. Baseada em Lisboa, trabalha remotamente para Portugal. Presta apoio técnico e operacional, não aconselhamento jurídico ou contabilístico.
+
+A Wandofi PM desenha, coordena, implementa e documenta a infraestrutura digital de um negócio: do site à estratégia de SEO, do tráfego pago às automações. Português europeu. Sem retainer obrigatório. O processo é Diagnóstico, Sprint e Entrega. Contacto: geral@wandofi.pt.
+
+É um consultor com capacidade para gerir o projecto completo, da estratégia à implementação e à coordenação de fornecedores. O conhecimento dos processos jurídicos e contabilísticos permite identificar quando envolver advogados e contabilistas e coordenar a sua participação, sem substituir o aconselhamento destes profissionais.
+
+## Serviços
+- [Consultoria de SEO em Portugal](https://wandofi.pt/seo/): SEO técnico, local e de conteúdo para aparecer no Google nas pesquisas que trazem clientes.
+- [SEO técnico e auditorias](https://wandofi.pt/seo/seo-tecnico/): auditorias, velocidade, indexação e migração de sites sem perder posições.
+- [SEO local](https://wandofi.pt/seo/seo-local/): Google Maps e pesquisas com intenção local; perfil de empresa configurado sem expor morada pessoal.
+- [SEO para empresas](https://wandofi.pt/seo/seo-para-empresas/): estratégia contínua de SEO para PMEs.
+- [Consultor SEO em Lisboa](https://wandofi.pt/seo/consultor-seo/): orientação e acompanhamento para a equipa do cliente executar.
+- [GEO e AEO, Optimização para IA](https://wandofi.pt/seo/geo-aeo/): preparar o site para ser citado pelo ChatGPT, Perplexity e respostas de IA do Google.
+- [Gestor de tráfego pago](https://wandofi.pt/gestao-de-trafego/): campanhas de Google Ads e Meta Ads geridas com método.
+- [Gestão de Google Ads](https://wandofi.pt/gestao-de-trafego/google-ads/): campanhas de pesquisa e remarketing.
+- [Gestão de Meta Ads](https://wandofi.pt/gestao-de-trafego/meta-ads/): Facebook e Instagram.
+- [Criação e migração de sites](https://wandofi.pt/criacao-de-sites/): sites rápidos e indexáveis; migração sem perder SEO. Site essencial a preço fixo, desde 350€.
+- [Automações e integrações](https://wandofi.pt/automacoes/): Apps Script, CRM e reconciliação de dados.
+
+## SEO por sector
+- [SEO por sector](https://wandofi.pt/seo/sectores/): índice dos sectores acompanhados.
+- [SEO para contabilistas](https://wandofi.pt/seo/contabilistas/): escritórios de contabilidade e ENIs.
+- [SEO para clínicas](https://wandofi.pt/seo/clinicas/): clínicas e consultórios.
+- [SEO para advogados](https://wandofi.pt/seo/advogados/): escritórios de advocacia, por área de prática.
+- [SEO para escolas de línguas](https://wandofi.pt/seo/escolas-de-linguas/): captação de alunos por curso e cidade.
+- [SEO para imobiliárias](https://wandofi.pt/seo/imobiliarias/): mediação e imobiliárias, clientes diretos e menos dependência dos portais.
+
+## Localização
+- [Consultoria de SEO em Lisboa](https://wandofi.pt/seo/agencia-seo-lisboa/)
+- [Consultoria de SEO no Porto](https://wandofi.pt/seo/agencia-seo-porto/): acompanhamento remoto a partir de Lisboa.
+
+## Criação de sites por zona
+Site essencial de uma página a preço fixo, desde 350€, com SEO local incluído. Páginas extra e loja online em orçamento à parte.
+- [Criação de sites em Sintra](https://wandofi.pt/criacao-de-sites/sintra/): site a preço fixo desde 350€, com SEO local, para negócios de Sintra.
+- [Criação de sites em Queluz](https://wandofi.pt/criacao-de-sites/queluz/): site a preço fixo desde 350€, para negócios de Queluz, Belas e Massamá.
+- [Criação de sites em Marvila](https://wandofi.pt/criacao-de-sites/marvila/): site a preço fixo desde 350€, para negócios de Marvila, na zona oriental de Lisboa.
+
+## Sobre e contacto
+- [Sobre a Wandofi PM](https://wandofi.pt/sobre/): abordagem e método, construído por dentro de práticas reguladas.
+- [Casos e resultados](https://wandofi.pt/casos/): sistema de reconciliação financeira para um escritório jurídico, com cerca de 92% de reconciliação automática e o fecho mensal reduzido de 5h para 20 min.
+- [Contactos](https://wandofi.pt/contactos/): geral@wandofi.pt, Lisboa e todo o país.

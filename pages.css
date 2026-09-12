@@ -1,0 +1,212 @@
+/* ============================================================
+   WANDOFI — páginas de serviço (interiores)
+   Componentes construídos sobre os tokens de styles.css.
+   Não redefine tipos nem cores: reutiliza --display/--ui/--mono,
+   --red/--white/--mute, --section-pad, --container, --ease…
+   ============================================================ */
+
+/* ---------- Page hero (interior) ---------- */
+.page-hero {
+  position: relative;
+  z-index: 3;
+  padding-top: clamp(7rem, 14vh, 11rem);
+  padding-bottom: clamp(3rem, 7vh, 6rem);
+  border-bottom: 1px solid var(--line);
+}
+.page-hero__crumb {
+  font-family: var(--mono);
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--track-caps-sm);
+  text-transform: uppercase;
+  color: var(--mute-2);
+  margin-bottom: 1.4rem;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.page-hero__crumb a:hover { color: var(--white); }
+.page-hero__crumb .sep { color: var(--red); }
+.page-hero__eyebrow {
+  font-family: var(--mono);
+  font-size: var(--fs-2xs);
+  letter-spacing: var(--track-caps-lg);
+  text-transform: uppercase;
+  color: var(--red);
+  margin: 0 0 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.page-hero__eyebrow::before {
+  content: "";
+  width: 1.6rem;
+  height: 1px;
+  background: var(--red);
+}
+.page-hero__title {
+  font-family: var(--display);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-tighter);
+  margin: 0 0 1.4rem;
+  max-width: 20ch;
+}
+.page-hero__lead {
+  font-family: var(--ui);
+  font-size: var(--fs-lead);
+  line-height: var(--lh-comfort);
+  color: var(--mute);
+  max-width: 46rem;
+  margin: 0;
+}
+.page-hero__lead strong { color: var(--white); font-weight: var(--fw-semibold); }
+.page-hero__actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2.2rem; }
+.page-hero__metas {
+  display: flex; gap: 2.4rem; flex-wrap: wrap;
+  margin-top: 2.6rem; padding-top: 1.6rem; border-top: 1px solid var(--line);
+}
+.page-hero__metas .k { font-family: var(--mono); font-size: var(--fs-2xs); text-transform: uppercase; letter-spacing: var(--track-caps-sm); color: var(--mute-2); }
+.page-hero__metas .v { font-family: var(--display); font-size: var(--fs-md); margin-top: 0.3rem; color: var(--white); }
+
+/* ---------- Direct answer (AEO) ---------- */
+.answer {
+  font-family: var(--display);
+  font-size: var(--fs-about);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--track-snug);
+  color: var(--white);
+  max-width: 24ch;
+  margin: 0 0 1.4rem;
+}
+.answer + .body { max-width: 46rem; }
+
+/* ---------- Deliverables list ---------- */
+.deliver { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 2.6rem; max-width: 60rem; }
+.deliver li {
+  position: relative; padding-left: 1.5rem;
+  font-family: var(--ui); font-size: var(--fs-base); line-height: var(--lh-base); color: var(--mute);
+}
+.deliver li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 0.5rem; height: 0.5rem; background: var(--red); }
+.deliver li b { color: var(--white); font-weight: var(--fw-semibold); }
+
+/* ---------- Cards grid (reuses .card from styles.css) ---------- */
+.grid { display: grid; gap: 1.1rem; }
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.card__num { font-family: var(--mono); font-size: var(--fs-2xs); letter-spacing: var(--track-caps-sm); color: var(--red); }
+.card__more { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: var(--track-caps-sm); text-transform: uppercase; color: var(--red); display: inline-flex; gap: 0.4rem; margin-top: 1rem; }
+.card__more:hover { color: var(--white); }
+/* Os overlays decorativos do cartão não devem bloquear cliques (bug: link "Ver" não clicável) */
+.grid .card::before, .grid .card::after { pointer-events: none; }
+/* Cartão inteiro clicável: o ::after do único link estica-se sobre o cartão */
+.grid .card { position: relative; cursor: pointer; }
+.grid .card .card__more::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+
+/* ---------- Proof stats ---------- */
+.proof { display: flex; gap: clamp(1.8rem, 5vw, 3.6rem); flex-wrap: wrap; margin-top: 1.8rem; }
+.proof .stat__v { font-family: var(--display); font-size: var(--fs-case-sm); line-height: 1; color: var(--red); letter-spacing: var(--track-tight); }
+.proof .stat__l { font-family: var(--ui); font-size: var(--fs-sm); color: var(--mute); margin-top: 0.5rem; max-width: 16rem; }
+
+/* ---------- Related chips ---------- */
+.related { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.related a {
+  font-family: var(--ui); font-size: var(--fs-sm); color: var(--white);
+  border: 1px solid var(--line-strong); border-radius: 2px; padding: 0.6rem 1rem; transition: 0.25s var(--ease);
+}
+.related a:hover { border-color: var(--red); color: var(--red); }
+
+/* ---------- FAQ ---------- */
+.faq { max-width: 52rem; }
+.faq details { border-top: 1px solid var(--line); padding: 1.2rem 0; }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary {
+  font-family: var(--display); font-size: var(--fs-h3); line-height: var(--lh-tight);
+  color: var(--white); cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; gap: 1rem; align-items: baseline;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--red); font-family: var(--ui); font-weight: var(--fw-regular); }
+.faq details[open] summary::after { content: "–"; }
+.faq .a { color: var(--mute); font-family: var(--ui); font-size: var(--fs-base); line-height: var(--lh-loose); margin-top: 0.9rem; max-width: 46rem; }
+
+/* ---------- Section variants ---------- */
+.section--panel { background: var(--ink-2); }
+.section--panel::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: radial-gradient(60% 80% at 85% 20%, rgba(225,37,27,0.06), transparent 70%);
+  pointer-events: none;
+}
+.section__intro { font-family: var(--ui); font-size: var(--fs-lead); line-height: var(--lh-base); color: var(--mute); max-width: 44rem; margin: 0.4rem 0 0; }
+
+/* ---------- Final CTA (reuses .cta look) ---------- */
+.final { text-align: left; }
+.final .h2 { margin: 0 0 1rem; }
+.final .lead { max-width: 40rem; }
+.final__actions { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; margin-top: 2rem; }
+.final__email { font-family: var(--mono); font-size: var(--fs-sm); letter-spacing: var(--track-wide); color: var(--red); }
+.final__email:hover { color: var(--white); }
+
+/* ---------- Blog index ---------- */
+/* Artigos publicados: entradas com presença visual e área de clique clara. */
+.blog-index main > .section:nth-of-type(2) {
+  background: var(--ink-2);
+}
+.blog-index main > .section:nth-of-type(2) .prose {
+  display: grid;
+  gap: 0.8rem;
+  max-width: 54rem;
+}
+.blog-index main > .section:nth-of-type(2) .prose .body {
+  position: relative;
+  margin: 0;
+  padding: 1.15rem 3.2rem 1.15rem 1.35rem;
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--red);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--mute);
+  transition: border-color 0.25s var(--ease), background 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.blog-index main > .section:nth-of-type(2) .prose .body::after {
+  content: "↗";
+  position: absolute;
+  top: 1.1rem;
+  right: 1.25rem;
+  color: var(--red);
+  font-family: var(--mono);
+  font-size: var(--fs-md);
+}
+.blog-index main > .section:nth-of-type(2) .prose .body:hover {
+  border-color: var(--red);
+  background: rgba(225, 37, 27, 0.09);
+  transform: translateX(0.2rem);
+}
+.blog-index main > .section:nth-of-type(2) .prose .body a {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--white);
+  font-size: var(--fs-md);
+  line-height: var(--lh-tight);
+}
+.blog-index main > .section:nth-of-type(2) .prose .body a:hover { color: var(--red); }
+.blog-index main > .section:nth-of-type(2) .prose .body strong { font-weight: var(--fw-semibold); }
+
+/* Ideias futuras: continuam acessíveis, mas não competem com conteúdo publicado. */
+.blog-index main > .section:nth-of-type(3) {
+  padding-block: clamp(3.5rem, 8vh, 6rem);
+  opacity: 0.72;
+}
+.blog-index main > .section:nth-of-type(3) .section__head { margin-bottom: 1.8rem; }
+.blog-index main > .section:nth-of-type(3) .h2 {
+  color: var(--mute-2);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+.blog-index main > .section:nth-of-type(3) .body { color: var(--mute-2); }
+.blog-index main > .section:nth-of-type(3) .deliver { opacity: 0.82; }
+
+@media (max-width: 760px) {
+  .deliver, .grid--2, .grid--3 { grid-template-columns: 1fr; }
+  .blog-index main > .section:nth-of-type(2) .prose .body {
+    padding: 1rem 2.8rem 1rem 1.1rem;
+  }
+}
