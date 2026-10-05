@@ -708,22 +708,55 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-body
 .yr .months { margin: 0 0 6px; }
 .yr .qs li { color: #9ca3af; }
 
-/* --- Como trabalhamos: carril horizontal --- */
+/* --- Como trabalhamos: título fixo, carril que desliza, linha de percurso --- */
 .how { background: var(--stone); }
-.how-stage { display: flex; align-items: center; background: var(--stone); }
-.how-rail { display: flex; gap: 20px; padding: 0 var(--gutter); width: max-content; align-items: stretch; }
-.how-item { width: min(82vw, 380px); background: var(--white); border-radius: 18px; padding: 34px; box-shadow: var(--shadow); display: flex; flex-direction: column; border-top: 5px solid var(--amber); }
-.how-item--head { background: transparent; box-shadow: none; border: 0; padding-left: max(0px, calc((100vw - var(--wrap)) / 2)); width: min(88vw, 560px); justify-content: center; }
-.how-item--end { background: var(--ink); color: var(--white); justify-content: center; border-top-color: var(--ink); }
-.how-item--end p { font: 700 1.35rem/1.25 var(--font-display); margin-bottom: 24px; }
-.how-n { font: 800 3.4rem/1 var(--font-display); color: var(--amber); letter-spacing: -0.04em; margin-bottom: 26px; }
+.how-stage { display: flex; flex-direction: column; justify-content: center; gap: clamp(20px, 4vh, 40px); background: var(--stone); }
+.how-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.how-head h2 { margin-bottom: .25em; }
+.how-head .lead { margin: 0; }
+.how-count { margin: 0; font: 800 clamp(2.4rem, 5vw, 3.6rem)/1 var(--font-display); letter-spacing: -0.04em; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.how-of { color: #a8a29e; font-size: .5em; letter-spacing: 0; }
+.how-rail { display: flex; gap: 22px; padding: 14px max(var(--gutter), calc((100vw - var(--wrap)) / 2 + var(--gutter))); width: max-content; align-items: stretch; }
+.how-item { width: min(80vw, 420px); background: var(--white); border-radius: 20px; padding: 30px 30px 26px; box-shadow: var(--shadow); display: flex; flex-direction: column; position: relative;
+  transition: transform .5s cubic-bezier(.2,.7,.2,1), box-shadow .5s, opacity .5s; }
+.how-item::before { content: ""; position: absolute; left: 30px; right: 30px; top: 0; height: 5px; border-radius: 0 0 5px 5px; background: #e7e5e4; transition: background-color .4s; }
+.how-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+.how-n { font: 800 3.2rem/1 var(--font-display); letter-spacing: -0.05em; color: #d6d3d1; transition: color .4s; }
+.how-ic { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--stone); color: var(--ink); transition: background-color .4s, color .4s; }
+.how-ic svg { width: 22px; height: 22px; }
 .how-item h3 { font-size: 1.35rem; }
 .how-item p { color: var(--ink-2); }
-.how-item--end p { color: var(--white); }
+.how-out { margin: auto 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-weight: 600; color: var(--ink) !important; }
+.how-out span { display: block; font: 700 .72rem var(--font-display); letter-spacing: .12em; text-transform: uppercase; color: var(--amber-dark); margin-bottom: 4px; }
+.how-item--end { background: var(--ink); justify-content: center; }
+.how-item--end::before { display: none; }
+.how-item--end p { font: 700 1.4rem/1.25 var(--font-display); margin-bottom: 24px; color: var(--white); }
+/* Cartão em foco */
+.how-item.is-active { box-shadow: 0 18px 40px rgba(17,24,39,.14); }
+.how-item.is-active::before { background: var(--amber); }
+.how-item.is-active .how-n { color: var(--amber); }
+.how-item.is-active .how-ic { background: var(--ink); color: var(--amber); }
 @media (prefers-reduced-motion: no-preference) {
-  .sc-act--pinned .how-item:not(.how-item--head) { opacity: clamp(.55, calc(var(--sc-p, 0) * 6 - var(--k, 0) * .9 + .55), 1); }
+  .sc-act--pinned .how-item.is-active { transform: translateY(-8px); }
+  .sc-act--pinned .how-item:not(.is-active):not(.how-item--end) { opacity: .62; }
 }
-.how:not(.sc-act--pinned) .how-rail { width: auto; flex-wrap: wrap; padding: 72px var(--gutter); max-width: var(--wrap); margin: 0 auto; }
+/* Linha de percurso */
+.how-track { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); padding-top: 4px; }
+.how-line { position: absolute; left: var(--gutter); right: var(--gutter); top: 11px; height: 4px; border-radius: 2px; background: #d6d3d1; overflow: hidden; }
+.how-fill { position: absolute; inset: 0; background: var(--amber); transform-origin: left; transform: scaleX(clamp(0, var(--sc-p, 1) * 1.08, 1)); }
+.how-dot { position: relative; display: flex; flex-direction: column; gap: 8px; font: 600 .85rem var(--font-display); color: #78716c; }
+.how-dot i { width: 18px; height: 18px; border-radius: 50%; background: var(--stone); border: 3px solid #d6d3d1; transition: border-color .3s, background-color .3s, transform .3s; }
+.how-dot b { font-weight: 600; transition: color .3s; }
+.how-dot.is-on i { border-color: var(--amber); background: var(--amber); }
+.how-dot.is-on b { color: var(--ink); }
+@media (max-width: 719px) { .how-dot b { display: none; } .how-count { display: none; } .how-head .lead { font-size: 1rem; } }
+/* Fora do modo fixo (telemóvel sem pin, reduced-motion, já assente): grelha simples */
+.how:not(.sc-act--pinned) .how-stage { padding: 72px 0; }
+.how:not(.sc-act--pinned) .how-rail { width: auto; flex-wrap: wrap; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.how:not(.sc-act--pinned) .how-item { width: min(100%, 360px); flex: 1 1 260px; }
+.how:not(.sc-act--pinned) .how-count, .how:not(.sc-act--pinned) .how-track { display: none; }
+.how:not(.sc-act--pinned) .how-item::before { background: var(--amber); }
+.how:not(.sc-act--pinned) .how-n { color: var(--amber); }
 
 /* --- Rede: luz âmbar que segue o ponteiro --- */
 .net[data-sc-spotlight] { position: relative; }
@@ -770,7 +803,7 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-body
 .yr.sc-done .yr-cap + .yr-cap { margin-top: 20px; }
 .yr.sc-done .yr-stage { padding: 96px 0; }
 .how.sc-done .how-rail { transform: none !important; }
-.how.sc-done .how-item { opacity: 1 !important; }
+.how.sc-done .how-item { opacity: 1 !important; transform: none !important; }
 .sc-done > .sc-stage { position: relative !important; top: auto !important; height: auto !important; }
 .team.sc-done [data-sc-reveal] { clip-path: none !important; -webkit-clip-path: none !important; }
 .close.sc-done { --sc-p: 1 !important; }

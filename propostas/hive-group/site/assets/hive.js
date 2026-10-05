@@ -138,6 +138,35 @@
     update();
   });
 
+  // Como trabalhamos: cartão em foco, contador e marcos do percurso
+  document.querySelectorAll(".how").forEach((how) => {
+    const items = [...how.querySelectorAll(".how-item:not(.how-item--end)")];
+    const dots = [...how.querySelectorAll(".how-dot")];
+    const cur = how.querySelector(".how-cur");
+    let last = -1, ticking = false;
+    // centro do primeiro cartão antes de o carril se mover
+    const rail = how.querySelector(".how-rail");
+    const anchor = (() => { const cs = getComputedStyle(rail); return parseFloat(cs.paddingLeft) + items[0].offsetWidth / 2; })();
+    const update = () => {
+      ticking = false;
+      if (!how.classList.contains("sc-act--pinned")) return;
+      // activo: o cartão que ocupa o lugar onde o primeiro começou; o último fecha o acto
+      const r = how.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - window.innerHeight)));
+      let best = 0, dist = Infinity;
+      items.forEach((it, i) => { const c = it.getBoundingClientRect(); const d = Math.abs(c.left + c.width / 2 - anchor); if (d < dist) { dist = d; best = i; } });
+      if (p > 0.82) best = items.length - 1;
+      if (best === last) return;
+      last = best;
+      items.forEach((it, i) => it.classList.toggle("is-active", i === best));
+      dots.forEach((d, i) => d.classList.toggle("is-on", i <= best));
+      if (cur) cur.textContent = String(best + 1).padStart(2, "0");
+    };
+    window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener("hive:settled", () => { if (how.classList.contains("sc-done")) items.forEach((it) => it.classList.remove("is-active")); else { last = -1; update(); } });
+    update();
+  });
+
   // Assinatura: as barras do símbolo enchem-se com o ano (progresso da página)
   if (document.querySelector(".logo-bars")) {
     const root = document.documentElement;
