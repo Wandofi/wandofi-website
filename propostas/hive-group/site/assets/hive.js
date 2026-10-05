@@ -67,7 +67,44 @@
     // Sem movimento ou em ecrã pequeno, o hero não fixa: composição estática completa, sem scroll vazio
     if (reduce.matches || small) document.querySelectorAll("[data-hero-pin]").forEach((el) => el.removeAttribute("data-sc-act"));
     if (reduce.matches) document.querySelectorAll('[data-sc-act="pin"]').forEach((el) => el.removeAttribute("data-sc-act"));
-    window.ScrollCraft.mount(scRoot);
+    const api = window.ScrollCraft.mount(scRoot);
+
+    // Uma vez só: quando um acto fixo sai por cima do ecrã, deixa de estar fixo e assenta.
+    // Ao voltar para cima já não repete nem obriga a atravessar o espaço fixo.
+    if (!reduce.matches && api && api.acts) {
+      const html = document.documentElement;
+      html.style.overflowAnchor = "none"; // compensamos o scroll à mão, sem ajuda do browser
+      const pending = api.acts.filter((a) => a.pinned);
+      let ticking = false;
+      const settle = () => {
+        ticking = false;
+        let changed = false;
+        for (let i = pending.length - 1; i >= 0; i--) {
+          const a = pending[i];
+          const r = a.el.getBoundingClientRect();
+          if (r.bottom > 0) continue; // ainda não saiu por cima
+          const oldH = a.el.offsetHeight;
+          a.pinned = false;
+          a.el.style.height = "";
+          a.el.classList.remove("sc-act--pinned");
+          a.el.classList.add("sc-done");
+          const newH = a.el.offsetHeight;
+          window.scrollBy({ top: newH - oldH, behavior: "instant" });
+          pending.splice(i, 1);
+          changed = true;
+        }
+        if (changed) { api.layout(); window.dispatchEvent(new Event("hive:settled")); }
+      };
+      window.addEventListener("scroll", () => { if (!ticking && pending.length) { ticking = true; requestAnimationFrame(settle); } }, { passive: true });
+
+      // Secções em fluxo com animação ligada ao scroll: ficam no estado final depois de vistas
+      document.querySelectorAll(".team[data-sc-act], .close[data-sc-act]").forEach((el) => {
+        const io = new IntersectionObserver((en) => {
+          if (en[0].intersectionRatio >= 0.55) { setTimeout(() => el.classList.add("sc-done"), 900); io.disconnect(); }
+        }, { threshold: [0, 0.55] });
+        io.observe(el);
+      });
+    }
   }
 
   // O ano: meses e trimestres a partir do progresso do acto fixo
@@ -92,6 +129,7 @@
     let ticking = false;
     const update = () => {
       ticking = false;
+      if (act.classList.contains("sc-done")) { paint(12); return; }
       const r = act.getBoundingClientRect();
       const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - window.innerHeight)));
       paint(Math.min(12, Math.floor(p * 12.99)));
@@ -105,10 +143,11 @@
     const root = document.documentElement;
     if (reduce.matches) { ["--yb1", "--yb2", "--yb3"].forEach((v) => root.style.setProperty(v, "1")); }
     else {
-      let ticking = false, done = false;
+      let ticking = false, done = false, best = 0;
       const update = () => {
         ticking = false;
-        const f = Math.min(1, window.scrollY / Math.max(1, root.scrollHeight - window.innerHeight));
+        best = Math.max(best, Math.min(1, window.scrollY / Math.max(1, root.scrollHeight - window.innerHeight)));
+        const f = best;
         [0, 1, 2].forEach((i) => root.style.setProperty(`--yb${i + 1}`, Math.min(1, Math.max(0, f * 4 - i)).toFixed(3)));
         const complete = f > 0.985;
         if (complete !== done) { done = complete; root.classList.toggle("year-complete", complete); }

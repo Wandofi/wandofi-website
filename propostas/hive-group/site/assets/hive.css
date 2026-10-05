@@ -762,3 +762,15 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-body
 .hx-comb { color: var(--amber); opacity: .55; }
 .hx-comb .hc-fill { color: var(--amber); opacity: .28; }
 @media (max-width: 999px) { .hx-comb { opacity: .3; right: -300px; } }
+
+/* ===== Uma vez só: estados assentes depois de o acto ter sido visto ===== */
+.hx.sc-done { --sc-p: 0 !important; }
+.hx.sc-done .hx-stage { padding: 72px 0 80px; }
+.yr.sc-done .yr-cap { opacity: 1 !important; transform: none !important; position: static !important; }
+.yr.sc-done .yr-cap + .yr-cap { margin-top: 20px; }
+.yr.sc-done .yr-stage { padding: 96px 0; }
+.how.sc-done .how-rail { transform: none !important; }
+.how.sc-done .how-item { opacity: 1 !important; }
+.sc-done > .sc-stage { position: relative !important; top: auto !important; height: auto !important; }
+.team.sc-done [data-sc-reveal] { clip-path: none !important; -webkit-clip-path: none !important; }
+.close.sc-done { --sc-p: 1 !important; }
