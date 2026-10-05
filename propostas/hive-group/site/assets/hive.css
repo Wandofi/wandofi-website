@@ -774,3 +774,10 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-body
 .sc-done > .sc-stage { position: relative !important; top: auto !important; height: auto !important; }
 .team.sc-done [data-sc-reveal] { clip-path: none !important; -webkit-clip-path: none !important; }
 .close.sc-done { --sc-p: 1 !important; }
+/* Camadas decorativas do hero nunca apanham cliques (a frase do segundo tempo estava por cima dos botões) */
+.hx-beat2, .hx-beat2 *, .hx-iris, .hx-back, .hx-hexback, .hx .artifacts { pointer-events: none; }
+.hx-copy { z-index: 4; }
+/* Com a barra fixa de marcação visível, os palcos fixos acabam acima dela */
+@media (max-width: 1119px) {
+  .sc-act--pinned > .sc-stage { height: calc(100svh - var(--header-h, 72px) - 76px); }
+}

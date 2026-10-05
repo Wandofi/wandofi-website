@@ -63,7 +63,7 @@
   // Scroll-craft (só na home): acto do ano, assinatura no símbolo e arranque do motor
   const scRoot = document.getElementById("conteudo");
   if (window.ScrollCraft && document.querySelector("[data-sc-act]")) {
-    const small = window.matchMedia("(max-width: 999px), (max-height: 699px)").matches;
+    const small = window.matchMedia("(max-width: 1119px), (max-height: 699px)").matches;
     // Sem movimento ou em ecrã pequeno, o hero não fixa: composição estática completa, sem scroll vazio
     if (reduce.matches || small) document.querySelectorAll("[data-hero-pin]").forEach((el) => el.removeAttribute("data-sc-act"));
     if (reduce.matches) document.querySelectorAll('[data-sc-act="pin"]').forEach((el) => el.removeAttribute("data-sc-act"));
