@@ -814,3 +814,15 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-body
 @media (max-width: 1119px) {
   .sc-act--pinned > .sc-stage { height: calc(100svh - var(--header-h, 72px) - 76px); }
 }
+
+/* ===== Imagens dos serviços ===== */
+.page-grid { display: grid; gap: 36px; align-items: center; }
+@media (min-width: 960px) { .page-grid { grid-template-columns: 1.1fr .9fr; gap: 56px; } }
+.page-pic { position: relative; margin: 0; isolation: isolate; }
+.page-pic img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 18px; box-shadow: var(--shadow-lift); display: block; }
+.page-pic__hex { position: absolute; z-index: -1; width: 46%; aspect-ratio: 55.3 / 49.5; right: -6%; bottom: -12%; background: var(--amber); -webkit-mask: var(--hexmask); mask: var(--hexmask); }
+.hero--pic .hex-field { opacity: .22; }
+.card--pic { padding-top: 0; overflow: hidden; }
+.card-pic { width: calc(100% + 56px); height: auto; max-width: none; margin: 0 -28px 20px; aspect-ratio: 3 / 2; object-fit: cover; display: block; }
+.card--pic .icon-hex { margin-top: -44px; position: relative; box-shadow: 0 6px 16px rgba(17,24,39,.12); background: var(--white); }
+@media (prefers-reduced-motion: no-preference) { .card--pic .card-pic { transition: transform .6s cubic-bezier(.2,.7,.2,1); } .card--pic:hover .card-pic { transform: scale(1.04); } }
