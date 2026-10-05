@@ -844,3 +844,6 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-body
 .hx-scene .chip .dot svg { width: 24px; height: 22px; color: var(--amber); }
 .who-card .icon-emb { width: 76px; height: 76px; margin-bottom: 20px; }
 .who-card .icon-emb img { width: 72px; height: 72px; }
+.value-card .icon-emb { width: 76px; height: 76px; margin-bottom: 20px; }
+.value-card .icon-emb img { width: 72px; height: 72px; }
+.section--dark .card .icon-emb, .section--dark .partner .icon-emb { background: var(--white); }
