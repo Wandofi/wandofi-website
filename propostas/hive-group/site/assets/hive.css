@@ -842,3 +842,5 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-body
 .hx-scene .chip .dot { display: grid; place-items: center; }
 .hx-scene .chip .dot::before, .hx-scene .chip .dot::after { content: none; display: none; }
 .hx-scene .chip .dot svg { width: 24px; height: 22px; color: var(--amber); }
+.who-card .icon-emb { width: 76px; height: 76px; margin-bottom: 20px; }
+.who-card .icon-emb img { width: 72px; height: 72px; }
