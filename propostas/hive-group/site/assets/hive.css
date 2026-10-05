@@ -759,3 +759,6 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-body
 /* Palcos fixos por baixo do cabeçalho */
 .sc-act--pinned > .sc-stage { top: var(--header-h, 72px); height: calc(100svh - var(--header-h, 72px)); }
 .hx:not(.sc-act--pinned) .hx-stage, .yr:not(.sc-act--pinned) .yr-stage, .how:not(.sc-act--pinned) .how-stage { position: relative; }
+.hx-comb { color: var(--amber); opacity: .55; }
+.hx-comb .hc-fill { color: var(--amber); opacity: .28; }
+@media (max-width: 999px) { .hx-comb { opacity: .3; right: -300px; } }
