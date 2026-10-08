@@ -847,3 +847,33 @@ body { background: var(--white); color: var(--ink); font-family: var(--font-body
 .value-card .icon-emb { width: 76px; height: 76px; margin-bottom: 20px; }
 .value-card .icon-emb img { width: 72px; height: 72px; }
 .section--dark .card .icon-emb, .section--dark .partner .icon-emb { background: var(--white); }
+
+/* ===== Hero de corpo inteiro: painel do escritório atrás, contabilista à frente ===== */
+.hx-scene--full { height: min(calc(100svh - 150px), 720px); min-height: 560px; max-width: 540px; }
+.hx-scene--full .hx-panel { position: absolute; left: 4%; right: 4%; top: 22%; bottom: 5%; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-lift); background: var(--stone);
+  transform: translate3d(0, calc(var(--sc-p, 0) * -18px), 0); }
+.hx-scene--full .hx-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; filter: saturate(.9) brightness(1.04);
+  transform-origin: 50% 70%; transform: scale(calc(1.02 + var(--sc-p, 0) * .06)); }
+.hx-scene--full .hx-panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(254,249,236,0) 55%, rgba(254,249,236,.35)); }
+/* Âncora nos pés: a figura cresce a partir do chão */
+.hx-full { position: absolute; z-index: 3; bottom: 2%; left: 50%; height: 97%; width: auto; max-width: none;
+  transform-origin: 50% 100%; transform: translate3d(-50%, 0, 0) scale(calc(1 + var(--sc-p, 0) * .07));
+  filter: drop-shadow(0 18px 22px rgba(28,30,35,.16)); }
+.hx-floor { position: absolute; z-index: 2; left: 50%; bottom: 1.2%; width: 44%; height: 4%; transform: translateX(-50%); border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(28,30,35,.32), rgba(28,30,35,0)); }
+.hx-scene--full .hx-hexback { width: 80%; right: -14%; bottom: 14%; z-index: -1; }
+.hx-scene--full .chip { left: -40px; bottom: 18%; z-index: 4; }
+@media (max-width: 999px) {
+  .hx-scene--full { height: 520px; min-height: 0; max-width: 420px; margin-top: 8px; }
+  .hx-scene--full .chip { left: 0; bottom: 10%; }
+}
+@media (max-width: 599px) {
+  .hx-scene--full { height: 460px; }
+  .hx-scene--full .chip { position: absolute; left: 0; right: auto; bottom: 8%; margin: 0; max-width: 220px; padding: 10px 12px; }
+  .hx-scene--full .chip span span { display: none; }
+}
+/* Painel só com janela e estante; as pernas descem abaixo do painel até à sombra no chão */
+.hx-scene--full .hx-panel { top: 16%; bottom: 20%; }
+.hx-scene--full .hx-panel img { object-position: 50% 12%; }
+.hx-scene--full .hx-panel::after { background: linear-gradient(180deg, rgba(254,249,236,0) 70%, rgba(254,249,236,.25)); }
+.hx-scene--full { height: min(calc(100svh - 200px), 720px); min-height: 470px; }

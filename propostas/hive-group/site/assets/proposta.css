@@ -155,3 +155,4 @@ mark.ph { background: #fef9ec; color: var(--ink); font-style: italic; padding: .
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; } }
 .shot--new .mini-photo { float: right; width: 34%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 8px; margin: 0 0 10px 14px; box-shadow: 0 10px 24px rgba(28,30,35,.15); }
 .shot--new .trust { clear: both; }
+.shot--new .mini-photo--full { height: auto; aspect-ratio: 598 / 900; object-fit: contain; object-position: 50% 100%; background: #fef9ec; box-shadow: none; }
