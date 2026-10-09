@@ -2,6 +2,7 @@
 <html lang="pt-PT">
   <head>
     <!-- Google tag (gtag.js) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-510WQZ4YQ7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -510,7 +511,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 <header class="nav">
       <div class="nav__inner">
         <a class="nav__brand" href="/" aria-label="Wandofi PM · início">
-          <img src="/assets/wandofi-mark.webp" width="256" height="256" alt="" />
+          <img src="/assets/wandofi-mark-90.webp" width="90" height="90" alt="" />
           <span>Wandofi PM</span>
         </a>
         <span class="nav__status"><span class="nav__dot" aria-hidden="true"></span> Disponível para projecto</span>
@@ -646,7 +647,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
       <div class="container">
         <div class="footer__grid stagger">
           <div class="footer__brand">
-            <img class="footer__logo" src="/assets/wandofi-pm-logo-dark.webp" width="600" height="470" loading="lazy" decoding="async" alt="Wandofi PM · Project Management" />
+            <img class="footer__logo" src="/assets/wandofi-pm-logo-dark-280.webp" width="280" height="219" loading="lazy" decoding="async" alt="Wandofi PM · Project Management" />
             <p class="footer__tagline">Consultor de SEO e project manager. Lisboa e remoto, para todo o país.</p>
             <ul class="footer__social" aria-label="Redes">
               <li><a href="https://www.linkedin.com/in/mauro-cordeiro-5162a1293/" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -740,7 +741,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 
     var PRECOS_CONFIRMADOS = true;
 
-    var URL_FOLHA = "";
+    var URL_FOLHA = "https://script.google.com/macros/s/AKfycbzYVOLP0wf-rjee7JhTd6w97An3axZNu261g4ZGnSJQwF-Ifgd91ml_MWgDuTdDLn5-/exec";
 
     var CONFIG = {
 
@@ -1086,8 +1087,12 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
           fetch(URL_FOLHA, { method: "POST", mode: "no-cors",
             headers: { "Content-Type": "text/plain;charset=utf-8" },
             body: JSON.stringify(dados) })
-          .then(function(){ sucesso(false); })
+          .then(function(){
+            if (typeof gtag === "function") { gtag("event", "diagnostico_envio_as_cegas", { local: "teste", resultado: "sem_resposta" }); }
+            sucesso(false);
+          })
           .catch(function(){
+            if (typeof gtag === "function") { gtag("event", "diagnostico_envio_as_cegas", { local: "teste", resultado: "falhou" }); }
             botao.disabled = false;
             botao.textContent = "Receber o plano detalhado";
             aviso.textContent = "Não consegui enviar. Escreva para geral@wandofi.pt e envio o plano na mesma.";
