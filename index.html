@@ -2,6 +2,7 @@
 <html lang="pt-PT">
   <head>
     <!-- Google tag (gtag.js) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-510WQZ4YQ7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -40,7 +41,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="preload" as="image" href="/assets/portrait.webp" />
+    <link rel="preload" as="image" href="/assets/portrait.webp" imagesrcset="/assets/portrait-480.webp 480w, /assets/portrait-720.webp 720w, /assets/portrait.webp 1023w" imagesizes="(max-width: 760px) 240px, 320px" />
 
     <!-- =========================================================
          WANDOFI PM · TEMA CLARO
@@ -414,7 +415,15 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .card--wide__action{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
 .card--wide__action .card__more{margin-top:0}
 @media (max-width:980px){.card--wide{grid-template-columns:1fr;align-items:start}}
-    </style>
+    /* ---- sites geridos (portefólio) ---- */
+.sites{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:clamp(1.6rem,3vw,2.2rem)}
+.site{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+.site img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.site__cap{padding:.9rem 1rem 1.05rem;border-top:1px solid var(--line)}
+.site__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
+.site__desc{display:block;margin-top:.3rem;color:var(--mute);font-size:.9rem;line-height:1.5}
+@media (max-width:760px){.sites{grid-template-columns:1fr}}
+</style>
 
     <script type="application/ld+json">
     {
@@ -476,7 +485,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
     <header class="nav">
       <div class="nav__inner">
         <a class="nav__brand" href="/" aria-label="Wandofi PM · início">
-          <img src="/assets/wandofi-mark.webp" width="256" height="256" alt="" />
+          <img src="/assets/wandofi-mark-90.webp" width="90" height="90" alt="" />
           <span>Wandofi PM</span>
         </a>
         <span class="nav__status"><span class="nav__dot" aria-hidden="true"></span> Disponível para projecto</span>
@@ -529,7 +538,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
             </div>
 
             <figure class="hero__portrait">
-              <img src="/assets/portrait.webp" width="1023" height="1537"
+              <img src="/assets/portrait.webp" srcset="/assets/portrait-480.webp 480w, /assets/portrait-720.webp 720w, /assets/portrait.webp 1023w" sizes="(max-width: 760px) 240px, 320px" width="1023" height="1537"
                    alt="Mauro Cordeiro, consultor de SEO e project manager, Wandofi PM"
                    fetchpriority="high" decoding="async" />
             </figure>
@@ -680,6 +689,41 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
             </div>
           </article>
 
+          <article class="case reveal">
+            <span class="tag">SEO · Conteúdo · SEO local</span>
+            <h3 class="case__title case__title--sm">SEO que traz contactos · dois clientes em Lisboa</h3>
+            <p class="body">Escritório de advogados: site reconstruído, SEO e conteúdo jurídico, e em três meses o site passou a ser a principal fonte de novos contactos. Gabinete de contabilidade: site novo, perfil de empresa no Google, SEO local e anúncios medidos, e em três meses entrou no Map Pack com o custo por clique a metade. Clientes anónimos por regra, números verificáveis em reunião.</p>
+            <div class="stats">
+              <div>
+                <span class="stat__value"><span class="n" data-count="55" data-prefix="+">+55</span></span>
+                <span class="stat__label">contactos orgânicos em 3 meses</span>
+              </div>
+              <div>
+                <span class="stat__value">Map Pack</span>
+                <span class="stat__label">"contabilidade lisboa", em 3 meses</span>
+              </div>
+            </div>
+          </article>
+
+          <header class="section__head reveal" style="margin-top:clamp(2rem,4vw,3rem)">
+            <p class="eyebrow">Sites que construí e giro</p>
+            <h3 class="h3">Três sites no ar, sem ligação por opção</h3>
+          </header>
+          <div class="sites reveal">
+            <figure class="site">
+              <img src="/assets/casos/clean-contas.webp" width="1600" height="1000" alt="Página inicial da Clean Contas, contabilidade TVDE online" loading="lazy" decoding="async" />
+              <figcaption class="site__cap"><span class="site__name">Clean Contas</span><span class="site__desc">Contabilidade TVDE, 100% online. Site construído e gerido por mim. Posição 8 no Google para "cae 49320", 380 pesquisas por mês.</span></figcaption>
+            </figure>
+            <figure class="site">
+              <img src="/assets/casos/reparar-trotinete.webp" width="1600" height="1000" alt="Página inicial da Reparar Trotinete, oficina de trotinetes eléctricas em Lisboa" loading="lazy" decoding="async" />
+              <figcaption class="site__cap"><span class="site__name">Reparar Trotinete</span><span class="site__desc">Oficina de trotinetes e e-bikes em Lisboa. Domínio novo na primeira página de Lisboa para "reparação trotinetes lisboa", posição 6.</span></figcaption>
+            </figure>
+            <figure class="site">
+              <img src="/assets/casos/fadermarket.webp" width="1600" height="1000" alt="Página para barbeiros do FaderMarket, com ilustração de um barbeiro a cortar cabelo" loading="lazy" decoding="async" />
+              <figcaption class="site__cap"><span class="site__name">FaderMarket</span><span class="site__desc">Marketplace de barbeiros em Lisboa e no Luxemburgo, com marcações online, agenda e pagamentos. Produto próprio, lançado em Outubro de 2026.</span></figcaption>
+            </figure>
+          </div>
+
           <div class="worklist reveal">
             <ul style="list-style:none;margin:0;padding:0">
               <li class="worklist__row">
@@ -694,7 +738,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
               </li>
               <li class="worklist__row">
                 <span class="worklist__cap">Sites e plataformas</span>
-                <span class="worklist__desc">LMS em Moodle com Stripe e compliance DGERT para uma escola de línguas. Sites de serviços locais com SEO local. Identidade e conteúdo para a Zone 7 Esports.</span>
+                <span class="worklist__desc">LMS em Moodle com Stripe e compliance DGERT para uma escola de línguas. Sites de serviços locais com SEO local: Clean Contas, Reparar Trotinete, um gabinete de contabilidade. Marketplace FaderMarket. Identidade e conteúdo para a Zone 7 Esports.</span>
                 <span class="worklist__tag">Moodle · Stripe</span>
               </li>
               <li class="worklist__row">
@@ -831,7 +875,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
       <div class="container">
         <div class="footer__grid stagger">
           <div class="footer__brand">
-            <img class="footer__logo" src="/assets/wandofi-pm-logo-dark.webp" width="600" height="470" loading="lazy" decoding="async" alt="Wandofi PM · Project Management" />
+            <img class="footer__logo" src="/assets/wandofi-pm-logo-dark-280.webp" width="280" height="219" loading="lazy" decoding="async" alt="Wandofi PM · Project Management" />
             <p class="footer__tagline">Consultor de SEO e project manager. Lisboa e remoto, para todo o país.</p>
             <ul class="footer__social" aria-label="Redes">
               <li><a href="https://www.linkedin.com/in/mauro-cordeiro-5162a1293/" target="_blank" rel="noopener" aria-label="LinkedIn">
