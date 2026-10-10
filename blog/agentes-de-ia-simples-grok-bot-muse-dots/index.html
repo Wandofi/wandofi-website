@@ -22,10 +22,10 @@
     <meta property="og:site_name" content="Wandofi PM" />
     <meta property="og:title" content="Grok Bot, Muse e Dots: agentes de IA simples" />
     <meta property="og:description" content="Três agentes de IA para quem não é técnico, por ordem: o Grok Bot, que agora chama o Claude para o trabalho pesado, o Muse da Meta, e os Dots do ChatGPT." />
-    <meta property="og:image" content="https://wandofi.pt/assets/og-card.jpg" />
+    <meta property="og:image" content="https://wandofi.pt/assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-og.jpg" />
     <meta property="og:locale" content="pt_PT" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://wandofi.pt/assets/og-card.jpg" />
+    <meta name="twitter:image" content="https://wandofi.pt/assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-og.jpg" />
     <meta name="twitter:title" content="Grok Bot, Muse e Dots: agentes de IA simples" />
     <meta name="twitter:description" content="Três agentes de IA para quem não é técnico, por ordem: o Grok Bot, que agora chama o Claude para o trabalho pesado, o Muse da Meta, e os Dots do ChatGPT." />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -34,6 +34,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-1200.webp" imagesrcset="/assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-480.webp 480w, /assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-720.webp 720w, /assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-1200.webp 1200w" imagesizes="(max-width: 1180px) calc(100vw - 2.3rem), 1084px" />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
     <style id="home-light">
@@ -603,19 +604,36 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
    Artigo com coluna de leitura mais larga e continua, indice no topo e
    lista dos outros artigos no fim. Fonte: ferramentas/paginas.css */
 .mono-inline { font-family: var(--mono); font-size: 0.9em; background: rgba(5,5,5,.05); padding: 0.12em 0.36em; border-radius: 3px; color: var(--ink); word-break: break-word; }
-.posts{list-style:none;margin:clamp(1.2rem,2.5vw,1.8rem) 0 0;padding:0;border-top:1px solid var(--line)}
-.post{border-bottom:1px solid var(--line);margin:0;padding:0}
-.post__link{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:.8rem 2.5rem;padding:clamp(1.3rem,2.4vw,1.8rem) 0;text-decoration:none;color:inherit;position:relative}
-.post__link::before{content:"";position:absolute;left:-1.1rem;top:1.1rem;bottom:1.1rem;width:2px;background:var(--red);transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease)}
-.post__link:hover::before{transform:scaleY(1)}
-.post__meta{display:flex;flex-direction:column;gap:.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:.35rem}
+/* Listagem do blog (modelo Best Account): um artigo em destaque com
+   imagem a esquerda e texto a direita, depois uma grelha de cartoes com
+   imagem, data e resumo. Fonte: ferramentas/paginas.css */
+.posts{list-style:none;margin:0;padding:0}
+.post{margin:0;padding:0}
+.post__link{display:block;text-decoration:none;color:inherit;border-radius:14px;background:var(--paper);border:1px solid var(--line);overflow:hidden;height:100%;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
+.post__link:hover{transform:translateY(-4px);box-shadow:0 28px 50px -30px rgba(5,5,5,.35);border-color:rgba(5,5,5,.2)}
+.post__figure{margin:0;overflow:hidden;background:var(--line-soft)}
+.post__img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .6s var(--ease)}
+.post__link:hover .post__img{transform:scale(1.03)}
+.post__text{padding:1.3rem 1.4rem 1.5rem}
+.post__meta{display:flex;flex-wrap:wrap;gap:.3rem .9rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.7rem}
 .post__meta time{color:var(--ink);font-weight:500}
-.post__title{font-family:var(--serif);font-weight:400;font-size:clamp(1.45rem,2.4vw,1.9rem);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 .55rem;max-width:24ch;transition:color .18s var(--ease)}
+.post__title{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 .6rem;transition:color .18s var(--ease)}
 .post__link:hover .post__title{color:var(--red)}
-.post__excerpt{margin:0;color:var(--mute);font-size:1rem;line-height:1.6;max-width:58ch}
-.post__more{display:inline-block;margin-top:.9rem;font-size:.92rem;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:2px}
-.post__link:hover .post__more{color:var(--red);border-color:var(--red)}
-@media (max-width:760px){.post__link{grid-template-columns:1fr;gap:.5rem}.post__meta{flex-direction:row;flex-wrap:wrap;gap:.3rem .9rem;padding-top:0}.post__link::before{left:-.9rem}}
+.post__excerpt{margin:0;color:var(--mute);font-size:.98rem;line-height:1.6}
+.post__more{display:inline-block;margin-top:1rem;font-size:.92rem;font-weight:600;color:var(--ink)}
+.post__link:hover .post__more{color:var(--red)}
+.posts__destaque{margin-bottom:clamp(2.6rem,5vw,4rem)}
+.post--destaque .post__link{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center}
+.post--destaque .post__figure{height:100%}
+.post--destaque .post__img{height:100%;aspect-ratio:auto;min-height:18rem}
+.post--destaque .post__text{padding:clamp(1.6rem,3.5vw,2.8rem)}
+.post--destaque .post__title{font-size:clamp(1.7rem,2.8vw,2.3rem);max-width:20ch}
+.post--destaque .post__excerpt{font-size:1.05rem;max-width:48ch}
+.posts__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}
+@media (max-width:980px){.posts__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.post--destaque .post__link{grid-template-columns:1fr}.post--destaque .post__img{min-height:0;aspect-ratio:16/9}}
+@media (max-width:620px){.posts__grid{grid-template-columns:1fr}.post__text{padding:1.1rem 1.15rem 1.3rem}}
+@media (prefers-reduced-motion:reduce){.post__link,.post__img{transition:none}.post__link:hover{transform:none}.post__link:hover .post__img{transform:none}}
 /* artigo: coluna de leitura */
 .artigo .post__byline{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:1.2rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem .9rem}
 .artigo .post__byline time{color:var(--ink);font-weight:500}
@@ -645,6 +663,51 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= ARTIGO (modelo Best Account) =================
+   Faixa escura de titulo em largura total, imagem de capa em cartao
+   sobreposto a faixa, e corpo em duas colunas: indice fixo a esquerda
+   e coluna de leitura larga a direita. Abaixo de 900px o indice sobe
+   para cima do texto. Fonte: ferramentas/paginas.css */
+.page-hero--escuro{background:var(--ink);color:#fff;overflow:hidden;isolation:isolate}
+.page-hero--escuro::before{content:"";position:absolute;top:-45%;right:-12%;width:58%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(225,37,27,.34),transparent 72%);z-index:-1;pointer-events:none}
+.page-hero--escuro::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 190px,rgba(255,255,255,.04) 190px 191px);z-index:-1;pointer-events:none}
+.page-hero--escuro .h1,.page-hero--escuro .page-hero__crumb a:last-of-type{color:#fff}
+.page-hero--escuro .lead{color:rgba(255,255,255,.74)}
+.page-hero--escuro .page-hero__crumb,.page-hero--escuro .page-hero__crumb a{color:rgba(255,255,255,.6)}
+.page-hero--escuro .page-hero__crumb .sep{color:rgba(255,255,255,.28)}
+.page-hero--escuro .page-hero__crumb a:hover{color:#fff}
+.page-hero--escuro .post__byline{color:rgba(255,255,255,.62)}
+.page-hero--escuro .post__byline time{color:#fff}
+.page-hero--artigo{padding-bottom:clamp(7.5rem,15vw,11.5rem)}
+.page-hero--artigo .page-hero__title{max-width:18ch;font-size:clamp(2.2rem,4.6vw,3.6rem)}
+.page-hero--artigo .page-hero__lead{max-width:60ch}
+.artigo__capa{margin:calc(-1*clamp(5.5rem,12vw,9rem)) 0 0;position:relative;z-index:1}
+.artigo__capa img{display:block;width:100%;height:auto;aspect-ratio:1344/752;object-fit:cover;border-radius:14px;box-shadow:0 30px 60px -30px rgba(5,5,5,.45),0 0 0 1px rgba(5,5,5,.06)}
+.artigo__grid{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;padding-top:clamp(2.5rem,5vw,4rem);padding-bottom:clamp(2rem,4vw,3rem)}
+.artigo__aside{position:sticky;top:5.5rem}
+.artigo__aside .toc{margin:0;padding:1.2rem 1.25rem 1.3rem;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);max-width:none;box-shadow:0 14px 30px -24px rgba(5,5,5,.25)}
+.artigo__aside .toc ol{columns:1;list-style:none;padding:0;margin:0}
+.artigo__aside .toc li{margin:0;font-size:.93rem;line-height:1.45}
+.artigo__aside .toc li+li{margin-top:.55rem}
+.artigo__aside .toc a{display:block;border:0;border-left:2px solid transparent;padding-left:.75rem;margin-left:-.25rem;color:var(--ink-soft);transition:color .18s var(--ease),border-color .18s var(--ease)}
+.artigo__aside .toc a:hover{color:var(--red);border-color:var(--red)}
+.artigo__body{min-width:0}
+.artigo__body .section{padding-block:0}
+.artigo__body .section+.section{margin-top:clamp(2.2rem,4.5vw,3.4rem)}
+.artigo__body .section--panel{background:transparent;border-top:0}
+.artigo__body .container{padding-inline:0;max-width:none}
+.artigo__body .prose{max-width:none}
+.artigo__body .prose .body,.artigo__body .prose>p,.artigo__body .prose .answer,.artigo__body .deliver li,.artigo__body .prose li{max-width:72ch;font-size:1.09rem;line-height:1.76}
+.artigo__body .prose>.answer:first-child{font-size:clamp(1.15rem,1.6vw,1.3rem);line-height:1.6;color:var(--ink);border-left:3px solid var(--red);padding-left:1.25rem;max-width:66ch}
+.artigo__body .prose .h2{border-top:0;padding-top:0;font-size:clamp(1.55rem,2.6vw,2.05rem);margin-bottom:.6rem}
+.artigo__body .section__head{margin-bottom:1.2rem}
+.artigo__body .faq .a{max-width:72ch}
+.artigo__body .morelist{max-width:none}
+.artigo__body .prefsrc{margin-top:0}
+.artigo__body .related{margin-top:1.4rem}
+@media (max-width:900px){.artigo__grid{grid-template-columns:1fr;gap:1.8rem}.artigo__aside{position:static}.artigo__aside .toc ol{columns:2;column-gap:1.5rem}.artigo__aside .toc li{break-inside:avoid}}
+@media (max-width:620px){.artigo__aside .toc ol{columns:1}.artigo__body .prose .body,.artigo__body .prose>p,.artigo__body .prose .answer,.artigo__body .deliver li,.artigo__body .prose li{font-size:1.04rem;line-height:1.7}.artigo__capa img{border-radius:10px}.page-hero--artigo{padding-bottom:5.5rem}.artigo__capa{margin-top:-4rem}}
 
 /* ================= COLUNA ÚNICA (casos) =================
    Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
@@ -703,7 +766,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 /* telemóvel: grelha de sites numa só coluna, por cima da regra da coluna única */
 @media (max-width:760px){.estreito .sites{grid-template-columns:1fr}}
     </style>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Grok Bot, Muse e Dots: agentes de IA simples", "description": "Três agentes de IA para quem não é técnico, por ordem: o Grok Bot, que agora chama o Claude para o trabalho pesado, o Muse da Meta, e os Dots do ChatGPT.", "inLanguage": "pt-PT", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/agentes-de-ia-simples-grok-bot-muse-dots/", "url": "https://wandofi.pt/blog/agentes-de-ia-simples-grok-bot-muse-dots/", "image": "https://wandofi.pt/assets/og-card.jpg"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Grok Bot, Muse e Dots: agentes de IA simples", "description": "Três agentes de IA para quem não é técnico, por ordem: o Grok Bot, que agora chama o Claude para o trabalho pesado, o Muse da Meta, e os Dots do ChatGPT.", "inLanguage": "pt-PT", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/agentes-de-ia-simples-grok-bot-muse-dots/", "url": "https://wandofi.pt/blog/agentes-de-ia-simples-grok-bot-muse-dots/", "image": "https://wandofi.pt/assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-og.jpg"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Posso usar o Muse em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "Ainda não. A Meta lançou o Muse só nos Estados Unidos, para maiores de 18 anos, e não deu data para outros países. Qualquer forma de o usar cá passa por contornar essa limitação, e com dados de clientes isso não é boa ideia."}}, {"@type": "Question", "name": "O Grok Bot usa sempre o Claude?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Segundo o anúncio de 7 de Outubro de 2026, o Bot escolhe o modelo conforme a tarefa: o Claude Opus 5.5 para raciocínio e código pesados, o Midjourney para imagem e o Suno para áudio. O utilizador não escolhe, e a lista exacta de que tarefa vai para que modelo não foi publicada."}}, {"@type": "Question", "name": "Preciso de saber programar para usar algum destes?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Os três são feitos para pedir em linguagem corrente. O que precisa é de decidir o que deixa o agente fazer sozinho e o que exige a sua aprovação, e de ver a que dados lhe dá acesso."}}]}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wandofi.pt/blog/"}, {"@type": "ListItem", "position": 3, "name": "Grok Bot, Muse e Dots", "item": "https://wandofi.pt/blog/agentes-de-ia-simples-grok-bot-muse-dots/"}]}</script>
   </head>
@@ -736,20 +799,21 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       </div>
     </header>
     <main id="main" class="artigo">
-<section class="page-hero">
+<section class="page-hero page-hero--escuro page-hero--artigo">
 <div class="container">
 <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/agentes-de-ia-simples-grok-bot-muse-dots/">Grok Bot, Muse e Dots</a></p>
 <p class="eyebrow">Guia prático</p>
 <h1 class="h1 page-hero__title">Grok Bot, Muse e Dots: os agentes de IA mais simples para quem não é técnico.</h1>
 <p class="lead page-hero__lead">Em dois meses apareceram três agentes que fazem tarefas por si, cada um com o seu computador na nuvem. Pus os três por ordem de simplicidade, com o que verifiquei nas fontes e o que ainda está por confirmar.</p>
-<p class="post__byline"><time datetime="2026-10-11">11 de Outubro de 2026</time><span>9 min de leitura</span><span>Mauro Cordeiro</span></p>
+<p class="post__byline"><time datetime="2026-10-11">11 de Outubro de 2026</time><span>10 min de leitura</span><span>Mauro Cordeiro</span></p>
 </div>
 </section>
-
+<div class="container"><figure class="artigo__capa"><img src="/assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-1200.webp" srcset="/assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-480.webp 480w, /assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-720.webp 720w, /assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-1200.webp 1200w" sizes="(max-width: 1180px) calc(100vw - 2.3rem), 1084px" width="1344" height="752" alt="Ilustração com três mascotes em pódios: um robô de olhos grandes com o símbolo da xAI, um boneco cor de creme sorridente com o símbolo da Meta, e três bolhas empilhadas com o símbolo da OpenAI" fetchpriority="high" decoding="async" /></figure></div>
+<div class="container artigo__grid"><aside class="artigo__aside"><nav class="toc" aria-label="Neste artigo"><p class="toc__label">Neste artigo</p><ol><li><a href="#o-que-mudou-em-dois-meses">O que mudou em dois meses</a></li><li><a href="#1-grok-bot-o-mais-simples-e-agora-com-o-claude-para-o-trabal">1. Grok Bot: o mais simples, e agora com o Claude para o trabalho pesado</a></li><li><a href="#2-muse-da-meta-a-implementacao-mais-facil-porque-ja-esta-ond">2. Muse, da Meta: a implementação mais fácil, porque já está onde as pessoas estão</a></li><li><a href="#3-dots-do-chatgpt-o-mais-recente-e-o-que-tem-mais-para-melho">3. Dots, do ChatGPT: o mais recente, e o que tem mais para melhorar</a></li><li><a href="#os-logotipos-viraram-bonecos">Os logótipos viraram bonecos</a></li><li><a href="#qual-escolher-para-quem-nao-e-tecnico">Qual escolher, se não é técnico</a></li><li><a href="#o-que-isto-muda-para-um-negocio-pequeno-em-portugal">O que isto muda para um negócio pequeno em Portugal</a></li></ol></nav></aside><div class="artigo__body">
 <section class="section"><div class="container"><div class="prose">
 <p class="answer">Se não é técnico e quer um agente que faça coisas por si, a ordem é esta: primeiro o Grok Bot, que não pede configuração nenhuma e desde 7 de Outubro de 2026 passa o trabalho pesado ao Claude; depois o Muse da Meta, o mais fácil de pôr a funcionar porque vive dentro do WhatsApp, mas só nos Estados Unidos por agora; por fim os Dots do ChatGPT, os mais recentes, presos a planos caros e com muito para afinar.</p>
 <p class="body">Monto <a href="/automacoes/">automações</a> e agentes de IA para clientes todos os dias. Este artigo não é uma lista de funcionalidades: é a ordem em que eu os recomendaria a alguém que não quer saber de modelos nem de chaves de API. As datas e os factos vêm das fontes ligadas em cada secção. Onde a informação ainda é de uma só fonte, digo.</p>
-<nav class="toc" aria-label="Neste artigo"><p class="toc__label">Neste artigo</p><ol><li><a href="#o-que-mudou-em-dois-meses">O que mudou em dois meses</a></li><li><a href="#1-grok-bot-o-mais-simples-e-agora-com-o-claude-para-o-trabal">1. Grok Bot: o mais simples, e agora com o Claude para o trabalho pesado</a></li><li><a href="#2-muse-da-meta-a-implementacao-mais-facil-porque-ja-esta-ond">2. Muse, da Meta: a implementação mais fácil, porque já está onde as pessoas estão</a></li><li><a href="#3-dots-do-chatgpt-o-mais-recente-e-o-que-tem-mais-para-melho">3. Dots, do ChatGPT: o mais recente, e o que tem mais para melhorar</a></li><li><a href="#qual-escolher-para-quem-nao-e-tecnico">Qual escolher, se não é técnico</a></li><li><a href="#o-que-isto-muda-para-um-negocio-pequeno-em-portugal">O que isto muda para um negócio pequeno em Portugal</a></li></ol></nav>
+
 </div></div></section>
 
 <section class="section section--panel"><div class="container"><div class="prose">
@@ -781,6 +845,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 <p class="body">A OpenAI lançou os Dots a 29 de Setembro de 2026, no DevDay, como contam a <a href="https://siliconangle.com/2026/09/29/openai-launches-dots-always-on-ai-agents-in-chatgpt-with-their-own-cloud-computers/" target="_blank" rel="noopener">SiliconANGLE</a> e a <a href="https://techcrunch.com/2026/09/29/openai-launches-dots-its-bubbly-agentic-avatar/" target="_blank" rel="noopener">TechCrunch</a>. São agentes sempre ligados dentro do ChatGPT, com computador e browser próprios na nuvem, que continuam a trabalhar depois de fechar a janela e aprendem as preferências do dono. Ligam a mais de 4 000 aplicações, ao Slack e ao Teams, e a OpenAI juntou o ChatGPT Space, um espaço partilhado onde pessoas, ChatGPT, Codex e Dots trabalham sobre o mesmo contexto.</p>
 <p class="body">Fica em terceiro por três razões. A primeira é o acesso: só nos planos Pro, a partir de 100 dólares por mês, e Business Premium, com um Dot incluído. Free, Go e Plus ficam de fora. A segunda é a geografia: no Pro, o Espaço Económico Europeu, a Suíça e o Reino Unido ficaram excluídos no lançamento, por isso um utilizador em Portugal só chega aos Dots por uma conta Business Premium. A terceira é o estado do produto: um Dot por pessoa, sem equipas de Dots, sem endereço de email próprio, memórias que não dá para ver nem apagar uma a uma, criação só no computador, e condições de utilização depois do primeiro mês ainda por publicar.</p>
 <p class="body">O anexo de segurança da própria OpenAI, citado pelo <a href="https://codersera.com/blog/openai-chatgpt-dots-guide-2026/" target="_blank" rel="noopener">guia da Codersera</a>, reporta entre 15 e 17 por cento de tentativas de contornar avisos de acções proibidas em testes, e a OpenAI diz que esses cenários não são necessariamente representativos do uso real. É o mais ambicioso dos três e o que mais me parece um produto a meio.</p>
+</div></div></section>
+
+<section class="section"><div class="container"><div class="prose">
+<p class="eyebrow">A tendência</p>
+<h2 class="h2" id="os-logotipos-viraram-bonecos">Os logótipos viraram bonecos</h2>
+<p class="body">Há um pormenor que os três partilham e que não tem nada de técnico: a cara do produto é um boneco, não um logótipo. O Grok Bot aparece como uma cabeça de robô feita de formas simples e olhos grandes. Segundo a <a href="https://x.ai/news/designing-grok-bot" target="_blank" rel="noopener">equipa de design da xAI</a>, a animação do avatar é a única indicação de estado: o boneco fica calmo quando está parado, acelera quando começa a trabalhar, muda de ritmo quando precisa de ajuda e assenta quando termina. A equipa experimentou iniciais, emojis, pixel art, aguarela e silhuetas antes de escolher, porque os estilos com mais detalhe não se liam ao tamanho de uma barra lateral.</p>
+<p class="body">O Muse tem o Jolly, um boneco cor de creme com dois olhos pretos minúsculos e um sorriso, que Mark Zuckerberg descreveu à <a href="https://www.nbcnews.com/tech/tech-news/meta-muse-ai-agent-response-animated-avatar-cute-rcna599736" target="_blank" rel="noopener">NBC News</a> como divertido e giro, e que cada utilizador pode vestir e renomear. O símbolo em forma de M, desenhado pela letrista Jessica Hische, fica em segundo plano, como nota o <a href="https://daringfireball.net/linked/2026/09/22/meta-muse-hische" target="_blank" rel="noopener">Daring Fireball</a>. Os Dots são, como o nome diz, bolinhas: a TechCrunch descreveu o produto como um avatar borbulhento, pequenos desenhos animados a flutuar, com uma personagem por defeito e a possibilidade de dar nome e cara própria a cada um.</p>
+<p class="body">Não é coincidência. A Microsoft deu ao Copilot o Mico, a Google tem os Gemini Buddies, a Mozilla criou o Kit e até a Apple usa um pequeno avatar azul e branco nas redes sociais, como resume a <a href="https://www.nssmag.com/en/lifestyle/45423/big-tech-mascots-humanize-ai" target="_blank" rel="noopener">nss magazine</a>. Depois de uma década de marcas mínimas, as empresas de tecnologia voltaram às mascotes, sobretudo na IA: uma cara fixa melhor do que um símbolo e torna menos fria uma coisa que, por baixo, é um computador na nuvem a executar tarefas. Há quem chame a isto cutewashing, e a pergunta que fica é se a fofura tranquiliza de facto quem usa.</p>
+<p class="body">Para quem gere um negócio, a leitura que faço é simples. O boneco baixa a barreira de entrada, e é por isso que funciona com quem não é técnico. Mas o que o boneco esconde é um agente com acesso ao email, ao calendário e, em alguns casos, aos pagamentos. Ao escolher um, olhe para o que está por trás da cara: que dados vê, que acções pede para aprovar e onde guarda a memória. A simpatia do avatar não entra nessa conta. E se a sua marca estiver a pensar seguir a moda, a regra é a mesma de qualquer logótipo: a mascote tem de funcionar a 24 píxeis numa barra lateral e a dois metros num cartaz, que foi exactamente o teste que a xAI diz ter feito antes de escolher a sua.</p>
 </div></div></section>
 
 <section class="section section--panel"><div class="container"><div class="prose">
@@ -821,7 +894,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 </div></div></section>
 
 <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><p class="body">Outros artigos do blog:</p><ul class="morelist"><li><a href="/blog/google-preferred-sources/"><time datetime="2026-09-10">10 Set 2026</time><span class="t">Google Preferred Sources: o que é e como instalar no seu site</span></a></li><li><a href="/blog/agentes-de-ia-a-medida/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Agentes de IA à medida: skills, workflows e implementação remota</span></a></li><li><a href="/blog/tendencias-de-ia-em-portugal/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Tendências de IA em Portugal em 2026: o que está em alta</span></a></li><li><a href="/blog/ai-act-ia-no-marketing/"><time datetime="2026-08-31">31 Ago 2026</time><span class="t">IA no marketing e o AI Act: o que está em causa</span></a></li><li><a href="/blog/como-abrir-uma-empresa-em-portugal/"><time datetime="2026-08-20">20 Ago 2026</time><span class="t">Como abrir uma empresa em Portugal, passo a passo</span></a></li></ul><div class="related"><a href="/automacoes/">Automações</a><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/blog/agentes-de-ia-a-medida/">Agentes de IA à medida</a><a href="/blog/tendencias-de-ia-em-portugal/">Tendências de IA em Portugal</a><a href="/contactos/">Contactos</a></div></div></section>
-
+</div></div>
 <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Quer um agente de IA a correr no seu negócio, sem depender de uma plataforma?</h2><p class="lead">Monto agentes à medida, ligados às ferramentas que já usa, e fico para a manutenção. Começamos por um diagnóstico, sem compromisso.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a><a class="close__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
 </main>
     <footer class="footer">
