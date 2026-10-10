@@ -658,6 +658,51 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 /* reserva de altura ao teste de diagnóstico, para a secção seguinte não saltar */
 #quiz{min-height:26rem}
 @media (max-width:760px){#quiz{min-height:30rem}}
+
+/* ================= CASOS: luz, carril e brilho (2026-10-11) =================
+   Tudo em transform, opacity e background. Elementos decorativos fora do
+   fluxo, por isso sem deslocamento de layout. Desligado para quem pede
+   menos movimento. */
+.luz .page-hero{position:relative;overflow:hidden;isolation:isolate}
+.luz__a,.luz__b{position:absolute;pointer-events:none;z-index:-1;border-radius:50%;filter:blur(40px);will-change:transform}
+.luz__a{width:44rem;height:44rem;right:-14rem;top:-18rem;background:radial-gradient(closest-side,rgba(225,37,27,.16),rgba(225,37,27,0))}
+.luz__b{width:30rem;height:30rem;left:-10rem;bottom:-16rem;background:radial-gradient(closest-side,rgba(5,5,5,.07),rgba(5,5,5,0))}
+.luz .page-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(5,5,5,.07) 1px,transparent 1.2px);background-size:22px 22px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%)}
+@supports (animation-timeline: scroll()){
+  .luz__a{animation:luz-a linear both;animation-timeline:scroll();animation-range:0 120vh}
+  .luz__b{animation:luz-b linear both;animation-timeline:scroll();animation-range:0 120vh}
+  @keyframes luz-a{to{transform:translate3d(-6rem,10rem,0)}}
+  @keyframes luz-b{to{transform:translate3d(6rem,-4rem,0)}}
+}
+/* carril de capítulos */
+.rail{display:none}
+@media (min-width:1180px){
+  .rail{display:block;position:fixed;left:max(1.2rem,calc((100vw - 1180px) / 2 - 7.5rem));top:50%;transform:translateY(-50%);z-index:5;width:7rem}
+  .rail__line{position:absolute;left:.3rem;top:-.2rem;bottom:-.2rem;width:1px;background:var(--line)}
+  .rail__line::after{content:"";position:absolute;left:0;top:0;width:1px;height:100%;background:var(--red);transform:scaleY(0);transform-origin:top}
+  .rail__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.1rem}
+  .rail__list a{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--mute);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .25s var(--ease)}
+  .rail__dot{width:.6rem;height:.6rem;border-radius:50%;border:1px solid var(--line);background:var(--paper);box-shadow:0 0 0 0 rgba(225,37,27,0);transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .35s var(--ease)}
+  .rail__list a.is-on{color:var(--ink)}
+  .rail__list a.is-on .rail__dot{background:var(--red);border-color:var(--red);box-shadow:0 0 0 5px rgba(225,37,27,.14)}
+  .rail__list a:hover{color:var(--red)}
+  @supports (animation-timeline: scroll()){.rail__line::after{animation:rail-fill linear both;animation-timeline:scroll()}@keyframes rail-fill{to{transform:scaleY(1)}}}
+}
+/* linha que se desenha sob o sobretítulo de cada secção */
+.luz .section__head .eyebrow{position:relative;display:inline-block;padding-bottom:.45rem}
+.luz .section__head .eyebrow::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left}
+@supports (animation-timeline: view()){.luz .section__head .eyebrow::after{animation:traco linear both;animation-timeline:view();animation-range:entry 0% entry 40%}@keyframes traco{to{transform:scaleX(1)}}}
+/* brilho que segue o cursor nos cartões e nas barras de números */
+.luz .site,.luz div.proof .stat{--mx:50%;--my:50%;background-image:radial-gradient(24rem circle at var(--mx) var(--my),rgba(225,37,27,.10),transparent 60%);background-repeat:no-repeat;background-size:100% 100%;background-color:var(--paper)}
+.luz .site{background-blend-mode:normal}
+.luz .site:not(:hover),.luz div.proof .stat:not(:hover){background-image:none}
+.luz .site:hover{box-shadow:0 24px 44px -26px rgba(5,5,5,.42),0 0 0 1px rgba(225,37,27,.18),0 0 40px -10px rgba(225,37,27,.25)}
+.luz div.proof .stat:hover{box-shadow:inset 0 0 0 1px rgba(225,37,27,.14)}
+.luz .stat__v{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.luz__a,.luz__b,.rail__line::after,.luz .section__head .eyebrow::after{animation:none}.luz .section__head .eyebrow::after{transform:scaleX(1)}}
+
+/* telemóvel: grelha de sites numa só coluna, por cima da regra da coluna única */
+@media (max-width:760px){.estreito .sites{grid-template-columns:1fr}}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SEO para Advogados", "serviceType": "SEO para Advogados", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "SEO para advogados e escritórios de advocacia em Portugal. Presença local e conteúdo por área de prática para atrair clientes.", "url": "https://wandofi.pt/seo/advogados/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Trabalha mesmo com escritórios de advocacia?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, e conheço o sector por dentro: trabalho como assistente administrativo num escritório de advogados em Lisboa. Isso ajuda-me a escrever conteúdo sóbrio e adequado, sem exageros. Nota: não sou advogado nem presto aconselhamento jurídico."}}, {"@type": "Question", "name": "Que áreas de prática posso destacar?", "acceptedAnswer": {"@type": "Answer", "text": "Qualquer uma. O ideal é uma página por área, por exemplo, direito laboral, imobiliário ou societário, para aparecer nas pesquisas específicas de cada uma."}}, {"@type": "Question", "name": "O SEO jurídico tem de ser diferente?", "acceptedAnswer": {"@type": "Answer", "text": "Deve ser mais sóbrio e rigoroso, respeitando o tom do sector e as regras aplicáveis à comunicação. É esse o registo que uso."}}]}</script>
