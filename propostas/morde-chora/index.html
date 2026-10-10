@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Morde &amp; Chora Burguer · Amadora</title>
+<meta name="description" content="Proposta de produto, não é o site final. Hambúrgueres empilhados até ao palito, na Amadora. Morde e Chora, Hambúrguer do Moreno, Fahita, Magoga e Cachorro. Encomenda pelo WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F28C34">
+<meta property="og:title" content="Morde &amp; Chora Burguer">
+<meta property="og:description" content="Se não chorou é porque ainda não mordeu. Amadora, Lisboa.">
+<meta property="og:image" content="assets/morde-chora-foto.webp">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Bungee&display=swap">
+<link rel="preload" as="image" href="assets/morde-chora.webp">
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="site.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<a class="skip" href="#carta">Saltar para a carta</a>
+<p class="proposal" role="note"><b>Proposta</b> <span>Protótipo de produto da Wandofi, não é o site final</span></p>
+<span data-sc-progress></span>
+<div class="sc-grain" aria-hidden="true"></div>
+
+<!-- The loud bar. The burger mark here is the signature: it loses a bite at
+     every cut the visitor passes, and the count stays. -->
+<header class="bar">
+  <a class="bar__mark" href="#top" aria-label="Morde &amp; Chora Burguer, voltar ao início">
+    <span class="bite-mark" data-bite-mark aria-hidden="true"></span>
+    <span class="bar__count" aria-live="polite"><b data-bite-count>0</b> <span data-bite-word>dentadas</span></span>
+  </a>
+  <div class="bar__marquee" aria-hidden="true">
+    <div class="bar__track">
+      <span>Se não chorou é porque ainda não mordeu</span><i>✶</i>
+      <span>Hambúrgueres · Fahita · Magoga · Cachorro</span><i>✶</i>
+      <span>Amadora · Lisboa</span><i>✶</i>
+      <span>Se não chorou é porque ainda não mordeu</span><i>✶</i>
+      <span>Hambúrgueres · Fahita · Magoga · Cachorro</span><i>✶</i>
+      <span>Amadora · Lisboa</span><i>✶</i>
+    </div>
+  </div>
+  <a class="bar__cta" href="https://wa.me/351932966513?text=Ol%C3%A1%21%20Quero%20encomendar." target="_blank" rel="noopener">Encomendar</a>
+</header>
+
+
+<main id="top">
+
+  <!-- 1 · FOME: layered hero -->
+  <section class="hero" data-hero data-ground="dark">
+    <div class="hero__scene" aria-hidden="true">
+      <img class="hero__plane hero__bg" src="assets/hero-bg.webp" alt="" width="1376" height="768">
+      <img class="hero__plane hero__flames" src="assets/flames-v2.webp" alt="" width="1376" height="768">
+    </div>
+    <h1 class="hero__title"><span>Morde &amp;</span> <span>Chora</span></h1>
+    <img class="hero__plane hero__burger" src="assets/morde-chora.webp" width="730" height="1282"
+         alt="O hambúrguer Morde e Chora: pão brioche, duas carnes, ovo, queijo, batata palha e um palito a segurar tudo">
+    <img class="hero__plane hero__smoke" src="assets/smoke-v2.webp" alt="" width="1376" height="768" aria-hidden="true">
+    <div class="hero__floor" aria-hidden="true"></div>
+    <div class="hero__copy">
+      <p>Hambúrgueres empilhados até ao palito. Feitos na Amadora, para quem aguenta.</p>
+      <a class="btn" href="https://wa.me/351932966513?text=Ol%C3%A1%21%20Quero%20encomendar." target="_blank" rel="noopener">Encomendar</a>
+    </div>
+  </section>
+
+  <!-- 2 · PROVOCAÇÃO -->
+  <section class="cut cut--orange dare" data-bite="1">
+    <p class="dare__lines" data-sc-in data-sc-stagger="70">
+      <span>Se não</span>
+      <span>chorou,</span>
+      <span>é porque ainda</span>
+      <span>não mordeu.</span>
+    </p>
+  </section>
+
+  <!-- 3 · RESPEITO: the one real number -->
+  <section class="cut cut--dark proof" data-bite="2">
+    <div class="proof__inner" data-sc-in data-sc-stagger="80">
+      <p class="proof__pre">Mais de</p>
+      <p class="proof__num"><span data-count-to="1600">1600</span></p>
+      <p class="proof__post">hambúrgueres vendidos. E a contar.</p>
+    </div>
+  </section>
+
+  <!-- 4 · PICO: the scroll builds the burger layer by layer, swaps the
+       stack for the real thing, then takes a bite. The only held act on the
+       page, by the client's request. -->
+  <section class="build" id="carta" data-build data-bite="3">
+    <div class="build__stage">
+      <div class="build__copy">
+        <p class="build__pre">O que dá nome à casa</p>
+        <ol class="build__list" aria-label="Como se monta um Morde e Chora">
+          <li data-step="0">Pão brioche.</li>
+          <li data-step="1">Molho, milho e alface.</li>
+          <li data-step="2">1.ª carne.</li>
+          <li data-step="3">Ovo estrelado.</li>
+          <li data-step="4">Queijo a escorrer.</li>
+          <li data-step="5">2.ª carne.</li>
+          <li data-step="6">Fiambre e bacon.</li>
+          <li data-step="7">Batata palha.</li>
+          <li data-step="8">Pão por cima.</li>
+          <li data-step="9">E o palito.</li>
+        </ol>
+        <div class="build__name">
+          <h2>Morde e Chora</h2>
+          <p class="price"><span>12,50</span> €</p>
+          <a class="textlink" href="https://wa.me/351932966513?text=Ol%C3%A1%21%20Quero%20um%20Morde%20e%20Chora." target="_blank" rel="noopener">Encomendar este</a>
+        </div>
+      </div>
+      <div class="build__burger" aria-hidden="true">
+        <div class="build__stack">
+          <img class="layer" data-layer="0" src="assets/l-bun-bottom.webp" alt="">
+          <img class="layer" data-layer="1" src="assets/l-sauce.webp" alt="">
+          <img class="layer" data-layer="2" src="assets/l-patty.webp" alt="">
+          <img class="layer" data-layer="3" src="assets/l-egg.webp" alt="">
+          <img class="layer" data-layer="4" src="assets/l-cheese.webp" alt="">
+          <img class="layer" data-layer="5" src="assets/l-patty.webp" alt="">
+          <img class="layer" data-layer="6" src="assets/l-ham.webp" alt="">
+          <img class="layer" data-layer="7" src="assets/l-potato.webp" alt="">
+          <img class="layer" data-layer="8" src="assets/l-bun-top.webp" alt="">
+          <span class="layer layer--stick" data-layer="9"></span>
+        </div>
+        <img class="build__final" data-mc-img src="assets/mc-hero.webp" width="753" height="1300" alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · ALÍVIO: cut to light -->
+  <section class="cut cut--light moreno" data-sc-act="flow" data-bite="4">
+    <figure class="moreno__fig" data-sc-reveal="iris" data-sc-reveal-at="0.12 0.42">
+      <img src="assets/moreno.webp" width="1200" height="1184" loading="lazy"
+           alt="O Hambúrguer do Moreno num prato branco: carne, dois ovos estrelados, queijo, alface, milho e molho">
+    </figure>
+    <div class="moreno__copy" data-sc-in data-sc-stagger="70">
+      <h2 class="moreno__name">Hambúrguer do Moreno</h2>
+      <p>Uma carne, dois ovos, queijo. Mais leve. Não muito.</p>
+      <p class="price"><span>9,80</span> €</p>
+      <a class="textlink" href="https://wa.me/351932966513?text=Ol%C3%A1%21%20Quero%20um%20Hamb%C3%BArguer%20do%20Moreno." target="_blank" rel="noopener">Encomendar este</a>
+    </div>
+  </section>
+
+  <!-- 6 · CURIOSIDADE: the rest of the menu, one band per word, hard edges -->
+  <section class="menu" aria-labelledby="menu-t">
+    <h2 class="sr-only" id="menu-t">Também na carta</h2>
+    <div class="band band--dark" data-bite="5">
+      <p class="word__big" data-sc-in data-sc-stagger="45"><span>Fa</span><span>hi</span><span>ta.</span></p>
+    </div>
+    <div class="band band--orange word--slide" data-slide data-bite="6">
+      <p class="word__big"><span class="word__slider">Magoga.</span></p>
+    </div>
+    <div class="band band--ketchup" data-sc-act="flow" data-bite="7">
+      <div class="word__wipe" data-sc-reveal="up" data-sc-reveal-at="0.12 0.4">
+        <p class="word__big">Cachorro.</p>
+      </div>
+    </div>
+    <p class="menu__label">Também na carta. Preço e recheio: pergunta no WhatsApp.</p>
+  </section>
+
+  <!-- 13 · CONFIANÇA -->
+  <section class="cut cut--dark where" data-bite="8">
+    <div class="where__inner" data-sc-in data-sc-stagger="60">
+      <h2 class="where__title">Amadora, Lisboa.</h2>
+      <p>Entregas: combina pelo WhatsApp, a gente diz-te se chega aí.</p>
+      <p>Horário, menu completo e o feedback de quem já chorou: nos destaques do <a class="textlink" href="https://www.instagram.com/morde_chora_burguer_/" target="_blank" rel="noopener">Instagram</a>.</p>
+    </div>
+  </section>
+
+  <!-- 14 · DECISÃO: abrupt, full bleed, holds -->
+  <section class="cut cut--orange close" id="encomendar">
+    <div class="close__eaten" data-regen>
+      <span class="bite-mark bite-mark--all" data-bite-mark="all" aria-hidden="true"></span>
+      <p aria-live="polite"><span class="regen__before">Comeste o logótipo todo.<br>Já só sobram as chamas.</span><span class="regen__after">Calma, já está outro a sair.<br>Agora pede o teu.</span></p>
+    </div>
+    <a class="close__cta" href="https://wa.me/351932966513?text=Ol%C3%A1%21%20Quero%20encomendar." target="_blank" rel="noopener">Encomendar</a>
+    <p class="close__sub">Pelo WhatsApp: <a href="https://wa.me/351932966513" target="_blank" rel="noopener">932 966 513</a></p>
+    <footer class="close__foot">
+      <span>Morde &amp; Chora Burguer · Amadora</span>
+      <span>Proposta de produto da Wandofi. Não é o site final: textos, preços e imagens por validar com a casa.</span>
+      <a href="https://www.instagram.com/morde_chora_burguer_/" target="_blank" rel="noopener">@morde_chora_burguer_</a>
+    </footer>
+  </section>
+
+</main>
+
+<script src="scrollcraft.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
