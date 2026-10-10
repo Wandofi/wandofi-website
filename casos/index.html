@@ -25,6 +25,7 @@
     <meta property="og:image" content="https://wandofi.pt/assets/og-card.jpg" />
     <meta property="og:locale" content="pt_PT" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://wandofi.pt/assets/og-card.jpg" />
     <meta name="twitter:title" content="Casos e Resultados | Wandofi PM" />
     <meta name="twitter:description" content="Casos de trabalho da Wandofi PM: SEO que trouxe mais de 55 contactos em 3 meses, SEO local no Map Pack, reconciliação financeira e três sites de serviços locais no Google." />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -33,7 +34,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
     <!-- CSS embutido: o build do Replit nao serve ficheiros CSS novos. -->
                     <style id="home-light">
 
@@ -46,7 +48,7 @@
   --line:rgba(5,5,5,.13);
   --line-soft:rgba(5,5,5,.07);
   --red:#e1251b;
-  --red-deep:#99140f;
+  --red-deep:#99140f;--livre:#12855a;
   --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
   --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -474,6 +476,7 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 }
 @media (hover:none){.site:hover{--ty:0px}.site:hover img{transform:none}}
 @media (prefers-reduced-motion:reduce){.site,div.proof .stat,.site img,.album__card,.album__more,.site__cap::before,div.proof .stat::after{transition:none}.album__stage{animation:none}.site:hover{--ty:0px}.site:hover img{transform:none}}
+.nav__dot{background:var(--livre)}
 
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
@@ -652,8 +655,12 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .estreito .page-hero__title{max-width:14ch}
 .estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
 .estreito .sites{grid-template-columns:repeat(2,1fr)}
+/* reserva de altura ao teste de diagnóstico, para a secção seguinte não saltar */
+#quiz{min-height:26rem}
+@media (max-width:760px){#quiz{min-height:30rem}}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Posso falar com antigos fornecedores e gestores de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Ponho em contacto com fornecedores e gestores de SEO com quem trabalhei, para confirmarem como trabalho e o que entrego."}}, {"@type": "Question", "name": "Tem casos de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, dois estão nesta página com números: um escritório de advogados e um gabinete de contabilidade, ambos em Lisboa, mais três sites de serviços locais na primeira página do Google. Os clientes ficam anónimos por regra. Em reunião mostro os relatórios do Search Console e do Mangools."}}]}</script>
+      <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Casos", "item": "https://wandofi.pt/casos/"}]}</script>
   </head>
   <body>
     <a class="skip-link" href="#main">Saltar para o conteúdo</a>
@@ -690,7 +697,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           <p class="eyebrow">Prova · Casos e portefólio</p>
           <h1 class="h1 page-hero__title">Trabalho que fica a funcionar.</h1>
           <p class="lead page-hero__lead">Não mostro logótipos por mostrar. Mostro o que foi construído, o que mudou e os números que o provam.</p>
-          <div class="page-hero__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow">↗</span></a></div>
+          <div class="page-hero__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a></div>
           
         </div>
       </section>
@@ -787,12 +794,12 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
         <div class="footer__base">
           <p class="footer__line">© 2026 Wandofi PM · wandofi.pt</p>
-          <a class="footer__zaask" target="_blank" rel="noopener" href="https://www.zaask.pt/user/wandofipm"><img src="https://www.zaask.pt/widget?user=1068326&widget=pro-findme" alt="Wandofi PM no Zaask" /></a>
+          <a class="footer__zaask" target="_blank" rel="noopener" href="https://www.zaask.pt/user/wandofipm"><img src="https://www.zaask.pt/widget?user=1068326&widget=pro-findme" width="112" height="28" alt="Wandofi PM no Zaask" loading="lazy" decoding="async" /></a>
         </div>
       </div>
     </footer>
 
-<div class="dock" aria-label="Acções rápidas">
+<div class="dock" role="group" aria-label="Acções rápidas">
       <a class="btn btn--red" data-cta="barra-movel" href="https://calendly.com/wandofi" target="_blank" rel="noopener">Marcar diagnóstico</a>
       <a class="btn btn--ghost" data-cta="barra-movel" href="mailto:geral@wandofi.pt?subject=Diagn%C3%B3stico%20Wandofi" aria-label="Enviar email">Email</a>
     </div>

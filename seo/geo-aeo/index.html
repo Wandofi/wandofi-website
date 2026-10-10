@@ -25,6 +25,7 @@
     <meta property="og:image" content="https://wandofi.pt/assets/og-card.jpg" />
     <meta property="og:locale" content="pt_PT" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://wandofi.pt/assets/og-card.jpg" />
     <meta name="twitter:title" content="GEO e AEO, Optimização para ChatGPT e Google AI | Wandofi PM" />
     <meta name="twitter:description" content="GEO e AEO: prepare o seu site para ser citado pelo ChatGPT, Perplexity e respostas de IA do Google. Optimização para motores generativos em Portugal." />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -33,7 +34,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
     <!-- CSS embutido: o build do Replit nao serve ficheiros CSS novos. -->
                     <style id="home-light">
 
@@ -46,7 +48,7 @@
   --line:rgba(5,5,5,.13);
   --line-soft:rgba(5,5,5,.07);
   --red:#e1251b;
-  --red-deep:#99140f;
+  --red-deep:#99140f;--livre:#12855a;
   --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
   --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -474,6 +476,7 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 }
 @media (hover:none){.site:hover{--ty:0px}.site:hover img{transform:none}}
 @media (prefers-reduced-motion:reduce){.site,div.proof .stat,.site img,.album__card,.album__more,.site__cap::before,div.proof .stat::after{transition:none}.album__stage{animation:none}.site:hover{--ty:0px}.site:hover img{transform:none}}
+.nav__dot{background:var(--livre)}
 
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
@@ -652,6 +655,9 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .estreito .page-hero__title{max-width:14ch}
 .estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
 .estreito .sites{grid-template-columns:repeat(2,1fr)}
+/* reserva de altura ao teste de diagnóstico, para a secção seguinte não saltar */
+#quiz{min-height:26rem}
+@media (max-width:760px){#quiz{min-height:30rem}}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "GEO e AEO, Optimização para IA", "serviceType": "Optimização para motores generativos", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "GEO e AEO: prepare o seu site para ser citado pelo ChatGPT, Perplexity e respostas de IA do Google. Optimização para motores generativos em Portugal.", "url": "https://wandofi.pt/seo/geo-aeo/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que é GEO e AEO, em palavras simples?", "acceptedAnswer": {"@type": "Answer", "text": "AEO é optimizar para ser a resposta directa em motores como as respostas de IA do Google e o Perplexity. GEO é optimizar para que modelos como o ChatGPT citem o seu site como fonte. Ambos assentam no SEO tradicional."}}, {"@type": "Question", "name": "Vale a pena investir nisto agora?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, porque a concorrência em Portugal ainda é reduzida e as bases que se constroem para GEO e AEO, conteúdo claro, FAQ, dados estruturados, também reforçam o SEO clássico. É trabalho que serve os dois."}}, {"@type": "Question", "name": "Como se mede o sucesso em GEO e AEO?", "acceptedAnswer": {"@type": "Answer", "text": "Aparece em menções e citações do site em ferramentas de IA, no tráfego vindo dessas fontes e na presença nas respostas do Google com IA. É um campo novo, por isso acompanho e ajusto."}}]}</script>
@@ -692,7 +698,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           <p class="eyebrow">SEO · GEO / AEO</p>
           <h1 class="h1 page-hero__title">Apareça também nas respostas da IA.</h1>
           <p class="lead page-hero__lead">Cada vez mais pessoas perguntam ao ChatGPT, ao Perplexity e ao Google com IA em vez de percorrer links. Preparo o seu site para ser a resposta, e a fonte citada.</p>
-          <div class="page-hero__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow">↗</span></a></div>
+          <div class="page-hero__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a></div>
           
         </div>
       </section>
@@ -781,12 +787,12 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
         <div class="footer__base">
           <p class="footer__line">© 2026 Wandofi PM · wandofi.pt</p>
-          <a class="footer__zaask" target="_blank" rel="noopener" href="https://www.zaask.pt/user/wandofipm"><img src="https://www.zaask.pt/widget?user=1068326&widget=pro-findme" alt="Wandofi PM no Zaask" /></a>
+          <a class="footer__zaask" target="_blank" rel="noopener" href="https://www.zaask.pt/user/wandofipm"><img src="https://www.zaask.pt/widget?user=1068326&widget=pro-findme" width="112" height="28" alt="Wandofi PM no Zaask" loading="lazy" decoding="async" /></a>
         </div>
       </div>
     </footer>
 
-<div class="dock" aria-label="Acções rápidas">
+<div class="dock" role="group" aria-label="Acções rápidas">
       <a class="btn btn--red" data-cta="barra-movel" href="https://calendly.com/wandofi" target="_blank" rel="noopener">Marcar diagnóstico</a>
       <a class="btn btn--ghost" data-cta="barra-movel" href="mailto:geral@wandofi.pt?subject=Diagn%C3%B3stico%20Wandofi" aria-label="Enviar email">Email</a>
     </div>
