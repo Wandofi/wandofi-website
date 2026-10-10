@@ -25,6 +25,7 @@
     <meta property="og:image" content="https://wandofi.pt/assets/og-card.jpg" />
     <meta property="og:locale" content="pt_PT" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://wandofi.pt/assets/og-card.jpg" />
     <meta name="twitter:title" content="Como abrir uma empresa em Portugal, passo a passo" />
     <meta name="twitter:description" content="Guia prático para abrir uma empresa em Portugal. O que decidir antes, como criar a empresa na hora ou online, e o que tratar nos primeiros dias." />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -33,7 +34,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
     <style id="home-light">
 
 :root{
@@ -45,7 +47,7 @@
   --line:rgba(5,5,5,.13);
   --line-soft:rgba(5,5,5,.07);
   --red:#e1251b;
-  --red-deep:#99140f;
+  --red-deep:#99140f;--livre:#12855a;
   --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
   --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -473,6 +475,7 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 }
 @media (hover:none){.site:hover{--ty:0px}.site:hover img{transform:none}}
 @media (prefers-reduced-motion:reduce){.site,div.proof .stat,.site img,.album__card,.album__more,.site__cap::before,div.proof .stat::after{transition:none}.album__stage{animation:none}.site:hover{--ty:0px}.site:hover img{transform:none}}
+.nav__dot{background:var(--livre)}
 
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
@@ -651,8 +654,11 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .estreito .page-hero__title{max-width:14ch}
 .estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
 .estreito .sites{grid-template-columns:repeat(2,1fr)}
+/* reserva de altura ao teste de diagnóstico, para a secção seguinte não saltar */
+#quiz{min-height:26rem}
+@media (max-width:760px){#quiz{min-height:30rem}}
     </style>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Como abrir uma empresa em Portugal, passo a passo", "description": "Guia prático para abrir uma empresa em Portugal. O que decidir antes, como criar a empresa na hora ou online, e o que tratar nos primeiros dias.", "inLanguage": "pt-PT", "datePublished": "2026-08-20", "dateModified": "2026-08-20", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/", "url": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Como abrir uma empresa em Portugal, passo a passo", "description": "Guia prático para abrir uma empresa em Portugal. O que decidir antes, como criar a empresa na hora ou online, e o que tratar nos primeiros dias.", "inLanguage": "pt-PT", "datePublished": "2026-08-20", "dateModified": "2026-08-20", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/", "url": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/", "image": "https://wandofi.pt/assets/og-card.jpg"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "É preciso advogado para abrir uma empresa?", "acceptedAnswer": {"@type": "Answer", "text": "Para a constituição em si não é obrigatório. Pode usar os modelos de pacto do Estado, na Empresa na Hora ou online. O advogado compensa quando há vários sócios, acordos a definir, ou uma estrutura menos comum."}}, {"@type": "Question", "name": "Quanto custa abrir uma empresa em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "No balcão da Empresa na Hora, a constituição fica em 360 euros, segundo o portal da Justiça. A isso junta o capital social que define para a empresa e os custos correntes que vêm a seguir, como o contabilista."}}, {"@type": "Question", "name": "Posso criar a empresa toda online?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Se você e todos os sócios tiverem a Chave Móvel Digital activa ou o cartão de cidadão com assinatura digital, faz a criação da empresa online do princípio ao fim."}}]}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wandofi.pt/blog/"}, {"@type": "ListItem", "position": 3, "name": "Como abrir uma empresa em Portugal", "item": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/"}]}</script>
   </head>
@@ -763,7 +769,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       </div></div></section>
 
       <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><p class="body">Outros artigos do blog:</p><ul class="morelist"><li><a href="/blog/google-preferred-sources/"><time datetime="2026-09-10">10 Set 2026</time><span class="t">Google Preferred Sources: o que é e como instalar no seu site</span></a></li><li><a href="/blog/agentes-de-ia-a-medida/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Agentes de IA à medida: skills, workflows e implementação remota</span></a></li><li><a href="/blog/tendencias-de-ia-em-portugal/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Tendências de IA em Portugal em 2026: o que está em alta</span></a></li><li><a href="/blog/ai-act-ia-no-marketing/"><time datetime="2026-08-31">31 Ago 2026</time><span class="t">IA no marketing e o AI Act: o que está em causa</span></a></li></ul><div class="related"><a href="/criacao-de-sites/">Criação de sites</a><a href="/automacoes/">Automações</a><a href="/seo/">SEO</a><a href="/contactos/">Contactos</a></div></div></section>
-      <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Vai abrir empresa e quer a operação a andar desde o primeiro dia?</h2><p class="lead">Trato da estrutura à volta, site, ferramentas, processos e automações, para começar organizado. Começamos por um diagnóstico, sem compromisso.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow">↗</span></a><a class="close__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
+      <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Vai abrir empresa e quer a operação a andar desde o primeiro dia?</h2><p class="lead">Trato da estrutura à volta, site, ferramentas, processos e automações, para começar organizado. Começamos por um diagnóstico, sem compromisso.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a><a class="close__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
     </main>
     <footer class="footer">
       <div class="container">
