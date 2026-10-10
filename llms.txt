@@ -41,3 +41,14 @@ Site essencial de uma página a preço fixo, desde 350€, com SEO local incluí
 - [Sobre a Wandofi PM](https://wandofi.pt/sobre/): abordagem e método, construído por dentro de práticas reguladas.
 - [Casos e resultados](https://wandofi.pt/casos/): sistema de reconciliação financeira para um escritório jurídico, com cerca de 92% de reconciliação automática e o fecho mensal reduzido de 5h para 20 min.
 - [Contactos](https://wandofi.pt/contactos/): geral@wandofi.pt, Lisboa e todo o país.
+
+## Mais páginas
+
+- [Agentes de IA à medida: skills, workflows e implementação remota](https://wandofi.pt/blog/agentes-de-ia-a-medida/): Construo agentes de IA à medida para pessoas e empresas: skills, workflows, instalação e implementação remota. Autónomos ou de acompanhamento, ligados às suas ferramentas.
+- [IA no marketing e o AI Act: o que está em causa](https://wandofi.pt/blog/ai-act-ia-no-marketing/): Desde agosto de 2026 há regras europeias para quem usa IA. Em linguagem simples, o que o AI Act muda para o marketing do seu negócio, sem alarmismo.
+- [Como abrir uma empresa em Portugal, passo a passo](https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/): Guia prático para abrir uma empresa em Portugal. O que decidir antes, como criar a empresa na hora ou online, e o que tratar nos primeiros dias.
+- [Google Preferred Sources: o que é e como instalar no seu site](https://wandofi.pt/blog/google-preferred-sources/): O Preferred Sources da Google já está disponível em Portugal. O que é mesmo, o que não é, e como instalar o botão no seu site com um simples link, sem programar.
+- [Blog](https://wandofi.pt/blog/): Artigos sobre SEO, tráfego, GEO e AEO e infraestrutura digital para negócios em Portugal. Prático e sem jargão.
+- [Tendências de IA em Portugal em 2026: o que está em alta](https://wandofi.pt/blog/tendencias-de-ia-em-portugal/): O que está mesmo em alta na inteligência artificial em Portugal em 2026: agentes de IA, ferramentas, automação e marketing. Um guia prático, sem jargão, para o seu negócio.
+- [Teste de diagnóstico e estimativa de preço](https://wandofi.pt/diagnostico/): Seis perguntas, dois minutos, e fica com uma estimativa de preço e prazo para o seu projecto de SEO, site ou automação. Sem compromisso e sem dar o email para ver o resultado.
+- [Anunciar no ChatGPT: gestão de campanhas ChatGPT Ads](https://wandofi.pt/gestao-de-trafego/chatgpt-ads/): Gestão de campanhas no ChatGPT em Portugal. Abro a conta no Ads Manager, instalo a medição, escolho os temas de conversa e escrevo os anúncios e a página de destino.
