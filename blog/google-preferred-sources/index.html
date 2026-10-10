@@ -22,10 +22,10 @@
     <meta property="og:site_name" content="Wandofi PM" />
     <meta property="og:title" content="Google Preferred Sources: como instalar" />
     <meta property="og:description" content="O Preferred Sources da Google já está em Portugal. O que é, o que não é, e como instalar o botão no seu site com um link, sem programar." />
-    <meta property="og:image" content="https://wandofi.pt/assets/og-card.jpg" />
+    <meta property="og:image" content="https://wandofi.pt/assets/blog/google-preferred-sources-og.jpg" />
     <meta property="og:locale" content="pt_PT" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://wandofi.pt/assets/og-card.jpg" />
+    <meta name="twitter:image" content="https://wandofi.pt/assets/blog/google-preferred-sources-og.jpg" />
     <meta name="twitter:title" content="Google Preferred Sources: como instalar" />
     <meta name="twitter:description" content="O Preferred Sources da Google já está em Portugal. O que é, o que não é, e como instalar o botão no seu site com um link, sem programar." />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -34,6 +34,7 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="image" href="/assets/blog/google-preferred-sources-1200.webp" imagesrcset="/assets/blog/google-preferred-sources-480.webp 480w, /assets/blog/google-preferred-sources-720.webp 720w, /assets/blog/google-preferred-sources-1200.webp 1200w" imagesizes="(max-width: 1180px) calc(100vw - 2.3rem), 1084px" />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
     <style id="home-light">
@@ -603,19 +604,36 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
    Artigo com coluna de leitura mais larga e continua, indice no topo e
    lista dos outros artigos no fim. Fonte: ferramentas/paginas.css */
 .mono-inline { font-family: var(--mono); font-size: 0.9em; background: rgba(5,5,5,.05); padding: 0.12em 0.36em; border-radius: 3px; color: var(--ink); word-break: break-word; }
-.posts{list-style:none;margin:clamp(1.2rem,2.5vw,1.8rem) 0 0;padding:0;border-top:1px solid var(--line)}
-.post{border-bottom:1px solid var(--line);margin:0;padding:0}
-.post__link{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:.8rem 2.5rem;padding:clamp(1.3rem,2.4vw,1.8rem) 0;text-decoration:none;color:inherit;position:relative}
-.post__link::before{content:"";position:absolute;left:-1.1rem;top:1.1rem;bottom:1.1rem;width:2px;background:var(--red);transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease)}
-.post__link:hover::before{transform:scaleY(1)}
-.post__meta{display:flex;flex-direction:column;gap:.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:.35rem}
+/* Listagem do blog (modelo Best Account): um artigo em destaque com
+   imagem a esquerda e texto a direita, depois uma grelha de cartoes com
+   imagem, data e resumo. Fonte: ferramentas/paginas.css */
+.posts{list-style:none;margin:0;padding:0}
+.post{margin:0;padding:0}
+.post__link{display:block;text-decoration:none;color:inherit;border-radius:14px;background:var(--paper);border:1px solid var(--line);overflow:hidden;height:100%;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
+.post__link:hover{transform:translateY(-4px);box-shadow:0 28px 50px -30px rgba(5,5,5,.35);border-color:rgba(5,5,5,.2)}
+.post__figure{margin:0;overflow:hidden;background:var(--line-soft)}
+.post__img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .6s var(--ease)}
+.post__link:hover .post__img{transform:scale(1.03)}
+.post__text{padding:1.3rem 1.4rem 1.5rem}
+.post__meta{display:flex;flex-wrap:wrap;gap:.3rem .9rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.7rem}
 .post__meta time{color:var(--ink);font-weight:500}
-.post__title{font-family:var(--serif);font-weight:400;font-size:clamp(1.45rem,2.4vw,1.9rem);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 .55rem;max-width:24ch;transition:color .18s var(--ease)}
+.post__title{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 .6rem;transition:color .18s var(--ease)}
 .post__link:hover .post__title{color:var(--red)}
-.post__excerpt{margin:0;color:var(--mute);font-size:1rem;line-height:1.6;max-width:58ch}
-.post__more{display:inline-block;margin-top:.9rem;font-size:.92rem;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:2px}
-.post__link:hover .post__more{color:var(--red);border-color:var(--red)}
-@media (max-width:760px){.post__link{grid-template-columns:1fr;gap:.5rem}.post__meta{flex-direction:row;flex-wrap:wrap;gap:.3rem .9rem;padding-top:0}.post__link::before{left:-.9rem}}
+.post__excerpt{margin:0;color:var(--mute);font-size:.98rem;line-height:1.6}
+.post__more{display:inline-block;margin-top:1rem;font-size:.92rem;font-weight:600;color:var(--ink)}
+.post__link:hover .post__more{color:var(--red)}
+.posts__destaque{margin-bottom:clamp(2.6rem,5vw,4rem)}
+.post--destaque .post__link{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center}
+.post--destaque .post__figure{height:100%}
+.post--destaque .post__img{height:100%;aspect-ratio:auto;min-height:18rem}
+.post--destaque .post__text{padding:clamp(1.6rem,3.5vw,2.8rem)}
+.post--destaque .post__title{font-size:clamp(1.7rem,2.8vw,2.3rem);max-width:20ch}
+.post--destaque .post__excerpt{font-size:1.05rem;max-width:48ch}
+.posts__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}
+@media (max-width:980px){.posts__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.post--destaque .post__link{grid-template-columns:1fr}.post--destaque .post__img{min-height:0;aspect-ratio:16/9}}
+@media (max-width:620px){.posts__grid{grid-template-columns:1fr}.post__text{padding:1.1rem 1.15rem 1.3rem}}
+@media (prefers-reduced-motion:reduce){.post__link,.post__img{transition:none}.post__link:hover{transform:none}.post__link:hover .post__img{transform:none}}
 /* artigo: coluna de leitura */
 .artigo .post__byline{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:1.2rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem .9rem}
 .artigo .post__byline time{color:var(--ink);font-weight:500}
@@ -645,6 +663,51 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= ARTIGO (modelo Best Account) =================
+   Faixa escura de titulo em largura total, imagem de capa em cartao
+   sobreposto a faixa, e corpo em duas colunas: indice fixo a esquerda
+   e coluna de leitura larga a direita. Abaixo de 900px o indice sobe
+   para cima do texto. Fonte: ferramentas/paginas.css */
+.page-hero--escuro{background:var(--ink);color:#fff;overflow:hidden;isolation:isolate}
+.page-hero--escuro::before{content:"";position:absolute;top:-45%;right:-12%;width:58%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(225,37,27,.34),transparent 72%);z-index:-1;pointer-events:none}
+.page-hero--escuro::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 190px,rgba(255,255,255,.04) 190px 191px);z-index:-1;pointer-events:none}
+.page-hero--escuro .h1,.page-hero--escuro .page-hero__crumb a:last-of-type{color:#fff}
+.page-hero--escuro .lead{color:rgba(255,255,255,.74)}
+.page-hero--escuro .page-hero__crumb,.page-hero--escuro .page-hero__crumb a{color:rgba(255,255,255,.6)}
+.page-hero--escuro .page-hero__crumb .sep{color:rgba(255,255,255,.28)}
+.page-hero--escuro .page-hero__crumb a:hover{color:#fff}
+.page-hero--escuro .post__byline{color:rgba(255,255,255,.62)}
+.page-hero--escuro .post__byline time{color:#fff}
+.page-hero--artigo{padding-bottom:clamp(7.5rem,15vw,11.5rem)}
+.page-hero--artigo .page-hero__title{max-width:18ch;font-size:clamp(2.2rem,4.6vw,3.6rem)}
+.page-hero--artigo .page-hero__lead{max-width:60ch}
+.artigo__capa{margin:calc(-1*clamp(5.5rem,12vw,9rem)) 0 0;position:relative;z-index:1}
+.artigo__capa img{display:block;width:100%;height:auto;aspect-ratio:1344/752;object-fit:cover;border-radius:14px;box-shadow:0 30px 60px -30px rgba(5,5,5,.45),0 0 0 1px rgba(5,5,5,.06)}
+.artigo__grid{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;padding-top:clamp(2.5rem,5vw,4rem);padding-bottom:clamp(2rem,4vw,3rem)}
+.artigo__aside{position:sticky;top:5.5rem}
+.artigo__aside .toc{margin:0;padding:1.2rem 1.25rem 1.3rem;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);max-width:none;box-shadow:0 14px 30px -24px rgba(5,5,5,.25)}
+.artigo__aside .toc ol{columns:1;list-style:none;padding:0;margin:0}
+.artigo__aside .toc li{margin:0;font-size:.93rem;line-height:1.45}
+.artigo__aside .toc li+li{margin-top:.55rem}
+.artigo__aside .toc a{display:block;border:0;border-left:2px solid transparent;padding-left:.75rem;margin-left:-.25rem;color:var(--ink-soft);transition:color .18s var(--ease),border-color .18s var(--ease)}
+.artigo__aside .toc a:hover{color:var(--red);border-color:var(--red)}
+.artigo__body{min-width:0}
+.artigo__body .section{padding-block:0}
+.artigo__body .section+.section{margin-top:clamp(2.2rem,4.5vw,3.4rem)}
+.artigo__body .section--panel{background:transparent;border-top:0}
+.artigo__body .container{padding-inline:0;max-width:none}
+.artigo__body .prose{max-width:none}
+.artigo__body .prose .body,.artigo__body .prose>p,.artigo__body .prose .answer,.artigo__body .deliver li,.artigo__body .prose li{max-width:72ch;font-size:1.09rem;line-height:1.76}
+.artigo__body .prose>.answer:first-child{font-size:clamp(1.15rem,1.6vw,1.3rem);line-height:1.6;color:var(--ink);border-left:3px solid var(--red);padding-left:1.25rem;max-width:66ch}
+.artigo__body .prose .h2{border-top:0;padding-top:0;font-size:clamp(1.55rem,2.6vw,2.05rem);margin-bottom:.6rem}
+.artigo__body .section__head{margin-bottom:1.2rem}
+.artigo__body .faq .a{max-width:72ch}
+.artigo__body .morelist{max-width:none}
+.artigo__body .prefsrc{margin-top:0}
+.artigo__body .related{margin-top:1.4rem}
+@media (max-width:900px){.artigo__grid{grid-template-columns:1fr;gap:1.8rem}.artigo__aside{position:static}.artigo__aside .toc ol{columns:2;column-gap:1.5rem}.artigo__aside .toc li{break-inside:avoid}}
+@media (max-width:620px){.artigo__aside .toc ol{columns:1}.artigo__body .prose .body,.artigo__body .prose>p,.artigo__body .prose .answer,.artigo__body .deliver li,.artigo__body .prose li{font-size:1.04rem;line-height:1.7}.artigo__capa img{border-radius:10px}.page-hero--artigo{padding-bottom:5.5rem}.artigo__capa{margin-top:-4rem}}
 
 /* ================= COLUNA ÚNICA (casos) =================
    Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
@@ -703,7 +766,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 /* telemóvel: grelha de sites numa só coluna, por cima da regra da coluna única */
 @media (max-width:760px){.estreito .sites{grid-template-columns:1fr}}
     </style>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Google Preferred Sources: como instalar", "description": "O Preferred Sources da Google já está em Portugal. O que é, o que não é, e como instalar o botão no seu site com um link, sem programar.", "inLanguage": "pt-PT", "datePublished": "2026-09-10", "dateModified": "2026-09-10", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/google-preferred-sources/", "url": "https://wandofi.pt/blog/google-preferred-sources/", "image": "https://wandofi.pt/assets/og-card.jpg"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Google Preferred Sources: como instalar", "description": "O Preferred Sources da Google já está em Portugal. O que é, o que não é, e como instalar o botão no seu site com um link, sem programar.", "inLanguage": "pt-PT", "datePublished": "2026-09-10", "dateModified": "2026-09-10", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/google-preferred-sources/", "url": "https://wandofi.pt/blog/google-preferred-sources/", "image": "https://wandofi.pt/assets/blog/google-preferred-sources-og.jpg"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Preferred Sources funciona em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Arrancou em agosto de 2025 apenas nos Estados Unidos e na Índia, mas desde 30 de abril de 2026 está disponível em todas as línguas onde a Pesquisa Google existe, Portugal incluído."}}, {"@type": "Question", "name": "Isto melhora a minha posição no Google para toda a gente?", "acceptedAnswer": {"@type": "Answer", "text": "Não. O Preferred Sources só dá prioridade ao seu site junto de quem carregou no botão, na conta Google dessa pessoa. Não é um atalho de ranking e não muda nada para quem nunca o marcou."}}, {"@type": "Question", "name": "Preciso de saber programar para instalar?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Além do código de duas linhas que a Google fornece, existe um link directo que funciona em qualquer site, mesmo sem JavaScript. É um link normal, igual a qualquer outro."}}]}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wandofi.pt/blog/"}, {"@type": "ListItem", "position": 3, "name": "Google Preferred Sources", "item": "https://wandofi.pt/blog/google-preferred-sources/"}]}</script>
   </head>
@@ -736,7 +799,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       </div>
     </header>
     <main id="main" class="artigo">
-      <section class="page-hero">
+      <section class="page-hero page-hero--escuro page-hero--artigo">
         <div class="container">
           <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/google-preferred-sources/">Google Preferred Sources</a></p>
           <p class="eyebrow">Guia prático</p>
@@ -745,11 +808,12 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 <p class="post__byline"><time datetime="2026-09-10">10 de Setembro de 2026</time><span>6 min de leitura</span><span>Mauro Cordeiro</span></p>
         </div>
       </section>
-
-      <section class="section"><div class="container"><div class="prose">
+<div class="container"><figure class="artigo__capa"><img src="/assets/blog/google-preferred-sources-1200.webp" srcset="/assets/blog/google-preferred-sources-480.webp 480w, /assets/blog/google-preferred-sources-720.webp 720w, /assets/blog/google-preferred-sources-1200.webp 1200w" sizes="(max-width: 1180px) calc(100vw - 2.3rem), 1084px" width="1344" height="752" alt="Ilustração de uma pilha de páginas web com uma estrela em destaque e uma lupa, sobre fundo azul" fetchpriority="high" decoding="async" /></figure></div>
+<div class="container artigo__grid"><aside class="artigo__aside"><nav class="toc" aria-label="Neste artigo"><p class="toc__label">Neste artigo</p><ol><li><a href="#o-que-e-e-onde-aparece">O que é, e onde aparece</a></li><li><a href="#o-que-o-preferred-sources-nao-e">O que o Preferred Sources não é</a></li><li><a href="#como-instalar-por-dois-caminhos">Como instalar, por dois caminhos</a></li><li><a href="#onde-por-o-botao-para-alguem-carregar">Onde pôr o botão para alguém carregar</a></li><li><a href="#para-quem-compensa-mesmo">Para quem compensa mesmo</a></li><li><a href="#ja-esta-a-funcionar-aqui">Já está a funcionar aqui</a></li></ol></nav></aside><div class="artigo__body">
+<section class="section"><div class="container"><div class="prose">
         <p class="answer">O Preferred Sources é uma funcionalidade da Google que deixa cada pessoa marcar os sites em que confia, para os ver primeiro nos resultados. Está disponível em Portugal desde abril de 2026, é grátis, e para instalar basta um link.</p>
         <p class="body">Escrevo isto porque vi a novidade a circular com números inflacionados e promessas de atalho ao algoritmo. Fui às fontes oficiais da Google confirmar o que é verdade e o que não é. Aqui fica, sem exageros.</p>
-<nav class="toc" aria-label="Neste artigo"><p class="toc__label">Neste artigo</p><ol><li><a href="#o-que-e-e-onde-aparece">O que é, e onde aparece</a></li><li><a href="#o-que-o-preferred-sources-nao-e">O que o Preferred Sources não é</a></li><li><a href="#como-instalar-por-dois-caminhos">Como instalar, por dois caminhos</a></li><li><a href="#onde-por-o-botao-para-alguem-carregar">Onde pôr o botão para alguém carregar</a></li><li><a href="#para-quem-compensa-mesmo">Para quem compensa mesmo</a></li><li><a href="#ja-esta-a-funcionar-aqui">Já está a funcionar aqui</a></li></ol></nav>
+
       </div></div></section>
 
       <section class="section section--panel"><div class="container"><div class="prose">
@@ -822,7 +886,8 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       </div></div></section>
 
       <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><p class="body">Outros artigos do blog:</p><ul class="morelist"><li><a href="/blog/agentes-de-ia-simples-grok-bot-muse-dots/"><time datetime="2026-10-11">11 Out 2026</time><span class="t">Grok Bot, Muse e Dots: os agentes de IA mais simples para quem não é técnico</span></a></li><li><a href="/blog/agentes-de-ia-a-medida/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Agentes de IA à medida: skills, workflows e implementação remota</span></a></li><li><a href="/blog/tendencias-de-ia-em-portugal/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Tendências de IA em Portugal em 2026: o que está em alta</span></a></li><li><a href="/blog/ai-act-ia-no-marketing/"><time datetime="2026-08-31">31 Ago 2026</time><span class="t">IA no marketing e o AI Act: o que está em causa</span></a></li><li><a href="/blog/como-abrir-uma-empresa-em-portugal/"><time datetime="2026-08-20">20 Ago 2026</time><span class="t">Como abrir uma empresa em Portugal, passo a passo</span></a></li></ul><div class="related"><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/blog/tendencias-de-ia-em-portugal/">Tendências de IA em Portugal</a><a href="/seo/">SEO</a><a href="/contactos/">Contactos</a></div></div></section>
-      <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Quer isto instalado no seu site, e o SEO tratado a sério?</h2><p class="lead">Instalo o botão, ponho a medição a funcionar e trato do resto para o seu site ser encontrado. Começamos por um diagnóstico, sem compromisso.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a><a class="close__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
+</div></div>
+<section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Quer isto instalado no seu site, e o SEO tratado a sério?</h2><p class="lead">Instalo o botão, ponho a medição a funcionar e trato do resto para o seu site ser encontrado. Começamos por um diagnóstico, sem compromisso.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a><a class="close__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
     </main>
     <footer class="footer">
       <div class="container">
