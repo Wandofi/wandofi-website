@@ -423,42 +423,41 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .site__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
 .site__desc{display:block;margin-top:.3rem;color:var(--mute);font-size:.9rem;line-height:1.5}
 @media (max-width:760px){.sites{grid-template-columns:1fr}}
-/* ---- álbum de trabalhos (página inicial) ---- */
+/* ---- álbum de trabalhos (página inicial): cartões em retrato, em perspectiva ---- */
 .album{margin-top:clamp(1.6rem,3vw,2.2rem)}
-.album__stage{position:relative;aspect-ratio:2/1;max-height:40rem;perspective:1400px;outline:none;overflow:hidden;touch-action:pan-y}
+.album__stage{position:relative;aspect-ratio:16/9;max-height:44rem;perspective:1600px;perspective-origin:50% 45%;outline:none;overflow:hidden;touch-action:pan-y;
+  border-radius:var(--r);background-color:var(--paper);
+  background-image:radial-gradient(rgba(5,5,5,.09) 1px,transparent 1.2px);background-size:18px 18px}
 .album__stage:focus-visible{box-shadow:0 0 0 2px var(--red)}
-.album__track{list-style:none;margin:0;padding:0;position:absolute;inset:0}
-.album__slide{position:absolute;left:50%;top:0;width:min(58%,40rem);margin-left:calc(min(58%,40rem) / -2);
-  transform:translateX(calc(var(--d) * 64%)) rotateY(calc(var(--d) * -24deg)) scale(calc(1 - var(--abs) * .11));
-  transition:transform .6s var(--ease),opacity .45s var(--ease);z-index:calc(10 - var(--abs));opacity:1;cursor:pointer}
+.album__track{list-style:none;margin:0;padding:0;position:absolute;inset:0;transform-style:preserve-3d}
+.album__slide{position:absolute;left:50%;top:50%;width:min(30%,22rem);margin-left:calc(min(30%,22rem) / -2);
+  transform:translateY(-50%) translateX(calc(var(--d) * 72%)) translateZ(calc(var(--abs) * -9rem)) rotateY(calc(var(--s) * -48deg)) scale(calc(1 - var(--abs) * .04));
+  transition:transform .65s var(--ease),opacity .45s var(--ease);z-index:calc(10 - var(--abs));opacity:1;cursor:pointer}
 .album__slide[data-far="1"]{opacity:0;pointer-events:none}
 .album__slide.is-active{cursor:default}
-.album__card{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
-  box-shadow:0 18px 40px -24px rgba(5,5,5,.35);transition:box-shadow .45s var(--ease)}
-.album__slide.is-active .album__card{box-shadow:0 26px 54px -26px rgba(5,5,5,.45);border-color:rgba(5,5,5,.22)}
-.album__bar{display:flex;gap:.35rem;padding:.5rem .7rem;border-bottom:1px solid var(--line);background:#fafafa}
-.album__bar i{width:.5rem;height:.5rem;border-radius:50%;background:rgba(5,5,5,.14)}
-.album__bar i:first-child{background:var(--red)}
-.album__frame img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
-.album__cap{padding:.8rem 1rem .95rem;border-top:1px solid var(--line)}
-.album__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
-.album__desc{display:block;margin-top:.25rem;color:var(--mute);font-size:.9rem;line-height:1.5}
-.album__slide:not(.is-active) .album__cap{opacity:0;transition:opacity .3s var(--ease)}
-.album__more{display:flex;flex-direction:column;justify-content:center;gap:.6rem;aspect-ratio:16/10;padding:clamp(1.2rem,2.4vw,2rem);
-  border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r);background:var(--paper);text-decoration:none;color:inherit;box-shadow:0 18px 40px -24px rgba(5,5,5,.35)}
-.album__more .album__name{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.1;letter-spacing:-.015em}
-.album__more .album__desc{font-size:.95rem;max-width:34ch}
-.album__more .btn{align-self:flex-start;margin-top:.4rem}
-.album__nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.1rem}
-.album__btn{appearance:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);color:var(--ink);width:2.6rem;height:2.6rem;
-  font-size:1.1rem;cursor:pointer;transition:border-color .18s var(--ease),color .18s var(--ease)}
+.album__card{margin:0;border-radius:16px;overflow:hidden;background:var(--paper);
+  box-shadow:0 34px 70px -34px rgba(5,5,5,.55),0 0 0 1px rgba(5,5,5,.08)}
+.album__card img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;object-position:top}
+.album__more{display:flex;flex-direction:column;justify-content:flex-end;gap:.6rem;aspect-ratio:9/16;padding:clamp(1rem,2vw,1.6rem);
+  border-radius:16px;background:var(--ink);color:#fff;text-decoration:none;box-shadow:0 34px 70px -34px rgba(5,5,5,.55)}
+.album__more .eyebrow{color:var(--red)}
+.album__more .album__name{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.1;letter-spacing:-.015em;color:#fff}
+.album__more .album__desc{font-size:.9rem;color:rgba(255,255,255,.72);max-width:26ch}
+.album__more .btn{align-self:flex-start;margin-top:.3rem;background:#fff;color:var(--ink);border-color:#fff}
+.album__legend{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.3rem 1.5rem;align-items:baseline;margin-top:1.1rem;min-height:3.4rem}
+.album__name{display:block;font-weight:600;color:var(--ink);font-size:1.02rem}
+.album__desc{display:block;margin-top:.2rem;color:var(--mute);font-size:.92rem;line-height:1.5;max-width:60ch}
+.album__nav{display:flex;align-items:center;gap:.8rem}
+.album__btn{appearance:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);color:var(--ink);width:2.5rem;height:2.5rem;
+  font-size:1.05rem;cursor:pointer;transition:border-color .18s var(--ease),color .18s var(--ease)}
 .album__btn:hover{border-color:var(--red);color:var(--red)}
 .album__dots{list-style:none;margin:0;padding:0;display:flex;gap:.45rem}
-.album__dots button{appearance:none;border:0;padding:0;width:.55rem;height:.55rem;border-radius:50%;background:rgba(5,5,5,.18);cursor:pointer;transition:background .18s var(--ease),transform .18s var(--ease)}
-.album__dots button[aria-current="true"]{background:var(--red);transform:scale(1.25)}
-.album__status{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);min-width:5ch;text-align:center}
-@media (max-width:760px){.album__stage{aspect-ratio:1/1;max-height:none}.album__slide{width:78%;margin-left:-39%;transform:translateX(calc(var(--d) * 86%)) rotateY(calc(var(--d) * -16deg)) scale(calc(1 - var(--abs) * .08))}}
-@media (prefers-reduced-motion:reduce){.album__slide,.album__card,.album__slide:not(.is-active) .album__cap{transition:none}}
+.album__dots button{appearance:none;border:0;padding:0;width:.5rem;height:.5rem;border-radius:50%;background:rgba(5,5,5,.18);cursor:pointer;transition:background .18s var(--ease),transform .18s var(--ease)}
+.album__dots button[aria-current="true"]{background:var(--red);transform:scale(1.3)}
+.album__status{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);min-width:4.5ch;text-align:center}
+@media (max-width:760px){.album__stage{aspect-ratio:4/5;perspective:1100px}.album__slide{width:54%;margin-left:-27%;transform:translateY(-50%) translateX(calc(var(--d) * 74%)) translateZ(calc(var(--abs) * -6rem)) rotateY(calc(var(--s) * -40deg))}
+  .album__legend{grid-template-columns:1fr}.album__nav{justify-content:center}}
+@media (prefers-reduced-motion:reduce){.album__slide,.album__card{transition:none}}
 </style>
 
     <script type="application/ld+json">
@@ -739,45 +738,36 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 
           <header class="section__head reveal" style="margin-top:clamp(2rem,4vw,3rem)">
             <p class="eyebrow">Álbum · Trabalho feito</p>
-            <h3 class="h3">Quatro sites no ar, e o resto no portefólio</h3>
+            <h3 class="h3">Quatro trabalhos no ar, e o resto no portefólio</h3>
           </header>
           <div class="album reveal" data-album>
             <div class="album__stage" tabindex="0" aria-roledescription="carrossel" aria-label="Álbum de trabalhos. Use as setas do teclado ou deslize.">
               <ul class="album__track">
-              <li class="album__slide is-active" data-i="0">
-                <figure class="album__card">
-                  <div class="album__frame"><span class="album__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="/assets/casos/clean-contas.webp" width="1600" height="1000" alt="Página inicial da Clean Contas, contabilidade TVDE online" loading="lazy" decoding="async" /></div>
-                  <figcaption class="album__cap"><span class="album__name">Clean Contas</span><span class="album__desc">Contabilidade TVDE, 100% online. Site, SEO e conteúdo.</span></figcaption>
-                </figure>
+              <li class="album__slide is-active" data-i="0" data-nome="Clean Contas" data-desc="Contabilidade TVDE, 100% online. Site, SEO e conteúdo. Primeira página do Google para "cae 49320".">
+                <figure class="album__card"><img src="/assets/casos/clean-contas-retrato.webp" width="720" height="1280" alt="Página inicial da Clean Contas em telemóvel, contabilidade TVDE online" loading="lazy" decoding="async" /></figure>
               </li>
-              <li class="album__slide" data-i="1">
-                <figure class="album__card">
-                  <div class="album__frame"><span class="album__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="/assets/lexia-app.webp" width="1600" height="926" alt="Interface da Lexia, nova consulta jurídica com filtros de jurisdição, fontes e período" loading="lazy" decoding="async" /></div>
-                  <figcaption class="album__cap"><span class="album__name">Lexia</span><span class="album__desc">SaaS de investigação jurídica. Produto próprio, do conceito ao checkout.</span></figcaption>
-                </figure>
+              <li class="album__slide" data-i="1" data-nome="Lexia" data-desc="SaaS de investigação jurídica. Produto próprio, do conceito ao checkout.">
+                <figure class="album__card"><img src="/assets/casos/lexia-retrato.webp" width="720" height="1280" alt="Interface da Lexia, consulta jurídica com filtros" loading="lazy" decoding="async" /></figure>
               </li>
-              <li class="album__slide" data-i="2">
-                <figure class="album__card">
-                  <div class="album__frame"><span class="album__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="/assets/casos/fadermarket.webp" width="1600" height="1000" alt="Página para barbeiros do FaderMarket, com ilustração de um barbeiro a cortar cabelo" loading="lazy" decoding="async" /></div>
-                  <figcaption class="album__cap"><span class="album__name">FaderMarket</span><span class="album__desc">Marketplace de barbeiros em Lisboa e no Luxemburgo, com marcações online.</span></figcaption>
-                </figure>
+              <li class="album__slide" data-i="2" data-nome="FaderMarket" data-desc="Marketplace de barbeiros em Lisboa e no Luxemburgo, com marcações online e agenda.">
+                <figure class="album__card"><img src="/assets/casos/fadermarket-retrato.webp" width="720" height="1280" alt="Página para barbeiros do FaderMarket em telemóvel" loading="lazy" decoding="async" /></figure>
               </li>
-              <li class="album__slide" data-i="3">
-                <figure class="album__card">
-                  <div class="album__frame"><span class="album__bar" aria-hidden="true"><i></i><i></i><i></i></span><img src="/assets/casos/reparar-trotinete.webp" width="1600" height="1000" alt="Página inicial da Reparar Trotinete, oficina de trotinetes eléctricas em Lisboa" loading="lazy" decoding="async" /></div>
-                  <figcaption class="album__cap"><span class="album__name">Reparar Trotinete</span><span class="album__desc">Oficina em Lisboa. Site de uma página feito para converter em chamada.</span></figcaption>
-                </figure>
+              <li class="album__slide" data-i="3" data-nome="Reparar Trotinete" data-desc="Oficina em Lisboa. Site de uma página feito para converter em chamada. Posição 6 em Lisboa.">
+                <figure class="album__card"><img src="/assets/casos/reparar-trotinete-retrato.webp" width="720" height="1280" alt="Página inicial da Reparar Trotinete em telemóvel" loading="lazy" decoding="async" /></figure>
               </li>
-              <li class="album__slide album__slide--more" data-i="4">
-                <a class="album__more" href="/casos/"><span class="eyebrow">Outros</span><span class="album__name">Casos, números e mais sites</span><span class="album__desc">Reconciliação financeira, SEO que trouxe contactos, SEO local no mapa e os sites que construí e giro.</span><span class="btn btn--ghost">Ver o portefólio <span class="arrow" aria-hidden="true">↗</span></span></a>
+              <li class="album__slide album__slide--more" data-i="4" data-nome="Outros trabalhos" data-desc="Reconciliação financeira, SEO que trouxe contactos, SEO local no mapa e os sites que construí e giro, com números.">
+                <a class="album__more" href="/casos/"><span class="eyebrow">Outros</span><span class="album__name">Casos, números e mais sites</span><span class="album__desc">Tudo o que não cabe em quatro cartões.</span><span class="btn">Ver o portefólio <span class="arrow" aria-hidden="true">↗</span></span></a>
               </li>
               </ul>
             </div>
-            <div class="album__nav">
-              <button type="button" class="album__btn" data-dir="-1" aria-label="Trabalho anterior">←</button>
-              <ol class="album__dots"><li><button type="button" data-go="0" aria-label="Ir para Clean Contas" aria-current="true"></button></li><li><button type="button" data-go="1" aria-label="Ir para Lexia"></button></li><li><button type="button" data-go="2" aria-label="Ir para FaderMarket"></button></li><li><button type="button" data-go="3" aria-label="Ir para Reparar Trotinete"></button></li><li><button type="button" data-go="4" aria-label="Ir para Outros"></button></li></ol>
-              <span class="album__status" aria-live="polite">1 / 5</span>
-              <button type="button" class="album__btn" data-dir="1" aria-label="Trabalho seguinte">→</button>
+            <div class="album__legend">
+              <p class="album__text" aria-live="polite"><span class="album__name">Clean Contas</span><span class="album__desc">Contabilidade TVDE, 100% online. Site, SEO e conteúdo. Primeira página do Google para "cae 49320".</span></p>
+              <div class="album__nav">
+                <button type="button" class="album__btn" data-dir="-1" aria-label="Trabalho anterior">←</button>
+                <ol class="album__dots"><li><button type="button" data-go="0" aria-label="Ir para Clean Contas" aria-current="true"></button></li><li><button type="button" data-go="1" aria-label="Ir para Lexia"></button></li><li><button type="button" data-go="2" aria-label="Ir para FaderMarket"></button></li><li><button type="button" data-go="3" aria-label="Ir para Reparar Trotinete"></button></li><li><button type="button" data-go="4" aria-label="Ir para Outros"></button></li></ol>
+                <span class="album__status">1 / 5</span>
+                <button type="button" class="album__btn" data-dir="1" aria-label="Trabalho seguinte">→</button>
+              </div>
             </div>
           </div>
 
@@ -1004,14 +994,16 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
       var n = slides.length, act = 0;
       function pinta(){
         slides.forEach(function(s, i){
-          var d = i - act;
-          s.style.setProperty("--d", d); s.style.setProperty("--abs", Math.abs(d));
+          var d = ((i - act + n + 2) % n) - 2; /* circular: os últimos aparecem à esquerda do primeiro */
+          s.style.setProperty("--d", d); s.style.setProperty("--abs", Math.abs(d)); s.style.setProperty("--s", d === 0 ? 0 : (d > 0 ? 1 : -1));
           s.classList.toggle("is-active", d === 0);
           s.setAttribute("data-far", Math.abs(d) > 2 ? "1" : "0");
           s.setAttribute("aria-hidden", d === 0 ? "false" : "true");
         });
         pontos.forEach(function(p, i){ if (i === act) p.setAttribute("aria-current", "true"); else p.removeAttribute("aria-current"); });
         if (estado) estado.textContent = (act + 1) + " / " + n;
+        var leg = raiz.querySelector(".album__text"), s0 = slides[act];
+        if (leg) leg.innerHTML = '<span class="album__name"></span><span class="album__desc"></span>', leg.firstChild.textContent = s0.getAttribute("data-nome"), leg.lastChild.textContent = s0.getAttribute("data-desc");
       }
       function vai(i){ act = (i + n) % n; pinta(); }
       [].forEach.call(raiz.querySelectorAll("[data-dir]"), function(b){ b.addEventListener("click", function(){ vai(act + parseInt(b.getAttribute("data-dir"), 10)); }); });
