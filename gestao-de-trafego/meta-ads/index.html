@@ -615,6 +615,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Gestão de Meta Ads", "serviceType": "Gestão de Meta Ads", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "Gestão de Meta Ads em Portugal. Campanhas no Facebook e Instagram para alcançar e converter o público certo.", "url": "https://wandofi.pt/gestao-de-trafego/meta-ads/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Meta Ads ou Google Ads: qual escolher?", "acceptedAnswer": {"@type": "Answer", "text": "Dependem do objectivo. Google capta quem já procura; Meta dá a conhecer e alcança pelo perfil. Muitos negócios beneficiam dos dois. Ajudo a decidir por onde começar consoante o orçamento."}}, {"@type": "Question", "name": "O Instagram e o Facebook usam a mesma campanha?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, ambos são geridos pela plataforma da Meta. Adapto os criativos a cada formato, mas a estratégia e a medição são coordenadas."}}, {"@type": "Question", "name": "Preciso de muitos criativos?", "acceptedAnswer": {"@type": "Answer", "text": "Alguns, para testar o que funciona. Começo com um conjunto, meço o desempenho e reforço os que convertem melhor."}}]}</script>

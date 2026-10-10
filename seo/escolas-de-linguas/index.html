@@ -615,6 +615,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SEO para Escolas de Línguas", "serviceType": "SEO para Escolas de Línguas", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "SEO para escolas de línguas em Portugal. Presença local e páginas por curso para atrair e converter mais alunos.", "url": "https://wandofi.pt/seo/escolas-de-linguas/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Como atraio alunos para cursos específicos?", "acceptedAnswer": {"@type": "Answer", "text": "Com uma página por curso e por nível, optimizada para as pesquisas correspondentes. Quem procura preparação para um exame específico encontra a página certa, não uma genérica."}}, {"@type": "Question", "name": "O SEO ajuda nos períodos de inscrição?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Alinho o conteúdo com os períodos de maior procura, para a escola estar visível quando as pesquisas aumentam, em vez de reagir tarde."}}, {"@type": "Question", "name": "Serve escolas com aulas presenciais e online?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. As presenciais reforçam o SEO local; as online podem competir a nível nacional. A estratégia adapta-se ao formato."}}]}</script>

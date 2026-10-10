@@ -613,6 +613,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "IA no marketing e o AI Act: o que está em causa", "description": "Desde agosto de 2026 há regras europeias para quem usa IA. Em linguagem simples, o que o AI Act muda para o marketing do seu negócio, sem alarmismo.", "inLanguage": "pt-PT", "datePublished": "2026-08-31", "dateModified": "2026-08-31", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/ai-act-ia-no-marketing/", "url": "https://wandofi.pt/blog/ai-act-ia-no-marketing/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Isto abrange um negócio pequeno?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. As regras não são só para as grandes tecnológicas, valem para quem usa e implementa IA, seja qual for o tamanho. O que muda é o esforço, não a existência das obrigações."}}, {"@type": "Question", "name": "Tenho de dizer que uso IA para escrever os meus textos?", "acceptedAnswer": {"@type": "Answer", "text": "Depende. A copy comercial normal, revista por si, não cai na regra do texto de interesse público. Mas imagens e vídeos gerados, deepfakes e chatbots têm de ser assinalados. Na dúvida, assinalar peca por seguro."}}, {"@type": "Question", "name": "E se ignorar as regras?", "acceptedAnswer": {"@type": "Answer", "text": "As coimas são pesadas. Segundo o regulamento, chegam a 35 milhões de euros ou 7 por cento do volume de negócios mundial nas práticas proibidas, e a 15 milhões ou 3 por cento nas restantes obrigações, aplicadas pela autoridade nacional."}}]}</script>

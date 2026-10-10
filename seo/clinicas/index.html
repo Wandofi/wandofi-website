@@ -615,6 +615,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SEO para Clínicas", "serviceType": "SEO para Clínicas", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "SEO para clínicas e consultórios em Portugal. Presença local, Google Maps e conteúdo claro para atrair mais pacientes.", "url": "https://wandofi.pt/seo/clinicas/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O SEO para clínicas respeita as regras da publicidade em saúde?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Trabalho conteúdo informativo e claro, sem promessas de resultados clínicos nem afirmações indevidas. O objectivo é ser encontrado e transmitir confiança, dentro das boas práticas do sector."}}, {"@type": "Question", "name": "Como aparece a minha clínica no Google Maps?", "acceptedAnswer": {"@type": "Answer", "text": "Com um perfil de empresa optimizado, categorias correctas, avaliações e informação consistente. É o principal factor para surgir nas pesquisas locais de saúde."}}, {"@type": "Question", "name": "Serve clínicas com várias especialidades?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Cada especialidade ganha a sua página, o que ajuda a aparecer em pesquisas específicas e a atrair o paciente certo."}}]}</script>

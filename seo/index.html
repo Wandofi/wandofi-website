@@ -615,6 +615,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Serviços de SEO", "serviceType": "SEO", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "SEO técnico, local e de conteúdo para empresas em Portugal. Apareça no Google para os termos que trazem clientes. Sem promessas de primeira página.", "url": "https://wandofi.pt/seo/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto tempo demora a ver resultados de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "O SEO é um investimento de médio prazo. Melhorias técnicas podem reflectir-se em semanas; ganhos de posição em pesquisas competitivas costumam levar de três a seis meses de trabalho consistente. Digo sempre o que é realista antes de começar."}}, {"@type": "Question", "name": "Garante a primeira página do Google?", "acceptedAnswer": {"@type": "Answer", "text": "Não, e desconfie de quem garantir. O Google não vende posições orgânicas e o ranking depende de factores fora do controlo de qualquer profissional. O que garanto é método, transparência e trabalho que consegue medir."}}, {"@type": "Question", "name": "Quanto custa o SEO em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do âmbito. No mercado, o trabalho de SEO ronda os 25 a 60 euros por hora, ou avenças mensais. Prefiro definir um projecto com objectivos claros a vender horas soltas. O diagnóstico ajuda a dimensionar."}}, {"@type": "Question", "name": "Faz SEO e o site ao mesmo tempo?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. É uma vantagem, o SEO fica bem feito desde a estrutura, em vez de ser remendado depois. Também faço migrações de sites sem perder o posicionamento já conquistado."}}]}</script>
