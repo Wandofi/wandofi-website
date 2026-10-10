@@ -403,13 +403,49 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .card--wide__action .card__more{margin-top:0}
 @media (max-width:980px){.card--wide{grid-template-columns:1fr;align-items:start}}
     /* ---- sites geridos (portefólio) ---- */
-.sites{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:clamp(1.6rem,3vw,2.2rem)}
+.sites{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:clamp(1.6rem,3vw,2.2rem)}
 .site{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
 .site img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
 .site__cap{padding:.9rem 1rem 1.05rem;border-top:1px solid var(--line)}
 .site__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
 .site__desc{display:block;margin-top:.3rem;color:var(--mute);font-size:.9rem;line-height:1.5}
 @media (max-width:760px){.sites{grid-template-columns:1fr}}
+/* ---- álbum de trabalhos (página inicial) ---- */
+.album{margin-top:clamp(1.6rem,3vw,2.2rem)}
+.album__stage{position:relative;aspect-ratio:2/1;max-height:40rem;perspective:1400px;outline:none;overflow:hidden;touch-action:pan-y}
+.album__stage:focus-visible{box-shadow:0 0 0 2px var(--red)}
+.album__track{list-style:none;margin:0;padding:0;position:absolute;inset:0}
+.album__slide{position:absolute;left:50%;top:0;width:min(58%,40rem);margin-left:calc(min(58%,40rem) / -2);
+  transform:translateX(calc(var(--d) * 64%)) rotateY(calc(var(--d) * -24deg)) scale(calc(1 - var(--abs) * .11));
+  transition:transform .6s var(--ease),opacity .45s var(--ease);z-index:calc(10 - var(--abs));opacity:1;cursor:pointer}
+.album__slide[data-far="1"]{opacity:0;pointer-events:none}
+.album__slide.is-active{cursor:default}
+.album__card{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  box-shadow:0 18px 40px -24px rgba(5,5,5,.35);transition:box-shadow .45s var(--ease)}
+.album__slide.is-active .album__card{box-shadow:0 26px 54px -26px rgba(5,5,5,.45);border-color:rgba(5,5,5,.22)}
+.album__bar{display:flex;gap:.35rem;padding:.5rem .7rem;border-bottom:1px solid var(--line);background:#fafafa}
+.album__bar i{width:.5rem;height:.5rem;border-radius:50%;background:rgba(5,5,5,.14)}
+.album__bar i:first-child{background:var(--red)}
+.album__frame img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.album__cap{padding:.8rem 1rem .95rem;border-top:1px solid var(--line)}
+.album__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
+.album__desc{display:block;margin-top:.25rem;color:var(--mute);font-size:.9rem;line-height:1.5}
+.album__slide:not(.is-active) .album__cap{opacity:0;transition:opacity .3s var(--ease)}
+.album__more{display:flex;flex-direction:column;justify-content:center;gap:.6rem;aspect-ratio:16/10;padding:clamp(1.2rem,2.4vw,2rem);
+  border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r);background:var(--paper);text-decoration:none;color:inherit;box-shadow:0 18px 40px -24px rgba(5,5,5,.35)}
+.album__more .album__name{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.1;letter-spacing:-.015em}
+.album__more .album__desc{font-size:.95rem;max-width:34ch}
+.album__more .btn{align-self:flex-start;margin-top:.4rem}
+.album__nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.1rem}
+.album__btn{appearance:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);color:var(--ink);width:2.6rem;height:2.6rem;
+  font-size:1.1rem;cursor:pointer;transition:border-color .18s var(--ease),color .18s var(--ease)}
+.album__btn:hover{border-color:var(--red);color:var(--red)}
+.album__dots{list-style:none;margin:0;padding:0;display:flex;gap:.45rem}
+.album__dots button{appearance:none;border:0;padding:0;width:.55rem;height:.55rem;border-radius:50%;background:rgba(5,5,5,.18);cursor:pointer;transition:background .18s var(--ease),transform .18s var(--ease)}
+.album__dots button[aria-current="true"]{background:var(--red);transform:scale(1.25)}
+.album__status{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);min-width:5ch;text-align:center}
+@media (max-width:760px){.album__stage{aspect-ratio:1/1;max-height:none}.album__slide{width:78%;margin-left:-39%;transform:translateX(calc(var(--d) * 86%)) rotateY(calc(var(--d) * -16deg)) scale(calc(1 - var(--abs) * .08))}}
+@media (prefers-reduced-motion:reduce){.album__slide,.album__card,.album__slide:not(.is-active) .album__cap{transition:none}}
 
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas

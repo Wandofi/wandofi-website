@@ -404,13 +404,49 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .card--wide__action .card__more{margin-top:0}
 @media (max-width:980px){.card--wide{grid-template-columns:1fr;align-items:start}}
     /* ---- sites geridos (portefólio) ---- */
-.sites{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:clamp(1.6rem,3vw,2.2rem)}
+.sites{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:clamp(1.6rem,3vw,2.2rem)}
 .site{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
 .site img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
 .site__cap{padding:.9rem 1rem 1.05rem;border-top:1px solid var(--line)}
 .site__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
 .site__desc{display:block;margin-top:.3rem;color:var(--mute);font-size:.9rem;line-height:1.5}
 @media (max-width:760px){.sites{grid-template-columns:1fr}}
+/* ---- álbum de trabalhos (página inicial) ---- */
+.album{margin-top:clamp(1.6rem,3vw,2.2rem)}
+.album__stage{position:relative;aspect-ratio:2/1;max-height:40rem;perspective:1400px;outline:none;overflow:hidden;touch-action:pan-y}
+.album__stage:focus-visible{box-shadow:0 0 0 2px var(--red)}
+.album__track{list-style:none;margin:0;padding:0;position:absolute;inset:0}
+.album__slide{position:absolute;left:50%;top:0;width:min(58%,40rem);margin-left:calc(min(58%,40rem) / -2);
+  transform:translateX(calc(var(--d) * 64%)) rotateY(calc(var(--d) * -24deg)) scale(calc(1 - var(--abs) * .11));
+  transition:transform .6s var(--ease),opacity .45s var(--ease);z-index:calc(10 - var(--abs));opacity:1;cursor:pointer}
+.album__slide[data-far="1"]{opacity:0;pointer-events:none}
+.album__slide.is-active{cursor:default}
+.album__card{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  box-shadow:0 18px 40px -24px rgba(5,5,5,.35);transition:box-shadow .45s var(--ease)}
+.album__slide.is-active .album__card{box-shadow:0 26px 54px -26px rgba(5,5,5,.45);border-color:rgba(5,5,5,.22)}
+.album__bar{display:flex;gap:.35rem;padding:.5rem .7rem;border-bottom:1px solid var(--line);background:#fafafa}
+.album__bar i{width:.5rem;height:.5rem;border-radius:50%;background:rgba(5,5,5,.14)}
+.album__bar i:first-child{background:var(--red)}
+.album__frame img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.album__cap{padding:.8rem 1rem .95rem;border-top:1px solid var(--line)}
+.album__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
+.album__desc{display:block;margin-top:.25rem;color:var(--mute);font-size:.9rem;line-height:1.5}
+.album__slide:not(.is-active) .album__cap{opacity:0;transition:opacity .3s var(--ease)}
+.album__more{display:flex;flex-direction:column;justify-content:center;gap:.6rem;aspect-ratio:16/10;padding:clamp(1.2rem,2.4vw,2rem);
+  border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r);background:var(--paper);text-decoration:none;color:inherit;box-shadow:0 18px 40px -24px rgba(5,5,5,.35)}
+.album__more .album__name{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.1;letter-spacing:-.015em}
+.album__more .album__desc{font-size:.95rem;max-width:34ch}
+.album__more .btn{align-self:flex-start;margin-top:.4rem}
+.album__nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.1rem}
+.album__btn{appearance:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);color:var(--ink);width:2.6rem;height:2.6rem;
+  font-size:1.1rem;cursor:pointer;transition:border-color .18s var(--ease),color .18s var(--ease)}
+.album__btn:hover{border-color:var(--red);color:var(--red)}
+.album__dots{list-style:none;margin:0;padding:0;display:flex;gap:.45rem}
+.album__dots button{appearance:none;border:0;padding:0;width:.55rem;height:.55rem;border-radius:50%;background:rgba(5,5,5,.18);cursor:pointer;transition:background .18s var(--ease),transform .18s var(--ease)}
+.album__dots button[aria-current="true"]{background:var(--red);transform:scale(1.25)}
+.album__status{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);min-width:5ch;text-align:center}
+@media (max-width:760px){.album__stage{aspect-ratio:1/1;max-height:none}.album__slide{width:78%;margin-left:-39%;transform:translateX(calc(var(--d) * 86%)) rotateY(calc(var(--d) * -16deg)) scale(calc(1 - var(--abs) * .08))}}
+@media (prefers-reduced-motion:reduce){.album__slide,.album__card,.album__slide:not(.is-active) .album__cap{transition:none}}
 
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
@@ -624,19 +660,11 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       </section>
 <section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">Caso de estudo</p><h2 class="h2">Reconciliação financeira · escritório jurídico, Lisboa</h2></header><div class="prose"><p class="body">Três contas bancárias, dois sistemas de facturação, exportações que não falavam entre si, processos de pastas físicas e verificações manuais. Desenhei um sistema integrado em Apps Script que liga Drive, código QR e Avaza, e reconcilia BPI e Millennium com o TOConline e o Avaza por chave referencial.</p></div><div class="proof"><div class="stat"><div class="stat__v">~92%</div><div class="stat__l">reconciliação automática</div></div><div class="stat"><div class="stat__v">5h → 20 min</div><div class="stat__l">tempo de fecho mensal</div></div><div class="stat"><div class="stat__v">800+</div><div class="stat__l">pastas indexadas no backfill</div></div></div></div></section><section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Caso de estudo · SEO e conteúdo</p><h2 class="h2">SEO que traz contactos · escritório de advogados, Lisboa</h2></header><div class="prose"><p class="body">Reconstrução técnica do site, SEO e produção de conteúdo jurídico em português europeu. Em três meses, de Julho a Setembro de 2026, o site passou a ser a principal fonte de novos contactos do escritório: pedidos elegíveis pelo formulário e pelo email geral, reuniões marcadas pelo Calendly e clientes fechados. O trabalho junta três funções que normalmente se contratam em separado: manutenção do site, SEO e conteúdo.</p></div><div class="proof"><div class="stat"><div class="stat__v">+55</div><div class="stat__l">contactos orgânicos elegíveis em 3 meses</div></div><div class="stat"><div class="stat__v">398</div><div class="stat__l">cliques do Google em Setembro de 2026</div></div><div class="stat"><div class="stat__v">84 mil</div><div class="stat__l">impressões na pesquisa Google em Setembro</div></div></div></div></section>
 <section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">Caso de estudo · SEO local</p><h2 class="h2">Primeira página no mapa · gabinete de contabilidade, Lisboa</h2></header><div class="prose"><p class="body">Site novo em Astro e Cloudflare, migrado sem perda de posições, perfil de empresa no Google, SEO técnico e medição de conversão. Em três meses, desde Julho de 2026, o gabinete entrou no Map Pack do Google para "contabilidade lisboa", os três resultados do mapa que aparecem antes de tudo o resto, e mantém a presença desde então. Em pesquisas nacionais como "contabilista certificado", 860 pesquisas por mês, o site já apareceu no top 10 do Google em várias datas. As posições orgânicas oscilam de semana para semana, por isso o número que fica aqui é o do mapa. Nos anúncios do Google, com a medição de contactos instalada e as campanhas reorganizadas, o custo por clique caiu de 0,89 € para 0,44 € e o gabinete passou a receber 32 contactos num mês, a 11,78 € cada.</p></div><div class="proof"><div class="stat"><div class="stat__v">Map Pack</div><div class="stat__l">"contabilidade lisboa", 220 pesquisas por mês</div></div><div class="stat"><div class="stat__v">7 mil</div><div class="stat__l">impressões na pesquisa Google em Setembro de 2026</div></div><div class="stat"><div class="stat__v">0,89 € → 0,44 €</div><div class="stat__l">custo por clique nos anúncios, em 4 meses</div></div></div></div></section>
-<section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Sites que construí e giro</p><h2 class="h2">Três sites no ar</h2></header><div class="prose"><p class="body">Mostro a página inicial de cada um, sem ligação, por opção. Os clientes dos dois casos acima ficam anónimos por regra; em reunião mostro os relatórios do Search Console e do Mangools.</p></div><div class="sites reveal">
-<figure class="site">
-  <img src="/assets/casos/clean-contas.webp" width="1600" height="1000" alt="Página inicial da Clean Contas, contabilidade TVDE online" loading="lazy" decoding="async" />
-  <figcaption class="site__cap"><span class="site__name">Clean Contas</span><span class="site__desc">Contabilidade TVDE, 100% online. Site construído e gerido por mim. Posição 8 no Google para "cae 49320", 380 pesquisas por mês.</span></figcaption>
-</figure>
-<figure class="site">
-  <img src="/assets/casos/reparar-trotinete.webp" width="1600" height="1000" alt="Página inicial da Reparar Trotinete, oficina de trotinetes eléctricas em Lisboa" loading="lazy" decoding="async" />
-  <figcaption class="site__cap"><span class="site__name">Reparar Trotinete</span><span class="site__desc">Oficina de trotinetes e e-bikes em Lisboa. Domínio novo na primeira página de Lisboa para "reparação trotinetes lisboa", posição 6.</span></figcaption>
-</figure>
-<figure class="site">
-  <img src="/assets/casos/fadermarket.webp" width="1600" height="1000" alt="Página para barbeiros do FaderMarket, com ilustração de um barbeiro a cortar cabelo" loading="lazy" decoding="async" />
-  <figcaption class="site__cap"><span class="site__name">FaderMarket</span><span class="site__desc">Marketplace de barbeiros em Lisboa e no Luxemburgo, com marcações online, agenda e pagamentos. Produto próprio, lançado em Outubro de 2026.</span></figcaption>
-</figure>
+<section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Sites que construí e giro</p><h2 class="h2">Quatro sites no ar</h2></header><div class="prose"><p class="body">Mostro a página inicial de cada um, sem ligação, por opção. Em cada um digo o que foi feito e o que isso rendeu. Os clientes dos dois casos acima ficam anónimos por regra; em reunião mostro os relatórios do Search Console e do Mangools.</p></div><div class="sites reveal">
+<figure class="site"><img src="/assets/casos/clean-contas.webp" width="1600" height="1000" alt="Página inicial da Clean Contas, contabilidade TVDE online" loading="lazy" decoding="async" /><figcaption class="site__cap"><span class="site__name">Clean Contas</span><span class="site__desc">Contabilidade TVDE para motoristas e gestores de frota, 100% online. Site estático no Cloudflare Pages, páginas de serviço por tipo de cliente, blog e medição de contactos por telefone e WhatsApp. Está na primeira página do Google para "cae 49320", posição 8 em 380 pesquisas por mês, com 13 pesquisas acompanhadas todas as semanas.</span></figcaption></figure>
+<figure class="site"><img src="/assets/lexia-app.webp" width="1600" height="926" alt="Interface da Lexia, nova consulta jurídica com filtros de jurisdição, fontes e período" loading="lazy" decoding="async" /><figcaption class="site__cap"><span class="site__name">Lexia</span><span class="site__desc">SaaS de investigação jurídica para profissionais do direito em Portugal. Do conceito ao produto: arquitectura de pesquisa em primeiro lugar, pipeline contra alucinações na jurisprudência, autenticação, planos e checkout. Produto próprio, construído de raiz.</span></figcaption></figure>
+<figure class="site"><img src="/assets/casos/fadermarket.webp" width="1600" height="1000" alt="Página para barbeiros do FaderMarket, com ilustração de um barbeiro a cortar cabelo" loading="lazy" decoding="async" /><figcaption class="site__cap"><span class="site__name">FaderMarket</span><span class="site__desc">Marketplace de barbeiros em Lisboa e no Luxemburgo, em quatro línguas. Marcações sem conta, agenda do barbeiro com bloqueios e calendário, páginas de barbearia, código QR para a montra, emails transaccionais e um servidor MCP para marcações feitas por assistentes de IA. Cloudflare Pages, Functions e D1. Produto próprio, lançado em Outubro de 2026.</span></figcaption></figure>
+<figure class="site"><img src="/assets/casos/reparar-trotinete.webp" width="1600" height="1000" alt="Página inicial da Reparar Trotinete, oficina de trotinetes eléctricas em Lisboa" loading="lazy" decoding="async" /><figcaption class="site__cap"><span class="site__name">Reparar Trotinete</span><span class="site__desc">Oficina de trotinetes e bicicletas eléctricas em Lisboa. Site de uma página com serviços, marcas, preços e perguntas frequentes, desenhado para converter a visita em chamada. Com um domínio novo e sem autoridade, está na posição 6 em Lisboa para "reparação trotinetes lisboa", ao lado da Worten e do OLX.</span></figcaption></figure>
 </div></div></section>
 <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">O que isto mostra</p><h2 class="h2">Operação, sistemas e rigor</h2></header><div class="prose"><p class="body">Este caso resume o que faço: entrar numa operação real, ligar o que estava solto, automatizar o que era manual e documentar tudo. O mesmo método aplica-se a SEO, tráfego e sites, construir por dentro, com prova no fim.</p></div><div class="related"><a href="/seo/">SEO</a><a href="/automacoes/">Automações</a><a href="/sobre/">Sobre</a><a href="/diagnostico/">Teste de diagnóstico</a></div></div></section>
 <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Perguntas frequentes</p><h2 class="h2">Perguntas frequentes</h2></header><div class="faq"><details><summary>Posso falar com antigos fornecedores e gestores de SEO?</summary><div class="a"><p>Sim. Ponho em contacto com fornecedores e gestores de SEO com quem trabalhei, para confirmarem como trabalho e o que entrego.</p></div></details><details><summary>Tem casos de SEO?</summary><div class="a"><p>Sim, dois estão nesta página com números: um escritório de advogados e um gabinete de contabilidade, ambos em Lisboa, mais três sites de serviços locais na primeira página do Google. Os clientes ficam anónimos por regra. Em reunião mostro os relatórios do Search Console e do Mangools.</p></div></details></div></div></section>
