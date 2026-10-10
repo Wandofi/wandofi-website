@@ -614,6 +614,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Google Preferred Sources: o que é e como instalar no seu site", "description": "O Preferred Sources da Google já está disponível em Portugal. O que é mesmo, o que não é, e como instalar o botão no seu site com um simples link, sem programar.", "inLanguage": "pt-PT", "datePublished": "2026-09-10", "dateModified": "2026-09-10", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/google-preferred-sources/", "url": "https://wandofi.pt/blog/google-preferred-sources/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Preferred Sources funciona em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Arrancou em agosto de 2025 apenas nos Estados Unidos e na Índia, mas desde 30 de abril de 2026 está disponível em todas as línguas onde a Pesquisa Google existe, Portugal incluído."}}, {"@type": "Question", "name": "Isto melhora a minha posição no Google para toda a gente?", "acceptedAnswer": {"@type": "Answer", "text": "Não. O Preferred Sources só dá prioridade ao seu site junto de quem carregou no botão, na conta Google dessa pessoa. Não é um atalho de ranking e não muda nada para quem nunca o marcou."}}, {"@type": "Question", "name": "Preciso de saber programar para instalar?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Além do código de duas linhas que a Google fornece, existe um link directo que funciona em qualquer site, mesmo sem JavaScript. É um link normal, igual a qualquer outro."}}]}</script>

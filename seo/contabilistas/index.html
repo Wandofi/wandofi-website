@@ -615,6 +615,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SEO para Contabilistas", "serviceType": "SEO para Contabilistas", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "SEO para contabilistas e escritórios de contabilidade em Portugal. Conteúdo factualmente correcto e presença local para atrair clientes.", "url": "https://wandofi.pt/seo/contabilistas/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Porque preciso de conteúdo específico para contabilistas?", "acceptedAnswer": {"@type": "Answer", "text": "Porque as pesquisas de quem procura um contabilista são específicas e sensíveis a erros. Conteúdo genérico não converte e informação errada afasta. Escrevo com rigor, com base em formação contabilística."}}, {"@type": "Question", "name": "Consigo atrair só o tipo de cliente que quero?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Com páginas por nicho e por serviço, atrai preferencialmente quem procura exactamente o que oferece, por exemplo, ENIs a abrir actividade ou empresas com contabilidade organizada."}}, {"@type": "Question", "name": "A minha morada de escritório fica exposta?", "acceptedAnswer": {"@type": "Answer", "text": "Só se quiser. Se trabalha de casa ou prefere privacidade, configuro o perfil como área de serviço, sem mostrar a morada."}}]}</script>

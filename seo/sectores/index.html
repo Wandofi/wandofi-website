@@ -615,6 +615,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SEO por Sector", "serviceType": "SEO por sector", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "SEO especializado por sector em Portugal, contabilistas, clínicas, advogados, escolas de línguas e imobiliárias. Conteúdo correcto e presença local para atrair clientes.", "url": "https://wandofi.pt/seo/sectores/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O meu sector não está na lista. Trabalham comigo?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Estes são os sectores que acompanho de forma mais próxima, mas o método aplica-se a qualquer negócio. No diagnóstico percebemos as pesquisas e a concorrência da sua área."}}, {"@type": "Question", "name": "Porque é que o SEO por sector é melhor do que um SEO genérico?", "acceptedAnswer": {"@type": "Answer", "text": "Porque as pesquisas, a linguagem e a decisão variam muito entre sectores. Páginas pensadas para o seu sector atraem o cliente certo e convertem melhor do que conteúdo genérico."}}]}</script>

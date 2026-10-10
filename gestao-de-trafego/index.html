@@ -615,6 +615,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Gestão de Tráfego Pago", "serviceType": "Gestão de tráfego pago", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "Gestão de tráfego pago em Portugal. Campanhas de Google Ads e Meta Ads geridas com método, orçamento controlado e resultados medidos.", "url": "https://wandofi.pt/gestao-de-trafego/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa um gestor de tráfego em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "No mercado, a gestão ronda os 500 a 1.000 euros por mês para freelancers e sobe a partir daí em agências. A isto soma-se o valor que investe nos próprios anúncios, que é definido consigo consoante os objectivos."}}, {"@type": "Question", "name": "Qual a diferença entre o valor da gestão e o investimento em anúncios?", "acceptedAnswer": {"@type": "Answer", "text": "A gestão é o meu trabalho de planear e optimizar as campanhas. O investimento em anúncios é o dinheiro que vai para o Google ou a Meta e que chega ao público. São dois valores distintos e ambos combinados consigo à partida."}}, {"@type": "Question", "name": "Preciso de tráfego pago se estou a fazer SEO?", "acceptedAnswer": {"@type": "Answer", "text": "São complementares. O SEO leva meses a maturar; o tráfego pago traz contactos desde o primeiro dia. Muitos clientes começam com anúncios enquanto o orgânico cresce."}}, {"@type": "Question", "name": "Prende-me a um contrato longo?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Trabalho sem contratos que prendam. Se não fizer sentido continuar, para-se, com os dados e os acessos sempre na sua posse."}}]}</script>

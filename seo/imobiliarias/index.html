@@ -615,6 +615,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SEO para Imobiliárias", "serviceType": "SEO para Imobiliárias", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "SEO para imobiliárias e mediação imobiliária em Portugal. SEO local, site próprio, avaliações e GEO/AEO para captar clientes directos e reduzir a dependência dos portais.", "url": "https://wandofi.pt/seo/imobiliarias/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Isto substitui o Idealista e o Imovirtual?", "acceptedAnswer": {"@type": "Answer", "text": "Não, complementa. Os portais continuam a trazer procura, mas concentram o poder e cobram por lead. Uma presença própria forte capta clientes directos e reduz a dependência, sem ter de cortar de um dia para o outro."}}, {"@type": "Question", "name": "O Google vai mesmo tirar tráfego aos portais?", "acceptedAnswer": {"@type": "Answer", "text": "Nos Estados Unidos, o Google já testa mostrar imóveis na própria pesquisa, o que abalou portais como a Zillow. Em Portugal isso ainda não está confirmado, mas as respostas de IA do Google já cá estão e já mudam a forma como as pessoas pesquisam. O prudente é construir presença própria antes de precisar dela."}}, {"@type": "Question", "name": "Prometem-me a primeira posição ou um número de leads?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Ninguém sério promete posições nem número de leads. Construo as bases certas, meço e mostro a evolução com honestidade. O SEO local ganha-se em semanas a meses, não em dias."}}, {"@type": "Question", "name": "A morada do meu escritório fica exposta?", "acceptedAnswer": {"@type": "Answer", "text": "Só se quiser. Quando faz sentido, configuro o perfil como área de serviço, sem mostrar moradas que prefira manter privadas."}}]}</script>

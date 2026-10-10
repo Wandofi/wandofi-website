@@ -615,6 +615,15 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
 .morelist a:hover .t{color:var(--red)}
 @media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Criação e Migração de Sites", "serviceType": "Criação de sites", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "Criação de sites rápidos e bem estruturados, e migração sem perder posições no Google. Para negócios em Portugal.", "url": "https://wandofi.pt/criacao-de-sites/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa um site com a Wandofi PM?", "acceptedAnswer": {"@type": "Answer", "text": "Um site essencial de uma página começa nos 350€, já com SEO local incluído. Sites com mais páginas, loja online ou copywriting têm orçamento próprio, sempre fechado antes de começar."}}, {"@type": "Question", "name": "Fazem o site e o SEO em conjunto?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, e é uma vantagem. Quando o site nasce com boas bases técnicas e de conteúdo, poupa-se o trabalho de corrigir depois e a indexação é mais rápida."}}, {"@type": "Question", "name": "Consigo migrar de plataforma sem perder o Google?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, com o método certo: mapa de redireccionamentos, verificação de indexação e acompanhamento nas semanas seguintes. É um dos meus terrenos."}}, {"@type": "Question", "name": "Depois de entregue, fico dependente de si?", "acceptedAnswer": {"@type": "Answer", "text": "Não é esse o objectivo. Deixo o site documentado e a funcionar para poder gerir de forma autónoma. Fico disponível se precisar, mas sem prender."}}]}</script>
