@@ -320,7 +320,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
   font-weight:600;color:var(--ink);font-size:1.02rem;line-height:1.4}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";position:absolute;right:.2rem;top:1rem;color:var(--red);font-size:1.3rem;line-height:1;font-weight:400}
-.faq details[open] summary::after{content:"3"}
+.faq details[open] summary::after{content:"\2013"}
 .faq .a{padding:0 0 1.25rem}
 .faq .a{max-width:64ch}
 .faq .a p{margin:0 0 .7rem;color:var(--mute);font-size:1rem;line-height:1.62}
@@ -402,7 +402,15 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .card--wide__action{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
 .card--wide__action .card__more{margin-top:0}
 @media (max-width:980px){.card--wide{grid-template-columns:1fr;align-items:start}}
-    
+    /* ---- sites geridos (portefólio) ---- */
+.sites{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:clamp(1.6rem,3vw,2.2rem)}
+.site{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+.site img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.site__cap{padding:.9rem 1rem 1.05rem;border-top:1px solid var(--line)}
+.site__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
+.site__desc{display:block;margin-top:.3rem;color:var(--mute);font-size:.9rem;line-height:1.5}
+@media (max-width:760px){.sites{grid-template-columns:1fr}}
+
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
    internas usam as mesmas classes da pagina inicial (.h1 .h2 .h3
@@ -447,7 +455,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 /* Lista de entregaveis */
 .deliver{list-style:none;margin:0;padding:0;
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem clamp(1.6rem,3vw,2.4rem)}
-.deliver li{position:relative;padding-left:1.4rem;font-size:1rem;line-height:1.62;color:var(--mute)}
+.deliver li{position:relative;min-width:0;padding-left:1.4rem;font-size:1rem;line-height:1.62;color:var(--mute);overflow-wrap:anywhere}
 .deliver li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:2px;background:var(--red)}
 .deliver li b{color:var(--ink);font-weight:600}
 
@@ -506,9 +514,72 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   .page-hero__metas{grid-template-columns:1fr;gap:.9rem}
   .page-hero__title{max-width:20ch}
 }
-    
+
+/* ================= ARTIGOS DO BLOG =================
+   Convertidos ao tema claro. A zona de leitura propria foi
+   retirada: o artigo usa agora o mesmo container e a mesma
+   medida de texto das paginas de servico.
+   ==================================================== */
+.post__read,.post__rail{display:block;width:100%;background:transparent;border:0;padding:0;margin:0}
+.lead-answer{font-size:1rem;line-height:1.62;color:var(--ink);margin:0;max-width:52ch;
+  border-left:2px solid var(--red);padding-left:1rem}
+.prose>.lead-answer+*{margin-top:1.2rem}
+.mono-inline{font-family:var(--mono);font-size:.92em;color:var(--ink);
+  background:var(--line-soft);border-radius:4px;padding:.1em .35em;overflow-wrap:anywhere}
+.post__prefsrc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:1.1rem 3rem;
+  align-items:center;margin-top:clamp(2rem,4vw,3rem);padding:1.4rem 1.6rem;background:var(--paper);
+  border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r)}
+.prefsrc__btn{width:100%;justify-content:space-between;text-align:left}
+@media (max-width:860px){.post__prefsrc{grid-template-columns:1fr;padding:1.25rem 1.15rem}}
+
+/* ================= BLOG: listagem e leitura (2026-10-10) =================
+   Listagem em lista de artigos com data, etiqueta e tempo de leitura.
+   Artigo com coluna de leitura mais larga e continua, indice no topo e
+   lista dos outros artigos no fim. Fonte: ferramentas/paginas.css */
 .mono-inline { font-family: var(--mono); font-size: 0.9em; background: rgba(5,5,5,.05); padding: 0.12em 0.36em; border-radius: 3px; color: var(--ink); word-break: break-word; }
-</style>
+.posts{list-style:none;margin:clamp(1.2rem,2.5vw,1.8rem) 0 0;padding:0;border-top:1px solid var(--line)}
+.post{border-bottom:1px solid var(--line);margin:0;padding:0}
+.post__link{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:.8rem 2.5rem;padding:clamp(1.3rem,2.4vw,1.8rem) 0;text-decoration:none;color:inherit;position:relative}
+.post__link::before{content:"";position:absolute;left:-1.1rem;top:1.1rem;bottom:1.1rem;width:2px;background:var(--red);transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease)}
+.post__link:hover::before{transform:scaleY(1)}
+.post__meta{display:flex;flex-direction:column;gap:.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:.35rem}
+.post__meta time{color:var(--ink);font-weight:500}
+.post__title{font-family:var(--serif);font-weight:400;font-size:clamp(1.45rem,2.4vw,1.9rem);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 .55rem;max-width:24ch;transition:color .18s var(--ease)}
+.post__link:hover .post__title{color:var(--red)}
+.post__excerpt{margin:0;color:var(--mute);font-size:1rem;line-height:1.6;max-width:58ch}
+.post__more{display:inline-block;margin-top:.9rem;font-size:.92rem;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:2px}
+.post__link:hover .post__more{color:var(--red);border-color:var(--red)}
+@media (max-width:760px){.post__link{grid-template-columns:1fr;gap:.5rem}.post__meta{flex-direction:row;flex-wrap:wrap;gap:.3rem .9rem;padding-top:0}.post__link::before{left:-.9rem}}
+/* artigo: coluna de leitura */
+.artigo .post__byline{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:1.2rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem .9rem}
+.artigo .post__byline time{color:var(--ink);font-weight:500}
+.artigo .section{padding-block:clamp(1.6rem,3vw,2.4rem)}
+.artigo .section--panel{background:var(--paper)}
+.artigo .section:first-of-type + .section{padding-top:clamp(2rem,4vw,3rem)}
+.artigo .prose{max-width:46rem}
+.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer{max-width:64ch;font-size:1.0625rem;line-height:1.74;color:var(--ink-soft)}
+.artigo .prose .body strong,.artigo .prose .body b{color:var(--ink)}
+.artigo .prose>*+*{margin-top:1.3rem}
+.artigo .prose .h2{font-size:clamp(1.6rem,2.8vw,2.15rem);padding-top:1.5rem;border-top:1px solid var(--line);margin-bottom:.8rem}
+.artigo .prose .h2+.body,.artigo .prose .h2+.answer{margin-top:.8rem}
+.artigo .prose .h3{font-size:1.18rem;margin-top:1.9rem}
+.artigo .deliver li,.artigo .prose li{font-size:1.0625rem;line-height:1.7;color:var(--ink-soft)}
+.artigo .deliver{margin-top:1.1rem}
+.artigo .faq .a p{font-size:1.0625rem;line-height:1.7}
+.toc{margin:1.6rem 0 0;padding:1.1rem 1.3rem 1.2rem;border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r);max-width:46rem}
+.toc__label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 .6rem}
+.toc ol{margin:0;padding:0 0 0 1.3rem;columns:2;column-gap:2rem}
+.toc li{font-size:.98rem;line-height:1.5;margin:0 0 .35rem;break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);transition:color .18s var(--ease),border-color .18s var(--ease)}
+.toc a:hover{color:var(--red);border-color:var(--red)}
+.morelist{list-style:none;margin:1.2rem 0 0;padding:0;border-top:1px solid var(--line);max-width:46rem}
+.morelist li{border-bottom:1px solid var(--line)}
+.morelist a{display:grid;grid-template-columns:minmax(0,7.5rem) minmax(0,1fr);gap:.3rem 1.4rem;padding:.9rem 0;text-decoration:none;color:inherit;align-items:baseline}
+.morelist time{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
+.morelist a:hover .t{color:var(--red)}
+@media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+    </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Google Preferred Sources: o que é e como instalar no seu site", "description": "O Preferred Sources da Google já está disponível em Portugal. O que é mesmo, o que não é, e como instalar o botão no seu site com um simples link, sem programar.", "inLanguage": "pt-PT", "datePublished": "2026-09-10", "dateModified": "2026-09-10", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/google-preferred-sources/", "url": "https://wandofi.pt/blog/google-preferred-sources/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O Preferred Sources funciona em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Arrancou em agosto de 2025 apenas nos Estados Unidos e na Índia, mas desde 30 de abril de 2026 está disponível em todas as línguas onde a Pesquisa Google existe, Portugal incluído."}}, {"@type": "Question", "name": "Isto melhora a minha posição no Google para toda a gente?", "acceptedAnswer": {"@type": "Answer", "text": "Não. O Preferred Sources só dá prioridade ao seu site junto de quem carregou no botão, na conta Google dessa pessoa. Não é um atalho de ranking e não muda nada para quem nunca o marcou."}}, {"@type": "Question", "name": "Preciso de saber programar para instalar?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Além do código de duas linhas que a Google fornece, existe um link directo que funciona em qualquer site, mesmo sem JavaScript. É um link normal, igual a qualquer outro."}}]}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wandofi.pt/blog/"}, {"@type": "ListItem", "position": 3, "name": "Google Preferred Sources", "item": "https://wandofi.pt/blog/google-preferred-sources/"}]}</script>
@@ -523,10 +594,8 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         </a>
         <span class="nav__status"><span class="nav__dot" aria-hidden="true"></span> Disponível para projecto</span>
         <nav class="nav__links" aria-label="Navegação principal">
-          <a href="/seo/">SEO</a>
-          <a href="/criacao-de-sites/">Sites</a>
-          <a href="/gestao-de-trafego/">Tráfego</a>
-          <a href="/#casos">Casos</a>
+          <a href="/#servicos">Serviços</a>
+          <a href="/casos/">Casos</a>
           <a href="/blog/">Blog</a>
         </nav>
         <div class="nav__cta">
@@ -535,34 +604,34 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         <details class="nav__toggle">
           <summary aria-label="Abrir menu">Menu</summary>
           <nav class="nav__panel" aria-label="Navegação móvel">
-            <a href="/seo/">SEO</a>
-            <a href="/criacao-de-sites/">Sites</a>
-            <a href="/gestao-de-trafego/">Tráfego</a>
-            <a href="/#casos">Casos</a>
+            <a href="/#servicos">Serviços</a>
+            <a href="/casos/">Casos</a>
             <a href="/blog/">Blog</a>
             <a data-cta="menu-movel" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a>
           </nav>
         </details>
       </div>
     </header>
-    <main id="main">
+    <main id="main" class="artigo">
       <section class="page-hero">
         <div class="container">
           <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/google-preferred-sources/">Google Preferred Sources</a></p>
           <p class="eyebrow">Guia prático</p>
           <h1 class="h1 page-hero__title">Google Preferred Sources: o que é e como instalar no seu site.</h1>
           <p class="lead page-hero__lead">A Google passou a deixar cada leitor escolher as fontes que quer ver primeiro. Já funciona em Portugal, é grátis, e a instalação é um link. Explico o que é mesmo, o que não é, e onde pôr o botão para as pessoas carregarem.</p>
+<p class="post__byline"><time datetime="2026-09-10">10 de Setembro de 2026</time><span>6 min de leitura</span><span>Mauro Cordeiro</span></p>
         </div>
       </section>
 
       <section class="section"><div class="container"><div class="prose">
         <p class="answer">O Preferred Sources é uma funcionalidade da Google que deixa cada pessoa marcar os sites em que confia, para os ver primeiro nos resultados. Está disponível em Portugal desde abril de 2026, é grátis, e para instalar basta um link.</p>
         <p class="body">Escrevo isto porque vi a novidade a circular com números inflacionados e promessas de atalho ao algoritmo. Fui às fontes oficiais da Google confirmar o que é verdade e o que não é. Aqui fica, sem exageros.</p>
+<nav class="toc" aria-label="Neste artigo"><p class="toc__label">Neste artigo</p><ol><li><a href="#o-que-e-e-onde-aparece">O que é, e onde aparece</a></li><li><a href="#o-que-o-preferred-sources-nao-e">O que o Preferred Sources não é</a></li><li><a href="#como-instalar-por-dois-caminhos">Como instalar, por dois caminhos</a></li><li><a href="#onde-por-o-botao-para-alguem-carregar">Onde pôr o botão para alguém carregar</a></li><li><a href="#para-quem-compensa-mesmo">Para quem compensa mesmo</a></li><li><a href="#ja-esta-a-funcionar-aqui">Já está a funcionar aqui</a></li></ol></nav>
       </div></div></section>
 
       <section class="section section--panel"><div class="container"><div class="prose">
         <p class="eyebrow">O que é</p>
-        <h2 class="h2">O que é, e onde aparece</h2>
+        <h2 class="h2" id="o-que-e-e-onde-aparece">O que é, e onde aparece</h2>
         <p class="body">Quando alguém marca o seu site como fonte preferida, a Google passa a dar prioridade ao seu conteúdo nos resultados dessa pessoa. Segundo a <a href="https://developers.google.com/search/docs/appearance/preferred-sources" target="_blank" rel="noopener">documentação da Google para programadores</a>, isso acontece sobretudo nas notícias em destaque, as Top Stories, e numa secção própria de "fontes que segue". O conteúdo também pode aparecer destacado no AI Mode e nas AI Overviews, com um distintivo de fonte preferida.</p>
         <p class="body">Funciona ao nível do domínio e do subdomínio, não de subpastas. Ou seja, marca o wandofi.pt inteiro, não apenas o blog.</p>
         <p class="body">Quanto a datas, a funcionalidade arrancou a 12 de agosto de 2025, só nos Estados Unidos e na Índia. Desde 30 de abril de 2026 está disponível em todas as línguas onde a Pesquisa Google existe, e é por isso que hoje já faz sentido falar disto em Portugal.</p>
@@ -570,14 +639,14 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
       <section class="section"><div class="container"><div class="prose">
         <p class="eyebrow">A parte honesta</p>
-        <h2 class="h2">O que o Preferred Sources não é</h2>
+        <h2 class="h2" id="o-que-o-preferred-sources-nao-e">O que o Preferred Sources não é</h2>
         <p class="body">Anda por aí a ideia de que isto é um atalho que salta o algoritmo. Não é, e convém dizer com todas as letras. A preferência vive na conta Google de quem carregou no botão, e só produz efeito para essa pessoa. Não melhora a sua posição para quem nunca ouviu falar de si, não substitui o SEO, e não compete com quem está a pagar anúncios.</p>
         <p class="body">Sobre números, também vale a pena o aviso. A única estatística que encontrei publicada pela própria Google, no <a href="https://blog.google/products-and-platforms/products/search/preferred-sources/" target="_blank" rel="noopener">anúncio oficial</a>, é que nos testes mais de metade dos utilizadores escolheu quatro ou mais fontes. Os valores que circulam por aí, como centenas de milhares de fontes marcadas ou o dobro dos cliques, não constam da documentação nem do anúncio. Se alguém os usar para lhe vender um serviço, peça a fonte.</p>
       </div></div></section>
 
       <section class="section section--panel"><div class="container"><div class="prose">
         <p class="eyebrow">Instalação</p>
-        <h2 class="h2">Como instalar, por dois caminhos</h2>
+        <h2 class="h2" id="como-instalar-por-dois-caminhos">Como instalar, por dois caminhos</h2>
         <p class="body">A Google dá mais do que uma forma de pôr isto no site, e ambas demoram minutos:</p>
         <ul class="deliver">
           <li><b>Código pronto</b>: um bloco de JavaScript de duas linhas, que desenha um botão oficial e que se traduz sozinho conforme a língua do visitante.</li>
@@ -588,7 +657,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
       <section class="section"><div class="container"><div class="prose">
         <p class="eyebrow">Colocação</p>
-        <h2 class="h2">Onde pôr o botão para alguém carregar</h2>
+        <h2 class="h2" id="onde-por-o-botao-para-alguem-carregar">Onde pôr o botão para alguém carregar</h2>
         <p class="body">A instalação é a parte fácil. O que decide se as pessoas carregam é onde o botão fica. O erro mais comum é atirar com o botão para o rodapé, ao lado da política de privacidade, onde ninguém olha. Estes são os princípios que sigo:</p>
         <ul class="deliver">
           <li><b>Logo a seguir ao conteúdo</b>: no momento em que a pessoa acabou de ler e está a pensar que quer mais daquilo, não antes e não no fim da página.</li>
@@ -600,13 +669,13 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
       <section class="section section--panel"><div class="container"><div class="prose">
         <p class="eyebrow">Vale a pena?</p>
-        <h2 class="h2">Para quem compensa mesmo</h2>
+        <h2 class="h2" id="para-quem-compensa-mesmo">Para quem compensa mesmo</h2>
         <p class="body">Quem publica com regularidade tem aqui mais a ganhar, porque cada artigo novo chega com prioridade a quem já o marcou. Um site institucional que não muda há dois anos ganha pouco, simplesmente porque não há conteúdo novo para mostrar. Dito isto, o esforço é quase nenhum e não tem custo, por isso a conta compensa quase sempre. Faz parte da mesma família de trabalho que trato na página de <a href="/seo/geo-aeo/">GEO e AEO</a>, ser encontrado e ser citado nas respostas, e não apenas aparecer numa lista.</p>
       </div></div></section>
 
       <section class="section"><div class="container"><div class="prose">
         <p class="eyebrow">Na prática</p>
-        <h2 class="h2">Já está a funcionar aqui</h2>
+        <h2 class="h2" id="ja-esta-a-funcionar-aqui">Já está a funcionar aqui</h2>
         <p class="body">Não escrevo sobre coisas que não montei. O botão está instalado no fim de cada artigo deste blog, incluindo neste, feito à mão com o link directo, em português de Portugal e com o vermelho da casa. Está logo aqui em baixo, e pode experimentar agora.</p>
       </div></div></section>
 
@@ -629,7 +698,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         <details><summary>Preciso de saber programar para instalar?</summary><div class="a"><p>Não. Além do código de duas linhas que a Google fornece, existe um link directo que funciona em qualquer site, mesmo sem JavaScript. É um link normal, igual a qualquer outro.</p></div></details>
       </div></div></section>
 
-      <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><div class="related"><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/blog/tendencias-de-ia-em-portugal/">Tendências de IA</a><a href="/seo/">SEO</a><a href="/contactos/">Contactos</a></div></div></section>
+      <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><p class="body">Outros artigos do blog:</p><ul class="morelist"><li><a href="/blog/agentes-de-ia-a-medida/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Agentes de IA à medida: skills, workflows e implementação remota</span></a></li><li><a href="/blog/tendencias-de-ia-em-portugal/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Tendências de IA em Portugal em 2026: o que está em alta</span></a></li><li><a href="/blog/ai-act-ia-no-marketing/"><time datetime="2026-08-31">31 Ago 2026</time><span class="t">IA no marketing e o AI Act: o que está em causa</span></a></li><li><a href="/blog/como-abrir-uma-empresa-em-portugal/"><time datetime="2026-08-20">20 Ago 2026</time><span class="t">Como abrir uma empresa em Portugal, passo a passo</span></a></li></ul><div class="related"><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/blog/tendencias-de-ia-em-portugal/">Tendências de IA</a><a href="/seo/">SEO</a><a href="/contactos/">Contactos</a></div></div></section>
       <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Quer isto instalado no seu site, e o SEO tratado a sério?</h2><p class="lead">Instalo o botão, ponho a medição a funcionar e trato do resto para o seu site ser encontrado. Começamos por um diagnóstico, sem compromisso.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow">↗</span></a><a class="close__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
     </main>
     <footer class="footer">
