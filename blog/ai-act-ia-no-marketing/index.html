@@ -446,6 +446,32 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 @media (max-width:760px){.album__stage{aspect-ratio:4/5;perspective:1100px}.album__more{gap:.4rem;padding:.9rem}.album__more .album__desc{font-size:.8rem;max-width:22ch}.album__more .album__name{font-size:1.15rem}.album__more .btn{font-size:.85rem;padding:.6rem .9rem}.album__mosaic{width:56%}.album__slide{width:54%;margin-left:-27%;transform:translateY(-50%) translateX(calc(var(--d) * 74%)) translateZ(calc(var(--abs) * -6rem)) rotateY(calc(var(--s) * -40deg))}
   .album__legend{grid-template-columns:1fr}.album__nav{justify-content:center}}
 @media (prefers-reduced-motion:reduce){.album__slide,.album__card{transition:none}}
+/* ---- movimento leve: cartões de casos e portefólio ---- */
+.site,div.proof .stat{--rx:0deg;--ry:0deg;--ty:0px;transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--ty));
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .25s var(--ease),opacity .6s var(--ease);transform-style:preserve-3d}
+.js .stagger.is-in>.site,.js .stagger.is-in>.stat{transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--ty))}
+.site:hover{--ty:-6px;box-shadow:0 24px 44px -26px rgba(5,5,5,.42);border-color:rgba(5,5,5,.22)}
+.site img{transition:transform .7s var(--ease)}
+.site:hover img{transform:scale(1.035)}
+.site__cap{position:relative}
+.site__cap::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--red);transition:width .5s var(--ease)}
+.site:hover .site__cap::before{width:100%}
+div.proof .stat{position:relative;overflow:hidden}
+div.proof .stat::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+div.proof .stat:hover{--ty:-3px;background:#fcfcfc}
+div.proof .stat:hover::after{transform:scaleX(1)}
+div.proof .stat .stat__v{transition:transform .4s var(--ease)}
+div.proof .stat:hover .stat__v{transform:translateY(-2px)}
+.album__card{transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.album__slide.is-active:hover .album__card{transform:translateY(-8px);box-shadow:0 44px 80px -36px rgba(5,5,5,.6)}
+.album__slide.is-active:hover .album__more{transform:translateY(-8px)}
+.album__more{transition:transform .45s var(--ease)}
+@supports (animation-timeline: view()){
+  .album__stage{animation:album-dots linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+  @keyframes album-dots{from{background-position:0 0}to{background-position:0 -120px}}
+}
+@media (hover:none){.site:hover{--ty:0px}.site:hover img{transform:none}}
+@media (prefers-reduced-motion:reduce){.site,div.proof .stat,.site img,.album__card,.album__more,.site__cap::before,div.proof .stat::after{transition:none}.album__stage{animation:none}.site:hover{--ty:0px}.site:hover img{transform:none}}
 
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
