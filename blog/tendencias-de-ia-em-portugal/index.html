@@ -25,6 +25,7 @@
     <meta property="og:image" content="https://wandofi.pt/assets/og-card.jpg" />
     <meta property="og:locale" content="pt_PT" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://wandofi.pt/assets/og-card.jpg" />
     <meta name="twitter:title" content="Tendências de IA em Portugal em 2026: o que está em alta" />
     <meta name="twitter:description" content="O que está mesmo em alta na inteligência artificial em Portugal em 2026: agentes de IA, ferramentas, automação e marketing. Um guia prático, sem jargão, para o seu negócio." />
     <link rel="icon" href="/favicon.ico" sizes="any" />
@@ -33,7 +34,8 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
     <style id="home-light">
 
 :root{
@@ -45,7 +47,7 @@
   --line:rgba(5,5,5,.13);
   --line-soft:rgba(5,5,5,.07);
   --red:#e1251b;
-  --red-deep:#99140f;
+  --red-deep:#99140f;--livre:#12855a;
   --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
   --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -473,6 +475,7 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 }
 @media (hover:none){.site:hover{--ty:0px}.site:hover img{transform:none}}
 @media (prefers-reduced-motion:reduce){.site,div.proof .stat,.site img,.album__card,.album__more,.site__cap::before,div.proof .stat::after{transition:none}.album__stage{animation:none}.site:hover{--ty:0px}.site:hover img{transform:none}}
+.nav__dot{background:var(--livre)}
 
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
@@ -651,8 +654,11 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .estreito .page-hero__title{max-width:14ch}
 .estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
 .estreito .sites{grid-template-columns:repeat(2,1fr)}
+/* reserva de altura ao teste de diagnóstico, para a secção seguinte não saltar */
+#quiz{min-height:26rem}
+@media (max-width:760px){#quiz{min-height:30rem}}
     </style>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Tendências de IA em Portugal em 2026: o que está em alta", "description": "O que está mesmo em alta na inteligência artificial em Portugal em 2026: agentes de IA, ferramentas, automação e marketing. Um guia prático, sem jargão, para o seu negócio.", "inLanguage": "pt-PT", "datePublished": "2026-09-03", "dateModified": "2026-09-03", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/", "url": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Tendências de IA em Portugal em 2026: o que está em alta", "description": "O que está mesmo em alta na inteligência artificial em Portugal em 2026: agentes de IA, ferramentas, automação e marketing. Um guia prático, sem jargão, para o seu negócio.", "inLanguage": "pt-PT", "datePublished": "2026-09-03", "dateModified": "2026-09-03", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/", "url": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/", "image": "https://wandofi.pt/assets/og-card.jpg"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que é um agente de IA, em palavras simples?", "acceptedAnswer": {"@type": "Answer", "text": "É um assistente de software que não se limita a responder, executa. Recebe um objectivo, decide os passos, usa outras ferramentas e entrega o resultado. Pense num colaborador digital para uma tarefa específica, como triar pedidos ou preparar orçamentos."}}, {"@type": "Question", "name": "Que ferramentas de IA valem a pena para uma empresa pequena?", "acceptedAnswer": {"@type": "Answer", "text": "As que resolvem uma dor concreta. Para a maioria começa em três: uma para conteúdo, uma para atendimento no site, e automação para ligar tudo. Vale mais dominar três bem escolhidas do que saltar entre dezenas."}}, {"@type": "Question", "name": "A IA vai acabar com o SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Não, muda o SEO. As pessoas passam a perguntar também à IA, por isso o objectivo alarga: aparecer no Google e ser a fonte que a IA cita na resposta. Quem tiver conteúdo claro e de confiança ganha dos dois lados."}}]}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wandofi.pt/blog/"}, {"@type": "ListItem", "position": 3, "name": "Tendências de IA em Portugal em 2026", "item": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/"}]}</script>
   </head>
@@ -772,8 +778,8 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         <details><summary>A IA vai acabar com o SEO?</summary><div class="a"><p>Não, muda o SEO. As pessoas passam a perguntar também à IA, por isso o objectivo alarga: aparecer no Google e ser a fonte que a IA cita na resposta. Quem tiver conteúdo claro e de confiança ganha dos dois lados.</p></div></details>
       </div></div></section>
 
-      <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><p class="body">Outros artigos do blog:</p><ul class="morelist"><li><a href="/blog/google-preferred-sources/"><time datetime="2026-09-10">10 Set 2026</time><span class="t">Google Preferred Sources: o que é e como instalar no seu site</span></a></li><li><a href="/blog/agentes-de-ia-a-medida/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Agentes de IA à medida: skills, workflows e implementação remota</span></a></li><li><a href="/blog/ai-act-ia-no-marketing/"><time datetime="2026-08-31">31 Ago 2026</time><span class="t">IA no marketing e o AI Act: o que está em causa</span></a></li><li><a href="/blog/como-abrir-uma-empresa-em-portugal/"><time datetime="2026-08-20">20 Ago 2026</time><span class="t">Como abrir uma empresa em Portugal, passo a passo</span></a></li></ul><div class="related"><a href="/automacoes/">Automações</a><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/blog/ai-act-ia-no-marketing/">AI Act e IA no marketing</a><a href="/seo/">SEO</a><a href="/contactos/">Contactos</a></div></div></section>
-      <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Quer a IA a trabalhar para o seu negócio, sem perder tempo com modas?</h2><p class="lead">Monto as automações, o site e o conteúdo com a IA no sítio certo, e a parte legal à cabeça. Começamos por um diagnóstico.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow">↗</span></a><a class="close__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
+      <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><p class="body">Outros artigos do blog:</p><ul class="morelist"><li><a href="/blog/google-preferred-sources/"><time datetime="2026-09-10">10 Set 2026</time><span class="t">Google Preferred Sources: o que é e como instalar no seu site</span></a></li><li><a href="/blog/agentes-de-ia-a-medida/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Agentes de IA à medida: skills, workflows e implementação remota</span></a></li><li><a href="/blog/ai-act-ia-no-marketing/"><time datetime="2026-08-31">31 Ago 2026</time><span class="t">IA no marketing e o AI Act: o que está em causa</span></a></li><li><a href="/blog/como-abrir-uma-empresa-em-portugal/"><time datetime="2026-08-20">20 Ago 2026</time><span class="t">Como abrir uma empresa em Portugal, passo a passo</span></a></li></ul><div class="related"><a href="/automacoes/">Automações</a><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/blog/ai-act-ia-no-marketing/">IA no marketing e o AI Act</a><a href="/seo/">SEO</a><a href="/contactos/">Contactos</a></div></div></section>
+      <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Quer a IA a trabalhar para o seu negócio, sem perder tempo com modas?</h2><p class="lead">Monto as automações, o site e o conteúdo com a IA no sítio certo, e a parte legal à cabeça. Começamos por um diagnóstico.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a><a class="close__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
     </main>
     <footer class="footer">
       <div class="container">
