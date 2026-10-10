@@ -854,6 +854,7 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
           s.classList.toggle("is-active", d === 0);
           s.setAttribute("data-far", Math.abs(d) > 2 ? "1" : "0");
           s.setAttribute("aria-hidden", d === 0 ? "false" : "true");
+          if (d === 0) s.removeAttribute("inert"); else s.setAttribute("inert", "");
         });
         pontos.forEach(function(p, i){ if (i === act) p.setAttribute("aria-current", "true"); else p.removeAttribute("aria-current"); });
         if (estado) estado.textContent = (act + 1) + " / " + n;
