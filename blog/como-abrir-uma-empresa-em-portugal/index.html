@@ -320,7 +320,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
   font-weight:600;color:var(--ink);font-size:1.02rem;line-height:1.4}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";position:absolute;right:.2rem;top:1rem;color:var(--red);font-size:1.3rem;line-height:1;font-weight:400}
-.faq details[open] summary::after{content:"3"}
+.faq details[open] summary::after{content:"\2013"}
 .faq .a{padding:0 0 1.25rem}
 .faq .a{max-width:64ch}
 .faq .a p{margin:0 0 .7rem;color:var(--mute);font-size:1rem;line-height:1.62}
@@ -402,7 +402,15 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .card--wide__action{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
 .card--wide__action .card__more{margin-top:0}
 @media (max-width:980px){.card--wide{grid-template-columns:1fr;align-items:start}}
-    
+    /* ---- sites geridos (portefólio) ---- */
+.sites{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:clamp(1.6rem,3vw,2.2rem)}
+.site{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+.site img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.site__cap{padding:.9rem 1rem 1.05rem;border-top:1px solid var(--line)}
+.site__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
+.site__desc{display:block;margin-top:.3rem;color:var(--mute);font-size:.9rem;line-height:1.5}
+@media (max-width:760px){.sites{grid-template-columns:1fr}}
+
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
    internas usam as mesmas classes da pagina inicial (.h1 .h2 .h3
@@ -447,7 +455,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 /* Lista de entregaveis */
 .deliver{list-style:none;margin:0;padding:0;
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem clamp(1.6rem,3vw,2.4rem)}
-.deliver li{position:relative;padding-left:1.4rem;font-size:1rem;line-height:1.62;color:var(--mute)}
+.deliver li{position:relative;min-width:0;padding-left:1.4rem;font-size:1rem;line-height:1.62;color:var(--mute);overflow-wrap:anywhere}
 .deliver li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:2px;background:var(--red)}
 .deliver li b{color:var(--ink);font-weight:600}
 
@@ -506,9 +514,72 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   .page-hero__metas{grid-template-columns:1fr;gap:.9rem}
   .page-hero__title{max-width:20ch}
 }
-    
+
+/* ================= ARTIGOS DO BLOG =================
+   Convertidos ao tema claro. A zona de leitura propria foi
+   retirada: o artigo usa agora o mesmo container e a mesma
+   medida de texto das paginas de servico.
+   ==================================================== */
+.post__read,.post__rail{display:block;width:100%;background:transparent;border:0;padding:0;margin:0}
+.lead-answer{font-size:1rem;line-height:1.62;color:var(--ink);margin:0;max-width:52ch;
+  border-left:2px solid var(--red);padding-left:1rem}
+.prose>.lead-answer+*{margin-top:1.2rem}
+.mono-inline{font-family:var(--mono);font-size:.92em;color:var(--ink);
+  background:var(--line-soft);border-radius:4px;padding:.1em .35em;overflow-wrap:anywhere}
+.post__prefsrc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:1.1rem 3rem;
+  align-items:center;margin-top:clamp(2rem,4vw,3rem);padding:1.4rem 1.6rem;background:var(--paper);
+  border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r)}
+.prefsrc__btn{width:100%;justify-content:space-between;text-align:left}
+@media (max-width:860px){.post__prefsrc{grid-template-columns:1fr;padding:1.25rem 1.15rem}}
+
+/* ================= BLOG: listagem e leitura (2026-10-10) =================
+   Listagem em lista de artigos com data, etiqueta e tempo de leitura.
+   Artigo com coluna de leitura mais larga e continua, indice no topo e
+   lista dos outros artigos no fim. Fonte: ferramentas/paginas.css */
 .mono-inline { font-family: var(--mono); font-size: 0.9em; background: rgba(5,5,5,.05); padding: 0.12em 0.36em; border-radius: 3px; color: var(--ink); word-break: break-word; }
-</style>
+.posts{list-style:none;margin:clamp(1.2rem,2.5vw,1.8rem) 0 0;padding:0;border-top:1px solid var(--line)}
+.post{border-bottom:1px solid var(--line);margin:0;padding:0}
+.post__link{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:.8rem 2.5rem;padding:clamp(1.3rem,2.4vw,1.8rem) 0;text-decoration:none;color:inherit;position:relative}
+.post__link::before{content:"";position:absolute;left:-1.1rem;top:1.1rem;bottom:1.1rem;width:2px;background:var(--red);transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease)}
+.post__link:hover::before{transform:scaleY(1)}
+.post__meta{display:flex;flex-direction:column;gap:.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:.35rem}
+.post__meta time{color:var(--ink);font-weight:500}
+.post__title{font-family:var(--serif);font-weight:400;font-size:clamp(1.45rem,2.4vw,1.9rem);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 .55rem;max-width:24ch;transition:color .18s var(--ease)}
+.post__link:hover .post__title{color:var(--red)}
+.post__excerpt{margin:0;color:var(--mute);font-size:1rem;line-height:1.6;max-width:58ch}
+.post__more{display:inline-block;margin-top:.9rem;font-size:.92rem;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:2px}
+.post__link:hover .post__more{color:var(--red);border-color:var(--red)}
+@media (max-width:760px){.post__link{grid-template-columns:1fr;gap:.5rem}.post__meta{flex-direction:row;flex-wrap:wrap;gap:.3rem .9rem;padding-top:0}.post__link::before{left:-.9rem}}
+/* artigo: coluna de leitura */
+.artigo .post__byline{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:1.2rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem .9rem}
+.artigo .post__byline time{color:var(--ink);font-weight:500}
+.artigo .section{padding-block:clamp(1.6rem,3vw,2.4rem)}
+.artigo .section--panel{background:var(--paper)}
+.artigo .section:first-of-type + .section{padding-top:clamp(2rem,4vw,3rem)}
+.artigo .prose{max-width:46rem}
+.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer{max-width:64ch;font-size:1.0625rem;line-height:1.74;color:var(--ink-soft)}
+.artigo .prose .body strong,.artigo .prose .body b{color:var(--ink)}
+.artigo .prose>*+*{margin-top:1.3rem}
+.artigo .prose .h2{font-size:clamp(1.6rem,2.8vw,2.15rem);padding-top:1.5rem;border-top:1px solid var(--line);margin-bottom:.8rem}
+.artigo .prose .h2+.body,.artigo .prose .h2+.answer{margin-top:.8rem}
+.artigo .prose .h3{font-size:1.18rem;margin-top:1.9rem}
+.artigo .deliver li,.artigo .prose li{font-size:1.0625rem;line-height:1.7;color:var(--ink-soft)}
+.artigo .deliver{margin-top:1.1rem}
+.artigo .faq .a p{font-size:1.0625rem;line-height:1.7}
+.toc{margin:1.6rem 0 0;padding:1.1rem 1.3rem 1.2rem;border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r);max-width:46rem}
+.toc__label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 .6rem}
+.toc ol{margin:0;padding:0 0 0 1.3rem;columns:2;column-gap:2rem}
+.toc li{font-size:.98rem;line-height:1.5;margin:0 0 .35rem;break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);transition:color .18s var(--ease),border-color .18s var(--ease)}
+.toc a:hover{color:var(--red);border-color:var(--red)}
+.morelist{list-style:none;margin:1.2rem 0 0;padding:0;border-top:1px solid var(--line);max-width:46rem}
+.morelist li{border-bottom:1px solid var(--line)}
+.morelist a{display:grid;grid-template-columns:minmax(0,7.5rem) minmax(0,1fr);gap:.3rem 1.4rem;padding:.9rem 0;text-decoration:none;color:inherit;align-items:baseline}
+.morelist time{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
+.morelist a:hover .t{color:var(--red)}
+@media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+    </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Como abrir uma empresa em Portugal, passo a passo", "description": "Guia prático para abrir uma empresa em Portugal. O que decidir antes, como criar a empresa na hora ou online, e o que tratar nos primeiros dias.", "inLanguage": "pt-PT", "datePublished": "2026-08-20", "dateModified": "2026-08-20", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/", "url": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "É preciso advogado para abrir uma empresa?", "acceptedAnswer": {"@type": "Answer", "text": "Para a constituição em si não é obrigatório. Pode usar os modelos de pacto do Estado, na Empresa na Hora ou online. O advogado compensa quando há vários sócios, acordos a definir, ou uma estrutura menos comum."}}, {"@type": "Question", "name": "Quanto custa abrir uma empresa em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "No balcão da Empresa na Hora, a constituição fica em 360 euros, segundo o portal da Justiça. A isso junta o capital social que define para a empresa e os custos correntes que vêm a seguir, como o contabilista."}}, {"@type": "Question", "name": "Posso criar a empresa toda online?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Se você e todos os sócios tiverem a Chave Móvel Digital activa ou o cartão de cidadão com assinatura digital, faz a criação da empresa online do princípio ao fim."}}]}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wandofi.pt/blog/"}, {"@type": "ListItem", "position": 3, "name": "Como abrir uma empresa em Portugal", "item": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/"}]}</script>
@@ -523,10 +594,8 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         </a>
         <span class="nav__status"><span class="nav__dot" aria-hidden="true"></span> Disponível para projecto</span>
         <nav class="nav__links" aria-label="Navegação principal">
-          <a href="/seo/">SEO</a>
-          <a href="/criacao-de-sites/">Sites</a>
-          <a href="/gestao-de-trafego/">Tráfego</a>
-          <a href="/#casos">Casos</a>
+          <a href="/#servicos">Serviços</a>
+          <a href="/casos/">Casos</a>
           <a href="/blog/">Blog</a>
         </nav>
         <div class="nav__cta">
@@ -535,46 +604,46 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         <details class="nav__toggle">
           <summary aria-label="Abrir menu">Menu</summary>
           <nav class="nav__panel" aria-label="Navegação móvel">
-            <a href="/seo/">SEO</a>
-            <a href="/criacao-de-sites/">Sites</a>
-            <a href="/gestao-de-trafego/">Tráfego</a>
-            <a href="/#casos">Casos</a>
+            <a href="/#servicos">Serviços</a>
+            <a href="/casos/">Casos</a>
             <a href="/blog/">Blog</a>
             <a data-cta="menu-movel" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a>
           </nav>
         </details>
       </div>
     </header>
-    <main id="main">
+    <main id="main" class="artigo">
       <section class="page-hero">
         <div class="container">
           <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/como-abrir-uma-empresa-em-portugal/">Como abrir uma empresa em Portugal</a></p>
           <p class="eyebrow">Guia prático</p>
           <h1 class="h1 page-hero__title">Como abrir uma empresa em Portugal, passo a passo.</h1>
           <p class="lead page-hero__lead">Um guia honesto, escrito por quem monta negócios por dentro. O que decidir antes, como criar a empresa na hora ou online, e o que tratar nos primeiros dias para não apanhar sustos.</p>
+<p class="post__byline"><time datetime="2026-08-20">20 de Agosto de 2026</time><span>6 min de leitura</span><span>Mauro Cordeiro</span></p>
         </div>
       </section>
 
       <section class="section"><div class="container"><div class="prose">
         <p class="answer">Abrir uma empresa em Portugal é mais simples do que muita gente pensa, e mais exigente do que os anúncios dizem. A papelada fica resolvida num balcão ou pela internet numa tarde. O que dá trabalho é o que vem antes e o que vem a seguir.</p>
         <p class="body">Passo os meus dias a montar a operação à volta de empresas novas: o site, as ferramentas, os processos, a estrutura que sustenta o resto. Não sou advogado nem contabilista certificado, e é por isso que este guia se foca na parte prática, aquela que raramente alguém explica em português simples. Sempre que a decisão for jurídica ou fiscal, digo com clareza a quem deve perguntar.</p>
+<nav class="toc" aria-label="Neste artigo"><p class="toc__label">Neste artigo</p><ol><li><a href="#antes-de-criar-a-empresa">Antes de criar a empresa</a></li><li><a href="#criar-a-empresa-na-hora-ou-online">Criar a empresa, na hora ou online</a></li><li><a href="#o-que-recebe-no-fim">O que recebe no fim</a></li><li><a href="#os-primeiros-trinta-dias-contam">Os primeiros trinta dias contam</a></li><li><a href="#onde-entra-cada-um-e-onde-entro-eu">Onde entra cada um, e onde entro eu</a></li></ol></nav>
       </div></div></section>
 
       <section class="section section--panel"><div class="container"><div class="prose">
-        <h2 class="h2">Antes de criar a empresa</h2>
+        <h2 class="h2" id="antes-de-criar-a-empresa">Antes de criar a empresa</h2>
         <p class="body">Antes de qualquer formulário, há três coisas para decidir. O que vai fazer, ou seja, a actividade e o código que a descreve. Quem entra consigo, mesmo que seja só você. E a forma da empresa, que é a decisão com mais peso.</p>
         <p class="body">A forma pode ir do empresário em nome individual à sociedade unipessoal por quotas, à sociedade por quotas, a famosa Lda, ou à sociedade anónima. A escolha muda a sua responsabilidade, a fiscalidade e a papelada que vai carregar durante anos. É uma conversa curta com um advogado ou com um contabilista, e vale cada minuto, porque mudar de forma depois custa bem mais do que acertar no início.</p>
       </div></div></section>
 
       <section class="section"><div class="container"><div class="prose">
-        <h2 class="h2">Criar a empresa, na hora ou online</h2>
+        <h2 class="h2" id="criar-a-empresa-na-hora-ou-online">Criar a empresa, na hora ou online</h2>
         <p class="body">Há dois caminhos oficiais para constituir a empresa, e ambos são rápidos. Escolha pelo que lhe der mais jeito e pela forma como você e os sócios conseguem assinar.</p>
         <p class="body"><strong>Empresa na Hora.</strong> É presencial, num dos balcões próprios espalhados pelo país, de preferência com marcação. Precisa do seu cartão de cidadão. No balcão escolhe um nome de uma bolsa de firmas já aprovadas, ou traz um certificado de admissibilidade pedido antes ao Registo Nacional de Pessoas Colectivas, e escolhe um dos modelos de pacto já aprovados. Sai de lá com a empresa constituída e registada. Segundo o <a href="https://justica.gov.pt/Servicos/Empresa-na-Hora/Como-funciona" target="_blank" rel="noopener">portal da Justiça</a>, a constituição fica em 360 euros.</p>
         <p class="body"><strong>Criar empresa online.</strong> Faz tudo pela internet, sem sair de casa, desde que você e todos os sócios tenham a Chave Móvel Digital activa ou o cartão de cidadão com assinatura digital. Preenche o <a href="https://justica.gov.pt/Guias/Como-criar-uma-empresa-online" target="_blank" rel="noopener">formulário oficial</a> com o tipo de empresa, os sócios, a gerência, a actividade, o capital social, a sede e o nome, paga as taxas por referência, cartão ou MB WAY, e o pedido segue para análise. É o caminho natural se está fora do país ou se prefere resolver isto sem marcar deslocações.</p>
       </div></div></section>
 
       <section class="section section--panel"><div class="container"><div class="prose">
-        <h2 class="h2">O que recebe no fim</h2>
+        <h2 class="h2" id="o-que-recebe-no-fim">O que recebe no fim</h2>
         <p class="body">Seja qual for o caminho, fica com o mesmo conjunto de documentos, e é este conjunto que lhe abre as portas para o banco, para as Finanças e para a segurança social:</p>
         <ul class="deliver">
           <li><b>O pacto social</b>: as regras da empresa, quem decide e como se decide.</li>
@@ -585,7 +654,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       </div></div></section>
 
       <section class="section"><div class="container"><div class="prose">
-        <h2 class="h2">Os primeiros trinta dias contam</h2>
+        <h2 class="h2" id="os-primeiros-trinta-dias-contam">Os primeiros trinta dias contam</h2>
         <p class="body">A empresa nasce constituída, mas ainda não está a andar. Há prazos curtos logo a seguir, e falhar esses prazos custa dinheiro e dores de cabeça. Segundo o portal da Justiça, conte com isto:</p>
         <ul class="deliver">
           <li><b>Depositar o capital social</b> no banco, em cinco dias úteis.</li>
@@ -596,7 +665,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       </div></div></section>
 
       <section class="section section--panel"><div class="container"><div class="prose">
-        <h2 class="h2">Onde entra cada um, e onde entro eu</h2>
+        <h2 class="h2" id="onde-entra-cada-um-e-onde-entro-eu">Onde entra cada um, e onde entro eu</h2>
         <p class="body">Abrir a empresa é um bocadinho como levantar uma casa. Há quem trate da parte legal, quem trate das contas, e quem monte tudo o resto para funcionar no dia a dia.</p>
         <p class="body">A parte jurídica, escolher a forma certa, redigir um pacto à sua medida em vez de um modelo igual para todos, e os acordos entre sócios, é trabalho de advogado. Nesses casos trabalho ao lado de escritórios de direito societário como a <a href="https://vpa.pt/post/incorporate-private-limited-company-lda-portugal" target="_blank" rel="noopener">VPA, Venture Partners Advogados</a>, em Lisboa. A parte fiscal e a contabilidade são do contabilista certificado, e vale a pena ter um de confiança antes de facturar o primeiro euro.</p>
         <p class="body">É aqui que eu entro. Depois de a empresa existir, monto a operação à volta dela: o <a href="/criacao-de-sites/">site</a>, as ferramentas que vai usar todos os dias, as <a href="/automacoes/">automações</a> que poupam horas e os processos que evitam que o conhecimento viva só na sua cabeça. Trato da estrutura para o negócio começar organizado, e não improvisado.</p>
@@ -621,7 +690,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         <details><summary>Posso criar a empresa toda online?</summary><div class="a"><p>Sim. Se você e todos os sócios tiverem a Chave Móvel Digital activa ou o cartão de cidadão com assinatura digital, faz a criação da empresa online do princípio ao fim, sem ir a nenhum balcão.</p></div></details>
       </div></div></section>
 
-      <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><div class="related"><a href="/criacao-de-sites/">Criação de sites</a><a href="/automacoes/">Automações</a><a href="/seo/">SEO</a><a href="/contactos/">Contactos</a></div></div></section>
+      <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><p class="body">Outros artigos do blog:</p><ul class="morelist"><li><a href="/blog/google-preferred-sources/"><time datetime="2026-09-10">10 Set 2026</time><span class="t">Google Preferred Sources: o que é e como instalar no seu site</span></a></li><li><a href="/blog/agentes-de-ia-a-medida/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Agentes de IA à medida: skills, workflows e implementação remota</span></a></li><li><a href="/blog/tendencias-de-ia-em-portugal/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Tendências de IA em Portugal em 2026: o que está em alta</span></a></li><li><a href="/blog/ai-act-ia-no-marketing/"><time datetime="2026-08-31">31 Ago 2026</time><span class="t">IA no marketing e o AI Act: o que está em causa</span></a></li></ul><div class="related"><a href="/criacao-de-sites/">Criação de sites</a><a href="/automacoes/">Automações</a><a href="/seo/">SEO</a><a href="/contactos/">Contactos</a></div></div></section>
       <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Vai abrir empresa e quer a operação a andar desde o primeiro dia?</h2><p class="lead">Trato da estrutura à volta, site, ferramentas, processos e automações, para começar organizado. Começamos por um diagnóstico, sem compromisso.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow">↗</span></a><a class="close__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
     </main>
     <footer class="footer">

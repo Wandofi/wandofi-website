@@ -320,7 +320,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
   font-weight:600;color:var(--ink);font-size:1.02rem;line-height:1.4}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";position:absolute;right:.2rem;top:1rem;color:var(--red);font-size:1.3rem;line-height:1;font-weight:400}
-.faq details[open] summary::after{content:"3"}
+.faq details[open] summary::after{content:"\2013"}
 .faq .a{padding:0 0 1.25rem}
 .faq .a{max-width:64ch}
 .faq .a p{margin:0 0 .7rem;color:var(--mute);font-size:1rem;line-height:1.62}
@@ -402,7 +402,15 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .card--wide__action{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
 .card--wide__action .card__more{margin-top:0}
 @media (max-width:980px){.card--wide{grid-template-columns:1fr;align-items:start}}
-    
+    /* ---- sites geridos (portefólio) ---- */
+.sites{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:clamp(1.6rem,3vw,2.2rem)}
+.site{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+.site img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.site__cap{padding:.9rem 1rem 1.05rem;border-top:1px solid var(--line)}
+.site__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
+.site__desc{display:block;margin-top:.3rem;color:var(--mute);font-size:.9rem;line-height:1.5}
+@media (max-width:760px){.sites{grid-template-columns:1fr}}
+
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
    internas usam as mesmas classes da pagina inicial (.h1 .h2 .h3
@@ -447,7 +455,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 /* Lista de entregaveis */
 .deliver{list-style:none;margin:0;padding:0;
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem clamp(1.6rem,3vw,2.4rem)}
-.deliver li{position:relative;padding-left:1.4rem;font-size:1rem;line-height:1.62;color:var(--mute)}
+.deliver li{position:relative;min-width:0;padding-left:1.4rem;font-size:1rem;line-height:1.62;color:var(--mute);overflow-wrap:anywhere}
 .deliver li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:2px;background:var(--red)}
 .deliver li b{color:var(--ink);font-weight:600}
 
@@ -506,9 +514,72 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   .page-hero__metas{grid-template-columns:1fr;gap:.9rem}
   .page-hero__title{max-width:20ch}
 }
-    
+
+/* ================= ARTIGOS DO BLOG =================
+   Convertidos ao tema claro. A zona de leitura propria foi
+   retirada: o artigo usa agora o mesmo container e a mesma
+   medida de texto das paginas de servico.
+   ==================================================== */
+.post__read,.post__rail{display:block;width:100%;background:transparent;border:0;padding:0;margin:0}
+.lead-answer{font-size:1rem;line-height:1.62;color:var(--ink);margin:0;max-width:52ch;
+  border-left:2px solid var(--red);padding-left:1rem}
+.prose>.lead-answer+*{margin-top:1.2rem}
+.mono-inline{font-family:var(--mono);font-size:.92em;color:var(--ink);
+  background:var(--line-soft);border-radius:4px;padding:.1em .35em;overflow-wrap:anywhere}
+.post__prefsrc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:1.1rem 3rem;
+  align-items:center;margin-top:clamp(2rem,4vw,3rem);padding:1.4rem 1.6rem;background:var(--paper);
+  border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r)}
+.prefsrc__btn{width:100%;justify-content:space-between;text-align:left}
+@media (max-width:860px){.post__prefsrc{grid-template-columns:1fr;padding:1.25rem 1.15rem}}
+
+/* ================= BLOG: listagem e leitura (2026-10-10) =================
+   Listagem em lista de artigos com data, etiqueta e tempo de leitura.
+   Artigo com coluna de leitura mais larga e continua, indice no topo e
+   lista dos outros artigos no fim. Fonte: ferramentas/paginas.css */
 .mono-inline { font-family: var(--mono); font-size: 0.9em; background: rgba(5,5,5,.05); padding: 0.12em 0.36em; border-radius: 3px; color: var(--ink); word-break: break-word; }
-</style>
+.posts{list-style:none;margin:clamp(1.2rem,2.5vw,1.8rem) 0 0;padding:0;border-top:1px solid var(--line)}
+.post{border-bottom:1px solid var(--line);margin:0;padding:0}
+.post__link{display:grid;grid-template-columns:minmax(0,11rem) minmax(0,1fr);gap:.8rem 2.5rem;padding:clamp(1.3rem,2.4vw,1.8rem) 0;text-decoration:none;color:inherit;position:relative}
+.post__link::before{content:"";position:absolute;left:-1.1rem;top:1.1rem;bottom:1.1rem;width:2px;background:var(--red);transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease)}
+.post__link:hover::before{transform:scaleY(1)}
+.post__meta{display:flex;flex-direction:column;gap:.4rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:.35rem}
+.post__meta time{color:var(--ink);font-weight:500}
+.post__title{font-family:var(--serif);font-weight:400;font-size:clamp(1.45rem,2.4vw,1.9rem);line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 .55rem;max-width:24ch;transition:color .18s var(--ease)}
+.post__link:hover .post__title{color:var(--red)}
+.post__excerpt{margin:0;color:var(--mute);font-size:1rem;line-height:1.6;max-width:58ch}
+.post__more{display:inline-block;margin-top:.9rem;font-size:.92rem;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:2px}
+.post__link:hover .post__more{color:var(--red);border-color:var(--red)}
+@media (max-width:760px){.post__link{grid-template-columns:1fr;gap:.5rem}.post__meta{flex-direction:row;flex-wrap:wrap;gap:.3rem .9rem;padding-top:0}.post__link::before{left:-.9rem}}
+/* artigo: coluna de leitura */
+.artigo .post__byline{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:1.2rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem .9rem}
+.artigo .post__byline time{color:var(--ink);font-weight:500}
+.artigo .section{padding-block:clamp(1.6rem,3vw,2.4rem)}
+.artigo .section--panel{background:var(--paper)}
+.artigo .section:first-of-type + .section{padding-top:clamp(2rem,4vw,3rem)}
+.artigo .prose{max-width:46rem}
+.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer{max-width:64ch;font-size:1.0625rem;line-height:1.74;color:var(--ink-soft)}
+.artigo .prose .body strong,.artigo .prose .body b{color:var(--ink)}
+.artigo .prose>*+*{margin-top:1.3rem}
+.artigo .prose .h2{font-size:clamp(1.6rem,2.8vw,2.15rem);padding-top:1.5rem;border-top:1px solid var(--line);margin-bottom:.8rem}
+.artigo .prose .h2+.body,.artigo .prose .h2+.answer{margin-top:.8rem}
+.artigo .prose .h3{font-size:1.18rem;margin-top:1.9rem}
+.artigo .deliver li,.artigo .prose li{font-size:1.0625rem;line-height:1.7;color:var(--ink-soft)}
+.artigo .deliver{margin-top:1.1rem}
+.artigo .faq .a p{font-size:1.0625rem;line-height:1.7}
+.toc{margin:1.6rem 0 0;padding:1.1rem 1.3rem 1.2rem;border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r);max-width:46rem}
+.toc__label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 .6rem}
+.toc ol{margin:0;padding:0 0 0 1.3rem;columns:2;column-gap:2rem}
+.toc li{font-size:.98rem;line-height:1.5;margin:0 0 .35rem;break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);transition:color .18s var(--ease),border-color .18s var(--ease)}
+.toc a:hover{color:var(--red);border-color:var(--red)}
+.morelist{list-style:none;margin:1.2rem 0 0;padding:0;border-top:1px solid var(--line);max-width:46rem}
+.morelist li{border-bottom:1px solid var(--line)}
+.morelist a{display:grid;grid-template-columns:minmax(0,7.5rem) minmax(0,1fr);gap:.3rem 1.4rem;padding:.9rem 0;text-decoration:none;color:inherit;align-items:baseline}
+.morelist time{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
+.morelist a:hover .t{color:var(--red)}
+@media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+    </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Tendências de IA em Portugal em 2026: o que está em alta", "description": "O que está mesmo em alta na inteligência artificial em Portugal em 2026: agentes de IA, ferramentas, automação e marketing. Um guia prático, sem jargão, para o seu negócio.", "inLanguage": "pt-PT", "datePublished": "2026-09-03", "dateModified": "2026-09-03", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/", "url": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que é um agente de IA, em palavras simples?", "acceptedAnswer": {"@type": "Answer", "text": "É um assistente de software que não se limita a responder, executa. Recebe um objectivo, decide os passos, usa outras ferramentas e entrega o resultado. Pense num colaborador digital para uma tarefa específica, como triar pedidos ou preparar orçamentos."}}, {"@type": "Question", "name": "Que ferramentas de IA valem a pena para uma empresa pequena?", "acceptedAnswer": {"@type": "Answer", "text": "As que resolvem uma dor concreta. Para a maioria começa em três: uma para conteúdo, uma para atendimento no site, e automação para ligar tudo. Vale mais dominar três bem escolhidas do que saltar entre dezenas."}}, {"@type": "Question", "name": "A IA vai acabar com o SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Não, muda o SEO. As pessoas passam a perguntar também à IA, por isso o objectivo alarga: aparecer no Google e ser a fonte que a IA cita na resposta. Quem tiver conteúdo claro e de confiança ganha dos dois lados."}}]}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://wandofi.pt/blog/"}, {"@type": "ListItem", "position": 3, "name": "Tendências de IA em Portugal em 2026", "item": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/"}]}</script>
@@ -523,10 +594,8 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         </a>
         <span class="nav__status"><span class="nav__dot" aria-hidden="true"></span> Disponível para projecto</span>
         <nav class="nav__links" aria-label="Navegação principal">
-          <a href="/seo/">SEO</a>
-          <a href="/criacao-de-sites/">Sites</a>
-          <a href="/gestao-de-trafego/">Tráfego</a>
-          <a href="/#casos">Casos</a>
+          <a href="/#servicos">Serviços</a>
+          <a href="/casos/">Casos</a>
           <a href="/blog/">Blog</a>
         </nav>
         <div class="nav__cta">
@@ -535,41 +604,41 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         <details class="nav__toggle">
           <summary aria-label="Abrir menu">Menu</summary>
           <nav class="nav__panel" aria-label="Navegação móvel">
-            <a href="/seo/">SEO</a>
-            <a href="/criacao-de-sites/">Sites</a>
-            <a href="/gestao-de-trafego/">Tráfego</a>
-            <a href="/#casos">Casos</a>
+            <a href="/#servicos">Serviços</a>
+            <a href="/casos/">Casos</a>
             <a href="/blog/">Blog</a>
             <a data-cta="menu-movel" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a>
           </nav>
         </details>
       </div>
     </header>
-    <main id="main">
+    <main id="main" class="artigo">
       <section class="page-hero">
         <div class="container">
           <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/tendencias-de-ia-em-portugal/">Tendências de IA em Portugal</a></p>
           <p class="eyebrow">Guia prático</p>
           <h1 class="h1 page-hero__title">Tendências de IA em Portugal em 2026: o que está em alta.</h1>
           <p class="lead page-hero__lead">Agentes de IA, ferramentas que fazem trabalho a sério e automação do dia a dia. Explico o que vale a pena e o que é barulho, sem jargão e com os pés na terra, do lado de quem monta isto para negócios reais.</p>
+<p class="post__byline"><time datetime="2026-09-03">3 de Setembro de 2026</time><span>7 min de leitura</span><span>Mauro Cordeiro</span></p>
         </div>
       </section>
 
       <section class="section"><div class="container"><div class="prose">
         <p class="answer">Se quer saber o que está mesmo em alta na inteligência artificial em Portugal, a resposta curta é esta: agentes de IA, ferramentas que fazem trabalho a sério, e a automação do dia a dia dos negócios. O resto é ruído.</p>
         <p class="body">Passo os dias a montar automações, sites e conteúdo, muitos com IA pelo meio, por isso escrevo isto do lado de quem constrói e não de quem só comenta. A IA em Portugal deixou de ser conversa de futuro e passou a ferramenta de trabalho. A pergunta já não é se a vai usar, é em quê, e como usar sem se queimar.</p>
+<nav class="toc" aria-label="Neste artigo"><p class="toc__label">Neste artigo</p><ol><li><a href="#agentes-de-ia-a-tendencia-que-puxa-tudo">Agentes de IA, a tendência que puxa tudo</a></li><li><a href="#as-ferramentas-de-ia-que-uso-e-para-que">As ferramentas de IA que uso, e para quê</a></li><li><a href="#ia-no-marketing-e-nas-vendas-sem-ilusoes">IA no marketing e nas vendas, sem ilusões</a></li><li><a href="#automacao-onde-a-ia-da-dinheiro-a-serio">Automação, onde a IA dá dinheiro a sério</a></li><li><a href="#a-parte-legal-o-ai-act-ja-esta-em-vigor">A parte legal: o AI Act já está em vigor</a></li><li><a href="#preparar-o-site-para-ser-citado-pela-ia-geo-e-aeo">Preparar o site para ser citado pela IA (GEO e AEO)</a></li><li><a href="#a-ia-ao-servico-do-negocio-nao-ao-contrario">A IA ao serviço do negócio, não ao contrário</a></li></ol></nav>
       </div></div></section>
 
       <section class="section section--panel"><div class="container"><div class="prose">
         <p class="eyebrow">A grande tendência</p>
-        <h2 class="h2">Agentes de IA, a tendência que puxa tudo</h2>
+        <h2 class="h2" id="agentes-de-ia-a-tendencia-que-puxa-tudo">Agentes de IA, a tendência que puxa tudo</h2>
         <p class="body">De todos os temas de IA, o que mais cresce nas pesquisas dos portugueses são os agentes de IA. Um agente não é só um chat que responde. É um assistente que trata de uma tarefa de ponta a ponta: lê um pedido, decide os passos, usa outras ferramentas e entrega o resultado. A diferença face a um chatbot normal é a mesma que vai de um estagiário que responde a perguntas para um que resolve o assunto sozinho.</p>
         <p class="body">Para um negócio, isto abre portas concretas: um agente que trata dos primeiros contactos, que organiza pedidos, que prepara propostas, que mantém uma folha actualizada. Não é magia, e não faz tudo. Mas bem apontado a uma tarefa repetitiva, poupa horas todas as semanas.</p>
       </div></div></section>
 
       <section class="section"><div class="container"><div class="prose">
         <p class="eyebrow">O meu arsenal</p>
-        <h2 class="h2">As ferramentas de IA que uso, e para quê</h2>
+        <h2 class="h2" id="as-ferramentas-de-ia-que-uso-e-para-que">As ferramentas de IA que uso, e para quê</h2>
         <p class="body">O mercado é um mar de opções novas todas as semanas, e a maior parte não vai durar. Por isso não uso a IA da moda, uso a que faz o trabalho. Divido o trabalho com agentes em três frentes, design, código e automação, e a isso junto a escrita e os dados. Este é o meu arsenal de hoje:</p>
         <ul class="deliver">
           <li><b>Escrita e conteúdo</b>: Claude e ChatGPT, para rascunhos, estruturar ideias e rever textos.</li>
@@ -584,31 +653,31 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
       <section class="section section--panel"><div class="container"><div class="prose">
         <p class="eyebrow">Marketing</p>
-        <h2 class="h2">IA no marketing e nas vendas, sem ilusões</h2>
+        <h2 class="h2" id="ia-no-marketing-e-nas-vendas-sem-ilusoes">IA no marketing e nas vendas, sem ilusões</h2>
         <p class="body">A IA no marketing é útil, mas não é um botão que traz clientes. Serve para produzir mais depressa, personalizar melhor e testar mais ideias. Onde vejo resultados reais é na base: conteúdo consistente para o site, respostas rápidas a quem contacta, e dados organizados para saber o que funciona. O que não recomendo é encher a internet de texto de IA sem critério. O Google e as pessoas notam, e o tiro sai pela culatra.</p>
       </div></div></section>
 
       <section class="section"><div class="container"><div class="prose">
         <p class="eyebrow">Onde compensa</p>
-        <h2 class="h2">Automação, onde a IA dá dinheiro a sério</h2>
+        <h2 class="h2" id="automacao-onde-a-ia-da-dinheiro-a-serio">Automação, onde a IA dá dinheiro a sério</h2>
         <p class="body">Se me perguntar por onde começar, digo automação. É a forma mais rápida de a IA se pagar. Ligar o formulário do site ao email e a uma folha de cálculo, avisar a equipa quando entra um pedido, preparar um orçamento a partir de um modelo. São passos pequenos que, somados, devolvem horas e tiram erros do meio. Trato disto na parte de <a href="/automacoes/">automações</a>, e é aqui que a maioria dos negócios sente a diferença primeiro.</p>
       </div></div></section>
 
       <section class="section section--panel"><div class="container"><div class="prose">
         <p class="eyebrow">Estar em regra</p>
-        <h2 class="h2">A parte legal: o AI Act já está em vigor</h2>
+        <h2 class="h2" id="a-parte-legal-o-ai-act-ja-esta-em-vigor">A parte legal: o AI Act já está em vigor</h2>
         <p class="body">Usar IA em Portugal já tem regras europeias, o AI Act, e parte delas está em vigor desde agosto de 2026. Toca sobretudo a transparência: dizer quando é um bot, assinalar o que é gerado por IA, e não manipular. Escrevi um guia à parte sobre <a href="/blog/ai-act-ia-no-marketing/">o que muda para o marketing com o AI Act</a>. A ideia é simples: usar a IA sem expor o negócio.</p>
       </div></div></section>
 
       <section class="section"><div class="container"><div class="prose">
         <p class="eyebrow">O próximo campo</p>
-        <h2 class="h2">Preparar o site para ser citado pela IA (GEO e AEO)</h2>
+        <h2 class="h2" id="preparar-o-site-para-ser-citado-pela-ia-geo-e-aeo">Preparar o site para ser citado pela IA (GEO e AEO)</h2>
         <p class="body">Há uma tendência que muita gente ainda não viu: as pessoas começam a perguntar directamente ao ChatGPT e à IA do Google, em vez de escrever no motor de busca. Isso muda o jogo. Já não chega aparecer na lista azul, é preciso ser a fonte que a IA cita na resposta. A isto chamamos GEO e AEO, e o caminho são respostas claras, dados estruturados e conteúdo de confiança. Explico melhor na página de <a href="/seo/geo-aeo/">GEO e AEO</a>.</p>
       </div></div></section>
 
       <section class="section section--panel"><div class="container"><div class="prose">
         <p class="eyebrow">Onde entro eu</p>
-        <h2 class="h2">A IA ao serviço do negócio, não ao contrário</h2>
+        <h2 class="h2" id="a-ia-ao-servico-do-negocio-nao-ao-contrario">A IA ao serviço do negócio, não ao contrário</h2>
         <p class="body">Não vendo IA pela IA. Monto a operação à volta do seu negócio com as ferramentas certas: o <a href="/criacao-de-sites/">site</a>, as automações, o conteúdo e o <a href="/seo/">SEO</a>, com a IA a fazer o trabalho pesado onde faz sentido. O objectivo não é ter a tecnologia mais nova, é ter o negócio a andar melhor, mais organizado e mais visível. Começamos por perceber onde está o aperto, e resolvemos esse primeiro.</p>
       </div></div></section>
 
@@ -631,7 +700,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         <details><summary>A IA vai acabar com o SEO?</summary><div class="a"><p>Não, muda o SEO. As pessoas passam a perguntar também à IA, por isso o objectivo alarga: aparecer no Google e ser a fonte que a IA cita na resposta. Quem tiver conteúdo claro e de confiança ganha dos dois lados.</p></div></details>
       </div></div></section>
 
-      <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><div class="related"><a href="/automacoes/">Automações</a><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/blog/ai-act-ia-no-marketing/">AI Act e IA no marketing</a><a href="/seo/">SEO</a><a href="/contactos/">Contactos</a></div></div></section>
+      <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">A seguir</p><h2 class="h2">Continue por aqui</h2></header><p class="body">Outros artigos do blog:</p><ul class="morelist"><li><a href="/blog/google-preferred-sources/"><time datetime="2026-09-10">10 Set 2026</time><span class="t">Google Preferred Sources: o que é e como instalar no seu site</span></a></li><li><a href="/blog/agentes-de-ia-a-medida/"><time datetime="2026-09-03">3 Set 2026</time><span class="t">Agentes de IA à medida: skills, workflows e implementação remota</span></a></li><li><a href="/blog/ai-act-ia-no-marketing/"><time datetime="2026-08-31">31 Ago 2026</time><span class="t">IA no marketing e o AI Act: o que está em causa</span></a></li><li><a href="/blog/como-abrir-uma-empresa-em-portugal/"><time datetime="2026-08-20">20 Ago 2026</time><span class="t">Como abrir uma empresa em Portugal, passo a passo</span></a></li></ul><div class="related"><a href="/automacoes/">Automações</a><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/blog/ai-act-ia-no-marketing/">AI Act e IA no marketing</a><a href="/seo/">SEO</a><a href="/contactos/">Contactos</a></div></div></section>
       <section class="section cta final"><div class="container container--narrow"><h2 class="h2 cta__title">Quer a IA a trabalhar para o seu negócio, sem perder tempo com modas?</h2><p class="lead">Monto as automações, o site e o conteúdo com a IA no sítio certo, e a parte legal à cabeça. Começamos por um diagnóstico.</p><div class="cta__actions final__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow">↗</span></a><a class="close__email" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></div></div></section>
     </main>
     <footer class="footer">
