@@ -438,12 +438,14 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .album__card{margin:0;border-radius:16px;overflow:hidden;background:var(--paper);
   box-shadow:0 34px 70px -34px rgba(5,5,5,.55),0 0 0 1px rgba(5,5,5,.08)}
 .album__card img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;object-position:top}
-.album__more{display:flex;flex-direction:column;justify-content:flex-end;gap:.6rem;aspect-ratio:9/16;padding:clamp(1rem,2vw,1.6rem);
+.album__more{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:.55rem;aspect-ratio:9/16;padding:clamp(1rem,2vw,1.6rem);
   border-radius:16px;background:var(--ink);color:#fff;text-decoration:none;box-shadow:0 34px 70px -34px rgba(5,5,5,.55)}
 .album__more .eyebrow{color:var(--red)}
 .album__more .album__name{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.1;letter-spacing:-.015em;color:#fff}
-.album__more .album__desc{font-size:.9rem;color:rgba(255,255,255,.72);max-width:26ch}
-.album__more .btn{align-self:flex-start;margin-top:.3rem;background:#fff;color:var(--ink);border-color:#fff}
+.album__more .album__desc{font-size:.9rem;color:rgba(255,255,255,.72);max-width:24ch}
+.album__more .btn{align-self:center;margin-top:.4rem;background:#fff;color:var(--ink);border-color:#fff;white-space:nowrap}
+.album__mosaic{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;width:64%;margin-bottom:.5rem}
+.album__mosaic img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:6px;opacity:.92}
 .album__legend{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.3rem 1.5rem;align-items:baseline;margin-top:1.1rem;min-height:3.4rem}
 .album__name{display:block;font-weight:600;color:var(--ink);font-size:1.02rem}
 .album__desc{display:block;margin-top:.2rem;color:var(--mute);font-size:.92rem;line-height:1.5;max-width:60ch}
@@ -455,7 +457,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .album__dots button{appearance:none;border:0;padding:0;width:.5rem;height:.5rem;border-radius:50%;background:rgba(5,5,5,.18);cursor:pointer;transition:background .18s var(--ease),transform .18s var(--ease)}
 .album__dots button[aria-current="true"]{background:var(--red);transform:scale(1.3)}
 .album__status{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);min-width:4.5ch;text-align:center}
-@media (max-width:760px){.album__stage{aspect-ratio:4/5;perspective:1100px}.album__slide{width:54%;margin-left:-27%;transform:translateY(-50%) translateX(calc(var(--d) * 74%)) translateZ(calc(var(--abs) * -6rem)) rotateY(calc(var(--s) * -40deg))}
+@media (max-width:760px){.album__stage{aspect-ratio:4/5;perspective:1100px}.album__more{gap:.4rem;padding:.9rem}.album__more .album__desc{font-size:.8rem;max-width:22ch}.album__more .album__name{font-size:1.15rem}.album__more .btn{font-size:.85rem;padding:.6rem .9rem}.album__mosaic{width:56%}.album__slide{width:54%;margin-left:-27%;transform:translateY(-50%) translateX(calc(var(--d) * 74%)) translateZ(calc(var(--abs) * -6rem)) rotateY(calc(var(--s) * -40deg))}
   .album__legend{grid-template-columns:1fr}.album__nav{justify-content:center}}
 @media (prefers-reduced-motion:reduce){.album__slide,.album__card{transition:none}}
 </style>
@@ -627,7 +629,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
                 <figure class="album__card"><img src="/assets/casos/reparar-trotinete-retrato.webp" width="720" height="1280" alt="Página inicial da Reparar Trotinete em telemóvel" loading="lazy" decoding="async" /></figure>
               </li>
               <li class="album__slide album__slide--more" data-i="4" data-nome="Outros trabalhos" data-desc="Reconciliação financeira, SEO que trouxe contactos, SEO local no mapa e os sites que construí e giro, com números.">
-                <a class="album__more" href="/casos/"><span class="eyebrow">Outros</span><span class="album__name">Casos, números e mais sites</span><span class="album__desc">Tudo o que não cabe em quatro cartões.</span><span class="btn">Ver o portefólio <span class="arrow" aria-hidden="true">↗</span></span></a>
+                <a class="album__more" href="/casos/"><span class="album__mosaic" aria-hidden="true"><img src="/assets/casos/clean-contas-retrato.webp" width="720" height="1280" alt="" loading="lazy" decoding="async" /><img src="/assets/casos/lexia-retrato.webp" width="521" height="926" alt="" loading="lazy" decoding="async" /><img src="/assets/casos/fadermarket-retrato.webp" width="720" height="1280" alt="" loading="lazy" decoding="async" /><img src="/assets/casos/reparar-trotinete-retrato.webp" width="720" height="1280" alt="" loading="lazy" decoding="async" /></span><span class="eyebrow">Outros</span><span class="album__name">Casos, números e mais sites</span><span class="album__desc">Reconciliação financeira, SEO que trouxe contactos e SEO local no mapa.</span><span class="btn">Ver o portefólio <span class="arrow" aria-hidden="true">↗</span></span></a>
               </li>
               </ul>
             </div>
@@ -737,16 +739,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
             </div>
           </div>
 
-          <div class="prefsrc reveal">
-            <div class="prefsrc__copy">
-              <p class="prefsrc__label">Fonte preferida no Google</p>
-              <p class="prefsrc__pitch">Se acompanha o que escrevo sobre SEO e negócio digital, pode pedir ao Google para dar prioridade à Wandofi nos seus resultados, nas notícias em destaque e nas respostas de IA da Pesquisa.</p>
-            </div>
-            <div class="prefsrc__action">
-              <a class="btn btn--ghost" href="https://www.google.com/preferences/source?q=wandofi.pt" target="_blank" rel="noopener">Tornar a Wandofi fonte preferida <span class="arrow" aria-hidden="true">↗</span></a>
-              <p class="prefsrc__note">Abre as definições do Google numa nova janela. A escolha fica guardada na sua conta Google e não me dá acesso a dados seus.</p>
-            </div>
-          </div>
+
         </div>
       </section>
     </main>
