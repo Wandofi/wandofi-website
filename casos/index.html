@@ -658,6 +658,51 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 /* reserva de altura ao teste de diagnóstico, para a secção seguinte não saltar */
 #quiz{min-height:26rem}
 @media (max-width:760px){#quiz{min-height:30rem}}
+
+/* ================= CASOS: luz, carril e brilho (2026-10-11) =================
+   Tudo em transform, opacity e background. Elementos decorativos fora do
+   fluxo, por isso sem deslocamento de layout. Desligado para quem pede
+   menos movimento. */
+.luz .page-hero{position:relative;overflow:hidden;isolation:isolate}
+.luz__a,.luz__b{position:absolute;pointer-events:none;z-index:-1;border-radius:50%;filter:blur(40px);will-change:transform}
+.luz__a{width:44rem;height:44rem;right:-14rem;top:-18rem;background:radial-gradient(closest-side,rgba(225,37,27,.16),rgba(225,37,27,0))}
+.luz__b{width:30rem;height:30rem;left:-10rem;bottom:-16rem;background:radial-gradient(closest-side,rgba(5,5,5,.07),rgba(5,5,5,0))}
+.luz .page-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(5,5,5,.07) 1px,transparent 1.2px);background-size:22px 22px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%)}
+@supports (animation-timeline: scroll()){
+  .luz__a{animation:luz-a linear both;animation-timeline:scroll();animation-range:0 120vh}
+  .luz__b{animation:luz-b linear both;animation-timeline:scroll();animation-range:0 120vh}
+  @keyframes luz-a{to{transform:translate3d(-6rem,10rem,0)}}
+  @keyframes luz-b{to{transform:translate3d(6rem,-4rem,0)}}
+}
+/* carril de capítulos */
+.rail{display:none}
+@media (min-width:1180px){
+  .rail{display:block;position:fixed;left:max(1.2rem,calc((100vw - 1180px) / 2 - 7.5rem));top:50%;transform:translateY(-50%);z-index:5;width:7rem}
+  .rail__line{position:absolute;left:.3rem;top:-.2rem;bottom:-.2rem;width:1px;background:var(--line)}
+  .rail__line::after{content:"";position:absolute;left:0;top:0;width:1px;height:100%;background:var(--red);transform:scaleY(0);transform-origin:top}
+  .rail__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.1rem}
+  .rail__list a{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--mute);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .25s var(--ease)}
+  .rail__dot{width:.6rem;height:.6rem;border-radius:50%;border:1px solid var(--line);background:var(--paper);box-shadow:0 0 0 0 rgba(225,37,27,0);transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .35s var(--ease)}
+  .rail__list a.is-on{color:var(--ink)}
+  .rail__list a.is-on .rail__dot{background:var(--red);border-color:var(--red);box-shadow:0 0 0 5px rgba(225,37,27,.14)}
+  .rail__list a:hover{color:var(--red)}
+  @supports (animation-timeline: scroll()){.rail__line::after{animation:rail-fill linear both;animation-timeline:scroll()}@keyframes rail-fill{to{transform:scaleY(1)}}}
+}
+/* linha que se desenha sob o sobretítulo de cada secção */
+.luz .section__head .eyebrow{position:relative;display:inline-block;padding-bottom:.45rem}
+.luz .section__head .eyebrow::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left}
+@supports (animation-timeline: view()){.luz .section__head .eyebrow::after{animation:traco linear both;animation-timeline:view();animation-range:entry 0% entry 40%}@keyframes traco{to{transform:scaleX(1)}}}
+/* brilho que segue o cursor nos cartões e nas barras de números */
+.luz .site,.luz div.proof .stat{--mx:50%;--my:50%;background-image:radial-gradient(24rem circle at var(--mx) var(--my),rgba(225,37,27,.10),transparent 60%);background-repeat:no-repeat;background-size:100% 100%;background-color:var(--paper)}
+.luz .site{background-blend-mode:normal}
+.luz .site:not(:hover),.luz div.proof .stat:not(:hover){background-image:none}
+.luz .site:hover{box-shadow:0 24px 44px -26px rgba(5,5,5,.42),0 0 0 1px rgba(225,37,27,.18),0 0 40px -10px rgba(225,37,27,.25)}
+.luz div.proof .stat:hover{box-shadow:inset 0 0 0 1px rgba(225,37,27,.14)}
+.luz .stat__v{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.luz__a,.luz__b,.rail__line::after,.luz .section__head .eyebrow::after{animation:none}.luz .section__head .eyebrow::after{transform:scaleX(1)}}
+
+/* telemóvel: grelha de sites numa só coluna, por cima da regra da coluna única */
+@media (max-width:760px){.estreito .sites{grid-template-columns:1fr}}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Posso falar com antigos fornecedores e gestores de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Ponho em contacto com fornecedores e gestores de SEO com quem trabalhei, para confirmarem como trabalho e o que entrego."}}, {"@type": "Question", "name": "Tem casos de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, dois estão nesta página com números: um escritório de advogados e um gabinete de contabilidade, ambos em Lisboa, mais três sites de serviços locais na primeira página do Google. Os clientes ficam anónimos por regra. Em reunião mostro os relatórios do Search Console e do Mangools."}}]}</script>
       <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Casos", "item": "https://wandofi.pt/casos/"}]}</script>
@@ -690,8 +735,10 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         </details>
       </div>
     </header>
-    <main id="main" class="estreito">
-      <section class="page-hero">
+    <main id="main" class="estreito luz">
+<nav class="rail" aria-label="Capítulos desta página"><span class="rail__line" aria-hidden="true"></span><ol class="rail__list"><li><a href="#caso-reconciliacao" data-rail="caso-reconciliacao"><span class="rail__dot" aria-hidden="true"></span><span class="rail__txt">Reconciliação</span></a></li><li><a href="#caso-seo" data-rail="caso-seo"><span class="rail__dot" aria-hidden="true"></span><span class="rail__txt">SEO e conteúdo</span></a></li><li><a href="#caso-seo-local" data-rail="caso-seo-local"><span class="rail__dot" aria-hidden="true"></span><span class="rail__txt">SEO local</span></a></li><li><a href="#sites" data-rail="sites"><span class="rail__dot" aria-hidden="true"></span><span class="rail__txt">Sites</span></a></li></ol></nav>
+
+      <section class="page-hero"><span class="luz__a" aria-hidden="true"></span><span class="luz__b" aria-hidden="true"></span>
         <div class="container">
           
           <p class="eyebrow">Prova · Casos e portefólio</p>
@@ -701,9 +748,9 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           
         </div>
       </section>
-<section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">Caso de estudo</p><h2 class="h2">Reconciliação financeira · escritório jurídico, Lisboa</h2></header><div class="prose"><p class="body">Três contas bancárias, dois sistemas de facturação, exportações que não falavam entre si, processos de pastas físicas e verificações manuais. Desenhei um sistema integrado em Apps Script que liga Drive, código QR e Avaza, e reconcilia BPI e Millennium com o TOConline e o Avaza por chave referencial.</p></div><div class="proof stagger"><div class="stat"><div class="stat__v">~92%</div><div class="stat__l">reconciliação automática</div></div><div class="stat"><div class="stat__v">5h → 20 min</div><div class="stat__l">tempo de fecho mensal</div></div><div class="stat"><div class="stat__v">800+</div><div class="stat__l">pastas indexadas no backfill</div></div></div></div></section><section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Caso de estudo · SEO e conteúdo</p><h2 class="h2">SEO que traz contactos · escritório de advogados, Lisboa</h2></header><div class="prose"><p class="body">Reconstrução técnica do site, SEO e produção de conteúdo jurídico em português europeu. Em três meses, de Julho a Setembro de 2026, o site passou a ser a principal fonte de novos contactos do escritório: pedidos elegíveis pelo formulário e pelo email geral, reuniões marcadas pelo Calendly e clientes fechados. O trabalho junta três funções que normalmente se contratam em separado: manutenção do site, SEO e conteúdo.</p></div><div class="proof stagger"><div class="stat"><div class="stat__v">+55</div><div class="stat__l">contactos orgânicos elegíveis em 3 meses</div></div><div class="stat"><div class="stat__v">398</div><div class="stat__l">cliques do Google em Setembro de 2026</div></div><div class="stat"><div class="stat__v">84 mil</div><div class="stat__l">impressões na pesquisa Google em Setembro</div></div></div></div></section>
-<section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">Caso de estudo · SEO local</p><h2 class="h2">Primeira página no mapa · gabinete de contabilidade, Lisboa</h2></header><div class="prose"><p class="body">Site novo em Astro e Cloudflare, migrado sem perda de posições, perfil de empresa no Google, SEO técnico e medição de conversão. Em três meses, desde Julho de 2026, o gabinete entrou no Map Pack do Google para "contabilidade lisboa", os três resultados do mapa que aparecem antes de tudo o resto, e mantém a presença desde então. Em pesquisas nacionais como "contabilista certificado", 860 pesquisas por mês, o site já apareceu no top 10 do Google em várias datas. As posições orgânicas oscilam de semana para semana, por isso o número que fica aqui é o do mapa. Nos anúncios do Google, com a medição de contactos instalada e as campanhas reorganizadas, o custo por clique caiu de 0,89 € para 0,44 € e o gabinete passou a receber 32 contactos num mês, a 11,78 € cada.</p></div><div class="proof stagger"><div class="stat"><div class="stat__v">Map Pack</div><div class="stat__l">"contabilidade lisboa", 220 pesquisas por mês</div></div><div class="stat"><div class="stat__v">7 mil</div><div class="stat__l">impressões na pesquisa Google em Setembro de 2026</div></div><div class="stat"><div class="stat__v">0,44&nbsp;€</div><div class="stat__l">custo por clique nos anúncios, que era 0,89 € quatro meses antes</div></div></div></div></section>
-<section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Sites que construí e giro</p><h2 class="h2">Quatro sites no ar</h2></header><div class="prose"><p class="body">Mostro a página inicial de cada um, sem ligação, por opção. Em cada um digo o que foi feito e o que isso rendeu. Os clientes dos dois casos acima ficam anónimos por regra; em reunião mostro os relatórios do Search Console e do Mangools.</p></div><div class="sites stagger">
+<section class="section section--panel" id="caso-reconciliacao"><div class="container"><header class="section__head"><p class="eyebrow">Caso de estudo</p><h2 class="h2">Reconciliação financeira · escritório jurídico, Lisboa</h2></header><div class="prose"><p class="body">Três contas bancárias, dois sistemas de facturação, exportações que não falavam entre si, processos de pastas físicas e verificações manuais. Desenhei um sistema integrado em Apps Script que liga Drive, código QR e Avaza, e reconcilia BPI e Millennium com o TOConline e o Avaza por chave referencial.</p></div><div class="proof stagger"><div class="stat"><div class="stat__v" data-conta="~92%">~92%</div><div class="stat__l">reconciliação automática</div></div><div class="stat"><div class="stat__v">5h → 20 min</div><div class="stat__l">tempo de fecho mensal</div></div><div class="stat"><div class="stat__v" data-conta="800+">800+</div><div class="stat__l">pastas indexadas no backfill</div></div></div></div></section><section class="section" id="caso-seo"><div class="container"><header class="section__head"><p class="eyebrow">Caso de estudo · SEO e conteúdo</p><h2 class="h2">SEO que traz contactos · escritório de advogados, Lisboa</h2></header><div class="prose"><p class="body">Reconstrução técnica do site, SEO e produção de conteúdo jurídico em português europeu. Em três meses, de Julho a Setembro de 2026, o site passou a ser a principal fonte de novos contactos do escritório: pedidos elegíveis pelo formulário e pelo email geral, reuniões marcadas pelo Calendly e clientes fechados. O trabalho junta três funções que normalmente se contratam em separado: manutenção do site, SEO e conteúdo.</p></div><div class="proof stagger"><div class="stat"><div class="stat__v" data-conta="+55">+55</div><div class="stat__l">contactos orgânicos elegíveis em 3 meses</div></div><div class="stat"><div class="stat__v" data-conta="398">398</div><div class="stat__l">cliques do Google em Setembro de 2026</div></div><div class="stat"><div class="stat__v" data-conta="84 mil">84 mil</div><div class="stat__l">impressões na pesquisa Google em Setembro</div></div></div></div></section>
+<section class="section section--panel" id="caso-seo-local"><div class="container"><header class="section__head"><p class="eyebrow">Caso de estudo · SEO local</p><h2 class="h2">Primeira página no mapa · gabinete de contabilidade, Lisboa</h2></header><div class="prose"><p class="body">Site novo em Astro e Cloudflare, migrado sem perda de posições, perfil de empresa no Google, SEO técnico e medição de conversão. Em três meses, desde Julho de 2026, o gabinete entrou no Map Pack do Google para "contabilidade lisboa", os três resultados do mapa que aparecem antes de tudo o resto, e mantém a presença desde então. Em pesquisas nacionais como "contabilista certificado", 860 pesquisas por mês, o site já apareceu no top 10 do Google em várias datas. As posições orgânicas oscilam de semana para semana, por isso o número que fica aqui é o do mapa. Nos anúncios do Google, com a medição de contactos instalada e as campanhas reorganizadas, o custo por clique caiu de 0,89 € para 0,44 € e o gabinete passou a receber 32 contactos num mês, a 11,78 € cada.</p></div><div class="proof stagger"><div class="stat"><div class="stat__v">Map Pack</div><div class="stat__l">"contabilidade lisboa", 220 pesquisas por mês</div></div><div class="stat"><div class="stat__v" data-conta="7 mil">7 mil</div><div class="stat__l">impressões na pesquisa Google em Setembro de 2026</div></div><div class="stat"><div class="stat__v" data-conta="0,44&nbsp;€">0,44&nbsp;€</div><div class="stat__l">custo por clique nos anúncios, que era 0,89 € quatro meses antes</div></div></div></div></section>
+<section class="section" id="sites"><div class="container"><header class="section__head"><p class="eyebrow">Sites que construí e giro</p><h2 class="h2">Quatro sites no ar</h2></header><div class="prose"><p class="body">Mostro a página inicial de cada um, sem ligação, por opção. Em cada um digo o que foi feito e o que isso rendeu. Os clientes dos dois casos acima ficam anónimos por regra; em reunião mostro os relatórios do Search Console e do Mangools.</p></div><div class="sites stagger">
 <figure class="site"><img src="/assets/casos/clean-contas.webp" width="1600" height="1000" alt="Página inicial da Clean Contas, contabilidade TVDE online" loading="lazy" decoding="async" /><figcaption class="site__cap"><span class="site__name">Clean Contas</span><span class="site__desc">Contabilidade TVDE para motoristas e gestores de frota, 100% online. Site estático no Cloudflare Pages, páginas de serviço por tipo de cliente, blog e medição de contactos por telefone e WhatsApp. Está na primeira página do Google para "cae 49320", posição 8 em 380 pesquisas por mês, com 13 pesquisas acompanhadas todas as semanas.</span></figcaption></figure>
 <figure class="site"><img src="/assets/lexia-app.webp" width="1600" height="926" alt="Interface da Lexia, nova consulta jurídica com filtros de jurisdição, fontes e período" loading="lazy" decoding="async" /><figcaption class="site__cap"><span class="site__name">Lexia</span><span class="site__desc">SaaS de investigação jurídica para profissionais do direito em Portugal. Do conceito ao produto: arquitectura de pesquisa em primeiro lugar, pipeline contra alucinações na jurisprudência, autenticação, planos e checkout. Produto próprio, construído de raiz.</span></figcaption></figure>
 <figure class="site"><img src="/assets/casos/fadermarket.webp" width="1600" height="1000" alt="Página para barbeiros do FaderMarket, com ilustração de um barbeiro a cortar cabelo" loading="lazy" decoding="async" /><figcaption class="site__cap"><span class="site__name">FaderMarket</span><span class="site__desc">Marketplace de barbeiros em Lisboa e no Luxemburgo, em quatro línguas. Marcações sem conta, agenda do barbeiro com bloqueios e calendário, páginas de barbearia, código QR para a montra, emails transaccionais e um servidor MCP para marcações feitas por assistentes de IA. Cloudflare Pages, Functions e D1. Produto próprio, lançado em Outubro de 2026.</span></figcaption></figure>
@@ -862,6 +909,50 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         });
       }, { rootMargin: "0px 0px -12% 0px", threshold: 0.5 });
       nums.forEach(function(el){ ioNum.observe(el); });
+    })();
+    </script>
+    <script>
+    /* Página de casos: carril de capítulos, números que sobem, brilho que segue o cursor. Tudo leve e opcional. */
+    (function(){
+      var reduzido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      /* carril */
+      var ligas = [].slice.call(document.querySelectorAll("[data-rail]"));
+      if (ligas.length && "IntersectionObserver" in window) {
+        var alvos = ligas.map(function(a){ return document.getElementById(a.getAttribute("data-rail")); }).filter(Boolean);
+        var io = new IntersectionObserver(function(es){
+          es.forEach(function(e){ if (e.isIntersecting) { ligas.forEach(function(a){ a.classList.toggle("is-on", a.getAttribute("data-rail") === e.target.id); }); } });
+        }, { rootMargin: "-40% 0px -50% 0px" });
+        alvos.forEach(function(t){ io.observe(t); });
+      }
+      /* números */
+      var nums = [].slice.call(document.querySelectorAll("[data-conta]"));
+      if (nums.length && "IntersectionObserver" in window && !reduzido) {
+        var io2 = new IntersectionObserver(function(es){
+          es.forEach(function(e){
+            if (!e.isIntersecting) return; io2.unobserve(e.target);
+            var el = e.target, alvo = el.getAttribute("data-conta"), m = alvo.match(/[\d.,]+/); if (!m) return;
+            var txt = m[0], fim = parseFloat(txt.replace(/\./g,"").replace(",", ".")), dec = (txt.split(",")[1] || "").length;
+            var t0 = performance.now(), dur = 900;
+            (function passo(t){
+              var k = Math.min(1, (t - t0) / dur), e2 = 1 - Math.pow(1 - k, 3), v = fim * e2;
+              var s = dec ? v.toFixed(dec).replace(".", ",") : Math.round(v).toString();
+              el.textContent = alvo.replace(txt, s);
+              if (k < 1) requestAnimationFrame(passo); else el.textContent = alvo;
+            })(t0);
+          });
+        }, { threshold: .6 });
+        nums.forEach(function(n){ io2.observe(n); });
+      }
+      /* brilho que segue o cursor */
+      if (window.matchMedia("(hover:hover)").matches && !reduzido) {
+        document.querySelectorAll(".site, div.proof .stat").forEach(function(el){
+          el.addEventListener("pointermove", function(ev){
+            var r = el.getBoundingClientRect();
+            el.style.setProperty("--mx", ((ev.clientX - r.left) / r.width * 100).toFixed(1) + "%");
+            el.style.setProperty("--my", ((ev.clientY - r.top) / r.height * 100).toFixed(1) + "%");
+          });
+        });
+      }
     })();
     </script>
     <script>
