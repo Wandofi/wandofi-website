@@ -14,6 +14,7 @@
       var d = document.documentElement;
       var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       if (calm) return;
+      if (window.CSS && CSS.supports('animation-timeline: scroll()')) d.classList.add('sp-scroll');
       d.classList.add('sp-motion');
       d.classList.add(window.CSS && CSS.supports('animation-timeline: scroll()') ? 'sp-sda' : 'sp-io');
     })();
@@ -118,7 +119,10 @@
   <header class="topbar" id="topbar">
     <div class="topbar__inner">
       <a class="topbar__logo" href="#topo">
-        <svg class="mono" viewBox="0 0 416 506" aria-hidden="true" focusable="false"><use href="#monograma"/></svg>
+        <span class="mono-progresso" aria-hidden="true">
+          <svg class="mono" viewBox="0 0 416 506" focusable="false"><use href="#monograma"/></svg>
+          <svg class="mono-progresso__ouro" viewBox="0 0 416 506" focusable="false"><use href="#monograma" fill="url(#ouro-hero)"/></svg>
+        </span>
         <span class="topbar__nome">Silvia <em>Paz</em></span>
       </a>
 
