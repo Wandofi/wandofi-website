@@ -1,4 +1,4 @@
-/* Silvia Paz Beauty — comportamento da página. Sem dependências. */
+/* Sílvia Paz Beauty — comportamento da página. Sem dependências. */
 (function () {
   'use strict';
 
@@ -136,8 +136,8 @@
       '<p class="demo__aviso"><strong>Pré-visualização.</strong> A agenda real do Google Calendar substitui este exemplo quando for colocado o endereço [URL_AGENDA_GOOGLE]. Os horários são fictícios.</p>' +
       '<div class="demo__corpo">' +
         '<div class="demo__info">' +
-          '<span class="demo__avatar" aria-hidden="true"><svg viewBox="0 0 416 506"><use href="#monograma"/></svg></span>' +
-          '<p class="demo__dono">Silvia Paz Beauty</p>' +
+          '<span class="demo__avatar" aria-hidden="true"><svg viewBox="0 0 532 898"><use href="#monograma"/></svg></span>' +
+          '<p class="demo__dono">Sílvia Paz Beauty</p>' +
           '<h3 class="demo__titulo">Marcação de serviço</h3>' +
           '<ul class="demo__lista">' +
             '<li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>1 h</li>' +

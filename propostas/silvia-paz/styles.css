@@ -1,32 +1,36 @@
 /* Silvia Paz Beauty — one page. Mobile first. */
 
+/* Alternativas livres às fontes do manual até haver licença web:
+   Cormorant no lugar da ARCHES (títulos), Mulish no lugar da CORBEL (texto e etiquetas). */
 @font-face {
-  font-family: "Bodoni Moda"; font-style: normal; font-weight: 400 900; font-display: swap;
-  src: url("assets/fonts/bodoni-moda.woff2") format("woff2");
+  font-family: "Cormorant"; font-style: normal; font-weight: 300 700; font-display: swap;
+  src: url("assets/fonts/cormorant.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: "Bodoni Moda"; font-style: italic; font-weight: 400 900; font-display: swap;
-  src: url("assets/fonts/bodoni-moda-italic.woff2") format("woff2");
+  font-family: "Cormorant"; font-style: italic; font-weight: 300 700; font-display: swap;
+  src: url("assets/fonts/cormorant-italic.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: "Montserrat"; font-style: normal; font-weight: 100 900; font-display: swap;
-  src: url("assets/fonts/montserrat.woff2") format("woff2");
+  font-family: "Mulish"; font-style: normal; font-weight: 200 1000; font-display: swap;
+  src: url("assets/fonts/mulish.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 :root {
-  --marfim:    #F2EEE9; /* fundo principal */
-  --linho:     #D2C6B6; /* fundo secundário */
-  --nude:      #CEAF9C; /* fundo de cartões e secções suaves */
-  --caramelo:  #926F5B; /* só em títulos grandes */
-  --chocolate: #4C3326; /* cor da marca, botões */
-  --espresso:  #221A15; /* texto e secções escuras */
-  --dourado:   #B8955A; /* linhas, ícones, monograma; nunca texto sobre fundo claro */
+  --marfim:    #FAF7F5; /* manual: fundo principal */
+  --linho:     #E0D4CC; /* manual: areia, fundo secundário */
+  --nude:      #FAF7F5; /* cartões sobre areia */
+  --taupe:     #A68C80; /* manual: taupe, só detalhes */
+  --caramelo:  #846A5E; /* taupe do manual escurecido para texto (4,5:1 sobre o fundo claro) */
+  --chocolate: #5D4032; /* manual: castanho da marca, botões, secções escuras */
+  --espresso:  #4A3329; /* castanho da marca escurecido: texto e sombras */
+  --dourado:   #B8955A; /* acabamento: linhas, aros, relevo do símbolo; nunca texto sobre fundo claro */
+  --ouro-claro: #E2C68E; /* dourado legível sobre o castanho */
 
-  --serif: "Bodoni Moda", "Bodoni 72", Didot, Georgia, serif;
-  --sans: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Cormorant", "Cormorant Garamond", Didot, Georgia, serif;
+  --sans: "Mulish", Corbel, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --gutter: clamp(1rem, 5vw, 4rem);
   --section: clamp(4.5rem, 11vw, 9rem);
@@ -74,18 +78,16 @@ em { font-style: italic; }
 }
 
 /* ---------- Wordmark (SVG em texto) ---------- */
-/* ---------- Wordmark em texto ----------
-   Texto HTML com tamanhos reais: o nome em Bodoni, «BEAUTY» e a tagline em Montserrat
+/* ---------- Logótipo ----------
+   Nome «SÍLVIA PAZ» vectorizado do manual; «BEAUTY» e a tagline em texto real,
    nunca abaixo de 11 px, com as linhas douradas desenhadas em CSS. */
 .wordmark { display: flex; flex-direction: column; align-items: center; margin: 0; font-weight: inherit; text-align: center; }
-.wordmark__nome {
-  font-family: var(--serif); font-weight: 500; color: var(--chocolate);
-  font-size: clamp(3.6rem, 17vw, 6.4rem); line-height: .95; letter-spacing: -.012em; white-space: nowrap;
-}
-.wordmark__nome em { color: var(--caramelo); margin-left: .08em; }
+/* Nome «SÍLVIA PAZ» do manual, em vector; cor por currentColor */
+.logo-nome { display: block; fill: currentColor; color: var(--chocolate); height: auto; }
+.wordmark .logo-nome { width: min(100%, 21rem); }
 .wordmark__beauty {
-  order: -1; margin: 0 -.55em .55rem 0;
-  font: 600 clamp(.75rem, 2.6vw, .875rem)/1 var(--sans); letter-spacing: .55em; text-transform: uppercase;
+  margin: .9rem -.8em 0 0;
+  font: 600 clamp(.75rem, 2.6vw, .875rem)/1 var(--sans); letter-spacing: .8em; text-transform: uppercase;
   color: var(--chocolate);
 }
 .wordmark__tag {
@@ -96,16 +98,14 @@ em { font-style: italic; }
 .wordmark__tag::before, .wordmark__tag::after { content: ""; flex: 1 1 1.25rem; min-width: 1rem; height: 1px; background: var(--dourado); }
 .wordmark__tag::after { margin-left: -.28em; }
 
-/* Bodoni Moda tem tamanho óptico. Em automático, os títulos grandes caem no opsz 96,
-   com traços finos de um pixel. Fixamos um opsz mais baixo: mesmas formas, traços legíveis. */
-.wordmark__nome, .title, .hero__quote, .card__nome, .card__preco, .curso__nome, .curso__preco {
+/* Peso e tamanho óptico fixos nos títulos (ignorado pelas fontes sem eixo opsz) */
+.title, .hero__quote, .card__nome, .card__preco, .curso__nome, .curso__preco {
   font-optical-sizing: none;
   font-variation-settings: "opsz" 28;
 }
-.wordmark__nome { font-variation-settings: "opsz" 18; }
 
-.dark .wordmark__nome { color: var(--marfim); }
-.dark .wordmark__nome em, .dark .wordmark__beauty { color: #D9B872; }
+.dark .logo-nome { color: var(--marfim); }
+.dark .wordmark__beauty { color: var(--ouro-claro); }
 .dark .wordmark__tag { color: var(--marfim); }
 
 /* ---------- Botões ----------
@@ -119,10 +119,10 @@ em { font-style: italic; }
   display: inline-flex; align-items: center; justify-content: center; gap: .65rem;
   min-height: 3.25rem; padding: .55rem 1.75rem;
   border: 1px solid transparent; border-radius: 999px;
-  background: linear-gradient(160deg, #5E4132 0%, #3E2A1F 100%) padding-box, var(--ouro) border-box;
+  background: linear-gradient(160deg, #6B4A3A 0%, #4A3329 100%) padding-box, var(--ouro) border-box;
   color: #F7ECD8; text-decoration: none; line-height: 1.2; letter-spacing: .24em;
   -webkit-tap-highlight-color: transparent; touch-action: manipulation;
-  box-shadow: 0 1px 0 rgb(255 236 200 / .18) inset, 0 -3px 8px rgb(0 0 0 / .28) inset, 0 12px 22px -14px rgb(34 26 21 / .85);
+  box-shadow: 0 1px 0 rgb(255 236 200 / .18) inset, 0 -3px 8px rgb(0 0 0 / .28) inset, 0 12px 22px -14px rgb(74 51 41 / .85);
   transition: color .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease), letter-spacing .45s var(--ease);
 }
 /* Enchimento a ouro (hover) */
@@ -146,7 +146,7 @@ em { font-style: italic; }
 /* Brilho de verniz em repouso: uma faixa de luz que atravessa o botão */
 .btn--brilho { background:
   linear-gradient(105deg, transparent 0 40%, rgb(255 244 220 / .32) 48%, rgb(255 244 220 / .08) 54%, transparent 62% 100%) padding-box,
-  linear-gradient(160deg, #5E4132 0%, #3E2A1F 100%) padding-box, var(--ouro) border-box;
+  linear-gradient(160deg, #6B4A3A 0%, #4A3329 100%) padding-box, var(--ouro) border-box;
   background-size: 300% 100%, 100% 100%, 100% 100%;
   background-position: 120% 0, 0 0, 0 0;
   animation: sp-verniz 7s var(--ease) infinite;
@@ -173,7 +173,7 @@ em { font-style: italic; }
 @media (hover: hover) {
   .btn:hover {
     color: var(--espresso); letter-spacing: .27em; transform: translateY(-3px);
-    box-shadow: 0 1px 0 rgb(255 255 255 / .4) inset, 0 -2px 6px rgb(80 50 15 / .3) inset, 0 18px 30px -14px rgb(34 26 21 / .75);
+    box-shadow: 0 1px 0 rgb(255 255 255 / .4) inset, 0 -2px 6px rgb(80 50 15 / .3) inset, 0 18px 30px -14px rgb(74 51 41 / .75);
   }
   .btn:hover::before { opacity: 1; background-position: 0 0; }
   .btn:hover .btn__icone { background: var(--espresso); color: #E7CB8A; transform: rotate(-12deg) scale(1.06); }
@@ -189,11 +189,11 @@ em { font-style: italic; }
   --tap: rgb(184 149 90 / .45);
   background: linear-gradient(var(--marfim), var(--marfim)) padding-box, var(--ouro) border-box;
   color: var(--chocolate);
-  box-shadow: 0 1px 0 #fff inset, 0 10px 20px -14px rgb(34 26 21 / .5);
+  box-shadow: 0 1px 0 #fff inset, 0 10px 20px -14px rgb(74 51 41 / .5);
 }
 /* Sobre escuro: igual às pílulas do rodapé */
 .btn--light {
-  background: linear-gradient(160deg, #2E241D, #1A140F) padding-box, var(--ouro) border-box;
+  background: linear-gradient(160deg, #4A3329, #36241D) padding-box, var(--ouro) border-box;
   color: #E7CB8A;
   box-shadow: 0 1px 0 rgb(255 240 210 / .08) inset, 0 -2px 6px rgb(0 0 0 / .35) inset, 0 14px 24px -16px #000;
 }
@@ -225,7 +225,7 @@ em { font-style: italic; }
 .topbar {
   position: fixed; inset: 0 0 auto; z-index: 50;
   height: var(--topbar);
-  background: rgb(242 238 233 / .9);
+  background: rgb(250 247 245 / .9);
   -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   border-bottom: 1px solid rgb(184 149 90 / .35);
 }
@@ -237,7 +237,7 @@ em { font-style: italic; }
 .dark .mono { fill: var(--dourado); }
 .topbar__logo { display: flex; align-items: center; gap: .65rem; min-height: 2.75rem; margin-right: auto; text-decoration: none; }
 /* Monograma que se enche de ouro com o scroll (--p de 0 a 1) */
-.mono-progresso { position: relative; display: block; flex: none; height: 2.5rem; aspect-ratio: 416 / 506; }
+.mono-progresso { position: relative; display: block; flex: none; height: 2.5rem; aspect-ratio: 532 / 898; }
 .mono-progresso svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 .mono-progresso__ouro {
   clip-path: inset(calc((1 - var(--p, 0)) * 100%) 0 0 0);
@@ -255,11 +255,7 @@ em { font-style: italic; }
 }
 @keyframes sp-ouro-encher { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes sp-ouro-fio { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.topbar__nome {
-  font-family: var(--serif); font-weight: 600; font-size: 1.45rem; line-height: 1; color: var(--chocolate);
-  white-space: nowrap; font-optical-sizing: none; font-variation-settings: "opsz" 11;
-}
-.topbar__nome em { color: var(--caramelo); }
+.topbar__nome { width: 7.25rem; }
 .mono-progresso + .topbar__nome { padding-left: .65rem; border-left: 1px solid rgb(184 149 90 / .5); }
 .topbar__cta { order: 2; }
 .nav { order: 3; }
@@ -283,14 +279,14 @@ em { font-style: italic; }
   position: absolute; inset: var(--topbar) 0 auto;
   margin: 0; padding: .75rem var(--gutter) 1.5rem; list-style: none;
   background: var(--marfim); border-bottom: 1px solid rgb(184 149 90 / .35);
-  box-shadow: 0 18px 30px -18px rgb(34 26 21 / .35);
+  box-shadow: 0 18px 30px -18px rgb(74 51 41 / .35);
   display: none;
 }
 .nav__list.is-open { display: block; }
 .nav__list a {
   display: flex; align-items: center; min-height: 3.25rem;
   text-decoration: none; color: var(--espresso);
-  border-bottom: 1px solid rgb(76 51 38 / .12);
+  border-bottom: 1px solid rgb(93 64 50 / .12);
 }
 .nav__list li:last-child a { border-bottom: 0; }
 
@@ -309,7 +305,7 @@ em { font-style: italic; }
   }
   .nav__list a:hover::after { transform: scaleX(1); }
   .mono-progresso { height: 2.75rem; }
-  .topbar__nome { font-size: 1.65rem; }
+  .topbar__nome { width: 8.75rem; }
 }
 
 /* ---------- Topo ---------- */
@@ -329,11 +325,11 @@ em { font-style: italic; }
 }
 /* Véu claro onde está o wordmark */
 .hero__veil {
-  background: linear-gradient(to top, rgb(242 238 233 / .96) 0%, rgb(242 238 233 / .85) 34%, rgb(242 238 233 / 0) 60%);
+  background: linear-gradient(to top, rgb(250 247 245 / .96) 0%, rgb(250 247 245 / .85) 34%, rgb(250 247 245 / 0) 60%);
 }
 .hero__shade {
   background:
-    linear-gradient(to top, rgb(34 26 21 / .92) 0%, rgb(34 26 21 / .6) 55%, rgb(34 26 21 / .45) 100%);
+    linear-gradient(to top, rgb(74 51 41 / .92) 0%, rgb(74 51 41 / .6) 55%, rgb(74 51 41 / .45) 100%);
   opacity: 0;
 }
 
@@ -343,7 +339,7 @@ em { font-style: italic; }
   margin-inline: auto; max-width: 30rem;
 }
 .hero__brand { display: grid; justify-items: center; gap: 1.25rem; }
-.hero__mono { width: auto; height: 4.5rem; overflow: visible; }
+.hero__mono { width: auto; height: 5.25rem; overflow: visible; }
 
 .hero__cta {
   position: absolute; left: 0; right: 0; bottom: calc(1.75rem + env(safe-area-inset-bottom));
@@ -370,11 +366,11 @@ em { font-style: italic; }
   opacity: 0; visibility: hidden;
 }
 .hero__quote {
-  font-family: var(--serif); font-weight: 500;
-  font-size: clamp(1.85rem, 7.4vw, 3.6rem); line-height: 1.12; letter-spacing: -.01em;
+  font-family: var(--serif); font-weight: 600;
+  font-size: clamp(2.05rem, 8vw, 3.9rem); line-height: 1.12; letter-spacing: -.01em;
   text-wrap: balance; max-width: 22ch;
 }
-.hero__quote em { color: var(--dourado); }
+.hero__quote em { color: var(--ouro-claro); }
 
 /* Régua dourada: a assinatura que liga o logótipo às secções */
 .rule {
@@ -386,16 +382,16 @@ em { font-style: italic; }
 @media (min-width: 900px) {
   .hero__media img, .hero__media video { object-position: 50% 16%; }
   .hero__veil {
-    background: linear-gradient(to right, rgb(242 238 233 / .92) 0%, rgb(242 238 233 / .7) 34%, rgb(242 238 233 / 0) 58%);
+    background: linear-gradient(to right, rgb(250 247 245 / .92) 0%, rgb(250 247 245 / .7) 34%, rgb(250 247 245 / 0) 58%);
   }
   .hero__shade {
-    background: linear-gradient(to right, rgb(34 26 21 / .9) 0%, rgb(34 26 21 / .72) 45%, rgb(34 26 21 / .4) 100%);
+    background: linear-gradient(to right, rgb(74 51 41 / .9) 0%, rgb(74 51 41 / .72) 45%, rgb(74 51 41 / .4) 100%);
   }
   .hero__brand {
     left: max(var(--gutter), (100vw - var(--max)) / 2); right: auto; bottom: auto; top: 50%;
     width: min(40vw, 34rem); max-width: none; margin: 0; translate: 0 -50%;
   }
-  .hero__mono { height: 6.5rem; }
+  .hero__mono { height: 7.5rem; }
   .hero__cta {
     left: max(var(--gutter), (100vw - var(--max)) / 2); right: auto; bottom: 3.5rem;
     justify-content: flex-start; align-items: flex-start; padding: 0;
@@ -462,8 +458,8 @@ html:not(.sp-motion) .hero__statement {
 .section { padding-block: var(--section); }
 .section__head { margin-bottom: clamp(2rem, 5vw, 3.5rem); max-width: 40rem; }
 .title {
-  font-family: var(--serif); font-weight: 500;
-  font-size: clamp(2.1rem, 7.5vw, 4rem); line-height: 1.06; letter-spacing: -.015em;
+  font-family: var(--serif); font-weight: 600;
+  font-size: clamp(2.35rem, 8.2vw, 4.4rem); line-height: 1.06; letter-spacing: -.015em;
   color: var(--espresso); text-wrap: balance;
 }
 .title em { color: var(--caramelo); }
@@ -473,9 +469,9 @@ html:not(.sp-motion) .hero__statement {
 /* Em fundo linho o caramelo não chega a 3:1, por isso o itálico passa a chocolate */
 .servicos .title em, .contactos .title em { color: var(--chocolate); }
 
-.dark { background: var(--espresso); color: var(--marfim); }
+.dark { background: var(--chocolate); color: var(--marfim); }
 .dark .title { color: var(--marfim); }
-.dark .title em { color: var(--dourado); }
+.dark .title em { color: var(--ouro-claro); }
 .dark .lead, .dark .todo { color: var(--linho); }
 
 /* Sobre */
@@ -485,17 +481,17 @@ html:not(.sp-motion) .hero__statement {
 .sobre__foto {
   --off: 10px;
   position: relative; aspect-ratio: 4 / 5; padding: 10px;
-  background: #FBF8F4; border: 1px solid rgb(184 149 90 / .75);
+  background: #FFFFFF; border: 1px solid rgb(184 149 90 / .75);
   box-shadow:
     var(--off) var(--off) 0 -1px var(--marfim),
     var(--off) var(--off) 0 0 var(--dourado),
-    0 22px 44px -26px rgb(34 26 21 / .55);
+    0 22px 44px -26px rgb(74 51 41 / .55);
   margin: 0 var(--off) var(--off) 0;
 }
 .sobre__foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 .sobre__foto::after {
   content: ""; position: absolute; inset: 20px; pointer-events: none;
-  border: 1px solid rgb(242 238 233 / .7);
+  border: 1px solid rgb(250 247 245 / .7);
 }
 @media (min-width: 900px) {
   .sobre__foto { --off: 18px; padding: 14px; }
@@ -517,7 +513,7 @@ html:not(.sp-motion) .hero__statement {
   transition: transform .45s var(--ease), box-shadow .45s var(--ease);
 }
 @media (hover: hover) {
-  .card:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -28px rgb(34 26 21 / .55); }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -28px rgb(74 51 41 / .55); }
 }
 .card__foto {
   margin: -1.75rem -1.5rem .25rem; aspect-ratio: 4 / 3; overflow: hidden; background: var(--linho);
@@ -525,12 +521,12 @@ html:not(.sp-motion) .hero__statement {
 .card__foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; transition: transform .8s var(--ease); }
 @media (hover: hover) { .card:hover .card__foto img { transform: scale(1.05); } }
 .card__foto--vazia { display: grid; place-items: center; color: var(--chocolate); font-size: .75rem; font-weight: 600; letter-spacing: .2em; }
-.card__nome { font-family: var(--serif); font-weight: 500; font-size: 1.6rem; line-height: 1.15; }
+.card__nome { font-family: var(--serif); font-weight: 600; font-size: 1.8rem; line-height: 1.15; }
 .card__desc { font-size: .9375rem; color: var(--espresso); }
 .card__desc .todo { display: block; margin-top: .25rem; color: var(--espresso); }
 .card__meta {
   display: flex; justify-content: space-between; align-items: end; gap: 1rem;
-  margin-top: auto; padding-top: 1rem; border-top: 1px solid rgb(76 51 38 / .25);
+  margin-top: auto; padding-top: 1rem; border-top: 1px solid rgb(93 64 50 / .25);
 }
 .card__meta dt { font-size: .75rem; color: var(--espresso); }
 .card__meta dd { font-weight: 500; }
@@ -539,13 +535,21 @@ html:not(.sp-motion) .hero__statement {
 @media (min-width: 1100px) { .cards { grid-template-columns: repeat(4, 1fr); } }
 
 /* Formações */
+.selo-academy {
+  display: block; width: 6.5rem; aspect-ratio: 944 / 1260; margin-bottom: 1.75rem;
+  background: linear-gradient(150deg, #F3E1AA 0%, #CFA95F 30%, #9A7034 52%, #EBD08A 68%, #B8955A 100%);
+  -webkit-mask: url("assets/brand/selo-academy.svg") center / contain no-repeat;
+          mask: url("assets/brand/selo-academy.svg") center / contain no-repeat;
+  filter: drop-shadow(0 6px 10px rgb(0 0 0 / .25));
+}
+@media (min-width: 900px) { .selo-academy { width: 8rem; } }
 .formacoes__grid { display: grid; gap: 1rem; }
 .cursos__lista { margin-bottom: 2.5rem; border-top: 1px solid rgb(184 149 90 / .45); }
 .curso {
   display: grid; gap: .35rem; padding-block: 1.4rem;
   border-bottom: 1px solid rgb(184 149 90 / .45);
 }
-.curso__nome { font-family: var(--serif); font-weight: 500; font-size: 1.5rem; line-height: 1.2; }
+.curso__nome { font-family: var(--serif); font-weight: 600; font-size: 1.7rem; line-height: 1.2; }
 .curso__meta { display: flex; justify-content: space-between; gap: 1rem; color: var(--linho); }
 .curso__preco { font-family: var(--serif); font-weight: 500; font-size: 1.35rem; color: var(--marfim); }
 @media (min-width: 900px) {
@@ -563,17 +567,17 @@ html:not(.sp-motion) .hero__statement {
 /* Trabalhos emoldurados: passe-partout marfim, aro dourado e um filete claro sobre a foto */
 .grelha__item {
   position: relative; padding: 5px; overflow: hidden;
-  background: #FBF8F4; border: 1px solid rgb(184 149 90 / .75);
-  box-shadow: 0 12px 24px -18px rgb(34 26 21 / .6);
+  background: #FFFFFF; border: 1px solid rgb(184 149 90 / .75);
+  box-shadow: 0 12px 24px -18px rgb(74 51 41 / .6);
   transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease);
 }
 .grelha__item img { width: 100%; height: 100%; object-fit: cover; }
 .grelha__item::after {
   content: ""; position: absolute; inset: 9px; pointer-events: none;
-  border: 1px solid rgb(242 238 233 / .7);
+  border: 1px solid rgb(250 247 245 / .7);
 }
 @media (hover: hover) {
-  .grelha__item:hover { transform: translateY(-4px); border-color: var(--dourado); box-shadow: 0 20px 34px -18px rgb(34 26 21 / .6); }
+  .grelha__item:hover { transform: translateY(-4px); border-color: var(--dourado); box-shadow: 0 20px 34px -18px rgb(74 51 41 / .6); }
 }
 @media (min-width: 900px) {
   .grelha__item { padding: 8px; }
@@ -662,9 +666,9 @@ html:not(.sp-motion) .hero__statement {
 .contactos__lista { display: grid; gap: 0; }
 .contactos__lista > div {
   display: grid; gap: .25rem; padding-block: 1.1rem;
-  border-bottom: 1px solid rgb(76 51 38 / .2);
+  border-bottom: 1px solid rgb(93 64 50 / .2);
 }
-.contactos__lista > div:first-child { border-top: 1px solid rgb(76 51 38 / .2); }
+.contactos__lista > div:first-child { border-top: 1px solid rgb(93 64 50 / .2); }
 .contactos__lista dt { font-size: .75rem; color: var(--chocolate); }
 .contactos__lista dd { font-size: 1.0625rem; }
 @media (min-width: 900px) {
@@ -675,8 +679,8 @@ html:not(.sp-motion) .hero__statement {
 /* Rodapé */
 .rodape { padding: clamp(3.5rem, 8vw, 6rem) 0 2.5rem; }
 .rodape__inner { display: grid; justify-items: center; gap: 2rem; text-align: center; }
-.rodape__logo { display: grid; justify-items: center; gap: 1.75rem; width: min(100%, 22rem); text-decoration: none; }
-.rodape__logo .rodape__mono { width: auto; height: 8rem; overflow: visible; transition: transform .6s var(--ease); }
+.rodape__logo { display: grid; justify-items: center; gap: 1.5rem; width: min(100%, 22rem); text-decoration: none; }
+.rodape__logo .rodape__mono { width: auto; height: 8.5rem; overflow: visible; transition: transform .6s var(--ease); }
 @media (hover: hover) { .rodape__logo:hover .rodape__mono { transform: translateY(-4px) scale(1.03); } }
 
 /* Redes: pílulas com aro de ouro; no hover enchem-se a ouro com um brilho a passar */
@@ -687,7 +691,7 @@ html:not(.sp-motion) .hero__statement {
   display: inline-flex; align-items: center; gap: .7rem;
   min-height: 3.25rem; padding: .5rem 1.4rem .5rem .5rem;
   border: 1px solid transparent; border-radius: 999px;
-  background: linear-gradient(160deg, #2E241D, #1A140F) padding-box, var(--ouro) border-box;
+  background: linear-gradient(160deg, #4A3329, #36241D) padding-box, var(--ouro) border-box;
   color: #E7CB8A; text-decoration: none;
   font: 600 .75rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase;
   box-shadow: 0 1px 0 rgb(255 240 210 / .08) inset, 0 -2px 6px rgb(0 0 0 / .35) inset, 0 14px 24px -16px #000;
@@ -729,7 +733,7 @@ html:not(.sp-motion) .hero__statement {
   border: 1px solid rgb(184 149 90 / .6); border-radius: 50%; color: var(--dourado);
   transition: background-color .25s var(--ease), color .25s var(--ease);
 }
-.icon-btn { position: relative; isolation: isolate; overflow: hidden; --tap: rgb(242 238 233 / .5);
+.icon-btn { position: relative; isolation: isolate; overflow: hidden; --tap: rgb(250 247 245 / .5);
   -webkit-tap-highlight-color: transparent; transition: background-color .35s var(--ease), color .35s var(--ease), transform .35s var(--ease), box-shadow .45s var(--ease); }
 @media (hover: hover) {
   .icon-btn:hover { background: var(--dourado); color: var(--espresso); transform: translateY(-2px);
