@@ -462,8 +462,27 @@ html:not(.sp-motion) .hero__statement {
 
 /* Sobre */
 .sobre__grid { display: grid; gap: 2.5rem; }
-.sobre__foto { aspect-ratio: 4 / 5; overflow: hidden; background: var(--linho); }
+/* Foto da Silvia emoldurada: passe-partout marfim, aro dourado e uma segunda moldura
+   desfasada atrás (feita com sombras, sem mexer no layout) */
+.sobre__foto {
+  --off: 10px;
+  position: relative; aspect-ratio: 4 / 5; padding: 10px;
+  background: #FBF8F4; border: 1px solid rgb(184 149 90 / .75);
+  box-shadow:
+    var(--off) var(--off) 0 -1px var(--marfim),
+    var(--off) var(--off) 0 0 var(--dourado),
+    0 22px 44px -26px rgb(34 26 21 / .55);
+  margin: 0 var(--off) var(--off) 0;
+}
 .sobre__foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.sobre__foto::after {
+  content: ""; position: absolute; inset: 20px; pointer-events: none;
+  border: 1px solid rgb(242 238 233 / .7);
+}
+@media (min-width: 900px) {
+  .sobre__foto { --off: 18px; padding: 14px; }
+  .sobre__foto::after { inset: 28px; }
+}
 .sobre__texto p { max-width: 52ch; text-wrap: pretty; }
 .sobre__texto .title { margin-bottom: 1.5rem; }
 .sobre__texto p + p { margin-top: 1rem; }
@@ -517,18 +536,33 @@ html:not(.sp-motion) .hero__statement {
 }
 
 /* Galeria */
-.grelha { display: grid; grid-template-columns: repeat(3, 1fr); gap: .375rem; }
+.grelha { display: grid; grid-template-columns: repeat(3, 1fr); gap: .6rem; }
 .grelha__item {
   aspect-ratio: 4 / 5; display: grid; place-items: center;
   background: var(--linho); color: var(--chocolate);
   font-size: .75rem; font-weight: 600; letter-spacing: .2em;
 }
-.grelha__item:nth-child(3n+2) { background: var(--nude); }
-.grelha__item { overflow: hidden; }
-.grelha__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
-@media (hover: hover) { .grelha__item:hover img { transform: scale(1.04); } }
+/* Trabalhos emoldurados: passe-partout marfim, aro dourado e um filete claro sobre a foto */
+.grelha__item {
+  position: relative; padding: 5px; overflow: hidden;
+  background: #FBF8F4; border: 1px solid rgb(184 149 90 / .75);
+  box-shadow: 0 12px 24px -18px rgb(34 26 21 / .6);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s var(--ease);
+}
+.grelha__item img { width: 100%; height: 100%; object-fit: cover; }
+.grelha__item::after {
+  content: ""; position: absolute; inset: 9px; pointer-events: none;
+  border: 1px solid rgb(242 238 233 / .7);
+}
+@media (hover: hover) {
+  .grelha__item:hover { transform: translateY(-4px); border-color: var(--dourado); box-shadow: 0 20px 34px -18px rgb(34 26 21 / .6); }
+}
+@media (min-width: 900px) {
+  .grelha__item { padding: 8px; }
+  .grelha__item::after { inset: 15px; }
+}
 .galeria__mais { margin-top: 1.5rem; }
-@media (min-width: 900px) { .grelha { gap: .75rem; } }
+@media (min-width: 900px) { .grelha { gap: 1.25rem; } }
 
 /* Marcações */
 .marcacoes { background: var(--marfim); border-top: 1px solid rgb(184 149 90 / .35); }
