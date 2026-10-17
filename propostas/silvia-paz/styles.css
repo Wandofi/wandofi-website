@@ -482,6 +482,12 @@ html:not(.sp-motion) .hero__statement {
 @media (hover: hover) {
   .card:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -28px rgb(34 26 21 / .55); }
 }
+.card__foto {
+  margin: -1.75rem -1.5rem .25rem; aspect-ratio: 4 / 3; overflow: hidden; background: var(--linho);
+}
+.card__foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; transition: transform .8s var(--ease); }
+@media (hover: hover) { .card:hover .card__foto img { transform: scale(1.05); } }
+.card__foto--vazia { display: grid; place-items: center; color: var(--chocolate); font-size: .75rem; font-weight: 600; letter-spacing: .2em; }
 .card__nome { font-family: var(--serif); font-weight: 500; font-size: 1.6rem; line-height: 1.15; }
 .card__desc { font-size: .9375rem; color: var(--espresso); }
 .card__desc .todo { display: block; margin-top: .25rem; color: var(--espresso); }
@@ -518,6 +524,9 @@ html:not(.sp-motion) .hero__statement {
   font-size: .75rem; font-weight: 600; letter-spacing: .2em;
 }
 .grelha__item:nth-child(3n+2) { background: var(--nude); }
+.grelha__item { overflow: hidden; }
+.grelha__item img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+@media (hover: hover) { .grelha__item:hover img { transform: scale(1.04); } }
 .galeria__mais { margin-top: 1.5rem; }
 @media (min-width: 900px) { .grelha { gap: .75rem; } }
 
