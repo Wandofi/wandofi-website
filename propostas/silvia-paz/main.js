@@ -67,6 +67,23 @@
     }
   }
 
+  /* ---------- Monograma e fio dourado do menu ----------
+     Com suporte, o CSS liga-os ao scroll (classe sp-scroll). Sem suporte, ou com
+     «reduzir movimento», o progresso é calculado aqui, uma vez por fotograma. */
+  if (!root.classList.contains('sp-scroll')) {
+    var pedido = false;
+    var actualizar = function () {
+      pedido = false;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      root.style.setProperty('--p', max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)).toFixed(4) : '0');
+    };
+    window.addEventListener('scroll', function () {
+      if (!pedido) { pedido = true; window.requestAnimationFrame(actualizar); }
+    }, { passive: true });
+    window.addEventListener('resize', actualizar, { passive: true });
+    actualizar();
+  }
+
   /* ---------- Intro do topo: fallback com IntersectionObserver ---------- */
   var hero = document.querySelector('.hero');
   if (hero && root.classList.contains('sp-io') && 'IntersectionObserver' in window) {
