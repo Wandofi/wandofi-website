@@ -16,6 +16,7 @@ A Wandofi PM desenha, coordena, implementa e documenta a infraestrutura digital 
 - [Gestor de tráfego pago](https://wandofi.pt/gestao-de-trafego/): campanhas de Google Ads e Meta Ads geridas com método.
 - [Gestão de Google Ads](https://wandofi.pt/gestao-de-trafego/google-ads/): campanhas de pesquisa e remarketing.
 - [Gestão de Meta Ads](https://wandofi.pt/gestao-de-trafego/meta-ads/): Facebook e Instagram.
+- [Meta Ads e Google Ads em Angola](https://wandofi.pt/gestao-de-trafego/angola/): anúncios para negócios em Angola geridos a partir de Portugal, com facturação em euros; o SEO orgânico em Angola é de base, não de volume.
 - [Criação e migração de sites](https://wandofi.pt/criacao-de-sites/): sites rápidos e indexáveis; migração sem perder SEO. Site essencial a preço fixo, desde 350€.
 - [Automações e integrações](https://wandofi.pt/automacoes/): Apps Script, CRM e reconciliação de dados.
 
