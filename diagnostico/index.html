@@ -7,6 +7,7 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      try{if(localStorage.getItem('wandofi_sem_medicao')==='1'){window['ga-disable-G-510WQZ4YQ7']=true;}}catch(e){}
       gtag('js', new Date());
       gtag('config', 'G-510WQZ4YQ7');
     </script>
@@ -951,7 +952,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
                   <label class="consent">
                     <input type="checkbox" id="consent" name="consent" required />
-                    <span>Autorizo o contacto sobre este pedido. Os dados ficam numa folha privada da Wandofi, não são partilhados com terceiros e são apagados se pedir.</span>
+                    <span>Autorizo o contacto sobre este pedido. Os dados ficam numa folha privada da Wandofi, não são partilhados para fins de marketing de terceiros e são apagados se pedir. Mais em <a href="/privacidade/" target="_blank">Política de Privacidade</a>.</span>
                   </label>
 
                   <div class="captura__accoes">
@@ -1021,6 +1022,8 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
               <li><a href="/sobre/">Sobre</a></li>
               <li><a href="/seo/sectores/">Sectores</a></li>
               <li><a href="/seo/geo-aeo/">GEO e AEO</a></li>
+              <li><a href="/privacidade/">Privacidade</a></li>
+              <li><a href="/termos/">Termos</a></li>
             </ul>
           </nav>
 
