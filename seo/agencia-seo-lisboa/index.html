@@ -489,8 +489,8 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
    do dock). Aceitar e Recusar a um clique, com o mesmo tamanho.
    O Google Analytics so carrega depois de aceitar (ver cabecalho das
    paginas). Fonte: ferramentas/paginas.css */
-.cookies{position:fixed;left:1rem;bottom:1rem;z-index:60;max-width:26rem;width:calc(100% - 2rem);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.3rem 1.3rem;box-shadow:0 28px 60px -24px rgba(5,5,5,.4);opacity:0;transform:translateY(12px);transition:opacity .4s var(--ease),transform .4s var(--ease);pointer-events:none}
-.cookies.is-on{opacity:1;transform:none;pointer-events:auto}
+.cookies{position:fixed;left:50%;bottom:1.25rem;z-index:60;max-width:30rem;width:calc(100% - 2rem);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.4rem 1.35rem;box-shadow:0 28px 60px -24px rgba(5,5,5,.4);opacity:0;transform:translate(-50%,12px);transition:opacity .4s var(--ease),transform .4s var(--ease);pointer-events:none;text-align:center}
+.cookies.is-on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 .cookies__label{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 .5rem}
 .cookies__title{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin:0 0 .55rem}
 .cookies__text{margin:0;font-size:.93rem;line-height:1.55;color:var(--ink-soft)}
@@ -499,7 +499,7 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 .cookies__actions{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1rem}
 .cookies__actions .btn{justify-content:center;min-height:2.9rem;padding:.6rem .9rem}
 .medicao__accoes{display:flex;flex-wrap:wrap;gap:.6rem;margin:.4rem 0 0}
-@media (max-width:760px){.cookies{left:.75rem;right:.75rem;width:auto;max-width:none;bottom:calc(5.4rem + env(safe-area-inset-bottom))}}
+@media (max-width:760px){.cookies{left:.75rem;right:.75rem;width:auto;max-width:none;transform:translateY(12px);bottom:calc(5.4rem + env(safe-area-inset-bottom))}.cookies.is-on{transform:none}}
 @media (prefers-reduced-motion:reduce){.cookies{transition:none}}
 
 /* ================= PAGINAS INTERNAS =================
