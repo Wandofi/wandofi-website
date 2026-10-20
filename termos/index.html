@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-510WQZ4YQ7"></script>
+    <!-- Google tag (gtag.js): so carrega depois de o visitante aceitar no banner de cookies -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      try{if(localStorage.getItem('wandofi_sem_medicao')==='1'){window['ga-disable-G-510WQZ4YQ7']=true;}}catch(e){}
-      gtag('js', new Date());
-      gtag('config', 'G-510WQZ4YQ7');
+      (function(){
+        var v=null;
+        try{ var raw=localStorage.getItem('wandofi_consent'); if(raw){ var o=JSON.parse(raw); if(o && o.t && (Date.now()-o.t) < 15552000000){ v=o.v; } else { localStorage.removeItem('wandofi_consent'); } } }catch(e){}
+        window.wandofiConsent=v;
+        window.wandofiCarregaGA=function(){
+          if(window.wandofiGAOn) return; window.wandofiGAOn=true;
+          var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-510WQZ4YQ7'; document.head.appendChild(s);
+          gtag('js', new Date()); gtag('config', 'G-510WQZ4YQ7');
+        };
+        if(v==='aceite'){ window.wandofiCarregaGA(); }
+      })();
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -478,6 +484,23 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 @media (hover:none){.site:hover{--ty:0px}.site:hover img{transform:none}}
 @media (prefers-reduced-motion:reduce){.site,div.proof .stat,.site img,.album__card,.album__more,.site__cap::before,div.proof .stat::after{transition:none}.album__stage{animation:none}.site:hover{--ty:0px}.site:hover img{transform:none}}
 .nav__dot{background:var(--livre)}
+/* ================= BANNER DE CONSENTIMENTO =================
+   Cartao fixo em baixo a esquerda (folha em baixo no telemovel, acima
+   do dock). Aceitar e Recusar a um clique, com o mesmo tamanho.
+   O Google Analytics so carrega depois de aceitar (ver cabecalho das
+   paginas). Fonte: ferramentas/paginas.css */
+.cookies{position:fixed;left:1rem;bottom:1rem;z-index:60;max-width:26rem;width:calc(100% - 2rem);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.3rem 1.3rem;box-shadow:0 28px 60px -24px rgba(5,5,5,.4);opacity:0;transform:translateY(12px);transition:opacity .4s var(--ease),transform .4s var(--ease);pointer-events:none}
+.cookies.is-on{opacity:1;transform:none;pointer-events:auto}
+.cookies__label{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 .5rem}
+.cookies__title{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin:0 0 .55rem}
+.cookies__text{margin:0;font-size:.93rem;line-height:1.55;color:var(--ink-soft)}
+.cookies__text a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.cookies__text a:hover{color:var(--red);border-color:var(--red)}
+.cookies__actions{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1rem}
+.cookies__actions .btn{justify-content:center;min-height:2.9rem;padding:.6rem .9rem}
+.medicao__accoes{display:flex;flex-wrap:wrap;gap:.6rem;margin:.4rem 0 0}
+@media (max-width:760px){.cookies{left:.75rem;right:.75rem;width:auto;max-width:none;bottom:calc(5.4rem + env(safe-area-inset-bottom))}}
+@media (prefers-reduced-motion:reduce){.cookies{transition:none}}
 
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
@@ -817,7 +840,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 <section class="section section--panel"><div class="container"><div class="prose"><p class="eyebrow">7</p><h2 class="h2">Utilização permitida e segurança</h2><p class="body">O site deve ser utilizado de forma lícita e de acordo com estes Termos. Não é permitido:</p><ul class="deliver"><li>utilizar o site para fins ilícitos, fraudulentos ou que possam prejudicar a Wandofi ou terceiros;</li><li>tentar aceder sem autorização a sistemas, ferramentas ou dados ligados ao site;</li><li>introduzir programas maliciosos ou praticar actos que possam afectar o funcionamento do site;</li><li>enviar, através do teste de diagnóstico ou por email, conteúdos falsos, ofensivos, publicidade não solicitada ou dados de terceiros sem legitimidade para tal.</li></ul><p class="body">Qualquer falha de segurança detectada no site pode ser comunicada para <a href="mailto:geral@wandofi.pt">geral@wandofi.pt</a>.</p></div></div></section>
 <section class="section"><div class="container"><div class="prose"><p class="eyebrow">8</p><h2 class="h2">Ligações para outros sites</h2><p class="body">O site contém ligações para sites de terceiros: fontes citadas nos artigos, redes sociais, a Calendly, a Zaask, o Google e outras plataformas. Não controlo esses sites e não respondo pelos seus conteúdos, políticas de privacidade ou práticas. A existência de uma ligação não significa que aprove ou recomende o site ou a entidade em causa. As ligações para fontes nos artigos servem para que possa verificar a informação na origem.</p></div></div></section>
 <section class="section section--panel"><div class="container"><div class="prose"><p class="eyebrow">9</p><h2 class="h2">Disponibilidade e responsabilidade</h2><p class="body">Procuro manter o site disponível, seguro e com informação correcta, mas não garanto que o seu funcionamento seja contínuo ou isento de erros. Posso alterar, suspender ou descontinuar o site, total ou parcialmente, a qualquer momento.</p><p class="body">Na medida permitida por lei, não respondo por danos resultantes do acesso ou da impossibilidade de acesso ao site, da utilização dos seus conteúdos ou de ligações para sites de terceiros. Esta limitação não se aplica aos casos de dolo ou culpa grave nem aos demais casos em que a lei não permita a exclusão de responsabilidade. A responsabilidade pelos serviços prestados a clientes é a que resultar de cada contrato e da lei.</p></div></div></section>
-<section class="section"><div class="container"><div class="prose"><p class="eyebrow">10</p><h2 class="h2">Dados pessoais e cookies</h2><p class="body">O tratamento de dados pessoais através do site, a utilização de cookies e a forma de desactivar a medição estão explicados na <a href="/privacidade/">Política de Privacidade</a>, que completa estes Termos.</p></div></div></section>
+<section class="section"><div class="container"><div class="prose"><p class="eyebrow">10</p><h2 class="h2">Dados pessoais e cookies</h2><p class="body">O tratamento de dados pessoais através do site, a utilização de cookies e a forma de aceitar ou recusar a medição estão explicados na <a href="/privacidade/">Política de Privacidade</a>, que completa estes Termos.</p></div></div></section>
 <section class="section section--panel"><div class="container"><div class="prose"><p class="eyebrow">11</p><h2 class="h2">Alterações, lei aplicável e litígios</h2><p class="body">Posso alterar estes Termos a qualquer momento. A versão em vigor é a publicada nesta página, com a data da última actualização. Se alguma disposição for considerada inválida, as restantes continuam em vigor.</p><p class="body">Estes Termos são regidos pela lei portuguesa. Para qualquer litígio relativo à sua interpretação ou aplicação são competentes os tribunais da comarca de Lisboa, sem prejuízo das regras imperativas de competência, nomeadamente as que protegem os consumidores.</p><p class="body">Em caso de litígio de consumo, o consumidor pode recorrer a uma entidade de resolução alternativa de litígios. A lista das entidades autorizadas está disponível no Portal do Consumidor, em <a href="https://www.consumidor.gov.pt" target="_blank" rel="noopener">www.consumidor.gov.pt</a>, e a plataforma europeia de resolução de litígios em linha em <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p></div></div></section>
 <section class="section"><div class="container"><div class="prose"><p class="eyebrow">12</p><h2 class="h2">Contactos</h2><p class="body">Para qualquer questão sobre estes Termos, pode escrever para <a href="mailto:geral@wandofi.pt">geral@wandofi.pt</a>.</p></div></div></section>
 
@@ -934,5 +957,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       }, { passive: true });
     })();
     </script>
-  </body>
+  <div class="cookies" id="cookies" role="region" aria-label="Cookies" hidden>
+  <p class="cookies__label">Cookies · uma escolha, cinco segundos</p>
+  <p class="cookies__title">Ajuda a perceber o que vale a pena escrever?</p>
+  <p class="cookies__text">Uso o Google Analytics só para ver que páginas são lidas e de onde chegam as visitas. Sem anúncios, sem perfis, sem venda de dados. Pode mudar de ideias quando quiser na <a href="/privacidade/#cookies">política de privacidade</a>.</p>
+  <div class="cookies__actions"><button type="button" class="btn btn--red" data-cookies="aceite">Aceitar</button><button type="button" class="btn btn--ghost" data-cookies="recusado">Recusar</button></div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('cookies'); if(!el) return;
+  var c=window.wandofiConsent; if(c==='aceite'||c==='recusado') return;
+  el.hidden=false;
+  setTimeout(function(){ el.classList.add('is-on'); }, 60);
+  el.addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-cookies]'); if(!b) return;
+    var v=b.getAttribute('data-cookies');
+    try{ localStorage.setItem('wandofi_consent', JSON.stringify({v:v,t:Date.now()})); }catch(e){}
+    window.wandofiConsent=v;
+    if(v==='aceite' && window.wandofiCarregaGA){ window.wandofiCarregaGA(); }
+    el.classList.remove('is-on'); setTimeout(function(){ el.hidden=true; },450);
+    if(window.wandofiMostraMedicao){ window.wandofiMostraMedicao(); }
+  });
+})();
+</script>
+</body>
 </html>

@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-510WQZ4YQ7"></script>
+    <!-- Google tag (gtag.js): so carrega depois de o visitante aceitar no banner de cookies -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      try{if(localStorage.getItem('wandofi_sem_medicao')==='1'){window['ga-disable-G-510WQZ4YQ7']=true;}}catch(e){}
-      gtag('js', new Date());
-      gtag('config', 'G-510WQZ4YQ7');
+      (function(){
+        var v=null;
+        try{ var raw=localStorage.getItem('wandofi_consent'); if(raw){ var o=JSON.parse(raw); if(o && o.t && (Date.now()-o.t) < 15552000000){ v=o.v; } else { localStorage.removeItem('wandofi_consent'); } } }catch(e){}
+        window.wandofiConsent=v;
+        window.wandofiCarregaGA=function(){
+          if(window.wandofiGAOn) return; window.wandofiGAOn=true;
+          var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-510WQZ4YQ7'; document.head.appendChild(s);
+          gtag('js', new Date()); gtag('config', 'G-510WQZ4YQ7');
+        };
+        if(v==='aceite'){ window.wandofiCarregaGA(); }
+      })();
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -478,6 +484,23 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 @media (hover:none){.site:hover{--ty:0px}.site:hover img{transform:none}}
 @media (prefers-reduced-motion:reduce){.site,div.proof .stat,.site img,.album__card,.album__more,.site__cap::before,div.proof .stat::after{transition:none}.album__stage{animation:none}.site:hover{--ty:0px}.site:hover img{transform:none}}
 .nav__dot{background:var(--livre)}
+/* ================= BANNER DE CONSENTIMENTO =================
+   Cartao fixo em baixo a esquerda (folha em baixo no telemovel, acima
+   do dock). Aceitar e Recusar a um clique, com o mesmo tamanho.
+   O Google Analytics so carrega depois de aceitar (ver cabecalho das
+   paginas). Fonte: ferramentas/paginas.css */
+.cookies{position:fixed;left:1rem;bottom:1rem;z-index:60;max-width:26rem;width:calc(100% - 2rem);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.3rem 1.3rem;box-shadow:0 28px 60px -24px rgba(5,5,5,.4);opacity:0;transform:translateY(12px);transition:opacity .4s var(--ease),transform .4s var(--ease);pointer-events:none}
+.cookies.is-on{opacity:1;transform:none;pointer-events:auto}
+.cookies__label{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 .5rem}
+.cookies__title{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin:0 0 .55rem}
+.cookies__text{margin:0;font-size:.93rem;line-height:1.55;color:var(--ink-soft)}
+.cookies__text a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.cookies__text a:hover{color:var(--red);border-color:var(--red)}
+.cookies__actions{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1rem}
+.cookies__actions .btn{justify-content:center;min-height:2.9rem;padding:.6rem .9rem}
+.medicao__accoes{display:flex;flex-wrap:wrap;gap:.6rem;margin:.4rem 0 0}
+@media (max-width:760px){.cookies{left:.75rem;right:.75rem;width:auto;max-width:none;bottom:calc(5.4rem + env(safe-area-inset-bottom))}}
+@media (prefers-reduced-motion:reduce){.cookies{transition:none}}
 
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
@@ -926,5 +949,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       }, { passive: true });
     })();
     </script>
-  </body>
+  <div class="cookies" id="cookies" role="region" aria-label="Cookies" hidden>
+  <p class="cookies__label">Cookies · uma escolha, cinco segundos</p>
+  <p class="cookies__title">Ajuda a perceber o que vale a pena escrever?</p>
+  <p class="cookies__text">Uso o Google Analytics só para ver que páginas são lidas e de onde chegam as visitas. Sem anúncios, sem perfis, sem venda de dados. Pode mudar de ideias quando quiser na <a href="/privacidade/#cookies">política de privacidade</a>.</p>
+  <div class="cookies__actions"><button type="button" class="btn btn--red" data-cookies="aceite">Aceitar</button><button type="button" class="btn btn--ghost" data-cookies="recusado">Recusar</button></div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('cookies'); if(!el) return;
+  var c=window.wandofiConsent; if(c==='aceite'||c==='recusado') return;
+  el.hidden=false;
+  setTimeout(function(){ el.classList.add('is-on'); }, 60);
+  el.addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-cookies]'); if(!b) return;
+    var v=b.getAttribute('data-cookies');
+    try{ localStorage.setItem('wandofi_consent', JSON.stringify({v:v,t:Date.now()})); }catch(e){}
+    window.wandofiConsent=v;
+    if(v==='aceite' && window.wandofiCarregaGA){ window.wandofiCarregaGA(); }
+    el.classList.remove('is-on'); setTimeout(function(){ el.hidden=true; },450);
+    if(window.wandofiMostraMedicao){ window.wandofiMostraMedicao(); }
+  });
+})();
+</script>
+</body>
 </html>
