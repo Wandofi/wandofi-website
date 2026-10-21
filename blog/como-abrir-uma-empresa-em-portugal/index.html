@@ -790,6 +790,14 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
 /* telemóvel: grelha de sites numa só coluna, por cima da regra da coluna única */
 @media (max-width:760px){.estreito .sites{grid-template-columns:1fr}}
+
+/* Quadro comparativo (GEO e AEO). Fonte: ferramentas/paginas.css */
+.quadro{width:100%;max-width:none;border-collapse:collapse;margin:1.2rem 0 0;font-size:.95rem;line-height:1.5}
+.quadro th,.quadro td{text-align:left;vertical-align:top;padding:.7rem .8rem;border-bottom:1px solid var(--line)}
+.quadro th{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:500;border-bottom:1px solid var(--ink)}
+.quadro td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+.prose .quadro{max-width:none}
+@media (max-width:760px){.quadro{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}.quadro td:first-child{white-space:normal;min-width:7rem}}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Como abrir uma empresa em Portugal", "description": "Guia prático para abrir uma empresa em Portugal. O que decidir antes, como criar a empresa na hora ou online, e o que tratar nos primeiros dias.", "inLanguage": "pt-PT", "datePublished": "2026-08-20", "dateModified": "2026-08-20", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/", "url": "https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/", "image": "https://wandofi.pt/assets/blog/como-abrir-uma-empresa-em-portugal-og.jpg"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "É preciso advogado para abrir uma empresa?", "acceptedAnswer": {"@type": "Answer", "text": "Para a constituição em si não é obrigatório. Pode usar os modelos de pacto do Estado, na Empresa na Hora ou online. O advogado compensa quando há vários sócios, acordos a definir, ou uma estrutura menos comum."}}, {"@type": "Question", "name": "Quanto custa abrir uma empresa em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "No balcão da Empresa na Hora, a constituição fica em 360 euros, segundo o portal da Justiça. A isso junta o capital social que define para a empresa e os custos correntes que vêm a seguir, como o contabilista."}}, {"@type": "Question", "name": "Posso criar a empresa toda online?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Se você e todos os sócios tiverem a Chave Móvel Digital activa ou o cartão de cidadão com assinatura digital, faz a criação da empresa online do princípio ao fim."}}]}</script>
