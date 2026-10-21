@@ -797,7 +797,9 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro th{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:500;border-bottom:1px solid var(--ink)}
 .quadro td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
 .prose .quadro{max-width:none}
-@media (max-width:760px){.quadro{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}.quadro td:first-child{white-space:normal;min-width:7rem}}
+.quadro-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.2rem}
+.quadro-wrap .quadro{margin-top:0}
+@media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
     </style>
       <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Termos", "item": "https://wandofi.pt/termos/"}]}</script>
   </head>
