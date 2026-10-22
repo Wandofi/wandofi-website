@@ -370,6 +370,9 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .close__email{font-family:var(--mono);font-size:.95rem;color:var(--ink);text-decoration:none;
   border-bottom:1px solid var(--line);padding-bottom:3px;align-self:flex-start;
   transition:border-color .18s var(--ease),color .18s var(--ease)}
+.close__whats{display:inline-flex;align-items:center;gap:.45rem;margin-top:.7rem;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .18s var(--ease),border-color .18s var(--ease)}
+.close__whats:hover{color:var(--red);border-color:var(--red)}
+.close__whats svg{width:18px;height:18px;flex:0 0 auto}
 .close__email:hover{color:var(--red);border-color:var(--red)}
 .close__micro{font-size:.88rem;color:var(--mute);margin:0}
 @media (max-width:860px){
@@ -923,6 +926,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
             <a href="/casos/">Casos</a>
             <a href="/blog/">Blog</a>
             <a data-cta="menu-movel" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a>
+            <a data-cta="menu-movel" href="https://wa.me/351937733527?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Wandofi%20e%20queria%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">WhatsApp +351 937 733 527</a>
           </nav>
         </details>
       </div>
@@ -1012,7 +1016,8 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
                   <div class="captura__accoes">
                     <button type="submit" class="btn btn--red" id="enviar">Receber o plano detalhado <span class="arrow" aria-hidden="true">↗</span></button>
-                    <a class="captura__saltar" data-cta="teste" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Prefiro falar já</a>
+                    <a class="btn btn--ghost" id="whats-res" data-cta="teste-whatsapp" href="https://wa.me/351937733527" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+                    <a class="captura__saltar" data-cta="teste" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Prefiro marcar já</a>
                   </div>
                   <p class="quiz__erro" id="erro-envio" role="alert" style="margin-top:.8rem" hidden></p>
                 </form>
@@ -1025,6 +1030,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
                 <p class="body" id="ok-nota" style="max-width:52ch"></p>
                 <div class="captura__accoes">
                   <a class="btn btn--red" data-cta="teste-fim" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Marcar os 30 minutos <span class="arrow" aria-hidden="true">↗</span></a>
+                  <a class="btn btn--ghost" id="whats-fim" data-cta="teste-fim-whatsapp" href="https://wa.me/351937733527" target="_blank" rel="noopener">Continuar no WhatsApp</a>
                 </div>
               </div>
             </div>
@@ -1089,6 +1095,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
               <li><a data-cta="rodape" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Marcar diagnóstico</a></li>
               <li><a href="/diagnostico/">Teste de diagnóstico</a></li>
               <li><a data-cta="rodape" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></li>
+              <li><a data-cta="rodape" href="https://wa.me/351937733527?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Wandofi%20e%20queria%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">WhatsApp +351 937 733 527</a></li>
               <li><a href="/contactos/">Página de contactos</a></li>
               <li><a href="/seo/agencia-seo-lisboa/">Lisboa</a></li>
             </ul>
@@ -1115,6 +1122,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         var href = a.getAttribute("href") || "";
         if (href.indexOf("calendly.com") > -1)  envia("clique_diagnostico", a.dataset.cta);
         else if (href.indexOf("mailto:") === 0) envia("contacto_email", a.dataset.cta);
+        else if (href.indexOf("wa.me") > -1)            envia("contacto_whatsapp", a.dataset.cta);
       }, { passive: true });
     })();
     </script>
@@ -1427,6 +1435,17 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           return "<li>" + esc(t) + "</li>"; }).join("");
         $("#res-prioridades").innerHTML = resultado.prioridades.map(function(t){
           return "<li>" + esc(t) + "</li>"; }).join("");
+
+        /* Ligacao de WhatsApp com o resultado ja escrito. */
+        (function(){
+          var partes = ["Olá Mauro, fiz o teste de diagnóstico no site."];
+          if (resultado.ambito.length) partes.push("Preciso de: " + resultado.ambito.join("; ") + ".");
+          if (resultado.avenca) partes.push("Estimativa: " + euros(resultado.avenca) + " por mês" + (resultado.max > 0 ? ", mais arranque de " + euros(resultado.min) + " a " + euros(resultado.max) : "") + ".");
+          else if (resultado.max > 0) partes.push("Estimativa: " + euros(resultado.min) + " a " + euros(resultado.max) + ", de uma vez.");
+          partes.push("Podemos falar?");
+          var url = "https://wa.me/351937733527?text=" + encodeURIComponent(partes.join(" "));
+          ["whats-res","whats-fim"].forEach(function(id){ var a = $("#" + id); if (a) a.href = url; });
+        })();
 
         painelRes.hidden = false;
         painelCap.hidden = false;
