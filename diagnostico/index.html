@@ -855,6 +855,8 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
     .res__rotulo{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em; color:var(--red);margin:0 0 .5rem}
     .res__valor{font-family:var(--serif);font-size:clamp(2rem,5vw,3.1rem);line-height:1;letter-spacing:-.02em; color:var(--ink);margin:0;font-variant-numeric:tabular-nums}
     .res__valor .sep{color:var(--red);padding:0 .1em}
+    .res__valor .res__unidade{font-family:var(--sans,inherit);font-size:.42em;letter-spacing:0;color:var(--mute);font-weight:500}
+    .res__arranque{color:var(--ink);font-weight:600}
     .res__prazo{margin:.7rem 0 0;font-size:.98rem;color:var(--mute)}
     .res__bloco{margin-bottom:1.3rem}
     .res__bloco h3{font-family:var(--ui);font-weight:600;font-size:1rem;color:var(--ink);margin:0 0 .6rem}
@@ -961,6 +963,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
               <div class="res__topo">
                 <p class="res__rotulo">Estimativa para o seu caso</p>
                 <p class="res__valor" id="res-valor"></p>
+                <p class="res__prazo res__arranque" id="res-arranque" hidden></p>
                 <p class="res__prazo" id="res-prazo"></p>
               </div>
 
@@ -1151,7 +1154,8 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         plataforma: { nome: "Plataforma ou LMS",          min: 1500, max: 6000, semanas: 10 }
       },
 
-      /* Multiplicador pela dimensao do negocio. */
+      /* Dimensao e ambito: servem para escolher a avenca na tabela acima.
+         Os multiplicadores ja nao se aplicam aos projectos de uma vez. */
       dimensao: {
         eni:      { nome: "ENI ou profissional liberal", mult: 1.00 },
         micro:    { nome: "1 a 5 pessoas",               mult: 1.10 },
@@ -1166,6 +1170,21 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         nacional: { nome: "Todo o país",        mult: 1.10 },
         interna:  { nome: "Fora de Portugal",   mult: 1.25 }
       },
+
+      /* Avenca mensal, em euros, por dimensao e ambito. Aplica-se ao
+         trabalho continuo (SEO, conteudo, anuncios, medicao). Nunca
+         abaixo de 300 nem acima de 900. */
+      avenca: {
+        eni:     { local: 300, lisboa: 300, nacional: 350, interna: 400 },
+        micro:   { local: 300, lisboa: 350, nacional: 450, interna: 500 },
+        pequena: { local: 500, lisboa: 600, nacional: 700, interna: 800 },
+        media:   { local: 700, lisboa: 800, nacional: 900, interna: 900 }
+      },
+      avencaMin: 300,
+      avencaMax: 900,
+
+      /* Servicos que sao acompanhamento mensal e nao obra de uma vez. */
+      recorrentes: ["seo"],
 
       /* Acrescimo fixo quando nao ha medicao montada.
          Cobre instalar GA4, Search Console e eventos de conversao. */
@@ -1327,10 +1346,16 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       function calcula(){
         var servicos = estado.servicos || [];
         var min = 0, max = 0, semanas = 0, ambitoTexto = [];
+        var temAvenca = false;
 
         servicos.forEach(function(k){
           var s = CONFIG.servicos[k];
           if (!s) return;
+          if (CONFIG.recorrentes.indexOf(k) > -1) {
+            temAvenca = true;
+            ambitoTexto.push(s.nome + " (acompanhamento mensal)");
+            return;
+          }
           min += s.min; max += s.max;
           semanas = Math.max(semanas, s.semanas);
           ambitoTexto.push(s.nome);
@@ -1344,12 +1369,17 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           ambitoTexto.unshift("Medição: Analytics, Search Console e eventos de conversão");
         }
 
-        var md = (CONFIG.dimensao[estado.dimensao] || {}).mult || 1;
-        var ma = (CONFIG.ambito[estado.ambito] || {}).mult || 1;
-        min = arredonda(min * md * ma);
-        max = arredonda(max * md * ma);
+        var avenca = null;
+        if (temAvenca) {
+          var linha = CONFIG.avenca[estado.dimensao] || CONFIG.avenca.eni;
+          avenca = linha[estado.ambito] || linha.lisboa;
+          avenca = Math.min(CONFIG.avencaMax, Math.max(CONFIG.avencaMin, avenca));
+        }
+        min = arredonda(min);
+        max = arredonda(max);
 
-        if (servicos.length > 2) semanas += 2;
+        var obras = servicos.filter(function(k){ return CONFIG.recorrentes.indexOf(k) === -1; });
+        if (obras.length > 2) semanas += 2;
 
         var prioridades = [];
         if (PRIORIDADES[estado.situacao]) prioridades.push(PRIORIDADES[estado.situacao]);
@@ -1358,7 +1388,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         if (estado.prazo === "ja") prioridades.push("Com esta urgência, começamos pelo que dá resultado visível em duas semanas e deixamos o resto para a fase seguinte.");
         if (!prioridades.length) prioridades.push("Uma primeira leitura do que existe, para não pagar por trabalho que não faz falta.");
 
-        return { min: min, max: max, semanas: semanas, ambito: ambitoTexto, prioridades: prioridades };
+        return { avenca: avenca, min: min, max: max, semanas: semanas, ambito: ambitoTexto, prioridades: prioridades };
       }
 
       function euros(n){
@@ -1374,10 +1404,25 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         pe.hidden = true;
         corpo.hidden = true;
 
-        $("#res-valor").innerHTML = esc(euros(resultado.min))
-          + '<span class="sep">–</span>' + esc(euros(resultado.max));
-        $("#res-prazo").textContent = "Prazo estimado: cerca de " + resultado.semanas
-          + " semanas, do diagnóstico à entrega.";
+        var temObra = resultado.max > 0;
+        var valor = $("#res-valor"), arranque = $("#res-arranque"), prazo = $("#res-prazo");
+        if (resultado.avenca) {
+          valor.innerHTML = esc(euros(resultado.avenca)) + '<span class="res__unidade"> por mês</span>';
+          if (temObra) {
+            arranque.hidden = false;
+            arranque.textContent = "Mais o arranque, de uma vez: " + euros(resultado.min) + " a " + euros(resultado.max) + ".";
+            prazo.textContent = "Arranque em cerca de " + resultado.semanas + " semanas. A avença começa quando o arranque termina, sem permanência obrigatória.";
+          } else {
+            arranque.hidden = true;
+            prazo.textContent = "Avença mensal, sem permanência obrigatória. Os primeiros resultados no Google levam, em regra, dois a três meses.";
+          }
+        } else {
+          arranque.hidden = true;
+          valor.innerHTML = esc(euros(resultado.min))
+            + '<span class="sep">–</span>' + esc(euros(resultado.max));
+          prazo.textContent = "Prazo estimado: cerca de " + resultado.semanas
+            + " semanas, do diagnóstico à entrega. Pago uma vez, sem avença.";
+        }
         $("#res-ambito").innerHTML = resultado.ambito.map(function(t){
           return "<li>" + esc(t) + "</li>"; }).join("");
         $("#res-prioridades").innerHTML = resultado.prioridades.map(function(t){
@@ -1389,6 +1434,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
         if (typeof gtag === "function") {
           gtag("event", "diagnostico_concluido", {
+            avenca: resultado.avenca || 0,
             estimativa_min: resultado.min,
             estimativa_max: resultado.max,
             servicos: (estado.servicos || []).join(","),
@@ -1447,6 +1493,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           ambito: estado.ambito || "",
           medicao: estado.medicao || "",
           prazo_desejado: estado.prazo || "",
+          avenca: resultado ? (resultado.avenca || "") : "",
           estimativa_min: resultado ? resultado.min : "",
           estimativa_max: resultado ? resultado.max : "",
           semanas: resultado ? resultado.semanas : "",
