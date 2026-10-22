@@ -1,0 +1,4 @@
+Contact: mailto:geral@wandofi.pt
+Expires: 2027-10-22T00:00:00.000Z
+Preferred-Languages: pt, en
+Canonical: https://wandofi.pt/.well-known/security.txt

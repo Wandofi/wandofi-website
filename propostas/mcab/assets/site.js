@@ -315,6 +315,11 @@
         : `Requested for ${longLabel(d)} at ${t}.`;
       form.hidden = true;
       const ok = wrap.querySelector(".form-success");
+      /* Amostra: o formulario nao envia dados. Avisa em vez de confirmar. */
+      ok.innerHTML = lang === "pt"
+        ? '<p style="font:800 1.3rem var(--font-display);margin-bottom:.4em">Demonstração.</p><p>Este formulário ainda não envia dados e o pedido não foi registado. Para marcar, use o telefone ou o email indicados nesta página.</p>'
+        : '<p style="font:800 1.3rem var(--font-display);margin-bottom:.4em">Demo only.</p><p>This form does not send any data yet and the request was not recorded. To book, please use the phone or email on this page.</p>';
+      form.reset();
       ok.classList.add("is-visible");
       ok.focus();
     });
