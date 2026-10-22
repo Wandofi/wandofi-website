@@ -800,7 +800,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
 <div class="dock" role="group" aria-label="Acções rápidas">
       <a class="btn btn--red" data-cta="barra-movel" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Marcar diagnóstico</a>
-      <a class="btn btn--ghost" data-cta="barra-movel" href="mailto:geral@wandofi.pt?subject=Diagn%C3%B3stico%20Wandofi" aria-label="Enviar email">Email</a>
+      <a class="btn btn--ghost" data-cta="barra-movel" href="https://wa.me/351937733527?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Wandofi%20e%20queria%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener" aria-label="Falar por WhatsApp">WhatsApp</a>
     </div>
 <script>
     /* Medicao de conversao. Corre sempre, mesmo com movimento reduzido.
@@ -817,6 +817,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         var href = a.getAttribute("href") || "";
         if (href.indexOf("calendly.com") > -1)            envia("clique_diagnostico", a.dataset.cta);
         else if (href.indexOf("mailto:") === 0)           envia("contacto_email", a.dataset.cta);
+        else if (href.indexOf("wa.me") > -1)            envia("contacto_whatsapp", a.dataset.cta);
         else if (href.indexOf("preferences/source") > -1) envia("fonte_preferida", "fecho");
       }, { passive: true });
     })();
