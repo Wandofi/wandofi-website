@@ -580,6 +580,32 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 @media (max-width:860px){.diagrama{grid-template-columns:1fr}.diagrama__svg{max-width:22rem}}
 /* toque-humano 1: um sublinhado a mao numa palavra do titulo principal */
 [data-dm*="toque-humano:"] .dm-rabisco{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9 C 40 3, 80 13, 120 6 S 180 4, 198 8' fill='none' stroke='%23e1251b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") bottom / 100% .28em no-repeat;padding-bottom:.08em}
+/* maximalismo-asterisco 3: so na zona do blog (listagem e artigos), por escolha do Mauro a 27/10/2026.
+   Titulo ate 10,5vw, palavra-chave em bloco vermelho, palavra fantasma em contorno cortada na borda,
+   contadores grandes na listagem, datas em serifa, capitular no artigo. A coluna de leitura nao muda. */
+[data-dm*="maximalismo-asterisco:"] .page-hero{overflow:hidden;position:relative}
+[data-dm*="maximalismo-asterisco:"] .page-hero .container{position:relative}
+[data-dm*="maximalismo-asterisco:"] .page-hero .container>*:not(.dm-fantasma){position:relative;z-index:1}
+[data-dm*="maximalismo-asterisco:"] .page-hero__title{max-width:none;font-size:clamp(3.4rem,10.5vw,10.5rem);line-height:.9;letter-spacing:-.035em;margin-bottom:1.4rem}
+[data-dm*="maximalismo-asterisco:"] .page-hero--artigo .page-hero__title{font-size:clamp(2.9rem,8vw,7.6rem);line-height:.92}
+[data-dm*="maximalismo-asterisco:"] .page-hero__lead{font-size:clamp(1.2rem,1rem + .9vw,1.6rem);max-width:34ch}
+[data-dm*="maximalismo-asterisco:"] .dm-bloco-cor{background:var(--red);color:#fff;padding:0 .14em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+[data-dm*="maximalismo-asterisco:"] .dm-fantasma{position:absolute;right:-.12em;top:-.2em;font-family:var(--serif);font-size:clamp(7rem,24vw,24rem);line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1px rgba(5,5,5,.28);pointer-events:none;user-select:none;z-index:0;white-space:nowrap}
+[data-dm*="maximalismo-asterisco:"] .dm-contador{display:flex;gap:1.5rem;flex-wrap:wrap;margin:1.4rem 0 0;font-family:var(--mono);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+[data-dm*="maximalismo-asterisco:"] .dm-contador b{font-family:var(--serif);font-weight:400;font-size:2.4rem;letter-spacing:-.02em;color:var(--ink);line-height:1;margin-right:.35rem;vertical-align:-.1em}
+[data-dm*="maximalismo-asterisco:"] .section__head .h2{font-size:clamp(2.4rem,5vw,4.6rem);line-height:.95;letter-spacing:-.03em}
+[data-dm*="maximalismo-asterisco:"] .post--destaque .post__title{font-size:clamp(2.2rem,4.6vw,4.4rem);line-height:.98;letter-spacing:-.03em;max-width:none}
+[data-dm*="maximalismo-asterisco:"] .post--destaque .post__meta time{font-family:var(--serif);font-size:2rem;letter-spacing:-.02em;text-transform:none;line-height:1}
+[data-dm*="maximalismo-asterisco:"] .post__meta span:first-of-type{background:var(--red);color:#fff;padding:.15em .5em;border-radius:3px;letter-spacing:.12em}
+[data-dm*="maximalismo-asterisco:"] .posts__grid .post__title{font-size:clamp(1.6rem,2.2vw,2.1rem);line-height:1.05;letter-spacing:-.025em}
+[data-dm*="maximalismo-asterisco:"] .post__link{border-radius:6px}
+[data-dm*="maximalismo-asterisco:"] .artigo__capa{margin-top:calc(-1*clamp(1.5rem,4vw,4rem))}
+[data-dm*="maximalismo-asterisco:"] .artigo__capa img{border-radius:0;border:0;box-shadow:0 30px 60px -36px rgba(5,5,5,.5)}
+[data-dm*="maximalismo-asterisco:"] .artigo__body .prose>.answer:first-child{border:0;padding:0;font-size:clamp(1.35rem,1.1rem + .9vw,1.8rem);line-height:1.35;color:var(--ink);font-family:var(--serif);letter-spacing:-.01em;max-width:30ch}
+[data-dm*="maximalismo-asterisco:"] .artigo__body .prose>.answer:first-child::first-letter{font-size:3.2em;line-height:.8;float:left;margin:.08em .12em 0 0;color:var(--red)}
+[data-dm*="maximalismo-asterisco:"] .artigo__body .prose .h2{font-size:clamp(2rem,3.4vw,3.2rem);line-height:.98;letter-spacing:-.03em}
+[data-dm*="maximalismo-asterisco:"] .artigo__body .prose .eyebrow{display:inline-block;font-size:.95rem;background:var(--red);color:#fff;padding:.1em .45em}
+@media (max-width:760px){[data-dm*="maximalismo-asterisco:"] .dm-fantasma{font-size:7rem;top:auto;bottom:-.25em;right:-.1em}[data-dm*="maximalismo-asterisco:"] .page-hero--artigo .dm-fantasma{display:none}[data-dm*="maximalismo-asterisco:"] .artigo__capa{margin-top:0}}
 /* tipografia-cinetica 1: a mesma palavra entra com mascara ao carregar */
 @keyframes dm-mascara{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 [data-dm*="tipografia-cinetica:"] .dm-cinetico{display:inline-block;animation:dm-mascara .9s cubic-bezier(.2,.7,.2,1) .15s both}
@@ -667,7 +693,11 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .cta.final{border-top:1px solid var(--line-soft);padding-bottom:clamp(1.8rem,3.6vw,2.8rem)}
 .cta__title{max-width:20ch;margin-bottom:.8rem}
 .cta .lead{max-width:48ch}
-.cta__actions{display:flex;flex-wrap:wrap;gap:.8rem 1.3rem;align-items:center;margin-top:1.6rem}
+.cta__actions{display:flex;flex-wrap:wrap;gap:.9rem 1.6rem;align-items:center;margin-top:1.6rem}
+/* O email e o WhatsApp herdam estilos pensados para a coluna do .close; aqui ficam lado a lado,
+   com a mesma letra, a mesma linha por baixo e a mesma base. */
+.cta__actions .close__email,.cta__actions .close__whats{align-self:center;margin:0;font-family:var(--ui);font-size:.95rem;font-weight:600;line-height:1;padding-bottom:3px;border-bottom:1px solid var(--line);display:inline-flex;align-items:center;gap:.45rem}
+@media (max-width:620px){.cta__actions{flex-direction:column;align-items:stretch}.cta__actions .btn{width:100%}.cta__actions .close__email,.cta__actions .close__whats{align-self:flex-start}}
 .final__email{font-family:var(--mono);font-size:.95rem;color:var(--ink);text-decoration:none;
   border-bottom:1px solid var(--line);padding-bottom:3px;
   transition:border-color .18s var(--ease),color .18s var(--ease)}
@@ -922,12 +952,12 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         </details>
       </div>
     </header>
-    <main id="main" data-dm="manual-de-nave:2 toque-humano:1 tipografia-cinetica:1" class="artigo">
+    <main id="main" data-dm="maximalismo-asterisco:3 tipografia-cinetica:1" class="artigo">
       <section class="page-hero page-hero--artigo">
         <div class="container">
           <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/aparecer-nas-respostas-do-chatgpt/">Como aparecer nas respostas do ChatGPT e</a></p>
 <p class="eyebrow">Guia prático</p>
-<h1 class="h1 page-hero__title">Como aparecer nas respostas do ChatGPT em Portugal, passo a <span class="dm-rabisco dm-cinetico">passo</span>.</h1>
+<span class="dm-fantasma" aria-hidden="true">ChatGPT</span><h1 class="h1 page-hero__title">Como aparecer nas respostas do ChatGPT em Portugal, passo a <span class="dm-bloco-cor dm-cinetico">passo</span>.</h1>
 <p class="lead page-hero__lead">Não é preciso pagar nem esperar por um treino novo. É preciso deixar os robôs entrar, responder na primeira linha, provar quem é, ser mencionado fora do site e medir. Seis passos, com o que já vi funcionar em Portugal.</p>
 <p class="post__byline"><time datetime="2026-10-21">21 de Outubro de 2026</time><span>7 min de leitura</span><span>Mauro Cordeiro</span></p>
 </div>
