@@ -525,6 +525,65 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 .medicao__accoes{display:flex;flex-wrap:wrap;gap:.6rem;margin:.4rem 0 0}
 @media (max-width:760px){.cookies{left:.75rem;right:.75rem;width:auto;max-width:none;transform:translateY(12px);bottom:calc(5.4rem + env(safe-area-inset-bottom))}.cookies.is-on{transform:none}}
 @media (prefers-reduced-motion:reduce){.cookies{transition:none}}
+/* ================= DIFFERENCE MAKER (27/10/2026) =================
+   Receita escolhida pelo Mauro: manual-de-nave 3 (so na pagina inicial;
+   2 nas internas), toque-humano 1, tipografia-cinetica 1. Orcamento 5.
+   Tudo scoped por data-dm no <main>: sem o atributo, nada disto actua.
+   Vive no index.html (fonte) porque a pagina inicial tambem usa as camadas;
+   o refresca_css.py leva-o as outras paginas.
+   Adaptado de ~/.claude/skills/difference-maker/assets/dm-tokens.css
+   aos tokens da marca (--red, --ink, --mono). */
+[data-dm]{--dm-acento:var(--red);--dm-tinta:var(--ink)}
+/* manual-de-nave 2: cotas (linhas de medida com etiqueta em mono) */
+[data-dm*="manual-de-nave:"] .dm-cotas{position:relative}
+[data-dm*="manual-de-nave:"] .dm-cotas::after{content:attr(data-cota);display:block;margin-top:.9rem;padding-top:.55rem;
+  font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);
+  background:linear-gradient(var(--line),var(--line)) left top / 100% 1px no-repeat}
+[data-dm*="manual-de-nave:"] .dm-cotas::before{content:"";position:absolute;left:0;bottom:1.45rem;width:1px;height:7px;background:var(--ink);opacity:.5}
+[data-dm*="manual-de-nave:"] .dm-cotas{padding-bottom:0}
+[data-dm*="manual-de-nave:"] .dm-cotas .dm-tick{position:absolute;right:0;bottom:1.45rem;width:1px;height:7px;background:var(--ink);opacity:.5}
+/* manual-de-nave 2: marcas de cota nas tres metas do cabecalho das paginas internas */
+[data-dm*="manual-de-nave:"] .page-hero__metas div{position:relative}
+[data-dm*="manual-de-nave:"] .page-hero__metas div::before{content:"";position:absolute;left:0;top:-1.3rem;width:1px;height:9px;background:var(--ink);opacity:.45}
+[data-dm*="manual-de-nave:"] .page-hero__metas .k::before{content:"";display:inline-block;width:.7em;height:1px;background:rgba(5,5,5,.4);vertical-align:middle;margin-right:.45em}
+/* manual-de-nave 3: grelha blueprint de fundo (so onde a classe estiver) */
+:is([data-dm~="manual-de-nave:3"],[data-dm~="manual-de-nave:4"]) .dm-blueprint{position:relative}
+:is([data-dm~="manual-de-nave:3"],[data-dm~="manual-de-nave:4"]) .dm-blueprint::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(5,5,5,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(5,5,5,.07) 1px,transparent 1px);background-size:24px 24px;
+  -webkit-mask-image:radial-gradient(70% 90% at 70% 40%,rgba(0,0,0,.9),transparent 100%);mask-image:radial-gradient(70% 90% at 70% 40%,rgba(0,0,0,.9),transparent 100%)}
+:is([data-dm~="manual-de-nave:3"],[data-dm~="manual-de-nave:4"]) .dm-blueprint>*{position:relative;z-index:1}
+/* manual-de-nave 3: diagrama explodido do servico */
+.diagrama{margin:clamp(2rem,1.25rem + 2vw,3rem) 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,1rem + 2vw,3rem);align-items:center;
+  border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.25rem,1rem + 1.5vw,2.25rem);overflow:hidden}
+.diagrama__ref{grid-column:1/-1;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:0 0 .25rem;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.diagrama__ref b{font-weight:500;color:var(--ink)}
+.diagrama__svg{display:block;width:100%;height:auto;max-width:30rem;margin-inline:auto}
+.diagrama__svg .placa{fill:var(--paper);stroke:var(--ink);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.diagrama__svg .placa--topo{fill:rgba(225,37,27,.06);stroke:var(--red)}
+.diagrama__svg .guia{stroke:var(--ink);stroke-width:1;stroke-dasharray:3 4;opacity:.35;vector-effect:non-scaling-stroke}
+.diagrama__svg .chamada{stroke:var(--ink);stroke-width:1;opacity:.5;vector-effect:non-scaling-stroke}
+.diagrama__svg .no{fill:var(--red)}
+.diagrama__svg text{font-family:var(--mono);font-size:11px;letter-spacing:.08em;fill:var(--mute)}
+.diagrama__lista{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.diagrama__lista li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.2rem .9rem;align-items:baseline;padding-top:.8rem;
+  background:linear-gradient(var(--line),var(--line)) left top / 100% 1px no-repeat;position:relative}
+.diagrama__lista li::before{content:"";position:absolute;left:0;top:-4px;width:1px;height:9px;background:var(--ink);opacity:.45}
+.diagrama__num{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.14em;color:var(--red)}
+.diagrama__nome{font-weight:600;color:var(--ink);font-size:1.0625rem}
+.diagrama__desc{grid-column:2;margin:0;font-size:.95rem;line-height:1.55;color:var(--mute)}
+.diagrama__cap{grid-column:1/-1;margin:.25rem 0 0;font-size:.9rem;line-height:1.5;color:var(--mute);max-width:var(--text)}
+.js .diagrama.reveal .placa,.js .diagrama.reveal .guia,.js .diagrama.reveal .chamada{stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 1.6s var(--ease)}
+.js .diagrama.reveal .guia{stroke-dasharray:3 4}
+.js .diagrama.reveal.is-in .placa,.js .diagrama.reveal.is-in .chamada{stroke-dashoffset:0}
+.js .diagrama.reveal.is-in .placa:nth-of-type(2){transition-delay:.15s}.js .diagrama.reveal.is-in .placa:nth-of-type(3){transition-delay:.3s}.js .diagrama.reveal.is-in .placa:nth-of-type(4){transition-delay:.45s}
+@media (max-width:860px){.diagrama{grid-template-columns:1fr}.diagrama__svg{max-width:22rem}}
+/* toque-humano 1: um sublinhado a mao numa palavra do titulo principal */
+[data-dm*="toque-humano:"] .dm-rabisco{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9 C 40 3, 80 13, 120 6 S 180 4, 198 8' fill='none' stroke='%23e1251b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") bottom / 100% .28em no-repeat;padding-bottom:.08em}
+/* tipografia-cinetica 1: a mesma palavra entra com mascara ao carregar */
+@keyframes dm-mascara{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+[data-dm*="tipografia-cinetica:"] .dm-cinetico{display:inline-block;animation:dm-mascara .9s cubic-bezier(.2,.7,.2,1) .15s both}
+@media (prefers-reduced-motion:reduce){[data-dm] .dm-cinetico{animation:none}.js .diagrama.reveal .placa,.js .diagrama.reveal .chamada{stroke-dasharray:none;stroke-dashoffset:0;transition:none}}
 
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
@@ -828,6 +887,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.2rem}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Gestão de Meta Ads", "serviceType": "Gestão de Meta Ads", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "Gestão de Meta Ads em Portugal. Campanhas no Facebook e Instagram para alcançar e converter o público certo.", "url": "https://wandofi.pt/gestao-de-trafego/meta-ads/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Meta Ads ou Google Ads: qual escolher?", "acceptedAnswer": {"@type": "Answer", "text": "Dependem do objectivo. Google capta quem já procura; Meta dá a conhecer e alcança pelo perfil. Muitos negócios beneficiam dos dois. Ajudo a decidir por onde começar consoante o orçamento."}}, {"@type": "Question", "name": "O Instagram e o Facebook usam a mesma campanha?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, ambos são geridos pela plataforma da Meta. Adapto os criativos a cada formato, mas a estratégia e a medição são coordenadas."}}, {"@type": "Question", "name": "Preciso de muitos criativos?", "acceptedAnswer": {"@type": "Answer", "text": "Alguns, para testar o que funciona. Começo com um conjunto, meço o desempenho e reforço os que convertem melhor."}}]}</script>
@@ -862,12 +922,12 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         </details>
       </div>
     </header>
-    <main id="main">
+    <main id="main" data-dm="manual-de-nave:2 toque-humano:1 tipografia-cinetica:1">
       <section class="page-hero">
         <div class="container">
           <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/gestao-de-trafego/">Tráfego</a><span class="sep">/</span><a href="/gestao-de-trafego/meta-ads/">Meta Ads</a></p>
           <p class="eyebrow">Tráfego · Meta Ads</p>
-          <h1 class="h1 page-hero__title">O público certo, no Facebook e Instagram.</h1>
+          <h1 class="h1 page-hero__title">O público certo, no Facebook e <span class="dm-rabisco dm-cinetico">Instagram</span>.</h1>
           <p class="lead page-hero__lead">Faço campanhas de Meta Ads para dar a conhecer o seu negócio e gerar contactos junto de quem tem o perfil certo, mesmo antes de procurarem por si.</p>
           <div class="page-hero__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a></div>
           
