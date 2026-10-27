@@ -17,6 +17,11 @@
         if(v==='aceite'){ window.wandofiCarregaGA(); }
         /* Rede de seguranca das animacoes de titulo: ao fim de 2,6 s a palavra fica visivel aconteca o que acontecer */
         setTimeout(function(){ document.documentElement.classList.add('dm-feito'); }, 2600);
+        /* O nome da marca recolhe ao descer e volta ao subir (histerese 140/70 px) */
+        var rolado=false;
+        addEventListener('scroll',function(){var y=window.scrollY||0;
+          if(!rolado&&y>140){rolado=true;document.documentElement.classList.add('is-rolado');}
+          else if(rolado&&y<70){rolado=false;document.documentElement.classList.remove('is-rolado');}},{passive:true});
       })();
     </script>
     <meta charset="UTF-8" />
@@ -210,7 +215,12 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
   transition:transform .45s var(--ease),filter .45s var(--ease)}
 .nav__brand:hover img{transform:rotateY(10deg) rotateX(-3deg);
   filter:drop-shadow(0 2px 2px rgba(153,20,15,.4)) drop-shadow(0 10px 16px rgba(5,5,5,.32))}
-.nav__brand span{font-family:var(--serif);font-size:1.55rem;letter-spacing:-.022em;color:var(--ink);line-height:1;text-shadow:0 1px 0 rgba(5,5,5,.08)}
+.nav__brand span{font-family:var(--serif);font-size:1.55rem;letter-spacing:-.022em;color:var(--ink);line-height:1;text-shadow:0 1px 0 rgba(5,5,5,.08);
+  display:inline-block;white-space:nowrap;max-width:12ch;clip-path:inset(-.4em -.2em -.4em 0);
+  transition:clip-path .55s var(--ease),max-width .55s var(--ease),opacity .4s var(--ease)}
+/* Ao descer a pagina o nome escreve-se para fora e fica so a marca; ao voltar ao topo volta a escrever-se. */
+.is-rolado .nav__brand span{max-width:0;clip-path:inset(-.4em 100% -.4em 0);opacity:0}
+@media (prefers-reduced-motion:reduce){.nav__brand span{transition:none}.is-rolado .nav__brand span{max-width:12ch;clip-path:inset(-.4em -.2em -.4em 0);opacity:1}}
 .nav__brand span b{font-weight:400;color:var(--red)}
 .nav__links{display:flex;gap:1.5rem;align-items:center}
 .nav__links a{font-size:.95rem;font-weight:500;color:var(--ink-soft);text-decoration:none;transition:color .18s var(--ease)}
