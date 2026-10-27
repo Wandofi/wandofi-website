@@ -85,8 +85,12 @@
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+html{-webkit-text-size-adjust:100%}
+/* Deslize suave so em cliques dentro da pagina (html:focus-within). Ao abrir um
+   endereco com ancora, como /#servicos vindo de outra pagina, o salto e imediato:
+   com scroll-behavior:smooth no html, o salto inicial falhava e a pagina ficava no topo. */
+html:focus-within{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html:focus-within{scroll-behavior:auto}
   *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 body{
   margin:0;background:var(--paper);color:var(--ink-soft);
