@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <!-- Google tag (gtag.js): so carrega depois de o visitante aceitar no banner de cookies -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      (function(){
+        var v=null;
+        try{ var raw=localStorage.getItem('wandofi_consent'); if(raw){ var o=JSON.parse(raw); if(o && o.t && (Date.now()-o.t) < 15552000000){ v=o.v; } else { localStorage.removeItem('wandofi_consent'); } } }catch(e){}
+        window.wandofiConsent=v;
+        window.wandofiCarregaGA=function(){
+          if(window.wandofiGAOn) return; window.wandofiGAOn=true;
+          var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-510WQZ4YQ7'; document.head.appendChild(s);
+          gtag('js', new Date()); gtag('config', 'G-510WQZ4YQ7');
+        };
+        if(v==='aceite'){ window.wandofiCarregaGA(); }
+      })();
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot de WhatsApp para Empresas em Portugal | Wandofi PM</title>
+    <meta name="description" content="Chatbot de WhatsApp para pequenas empresas em Portugal: responde a clientes com a informação do seu negócio, passa ao humano quando sai do guião, e corre na nuvem em conta sua. Montado com n8n e a plataforma oficial da Meta." />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="canonical" href="https://wandofi.pt/automacoes/chatbot-whatsapp/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://wandofi.pt/automacoes/chatbot-whatsapp/" />
+    <meta property="og:site_name" content="Wandofi PM" />
+    <meta property="og:title" content="Chatbot de WhatsApp para empresas" />
+    <meta property="og:description" content="Chatbot de WhatsApp para pequenas empresas em Portugal: responde a clientes com a informação do seu negócio, passa ao humano quando sai do guião, e corre na nuvem em conta sua. Montado com n8n e a plataforma oficial da Meta." />
+    <meta property="og:image" content="https://wandofi.pt/assets/og-card.jpg" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://wandofi.pt/assets/og-card.jpg" />
+    <meta name="twitter:title" content="Chatbot de WhatsApp para empresas" />
+    <meta name="twitter:description" content="Chatbot de WhatsApp para pequenas empresas em Portugal: responde a clientes com a informação do seu negócio, passa ao humano quando sai do guião, e corre na nuvem em conta sua. Montado com n8n e a plataforma oficial da Meta." />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" href="/assets/fonts/instrument-serif-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- CSS embutido: o build do Replit nao serve ficheiros CSS novos. -->
+                    <style id="home-light">
+
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/instrument-sans-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/instrument-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/instrument-sans-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/instrument-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/instrument-sans-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:600;font-display:swap;src:url(/assets/fonts/instrument-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/instrument-sans-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/instrument-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/instrument-serif-italic-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;src:url(/assets/fonts/instrument-serif-italic-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/instrument-serif-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/instrument-serif-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/assets/fonts/jetbrains-mono-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+:root{
+  --ink:#050505;
+  --ink-soft:#2a2a2a;
+  --mute:#5c5c5c;
+  --paper:#ffffff;
+  --panel:#ffffff;
+  --line:rgba(5,5,5,.13);
+  --line-soft:rgba(5,5,5,.07);
+  --red:#e1251b;
+  --red-deep:#99140f;--livre:#12855a;
+  --serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --container:1180px;
+  --gutter:clamp(1.15rem,5vw,3rem);
+  --sec:clamp(2.9rem,5.4vw,4.6rem);
+  --r:8px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+body{
+  margin:0;background:var(--paper);color:var(--ink-soft);
+  font-family:var(--ui);font-size:1.0625rem;line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit}
+::selection{background:var(--red);color:#fff}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:3px}
+
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:.7rem 1rem;z-index:200}
+.skip-link:focus{left:.5rem;top:.5rem}
+
+.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}
+.container--narrow{max-width:46rem}
+.section{padding-block:var(--sec)}
+[id]{scroll-margin-top:5rem}
+.section--panel{background:var(--paper);border-top:1px solid var(--line-soft)}
+.section--tight{padding-block:clamp(1.7rem,3.4vw,2.7rem)}
+.section--line{border-top:1px solid var(--line-soft)}
+
+/* ---------- Tipo ---------- */
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin:0 0 .7rem}
+.h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.45rem,5.8vw,4.35rem);line-height:1.03;letter-spacing:-.022em;color:var(--ink);margin:0}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,3.4vw,2.75rem);line-height:1.1;letter-spacing:-.018em;color:var(--ink);margin:0}
+.h3{font-family:var(--ui);font-weight:600;font-size:1.1rem;line-height:1.35;letter-spacing:-.01em;color:var(--ink);margin:0 0 .55rem}
+.lead{font-size:clamp(1.08rem,1.5vw,1.22rem);line-height:1.55;color:var(--ink-soft);margin:0}
+.body{margin:0;color:var(--mute);font-size:1rem;line-height:1.62}
+.section__head{margin-bottom:clamp(1.8rem,3.5vw,2.8rem);max-width:40rem}
+.section__head .h2{margin-bottom:.6rem}
+.section__head .body{max-width:52ch}
+p a:not(.btn){color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;transition:text-decoration-color .18s var(--ease),color .18s var(--ease)}
+p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
+
+/* ---------- Botoes ----------
+   Mesmo tratamento da versao escura: casca vermelha, nucleo escuro
+   em radial, sombra interior e brilho vermelho por fora.
+   O batimento e o mesmo desenho de dois toques (lub-dub e descanso),
+   so que mais lento: 3,6s em vez de 2,8s. */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;min-height:52px;
+  font-family:var(--ui);font-weight:600;font-size:1rem;line-height:1;padding:.95rem 1.5rem;
+  border-radius:var(--r);text-decoration:none;border:1px solid transparent;cursor:pointer;
+  transition:background-color .35s var(--ease),color .35s var(--ease),transform .35s var(--ease),
+    border-color .35s var(--ease),box-shadow .35s var(--ease)}
+.btn .arrow{transition:transform .35s var(--ease)}
+.btn:hover .arrow{transform:translate(2px,-2px)}
+
+.btn--red{
+  background:
+    radial-gradient(95% 140% at 50% 50%, rgba(5,5,5,.34) 0%, rgba(5,5,5,.12) 45%, rgba(5,5,5,0) 78%),
+    var(--red);
+  border-color:rgba(225,37,27,.9);color:#fff;
+  box-shadow:inset 0 0 22px rgba(5,5,5,.34), 0 0 0 0 rgba(225,37,27,0);
+  animation:heartbeat 3.6s ease-in-out 1.2s infinite}
+.btn--red:hover,.btn--red:focus-visible{
+  animation:none;
+  background:radial-gradient(95% 140% at 50% 50%, rgba(5,5,5,.2) 0%, rgba(5,5,5,.06) 45%, rgba(5,5,5,0) 78%), var(--red-deep);
+  box-shadow:inset 0 0 14px rgba(5,5,5,.24), 0 10px 38px -8px rgba(225,37,27,.55);
+  transform:translateY(-2px)}
+
+/* Dois toques e descanso */
+@keyframes heartbeat{
+  0%,32%,100%{transform:scale(1);
+    box-shadow:inset 0 0 22px rgba(5,5,5,.34), 0 0 0 0 rgba(225,37,27,0)}
+  8%{transform:scale(1.025);
+    box-shadow:inset 0 0 19px rgba(5,5,5,.3), 0 0 22px -2px rgba(225,37,27,.45)}
+  16%{transform:scale(1)}
+  24%{transform:scale(1.038);
+    box-shadow:inset 0 0 17px rgba(5,5,5,.28), 0 0 32px -2px rgba(225,37,27,.5)}
+}
+
+.btn--ink{background:var(--ink);color:#fff}
+.btn--ink:hover{background:#1d1d1d;transform:translateY(-2px)}
+.btn--ghost{background:var(--paper);color:var(--ink);border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn--wide{width:100%}
+
+/* ---------- Entradas em scroll ----------
+   So actuam se o JS correr. Sem JS, tudo fica visivel. */
+.js .reveal{opacity:0;transform:translateY(16px);
+  transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.js .reveal.is-in{opacity:1;transform:none}
+.js .stagger>*{opacity:0;transform:translateY(16px);
+  transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.js .stagger.is-in>*{opacity:1;transform:none}
+.js .stagger.is-in>*:nth-child(2){transition-delay:.07s}
+.js .stagger.is-in>*:nth-child(3){transition-delay:.14s}
+.js .stagger.is-in>*:nth-child(4){transition-delay:.21s}
+.js .stagger.is-in>*:nth-child(5){transition-delay:.28s}
+.js .stagger.is-in>*:nth-child(6){transition-delay:.35s}
+
+/* "infraestrutura": salta, desenha o sublinhado e depois respira.
+   O mesmo desenho da versao escura, com o halo ajustado ao fundo branco. */
+.signal__anchor em{color:var(--red);display:inline-block;position:relative;font-style:italic}
+.signal__anchor em::after{content:"";position:absolute;left:.02em;right:.06em;bottom:-.04em;height:2px;
+  background:var(--red);transform:scaleX(0);transform-origin:left;
+  transition:transform .6s var(--ease) .8s}
+.js .signal__anchor.is-in em{animation:word-pop .7s var(--ease) .35s both, word-glow 3.6s ease-in-out 1.4s infinite}
+.signal__anchor.is-in em::after{transform:scaleX(1)}
+@keyframes word-pop{0%{transform:scale(1)}45%{transform:scale(1.11)}100%{transform:scale(1)}}
+@keyframes word-glow{0%,100%{text-shadow:0 0 0 rgba(225,37,27,0)}
+  50%{text-shadow:0 0 22px rgba(225,37,27,.45)}}
+
+/* ---------- Navegacao ---------- */
+.nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
+.nav__inner{max-width:var(--container);margin-inline:auto;padding:.7rem var(--gutter);display:flex;align-items:center;gap:1.5rem}
+.nav__brand{display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;flex:0 0 auto;margin-right:auto}
+.nav__brand img{width:30px;height:30px}
+.nav__brand span{font-family:var(--serif);font-size:1.22rem;letter-spacing:-.02em;color:var(--ink);line-height:1}
+.nav__links{display:flex;gap:1.5rem;align-items:center}
+.nav__links a{font-size:.95rem;font-weight:500;color:var(--ink-soft);text-decoration:none;transition:color .18s var(--ease)}
+.nav__links a:hover{color:var(--red)}
+.nav__status{display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;
+  font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute)}
+@media (max-width:1120px){.nav__status{display:none}}
+.nav__dot{width:7px;height:7px;border-radius:50%;background:var(--red);
+  box-shadow:0 0 0 0 rgba(225,37,27,.5);animation:disponivel 3.6s ease-in-out infinite}
+@keyframes disponivel{
+  0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(225,37,27,.45)}
+  50%{opacity:.45;box-shadow:0 0 0 5px rgba(225,37,27,0)}}
+.nav__cta{flex:0 0 auto}
+.nav__cta .btn{min-height:44px;padding:.65rem 1.1rem;font-size:.93rem;box-shadow:none}
+.nav__toggle{display:none}
+@media (max-width:940px){
+  .nav__links{display:none}
+  .nav__status{display:none}
+  .nav__inner{gap:.75rem}
+  .nav__toggle{display:block;flex:0 0 auto}
+  .nav__toggle summary{list-style:none;cursor:pointer;min-height:44px;min-width:44px;display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);border-radius:var(--r);padding:0 .7rem;font-size:.9rem;font-weight:600;color:var(--ink)}
+  .nav__toggle summary::-webkit-details-marker{display:none}
+  .nav__panel{position:absolute;left:0;right:0;top:100%;background:var(--paper);border-bottom:1px solid var(--line);
+    display:flex;flex-direction:column;padding:.5rem var(--gutter) 1rem}
+  .nav__panel a{padding:.85rem 0;border-bottom:1px solid var(--line-soft);text-decoration:none;color:var(--ink);font-weight:500}
+  .nav__panel a:last-child{border-bottom:0}
+}
+@media (max-width:760px){.nav__cta{display:none}}
+@media (max-width:340px){.nav__brand span{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{padding-block:clamp(2.5rem,5vw,4.5rem) clamp(2.5rem,5vw,4rem);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:auto -20% -40% 40%;height:70%;
+  background:radial-gradient(60% 60% at 50% 50%,rgba(225,37,27,.07),transparent 70%);pointer-events:none}
+.hero__inner{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
+.hero__h1{margin-bottom:1.1rem;max-width:15ch}
+.hero__h1 em{font-style:italic;color:var(--red)}
+.hero__lead{max-width:44ch;margin-bottom:1.6rem}
+.hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
+.hero__micro{font-size:.9rem;color:var(--mute);margin:.85rem 0 0;max-width:42ch}
+.hero__trust{display:flex;flex-wrap:wrap;gap:.45rem 1.4rem;margin:1.5rem 0 0;padding:0;list-style:none}
+.hero__trust li{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);display:flex;align-items:center;gap:.5rem}
+.hero__trust li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--red);flex:0 0 auto}
+/* aro vermelho: envolve o corpo todo, mais largo do que o retrato,
+   como na versao escura. So a cabeca fica por cima do arco. */
+.hero__portrait{margin:0 auto;position:relative;width:100%;max-width:20rem}
+.hero__portrait::before{content:"";position:absolute;left:-17%;right:-17%;bottom:0;height:70%;
+  background:linear-gradient(to top,rgba(225,37,27,.09),rgba(225,37,27,0));
+  border:1px solid rgba(225,37,27,.32);border-bottom:0;border-radius:2rem 2rem 0 0}
+.hero__portrait img{position:relative;z-index:1;width:100%;
+  filter:drop-shadow(0 22px 44px rgba(5,5,5,.16))}
+@media (max-width:900px){
+  .hero__inner{grid-template-columns:1fr}
+  .hero__h1{max-width:20ch}
+  .hero__portrait{max-width:15rem;margin:1.2rem auto 0}
+  .hero__portrait::before{left:-13%;right:-13%;height:68%}
+}
+
+/* ---------- Barra de prova ---------- */
+.proof{border-block:1px solid var(--line-soft);background:var(--paper)}
+.proof__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft)}
+.proof__cell{background:var(--paper);padding:clamp(1.4rem,3vw,2.1rem) clamp(1rem,2.5vw,1.8rem)}
+.proof__num .n,.stat__value .n{font-variant-numeric:tabular-nums}
+.proof__num{display:block;font-family:var(--serif);font-size:clamp(1.9rem,4vw,2.9rem);line-height:1;color:var(--ink);letter-spacing:-.02em}
+.proof__num .to{color:var(--red);padding:0 .15em}
+.proof__num .unit{font-family:var(--ui);font-size:.4em;font-weight:600;letter-spacing:0}
+.proof__label{display:block;margin-top:.5rem;font-size:.92rem;color:var(--mute);line-height:1.4}
+.proof__src{display:block;margin-top:.35rem;font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:#6b6b6b}
+@media (max-width:760px){.proof__grid{grid-template-columns:1fr}}
+
+/* ---------- Sinal ---------- */
+.signal__anchor{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.22;letter-spacing:-.015em;color:var(--ink);margin:0 0 clamp(1.8rem,3.5vw,2.6rem);max-width:26ch}
+.signal__anchor em{font-style:italic;color:var(--red)}
+.signal__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,2rem)}
+.signal__list li{border-top:1px solid var(--line);padding-top:1rem}
+.signal__num{font-family:var(--mono);font-size:.74rem;color:var(--red);letter-spacing:.1em;display:block;margin-bottom:.5rem}
+.signal__list p{margin:0;font-size:1rem;line-height:1.55;color:var(--ink-soft)}
+@media (max-width:760px){.signal__list{grid-template-columns:1fr;gap:1rem}}
+
+/* ---------- Servicos ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.9rem,1.8vw,1.25rem)}
+@media (max-width:980px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:620px){.cards{grid-template-columns:1fr}}
+.card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);
+  padding:clamp(1.4rem,2.4vw,1.8rem);transition:transform .18s var(--ease),border-color .18s var(--ease)}
+.card::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:2px;background:var(--red);
+  transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ease);border-radius:2px 0 0 2px}
+.card:hover{transform:translateY(-2px);border-color:rgba(5,5,5,.2)}
+.card:hover::before{transform:scaleY(1)}
+.section--panel .card{background:var(--paper)}
+.card{background:var(--paper)}
+
+
+.card__more{display:inline-block;margin-top:1rem;font-size:.92rem;font-weight:600;color:var(--ink);
+  text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;
+  transition:color .18s var(--ease),border-color .18s var(--ease)}
+.card__more:hover{color:var(--red);border-color:var(--red)}
+.related{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.7rem}
+.related a{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:var(--r);
+  padding:.55rem .95rem;font-size:.9rem;font-weight:500;color:var(--ink);text-decoration:none;
+  transition:border-color .18s var(--ease),color .18s var(--ease)}
+.related a:hover{border-color:var(--red);color:var(--red)}
+/* ---------- Faixa de conversao ---------- */
+.band{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(1.8rem,3.5vw,2.6rem)}
+.band__grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.4rem 2.5rem}
+.band .h2{color:#fff;max-width:20ch}
+.band p{color:#c9c9c9;margin:.7rem 0 0;max-width:46ch;font-size:1rem}
+.band__action{flex:0 0 auto;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
+.band__note{font-size:.85rem;color:#9a9a9a;margin:0}
+@media (max-width:820px){.band__action,.band__action .btn{width:100%}}
+
+/* ---------- Casos ---------- */
+.case{border-top:1px solid var(--line);padding-top:clamp(1.6rem,3vw,2.2rem);margin-top:clamp(1.8rem,3.5vw,2.6rem)}
+.case:first-of-type{margin-top:0}
+.tag{display:inline-block;font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.11em;
+  border:1px solid var(--line);border-radius:999px;padding:.32rem .7rem;color:var(--mute)}
+.tag--accent{border-color:rgba(225,37,27,.4);color:var(--red)}
+.case__title{font-family:var(--serif);font-weight:400;font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin:.9rem 0 .7rem}
+.case__title--sm{font-size:clamp(1.3rem,2.2vw,1.7rem)}
+.case__shot{margin:1.4rem 0 0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+.stats{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;margin-top:1.3rem}
+.stat__value{display:block;font-family:var(--serif);font-size:clamp(1.7rem,3.2vw,2.4rem);line-height:1;color:var(--ink);letter-spacing:-.02em}
+.stat__value .to{color:var(--red);padding:0 .12em}
+.stat__value .unit{font-family:var(--ui);font-size:.42em;font-weight:600}
+.stat__label{display:block;margin-top:.4rem;font-size:.9rem;color:var(--mute)}
+.worklist{margin-top:clamp(2rem,4vw,3rem);border-top:1px solid var(--line)}
+.worklist__row{display:grid;grid-template-columns:minmax(0,13rem) minmax(0,1fr) minmax(0,10rem);gap:.4rem 1.5rem;
+  padding:1.15rem 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
+.worklist__cap{font-weight:600;color:var(--ink);font-size:.98rem}
+.worklist__desc{color:var(--mute);font-size:.95rem;line-height:1.55}
+.worklist__tag{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:#6b6b6b;text-align:right}
+@media (max-width:860px){
+  .worklist__row{grid-template-columns:1fr}
+  .worklist__tag{text-align:left}
+}
+
+/* ---------- Processo ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1rem,2vw,1.5rem)}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+.step{border-top:2px solid var(--ink);padding-top:1.1rem}
+.step__num{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;color:var(--red);display:block;margin-bottom:.6rem}
+.seal{margin:clamp(1.8rem,3.5vw,2.6rem) 0 0;font-family:var(--serif);font-size:clamp(1.2rem,2.2vw,1.65rem);
+  line-height:1.3;color:var(--ink);letter-spacing:-.015em}
+
+/* ---------- FAQ ---------- */
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:1.15rem 2.2rem 1.15rem 0;position:relative;
+  font-weight:600;color:var(--ink);font-size:1.02rem;line-height:1.4}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:.2rem;top:1rem;color:var(--red);font-size:1.3rem;line-height:1;font-weight:400}
+.faq details[open] summary::after{content:"\2013"}
+.faq .a{padding:0 0 1.25rem}
+.faq .a{max-width:64ch}
+.faq .a p{margin:0 0 .7rem;color:var(--mute);font-size:1rem;line-height:1.62}
+.faq .a p:last-child{margin-bottom:0}
+
+/* ---------- Sobre ---------- */
+.about__text{font-size:1.08rem;line-height:1.66;color:var(--ink-soft);margin:0;max-width:62ch}
+
+/* ---------- Fecho: CTA final + fonte preferida ----------
+   Um so bloco. As duas linhas partilham a mesma grelha, por isso
+   os dois botoes alinham na vertical e a caixa encosta as mesmas
+   margens do resto da pagina. */
+.close{border-top:1px solid var(--line-soft)}
+.close__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:1.6rem 3rem;align-items:end}
+.close__copy .h2{max-width:18ch;margin-bottom:.8rem}
+.close__copy .lead{max-width:46ch}
+.close__action{display:flex;flex-direction:column;gap:.85rem;align-items:stretch}
+.close__email{font-family:var(--mono);font-size:.95rem;color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--line);padding-bottom:3px;align-self:flex-start;
+  transition:border-color .18s var(--ease),color .18s var(--ease)}
+.close__whats{display:inline-flex;align-items:center;gap:.45rem;margin-top:.7rem;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .18s var(--ease),border-color .18s var(--ease)}
+.close__whats:hover{color:var(--red);border-color:var(--red)}
+.close__whats svg{width:18px;height:18px;flex:0 0 auto}
+.close__email:hover{color:var(--red);border-color:var(--red)}
+.close__micro{font-size:.88rem;color:var(--mute);margin:0}
+@media (max-width:860px){
+  .close__grid{grid-template-columns:1fr;align-items:start}
+  .close__action{margin-top:.4rem}
+}
+
+/* ---------- Fonte preferida ---------- */
+.prefsrc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:1.1rem 3rem;align-items:center;
+  margin-top:clamp(2rem,4vw,3rem);padding:1.4rem 1.6rem;
+  background:var(--paper);border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r)}
+.prefsrc__label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;font-weight:500;color:var(--red);margin:0 0 .4rem}
+.prefsrc__pitch{font-size:1rem;line-height:1.55;color:var(--ink-soft);margin:0;max-width:58ch}
+.prefsrc__action .btn{width:100%;font-size:.9rem;padding-inline:1.15rem;justify-content:space-between;text-align:left}
+.prefsrc__note{font-size:.8rem;line-height:1.45;color:var(--mute);margin:.6rem 0 0}
+@media (max-width:860px){.prefsrc{grid-template-columns:1fr;padding:1.25rem 1.15rem}}
+
+/* ---------- Rodape ---------- */
+.footer{border-top:1px solid var(--line);background:var(--paper);
+  padding-block:clamp(2.5rem,5vw,3.5rem) calc(clamp(2.5rem,5vw,3.5rem) + 4.5rem)}
+@media (min-width:761px){.footer{padding-bottom:clamp(2.5rem,5vw,3.5rem)}}
+.footer__grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:2.4rem 2rem}
+@media (max-width:960px){.footer__grid{grid-template-columns:repeat(3,minmax(0,1fr))}.footer__brand{grid-column:1/-1}}
+@media (max-width:560px){.footer__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem 1.25rem}}
+.footer__logo{width:140px;height:auto;aspect-ratio:600/470}
+.footer__tagline{margin:.9rem 0 0;font-size:.92rem;line-height:1.5;color:var(--mute);max-width:30ch}
+.footer__title{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--ink);margin:0 0 .9rem;font-weight:500}
+.footer__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem}
+.footer__list a{font-size:.93rem;color:var(--mute);text-decoration:none;transition:color .18s var(--ease)}
+.footer__list a:hover{color:var(--red)}
+.footer__social{display:flex;gap:.6rem;list-style:none;margin:1.2rem 0 0;padding:0}
+.footer__social a{display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:var(--r);color:var(--mute);
+  transition:color .18s var(--ease),border-color .18s var(--ease)}
+.footer__social a:hover{color:var(--red);border-color:var(--red)}
+.footer__social svg{width:17px;height:17px}
+.footer__base{margin-top:clamp(2rem,4vw,2.8rem);padding-top:1.4rem;border-top:1px solid var(--line-soft);
+  display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
+.footer__line{margin:0;font-size:.85rem;color:var(--mute)}
+.footer__zaask{opacity:.55;transition:opacity .18s var(--ease)}
+.footer__zaask:hover{opacity:.9}
+.footer__zaask img{height:28px;width:auto}
+
+/* ---------- Barra fixa de accao em telemovel ---------- */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:110;display:none;gap:.6rem;
+  padding:.6rem var(--gutter) calc(.6rem + env(safe-area-inset-bottom));
+  background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.dock .btn{flex:1 1 auto;min-height:48px;font-size:.95rem;box-shadow:none}
+.dock .btn--ghost{flex:0 0 auto;padding-inline:1rem}
+@media (max-width:760px){.dock{display:flex}}
+
+/* ---------- Cartao largo da grelha de servicos ---------- */
+.card--wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);
+  gap:1.1rem 3rem;align-items:center;border-left:2px solid var(--red)}
+.card--wide .body{max-width:58ch}
+.card__tag{font-family:var(--mono);font-size:.72rem;font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--red);margin:0 0 .6rem}
+.card--wide__action{display:flex;flex-direction:column;align-items:flex-start;gap:.7rem}
+.card--wide__action .card__more{margin-top:0}
+@media (max-width:980px){.card--wide{grid-template-columns:1fr;align-items:start}}
+    /* ---- sites geridos (portefólio) ---- */
+.sites{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:clamp(1.6rem,3vw,2.2rem)}
+.site{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper)}
+.site img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.site__cap{padding:.9rem 1rem 1.05rem;border-top:1px solid var(--line)}
+.site__name{display:block;font-weight:600;color:var(--ink);font-size:.98rem}
+.site__desc{display:block;margin-top:.3rem;color:var(--mute);font-size:.9rem;line-height:1.5}
+@media (max-width:760px){.sites{grid-template-columns:1fr}}
+/* ---- álbum de trabalhos (página inicial): cartões em retrato, em perspectiva ---- */
+.album{margin-top:clamp(1.6rem,3vw,2.2rem)}
+.album__stage{position:relative;aspect-ratio:16/9;max-height:44rem;perspective:1600px;perspective-origin:50% 45%;outline:none;overflow:hidden;touch-action:pan-y;
+  border-radius:var(--r);background-color:var(--paper);
+  background-image:radial-gradient(rgba(5,5,5,.09) 1px,transparent 1.2px);background-size:18px 18px}
+.album__stage:focus-visible{box-shadow:0 0 0 2px var(--red)}
+.album__track{list-style:none;margin:0;padding:0;position:absolute;inset:0;transform-style:preserve-3d}
+.album__slide{position:absolute;left:50%;top:50%;width:min(30%,22rem);margin-left:calc(min(30%,22rem) / -2);
+  transform:translateY(-50%) translateX(calc(var(--d) * 72%)) translateZ(calc(var(--abs) * -9rem)) rotateY(calc(var(--s) * -48deg)) scale(calc(1 - var(--abs) * .04));
+  transition:transform .65s var(--ease),opacity .45s var(--ease);z-index:calc(10 - var(--abs));opacity:1;cursor:pointer}
+.album__slide[data-far="1"]{opacity:0;pointer-events:none}
+.album__slide.is-active{cursor:default}
+.album__card{margin:0;border-radius:16px;overflow:hidden;background:var(--paper);
+  box-shadow:0 34px 70px -34px rgba(5,5,5,.55),0 0 0 1px rgba(5,5,5,.08)}
+.album__card img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;object-position:top}
+.album__more{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:.55rem;aspect-ratio:9/16;padding:clamp(1rem,2vw,1.6rem);
+  border-radius:16px;background:var(--ink);color:#fff;text-decoration:none;box-shadow:0 34px 70px -34px rgba(5,5,5,.55)}
+.album__more .eyebrow{color:var(--red)}
+.album__more .album__name{font-family:var(--serif);font-weight:400;font-size:clamp(1.3rem,2vw,1.7rem);line-height:1.1;letter-spacing:-.015em;color:#fff}
+.album__more .album__desc{font-size:.9rem;color:rgba(255,255,255,.72);max-width:24ch}
+.album__more .btn{align-self:center;margin-top:.4rem;background:#fff;color:var(--ink);border-color:#fff;white-space:nowrap}
+.album__mosaic{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;width:64%;margin-bottom:.5rem}
+.album__mosaic img{display:block;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:top;border-radius:6px;opacity:.92}
+.album__legend{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.3rem 1.5rem;align-items:baseline;margin-top:1.1rem;min-height:3.4rem}
+.album__name{display:block;font-weight:600;color:var(--ink);font-size:1.02rem}
+.album__desc{display:block;margin-top:.2rem;color:var(--mute);font-size:.92rem;line-height:1.5;max-width:60ch}
+.album__nav{display:flex;align-items:center;gap:.8rem}
+.album__btn{appearance:none;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);color:var(--ink);width:2.5rem;height:2.5rem;
+  font-size:1.05rem;cursor:pointer;transition:border-color .18s var(--ease),color .18s var(--ease)}
+.album__btn:hover{border-color:var(--red);color:var(--red)}
+.album__dots{list-style:none;margin:0;padding:0;display:flex;gap:.45rem}
+.album__dots button{appearance:none;border:0;padding:0;width:.5rem;height:.5rem;border-radius:50%;background:rgba(5,5,5,.18);cursor:pointer;transition:background .18s var(--ease),transform .18s var(--ease)}
+.album__dots button[aria-current="true"]{background:var(--red);transform:scale(1.3)}
+.album__status{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);min-width:4.5ch;text-align:center}
+@media (max-width:760px){.album__stage{aspect-ratio:4/5;perspective:1100px}.album__more{gap:.4rem;padding:.9rem}.album__more .album__desc{font-size:.8rem;max-width:22ch}.album__more .album__name{font-size:1.15rem}.album__more .btn{font-size:.85rem;padding:.6rem .9rem}.album__mosaic{width:56%}.album__slide{width:54%;margin-left:-27%;transform:translateY(-50%) translateX(calc(var(--d) * 74%)) translateZ(calc(var(--abs) * -6rem)) rotateY(calc(var(--s) * -40deg))}
+  .album__legend{grid-template-columns:1fr}.album__nav{justify-content:center}}
+@media (prefers-reduced-motion:reduce){.album__slide,.album__card{transition:none}}
+/* ---- movimento leve: cartões de casos e portefólio ---- */
+.site,div.proof .stat{--rx:0deg;--ry:0deg;--ty:0px;transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--ty));
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .25s var(--ease),opacity .6s var(--ease);transform-style:preserve-3d}
+.js .stagger.is-in>.site,.js .stagger.is-in>.stat{transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(var(--ty))}
+.site:hover{--ty:-6px;box-shadow:0 24px 44px -26px rgba(5,5,5,.42);border-color:rgba(5,5,5,.22)}
+.site img{transition:transform .7s var(--ease)}
+.site:hover img{transform:scale(1.035)}
+.site__cap{position:relative}
+.site__cap::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--red);transition:width .5s var(--ease)}
+.site:hover .site__cap::before{width:100%}
+div.proof .stat{position:relative;overflow:hidden}
+div.proof .stat::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+div.proof .stat:hover{--ty:-3px;background:#fcfcfc}
+div.proof .stat:hover::after{transform:scaleX(1)}
+div.proof .stat .stat__v{transition:transform .4s var(--ease)}
+div.proof .stat:hover .stat__v{transform:translateY(-2px)}
+.album__card{transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.album__slide.is-active:hover .album__card{transform:translateY(-8px);box-shadow:0 44px 80px -36px rgba(5,5,5,.6)}
+.album__slide.is-active:hover .album__more{transform:translateY(-8px)}
+.album__more{transition:transform .45s var(--ease)}
+@supports (animation-timeline: view()){
+  .album__stage{animation:album-dots linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+  @keyframes album-dots{from{background-position:0 0}to{background-position:0 -120px}}
+}
+@media (hover:none){.site:hover{--ty:0px}.site:hover img{transform:none}}
+@media (prefers-reduced-motion:reduce){.site,div.proof .stat,.site img,.album__card,.album__more,.site__cap::before,div.proof .stat::after{transition:none}.album__stage{animation:none}.site:hover{--ty:0px}.site:hover img{transform:none}}
+.nav__dot{background:var(--livre)}
+/* ================= BANNER DE CONSENTIMENTO =================
+   Cartao fixo em baixo a esquerda (folha em baixo no telemovel, acima
+   do dock). Aceitar e Recusar a um clique, com o mesmo tamanho.
+   O Google Analytics so carrega depois de aceitar (ver cabecalho das
+   paginas). Fonte: ferramentas/paginas.css */
+.cookies{position:fixed;left:50%;bottom:1.25rem;z-index:60;max-width:30rem;width:calc(100% - 2rem);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1.25rem 1.4rem 1.35rem;box-shadow:0 28px 60px -24px rgba(5,5,5,.4);opacity:0;transform:translate(-50%,12px);transition:opacity .4s var(--ease),transform .4s var(--ease);pointer-events:none;text-align:center}
+.cookies.is-on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.cookies__label{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 .5rem}
+.cookies__title{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.1;letter-spacing:-.015em;color:var(--ink);margin:0 0 .55rem}
+.cookies__text{margin:0;font-size:.93rem;line-height:1.55;color:var(--ink-soft)}
+.cookies__text a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.cookies__text a:hover{color:var(--red);border-color:var(--red)}
+.cookies__actions{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:1rem}
+.cookies__actions .btn{justify-content:center;min-height:2.9rem;padding:.6rem .9rem}
+.medicao__accoes{display:flex;flex-wrap:wrap;gap:.6rem;margin:.4rem 0 0}
+@media (max-width:760px){.cookies{left:.75rem;right:.75rem;width:auto;max-width:none;transform:translateY(12px);bottom:calc(5.4rem + env(safe-area-inset-bottom))}.cookies.is-on{transform:none}}
+@media (prefers-reduced-motion:reduce){.cookies{transition:none}}
+
+/* ================= PAGINAS INTERNAS =================
+   Regra: nada aqui redefine tipografia nem ritmo. As paginas
+   internas usam as mesmas classes da pagina inicial (.h1 .h2 .h3
+   .lead .body .eyebrow .section .container .card .btn) e aqui so
+   ficam as pecas que a pagina inicial nao tem. Medidas herdadas:
+   --sec para as seccoes, --container para a largura, 52ch para o
+   texto corrido.
+   ==================================================== */
+
+/* Cabecalho de pagina: mesmo respiro do .hero da pagina inicial */
+.page-hero{padding-block:clamp(2.5rem,5vw,4.5rem) clamp(2.5rem,5vw,4rem);position:relative}
+.page-hero__crumb{font-family:var(--mono);font-size:.72rem;color:var(--mute);
+  margin:0 0 1.1rem;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.page-hero__crumb a{color:var(--mute);text-decoration:none;transition:color .18s var(--ease)}
+.page-hero__crumb a:hover{color:var(--red)}
+.page-hero__crumb a:last-of-type{color:var(--ink)}
+.page-hero__crumb .sep{color:rgba(5,5,5,.28)}
+.page-hero__title{max-width:15ch;margin-bottom:1.1rem}   /* = .hero__h1 */
+.page-hero__lead{max-width:46ch}   /* = .lead da pagina inicial */
+.page-hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:1.6rem}
+.page-hero__metas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(.9rem,1.8vw,1.25rem);margin-top:clamp(2rem,4vw,3rem);
+  border-top:1px solid var(--line);padding-top:1.3rem}
+.page-hero__metas .k{font-family:var(--mono);font-size:.72rem;font-weight:500;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--mute);margin-bottom:.35rem}
+.page-hero__metas,.page-hero__metas div,.page-hero__metas dd{margin-block:0;margin-inline:0}
+.page-hero__metas .v{color:var(--ink);font-weight:600;font-size:1rem;line-height:1.45}
+
+/* Texto corrido. A caixa tem a largura do .section__head da pagina
+   inicial (40rem) e as linhas de texto a medida do .body (52ch a 16px),
+   para os titulos quebrarem no mesmo ponto e as linhas terem o mesmo
+   comprimento que na pagina inicial. */
+.prose{max-width:40rem}
+.prose .body,.prose>p,.prose .answer{max-width:52ch}
+.prose>*+*{margin-top:1.05rem}
+.prose .h2{margin-bottom:.6rem}
+.prose .h2+.body,.prose .h2+.answer{margin-top:.6rem}
+.prose .h3{margin-top:1.6rem}
+.answer{font-size:1rem;line-height:1.62;color:var(--ink);margin:0;
+  border-left:2px solid var(--red);padding-left:1rem}
+.prose>.answer+*{margin-top:1.2rem}
+
+/* Lista de entregaveis */
+.deliver{list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem clamp(1.6rem,3vw,2.4rem)}
+.deliver li{position:relative;min-width:0;padding-left:1.4rem;font-size:1rem;line-height:1.62;color:var(--mute);overflow-wrap:anywhere}
+.deliver li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:2px;background:var(--red)}
+.deliver li b{color:var(--ink);font-weight:600}
+
+/* Ligacoes para outras paginas */
+.related{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:clamp(1.4rem,2.6vw,1.9rem)}
+.related a{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:var(--r);
+  padding:.55rem .95rem;font-size:.92rem;font-weight:500;color:var(--ink);text-decoration:none;
+  transition:border-color .18s var(--ease),color .18s var(--ease)}
+.related a:hover{border-color:var(--red);color:var(--red)}
+
+/* Grelhas: o mesmo gap da grelha da pagina inicial */
+.grid{display:grid;gap:clamp(.9rem,1.8vw,1.25rem)}
+.grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+.card__num{display:block;font-family:var(--mono);font-size:.72rem;font-weight:500;
+  letter-spacing:.14em;color:var(--red);margin-bottom:.6rem}
+.card__more{display:inline-block;margin-top:1rem;font-size:.92rem;font-weight:600;color:var(--ink);
+  text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;
+  transition:color .18s var(--ease),border-color .18s var(--ease)}
+.card__more:hover{color:var(--red);border-color:var(--red)}
+
+/* Barra de numeros dentro de uma seccao. Mesmo preenchimento do .card */
+div.proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line-soft);border:1px solid var(--line);border-radius:var(--r);
+  overflow:hidden;margin-top:clamp(1.4rem,2.6vw,1.9rem)}
+div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
+.stat__v{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,3.4vw,2.75rem);
+  line-height:1.1;letter-spacing:-.018em;color:var(--ink);font-variant-numeric:tabular-nums}
+.stat__l{margin-top:.45rem;font-size:1rem;line-height:1.5;color:var(--mute)}
+
+/* CTA de fim de pagina */
+.section.cta .container--narrow{max-width:var(--container)}
+.cta.final{border-top:1px solid var(--line-soft);padding-bottom:clamp(1.8rem,3.6vw,2.8rem)}
+.cta__title{max-width:20ch;margin-bottom:.8rem}
+.cta .lead{max-width:46ch}
+.cta__actions{display:flex;flex-wrap:wrap;gap:.8rem 1.3rem;align-items:center;margin-top:1.6rem}
+.final__email{font-family:var(--mono);font-size:.95rem;color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--line);padding-bottom:3px;
+  transition:border-color .18s var(--ease),color .18s var(--ease)}
+.final__email:hover{color:var(--red);border-color:var(--red)}
+
+/* Fonte preferida: a caixa ja traz margem, a seccao nao soma outra */
+.section--prefsrc{padding-block:0 var(--sec)}
+.section--prefsrc .prefsrc{margin-top:0}
+
+/* Corridas de texto: duas seccoes de prosa seguidas nao somam
+   padding de baixo e de cima, senao o artigo parte se ao meio. */
+.section--seguida{padding-top:0}
+
+@media (max-width:900px){.grid--3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){div.proof{grid-template-columns:1fr}}
+@media (max-width:620px){
+  .grid--2,.grid--3{grid-template-columns:1fr}
+  .deliver{grid-template-columns:1fr}
+  .page-hero__metas{grid-template-columns:1fr;gap:.9rem}
+  .page-hero__title{max-width:20ch}
+}
+
+/* ================= ARTIGOS DO BLOG =================
+   Convertidos ao tema claro. A zona de leitura propria foi
+   retirada: o artigo usa agora o mesmo container e a mesma
+   medida de texto das paginas de servico.
+   ==================================================== */
+.post__read,.post__rail{display:block;width:100%;background:transparent;border:0;padding:0;margin:0}
+.lead-answer{font-size:1rem;line-height:1.62;color:var(--ink);margin:0;max-width:52ch;
+  border-left:2px solid var(--red);padding-left:1rem}
+.prose>.lead-answer+*{margin-top:1.2rem}
+.mono-inline{font-family:var(--mono);font-size:.92em;color:var(--ink);
+  background:var(--line-soft);border-radius:4px;padding:.1em .35em;overflow-wrap:anywhere}
+.post__prefsrc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:1.1rem 3rem;
+  align-items:center;margin-top:clamp(2rem,4vw,3rem);padding:1.4rem 1.6rem;background:var(--paper);
+  border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r)}
+.prefsrc__btn{width:100%;justify-content:space-between;text-align:left}
+@media (max-width:860px){.post__prefsrc{grid-template-columns:1fr;padding:1.25rem 1.15rem}}
+
+/* ================= BLOG: listagem e leitura (2026-10-10) =================
+   Listagem em lista de artigos com data, etiqueta e tempo de leitura.
+   Artigo com coluna de leitura mais larga e continua, indice no topo e
+   lista dos outros artigos no fim. Fonte: ferramentas/paginas.css */
+.mono-inline { font-family: var(--mono); font-size: 0.9em; background: rgba(5,5,5,.05); padding: 0.12em 0.36em; border-radius: 3px; color: var(--ink); word-break: break-word; }
+/* Listagem do blog (modelo Best Account): um artigo em destaque com
+   imagem a esquerda e texto a direita, depois uma grelha de cartoes com
+   imagem, data e resumo. Fonte: ferramentas/paginas.css */
+.posts{list-style:none;margin:0;padding:0}
+.post{margin:0;padding:0}
+.post__link{display:block;text-decoration:none;color:inherit;border-radius:14px;background:var(--paper);border:1px solid var(--line);overflow:hidden;height:100%;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
+.post__link:hover{transform:translateY(-4px);box-shadow:0 28px 50px -30px rgba(5,5,5,.35);border-color:rgba(5,5,5,.2)}
+.post__figure{margin:0;overflow:hidden;background:var(--line-soft)}
+.post__img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .6s var(--ease)}
+.post__link:hover .post__img{transform:scale(1.03)}
+.post__text{padding:1.3rem 1.4rem 1.5rem}
+.post__meta{display:flex;flex-wrap:wrap;gap:.3rem .9rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.7rem}
+.post__meta time{color:var(--ink);font-weight:500}
+.post__title{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 .6rem;transition:color .18s var(--ease)}
+.post__link:hover .post__title{color:var(--red)}
+.post__excerpt{margin:0;color:var(--mute);font-size:.98rem;line-height:1.6}
+.post__more{display:inline-block;margin-top:1rem;font-size:.92rem;font-weight:600;color:var(--ink)}
+.post__link:hover .post__more{color:var(--red)}
+.posts__destaque{margin-bottom:clamp(2.6rem,5vw,4rem)}
+.post--destaque .post__link{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center}
+.post--destaque .post__figure{height:100%}
+.post--destaque .post__img{height:100%;aspect-ratio:auto;min-height:18rem}
+.post--destaque .post__text{padding:clamp(1.6rem,3.5vw,2.8rem)}
+.post--destaque .post__title{font-size:clamp(1.7rem,2.8vw,2.3rem);max-width:20ch}
+.post--destaque .post__excerpt{font-size:1.05rem;max-width:48ch}
+.posts__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}
+@media (max-width:980px){.posts__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.post--destaque .post__link{grid-template-columns:1fr}.post--destaque .post__img{min-height:0;aspect-ratio:16/9}}
+@media (max-width:620px){.posts__grid{grid-template-columns:1fr}.post__text{padding:1.1rem 1.15rem 1.3rem}}
+@media (prefers-reduced-motion:reduce){.post__link,.post__img{transition:none}.post__link:hover{transform:none}.post__link:hover .post__img{transform:none}}
+/* artigo: coluna de leitura */
+.artigo .post__byline{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:1.2rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem .9rem}
+.artigo .post__byline time{color:var(--ink);font-weight:500}
+.artigo .section{padding-block:clamp(1.6rem,3vw,2.4rem)}
+.artigo .section--panel{background:var(--paper)}
+.artigo .section:first-of-type + .section{padding-top:clamp(2rem,4vw,3rem)}
+.artigo .prose{max-width:46rem}
+.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer{max-width:64ch;font-size:1.0625rem;line-height:1.74;color:var(--ink-soft)}
+.artigo .prose .body strong,.artigo .prose .body b{color:var(--ink)}
+.artigo .prose>*+*{margin-top:1.3rem}
+.artigo .prose .h2{font-size:clamp(1.6rem,2.8vw,2.15rem);padding-top:1.5rem;border-top:1px solid var(--line);margin-bottom:.8rem}
+.artigo .prose .h2+.body,.artigo .prose .h2+.answer{margin-top:.8rem}
+.artigo .prose .h3{font-size:1.18rem;margin-top:1.9rem}
+.artigo .deliver li,.artigo .prose li{font-size:1.0625rem;line-height:1.7;color:var(--ink-soft)}
+.artigo .deliver{margin-top:1.1rem}
+.artigo .faq .a p{font-size:1.0625rem;line-height:1.7}
+.toc{margin:1.6rem 0 0;padding:1.1rem 1.3rem 1.2rem;border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r);max-width:46rem}
+.toc__label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 .6rem}
+.toc ol{margin:0;padding:0 0 0 1.3rem;columns:2;column-gap:2rem}
+.toc li{font-size:.98rem;line-height:1.5;margin:0 0 .35rem;break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);transition:color .18s var(--ease),border-color .18s var(--ease)}
+.toc a:hover{color:var(--red);border-color:var(--red)}
+.morelist{list-style:none;margin:1.2rem 0 0;padding:0;border-top:1px solid var(--line);max-width:46rem}
+.morelist li{border-bottom:1px solid var(--line)}
+.morelist a{display:grid;grid-template-columns:minmax(0,7.5rem) minmax(0,1fr);gap:.3rem 1.4rem;padding:.9rem 0;text-decoration:none;color:inherit;align-items:baseline}
+.morelist time{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
+.morelist a:hover .t{color:var(--red)}
+@media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= ARTIGO (modelo Best Account) =================
+   Faixa escura de titulo em largura total, imagem de capa em cartao
+   sobreposto a faixa, e corpo em duas colunas: indice fixo a esquerda
+   e coluna de leitura larga a direita. Abaixo de 900px o indice sobe
+   para cima do texto. Fonte: ferramentas/paginas.css */
+.page-hero--escuro{background:var(--ink);color:#fff;overflow:hidden;isolation:isolate}
+.page-hero--escuro::before{content:"";position:absolute;top:-45%;right:-12%;width:58%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(225,37,27,.34),transparent 72%);z-index:-1;pointer-events:none}
+.page-hero--escuro::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 190px,rgba(255,255,255,.04) 190px 191px);z-index:-1;pointer-events:none}
+.page-hero--escuro .h1,.page-hero--escuro .page-hero__crumb a:last-of-type{color:#fff}
+.page-hero--escuro .lead{color:rgba(255,255,255,.74)}
+.page-hero--escuro .page-hero__crumb,.page-hero--escuro .page-hero__crumb a{color:rgba(255,255,255,.6)}
+.page-hero--escuro .page-hero__crumb .sep{color:rgba(255,255,255,.28)}
+.page-hero--escuro .page-hero__crumb a:hover{color:#fff}
+.page-hero--escuro .post__byline{color:rgba(255,255,255,.62)}
+.page-hero--escuro .post__byline time{color:#fff}
+.page-hero--artigo{padding-bottom:clamp(7.5rem,15vw,11.5rem)}
+.page-hero--artigo .page-hero__title{max-width:18ch;font-size:clamp(2.2rem,4.6vw,3.6rem)}
+.page-hero--artigo .page-hero__lead{max-width:60ch}
+.artigo__capa{margin:calc(-1*clamp(5.5rem,12vw,9rem)) 0 0;position:relative;z-index:1}
+.artigo__capa img{display:block;width:100%;height:auto;aspect-ratio:1344/752;object-fit:cover;border-radius:14px;box-shadow:0 30px 60px -30px rgba(5,5,5,.45),0 0 0 1px rgba(5,5,5,.06)}
+.artigo__grid{display:grid;grid-template-columns:minmax(0,15rem) minmax(0,1fr);gap:clamp(2rem,5vw,4.5rem);align-items:start;padding-top:clamp(2.5rem,5vw,4rem);padding-bottom:clamp(2rem,4vw,3rem)}
+.artigo__aside{position:sticky;top:5.5rem}
+.artigo__aside .toc{margin:0;padding:1.2rem 1.25rem 1.3rem;border:1px solid var(--line);border-radius:var(--r);background:var(--paper);max-width:none;box-shadow:0 14px 30px -24px rgba(5,5,5,.25)}
+.artigo__aside .toc ol{columns:1;list-style:none;padding:0;margin:0}
+.artigo__aside .toc li{margin:0;font-size:.93rem;line-height:1.45}
+.artigo__aside .toc li+li{margin-top:.55rem}
+.artigo__aside .toc a{display:block;border:0;border-left:2px solid transparent;padding-left:.75rem;margin-left:-.25rem;color:var(--ink-soft);transition:color .18s var(--ease),border-color .18s var(--ease)}
+.artigo__aside .toc a:hover{color:var(--red);border-color:var(--red)}
+.artigo__body{min-width:0}
+.artigo__body .section{padding-block:0}
+.artigo__body .section+.section{margin-top:clamp(2.2rem,4.5vw,3.4rem)}
+.artigo__body .section--panel{background:transparent;border-top:0}
+.artigo__body .container{padding-inline:0;max-width:none}
+.artigo__body .prose{max-width:none}
+.artigo__body .prose .body,.artigo__body .prose>p,.artigo__body .prose .answer,.artigo__body .deliver li,.artigo__body .prose li{max-width:72ch;font-size:1.09rem;line-height:1.76}
+.artigo__body .prose>.answer:first-child{font-size:clamp(1.15rem,1.6vw,1.3rem);line-height:1.6;color:var(--ink);border-left:3px solid var(--red);padding-left:1.25rem;max-width:66ch}
+.artigo__body .prose .h2{border-top:0;padding-top:0;font-size:clamp(1.55rem,2.6vw,2.05rem);margin-bottom:.6rem}
+.artigo__body .section__head{margin-bottom:1.2rem}
+.artigo__body .faq .a{max-width:72ch}
+.artigo__body .morelist{max-width:none}
+.artigo__body .prefsrc{margin-top:0}
+.artigo__body .related{margin-top:1.4rem}
+@media (max-width:900px){.artigo__grid{grid-template-columns:1fr;gap:1.8rem}.artigo__aside{position:static}.artigo__aside .toc ol{columns:2;column-gap:1.5rem}.artigo__aside .toc li{break-inside:avoid}}
+@media (max-width:620px){.artigo__aside .toc ol{columns:1}.artigo__body .prose .body,.artigo__body .prose>p,.artigo__body .prose .answer,.artigo__body .deliver li,.artigo__body .prose li{font-size:1.04rem;line-height:1.7}.artigo__capa img{border-radius:10px}.page-hero--artigo{padding-bottom:5.5rem}.artigo__capa{margin-top:-4rem}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
+/* reserva de altura ao teste de diagnóstico, para a secção seguinte não saltar */
+#quiz{min-height:26rem}
+@media (max-width:760px){#quiz{min-height:30rem}}
+
+/* ================= CASOS: luz, carril e brilho (2026-10-11) =================
+   Tudo em transform, opacity e background. Elementos decorativos fora do
+   fluxo, por isso sem deslocamento de layout. Desligado para quem pede
+   menos movimento. */
+.luz .page-hero{position:relative;overflow:hidden;isolation:isolate}
+.luz__a,.luz__b{position:absolute;pointer-events:none;z-index:-1;border-radius:50%;filter:blur(40px);will-change:transform}
+.luz__a{width:44rem;height:44rem;right:-14rem;top:-18rem;background:radial-gradient(closest-side,rgba(225,37,27,.16),rgba(225,37,27,0))}
+.luz__b{width:30rem;height:30rem;left:-10rem;bottom:-16rem;background:radial-gradient(closest-side,rgba(5,5,5,.07),rgba(5,5,5,0))}
+.luz .page-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(5,5,5,.07) 1px,transparent 1.2px);background-size:22px 22px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%)}
+@supports (animation-timeline: scroll()){
+  .luz__a{animation:luz-a linear both;animation-timeline:scroll();animation-range:0 120vh}
+  .luz__b{animation:luz-b linear both;animation-timeline:scroll();animation-range:0 120vh}
+  @keyframes luz-a{to{transform:translate3d(-6rem,10rem,0)}}
+  @keyframes luz-b{to{transform:translate3d(6rem,-4rem,0)}}
+}
+/* carril de capítulos */
+.rail{display:none}
+@media (min-width:1180px){
+  .rail{display:block;position:fixed;left:max(1.2rem,calc((100vw - 1180px) / 2 - 7.5rem));top:50%;transform:translateY(-50%);z-index:5;width:7rem}
+  .rail__line{position:absolute;left:.3rem;top:-.2rem;bottom:-.2rem;width:1px;background:var(--line)}
+  .rail__line::after{content:"";position:absolute;left:0;top:0;width:1px;height:100%;background:var(--red);transform:scaleY(0);transform-origin:top}
+  .rail__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.1rem}
+  .rail__list a{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--mute);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .25s var(--ease)}
+  .rail__dot{width:.6rem;height:.6rem;border-radius:50%;border:1px solid var(--line);background:var(--paper);box-shadow:0 0 0 0 rgba(225,37,27,0);transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .35s var(--ease)}
+  .rail__list a.is-on{color:var(--ink)}
+  .rail__list a.is-on .rail__dot{background:var(--red);border-color:var(--red);box-shadow:0 0 0 5px rgba(225,37,27,.14)}
+  .rail__list a:hover{color:var(--red)}
+  @supports (animation-timeline: scroll()){.rail__line::after{animation:rail-fill linear both;animation-timeline:scroll()}@keyframes rail-fill{to{transform:scaleY(1)}}}
+}
+/* linha que se desenha sob o sobretítulo de cada secção */
+.luz .section__head .eyebrow{position:relative;display:inline-block;padding-bottom:.45rem}
+.luz .section__head .eyebrow::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left}
+@supports (animation-timeline: view()){.luz .section__head .eyebrow::after{animation:traco linear both;animation-timeline:view();animation-range:entry 0% entry 40%}@keyframes traco{to{transform:scaleX(1)}}}
+/* brilho que segue o cursor nos cartões e nas barras de números */
+.luz .site,.luz div.proof .stat{--mx:50%;--my:50%;background-image:radial-gradient(24rem circle at var(--mx) var(--my),rgba(225,37,27,.10),transparent 60%);background-repeat:no-repeat;background-size:100% 100%;background-color:var(--paper)}
+.luz .site{background-blend-mode:normal}
+.luz .site:not(:hover),.luz div.proof .stat:not(:hover){background-image:none}
+.luz .site:hover{box-shadow:0 24px 44px -26px rgba(5,5,5,.42),0 0 0 1px rgba(225,37,27,.18),0 0 40px -10px rgba(225,37,27,.25)}
+.luz div.proof .stat:hover{box-shadow:inset 0 0 0 1px rgba(225,37,27,.14)}
+.luz .stat__v{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.luz__a,.luz__b,.rail__line::after,.luz .section__head .eyebrow::after{animation:none}.luz .section__head .eyebrow::after{transform:scaleX(1)}}
+
+/* telemóvel: grelha de sites numa só coluna, por cima da regra da coluna única */
+@media (max-width:760px){.estreito .sites{grid-template-columns:1fr}}
+
+/* Quadro comparativo (GEO e AEO). Fonte: ferramentas/paginas.css */
+.quadro{width:100%;max-width:none;border-collapse:collapse;margin:1.2rem 0 0;font-size:.95rem;line-height:1.5}
+.quadro th,.quadro td{text-align:left;vertical-align:top;padding:.7rem .8rem;border-bottom:1px solid var(--line)}
+.quadro th{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:500;border-bottom:1px solid var(--ink)}
+.quadro td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+.prose .quadro{max-width:none}
+.quadro-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.2rem}
+.quadro-wrap .quadro{margin-top:0}
+@media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
+    </style>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Chatbot de WhatsApp para empresas", "serviceType": "Montagem de assistentes de WhatsApp com IA", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "Chatbot de WhatsApp para pequenas empresas em Portugal: responde a clientes com a informação do seu negócio, passa ao humano quando sai do guião, e corre na nuvem em conta sua. Montado com n8n e a plataforma oficial da Meta.", "url": "https://wandofi.pt/automacoes/chatbot-whatsapp/"}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Preciso do WhatsApp Business API para ter um chatbot?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. O chatbot liga à plataforma de WhatsApp para empresas da Meta, que é a via oficial para um programa responder em nome do seu negócio. A conta é gratuita e trato da configuração: a aplicação na Meta, o número, a verificação da empresa e a ligação ao n8n."}}, {"@type": "Question", "name": "Posso usar o número que já tenho?", "acceptedAnswer": {"@type": "Answer", "text": "Pode, desde que esse número deixe de estar na aplicação WhatsApp ou WhatsApp Business do telemóvel, porque um número só pode estar numa das duas. Na prática, a maioria dos clientes prefere um número novo só para o assistente e mantém o pessoal como está."}}, {"@type": "Question", "name": "O chatbot pode responder mal?", "acceptedAnswer": {"@type": "Answer", "text": "Pode, e é por isso que as regras ficam em código, não só nas instruções. Só responde com o que está na base de conhecimento da empresa, não inventa preços nem prazos, avisa sobre a protecção de dados na primeira mensagem, e passa ao humano quando a pergunta sai do guião. Antes de ir para produção corre um guião de conversas reais."}}, {"@type": "Question", "name": "Quanto custa manter o chatbot por mês?", "acceptedAnswer": {"@type": "Answer", "text": "Em valores de referência de Outubro de 2026: a assinatura do n8n na nuvem, cerca de 20 euros por mês, mais o consumo do modelo de IA, que para algumas centenas de mensagens fica em cêntimos. As respostas dentro das 24 horas depois de o cliente escrever não têm custo na plataforma da Meta. A montagem é orçamentada à parte, depois do diagnóstico."}}, {"@type": "Question", "name": "O chatbot substitui uma pessoa?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Trata das perguntas que se repetem e do primeiro acolhimento, a qualquer hora, e entrega ao humano as conversas que pedem uma decisão. O ganho está nas horas que a equipa deixa de gastar a responder ao mesmo, e nos contactos que deixam de ficar sem resposta à noite e ao fim de semana."}}]}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Automações", "item": "https://wandofi.pt/automacoes/"}, {"@type": "ListItem", "position": 3, "name": "Chatbot de WhatsApp", "item": "https://wandofi.pt/automacoes/chatbot-whatsapp/"}]}</script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar para o conteúdo</a>
+    <header class="nav">
+      <div class="nav__inner">
+        <a class="nav__brand" href="/" aria-label="Wandofi PM · início">
+          <img src="/assets/wandofi-mark-90.webp" width="90" height="90" alt="" />
+          <span>Wandofi PM</span>
+        </a>
+        <span class="nav__status"><span class="nav__dot" aria-hidden="true"></span> Disponível para projecto</span>
+        <nav class="nav__links" aria-label="Navegação principal">
+          <a href="/#servicos">Serviços</a>
+          <a href="/casos/">Casos</a>
+          <a href="/blog/">Blog</a>
+        </nav>
+        <div class="nav__cta">
+          <a class="btn btn--red" data-cta="navegacao" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Marcar diagnóstico</a>
+        </div>
+        <details class="nav__toggle">
+          <summary aria-label="Abrir menu">Menu</summary>
+          <nav class="nav__panel" aria-label="Navegação móvel">
+            <a href="/#servicos">Serviços</a>
+            <a href="/casos/">Casos</a>
+            <a href="/blog/">Blog</a>
+            <a data-cta="menu-movel" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a>
+            <a data-cta="menu-movel" href="https://wa.me/351937733527?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Wandofi%20e%20queria%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">WhatsApp +351 937 733 527</a>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="main">
+      <section class="page-hero">
+        <div class="container">
+          <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/automacoes/">Automações</a><span class="sep">/</span><a href="/automacoes/chatbot-whatsapp/">Chatbot de WhatsApp</a></p>
+          <p class="eyebrow">Serviço · WhatsApp</p>
+          <h1 class="h1 page-hero__title">Chatbot de WhatsApp para empresas: responde, acolhe e passa ao humano.</h1>
+          <p class="lead page-hero__lead">Monto assistentes de WhatsApp para pequenas empresas em Portugal: respondem às perguntas que se repetem com a informação do seu negócio, recolhem o contacto, e entregam a conversa a uma pessoa quando sai do guião. Na plataforma oficial da Meta, a correr na nuvem em conta sua.</p>
+          <div class="page-hero__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a><a class="btn btn--ghost" href="#o-que-faz">Ver o que o assistente faz</a></div>
+          <dl class="page-hero__metas"><div><dt class="k">Canal</dt><dd class="v">Plataforma de WhatsApp para empresas da Meta, a via oficial</dd></div><div><dt class="k">Onde corre</dt><dd class="v">n8n na nuvem, em conta sua, com o histórico numa folha Google sua</dd></div><div><dt class="k">Custo de funcionamento</dt><dd class="v">Respostas nas 24 horas sem custo na Meta, mais a assinatura do n8n e cêntimos de IA</dd></div></dl>
+        </div>
+      </section>
+<section class="section"><div class="container"><div class="prose"><p class="answer">Um chatbot de WhatsApp é um programa que responde às mensagens que chegam ao número da sua empresa, com a informação que lhe deu e dentro de um guião. O que monto usa um modelo de IA para perceber a pergunta e escrever a resposta, mas só com o que está na base de conhecimento da empresa. Quando a conversa pede uma decisão, passa a uma pessoa e avisa.</p><p class="body">Construí o primeiro para a minha própria actividade e está a correr desde Setembro de 2026. Foi desenhado para ser clonado por cliente: muda a base de conhecimento, o tom e o número, e o resto fica. Sou uma pessoa, não uma plataforma: instalo em conta sua, documento, e fico para a afinação das primeiras semanas.</p></div></div></section>
+<section class="section section--panel" id="o-que-faz"><div class="container"><header class="section__head"><p class="eyebrow">O que faz</p><h2 class="h2">O que o assistente faz quando alguém escreve</h2></header><ul class="deliver"><li><b>Acolhe</b>: responde no minuto, a qualquer hora, e avisa sobre a protecção de dados na primeira mensagem.</li><li><b>Responde às perguntas que se repetem</b>: horários, serviços, preços que quiser publicar, como marcar, onde fica. Só com o que está na base de conhecimento.</li><li><b>Faz triagem</b>: percebe se é um cliente actual, um contacto novo ou um fornecedor, e segue o guião certo para cada um.</li><li><b>Recolhe o contacto</b>: nome, assunto e a melhor forma de ligar, e guarda numa folha sua.</li><li><b>Passa ao humano</b>: quando a pergunta sai do guião, quando a pessoa pede para falar com alguém, ou quando a conversa fica difícil. Avisa por email e marca a conversa como sua até a devolver.</li><li><b>Guarda o histórico</b>: cada conversa fica registada numa folha Google da empresa, não na memória do modelo.</li></ul></div></section>
+<section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Limites</p><h2 class="h2">O que o assistente não faz, de propósito</h2></header><ul class="deliver"><li><b>Não inventa</b>: não dá preços, prazos nem promessas que não estejam escritos na base de conhecimento. Se não sabe, diz que vai passar a alguém.</li><li><b>Não inicia conversas</b>: só responde a quem escreve. Por isso as mensagens ficam dentro das 24 horas em que a Meta não cobra, e a conta de mensagens é praticamente zero.</li><li><b>Não decide por si</b>: marcações, reclamações e pedidos fora do comum vão para uma pessoa.</li><li><b>Não guarda dados onde não deve</b>: o histórico fica numa folha da empresa, as credenciais ficam no n8n, e a política de privacidade do seu site passa a dizer que existe um assistente.</li></ul></div></section>
+<section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">Por dentro</p><h2 class="h2">Como está montado</h2></header><div class="prose"><p class="body">A mensagem entra pela plataforma da Meta e chega a um fluxo no <a href="/blog/n8n-o-que-e-para-que-serve/">n8n</a> com 28 passos. O fluxo verifica se a mensagem é repetida, lê o estado do contacto numa folha, decide se a conversa está em modo humano, procura a resposta na base de conhecimento, pede ao modelo de IA que a escreva no tom da empresa, envia, e regista. Antes de ir para produção correu 41 testes automáticos à lógica e um guião de dez conversas reais a partir do telemóvel.</p><p class="body">A base de conhecimento é uma folha com perguntas e respostas, que a empresa mantém sem precisar de mim. Começa com cerca de vinte linhas e cresce com as perguntas que o assistente não soube responder, que ficam registadas para isso mesmo.</p></div></div></section>
+<section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Como funciona</p><h2 class="h2">Da primeira conversa ao assistente a correr</h2></header><ul class="deliver"><li><b>Diagnóstico de 30 minutos</b>: que perguntas chegam, quem responde hoje, o que pode ser respondido sem uma pessoa.</li><li><b>Base de conhecimento</b>: escrevo as primeiras vinte a trinta perguntas e respostas consigo, no tom da empresa.</li><li><b>Conta na Meta e número</b>: trato da aplicação, da verificação da empresa e da ligação do número.</li><li><b>Montagem e testes</b>: o fluxo no n8n, as regras em código, e o guião de conversas reais.</li><li><b>Entrega e afinação</b>: em conta sua, documentado, e fico nas primeiras semanas a ler as conversas e a afinar as respostas.</li></ul></div></section>
+<section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Relacionado</p><h2 class="h2">Ver também</h2></header><div class="related"><a href="/automacoes/">Automações</a><a href="/automacoes/agentes-de-ia/">Agentes de IA à medida</a><a href="/blog/n8n-o-que-e-para-que-serve/">n8n: o que é e para que serve</a><a href="/diagnostico/">Teste de diagnóstico</a></div></div></section>
+<section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Perguntas frequentes</p><h2 class="h2">Perguntas frequentes</h2></header><div class="faq"><details><summary>Preciso do WhatsApp Business API para ter um chatbot?</summary><div class="a"><p>Sim. O chatbot liga à plataforma de WhatsApp para empresas da Meta, que é a via oficial para um programa responder em nome do seu negócio. A conta é gratuita e trato da configuração: a aplicação na Meta, o número, a verificação da empresa e a ligação ao n8n.</p></div></details><details><summary>Posso usar o número que já tenho?</summary><div class="a"><p>Pode, desde que esse número deixe de estar na aplicação WhatsApp ou WhatsApp Business do telemóvel, porque um número só pode estar numa das duas. Na prática, a maioria dos clientes prefere um número novo só para o assistente e mantém o pessoal como está.</p></div></details><details><summary>O chatbot pode responder mal?</summary><div class="a"><p>Pode, e é por isso que as regras ficam em código, não só nas instruções. Só responde com o que está na base de conhecimento da empresa, não inventa preços nem prazos, avisa sobre a protecção de dados na primeira mensagem, e passa ao humano quando a pergunta sai do guião. Antes de ir para produção corre um guião de conversas reais.</p></div></details><details><summary>Quanto custa manter o chatbot por mês?</summary><div class="a"><p>Em valores de referência de Outubro de 2026: a assinatura do n8n na nuvem, cerca de 20 euros por mês, mais o consumo do modelo de IA, que para algumas centenas de mensagens fica em cêntimos. As respostas dentro das 24 horas depois de o cliente escrever não têm custo na plataforma da Meta. A montagem é orçamentada à parte, depois do diagnóstico.</p></div></details><details><summary>O chatbot substitui uma pessoa?</summary><div class="a"><p>Não. Trata das perguntas que se repetem e do primeiro acolhimento, a qualquer hora, e entrega ao humano as conversas que pedem uma decisão. O ganho está nas horas que a equipa deixa de gastar a responder ao mesmo, e nos contactos que deixam de ficar sem resposta à noite e ao fim de semana.</p></div></details></div></div></section>
+      <section class="section close" id="contacto">
+        <div class="container">
+          <div class="close__grid">
+            <div class="close__copy">
+              <p class="eyebrow">Próximo passo</p>
+              <h2 class="h2">Quer um assistente a responder no WhatsApp da sua empresa?</h2>
+              <p class="lead">Começamos por um diagnóstico de 30 minutos. Saímos de lá com as perguntas que o assistente deve responder e o que falta para o ligar.</p>
+            </div>
+            <div class="close__action">
+              <a class="btn btn--red btn--wide" data-cta="fecho" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a>
+              <a class="close__email" data-cta="fecho" href="mailto:geral@wandofi.pt?subject=Diagn%C3%B3stico%20Wandofi">geral@wandofi.pt</a>
+              <a class="close__whats" data-cta="fecho" href="https://wa.me/351937733527?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Wandofi%20e%20queria%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg>WhatsApp +351 937 733 527</a>
+              <p class="close__micro">Prefere escrever? WhatsApp ou email, chega ao mesmo sítio e respondo em 24 horas.</p>
+            </div>
+          </div>
+          <div class="prefsrc">
+            <div class="prefsrc__copy">
+              <p class="prefsrc__label">Fonte preferida no Google</p>
+              <p class="prefsrc__pitch">Se acompanha o que escrevo sobre SEO e negócio digital, pode pedir ao Google para dar prioridade à Wandofi nos seus resultados, nas notícias em destaque e nas respostas de IA da Pesquisa.</p>
+            </div>
+            <div class="prefsrc__action">
+              <a class="btn btn--ghost" href="https://www.google.com/preferences/source?q=wandofi.pt" target="_blank" rel="noopener">Tornar a Wandofi fonte preferida <span class="arrow" aria-hidden="true">↗</span></a>
+              <p class="prefsrc__note">Abre as definições do Google numa nova janela. A escolha fica guardada na sua conta Google e não me dá acesso a dados seus.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid stagger">
+          <div class="footer__brand">
+            <img class="footer__logo" src="/assets/wandofi-pm-logo-dark-280.webp" width="280" height="219" loading="lazy" decoding="async" alt="Wandofi PM · Project Management" />
+            <p class="footer__tagline">Consultor de SEO e project manager. Lisboa e remoto, para todo o país.</p>
+            <ul class="footer__social" aria-label="Redes">
+              <li><a href="https://www.linkedin.com/in/mauro-cordeiro-5162a1293/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+              </a></li>
+              <li><a href="https://github.com/Wandofi" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+              </a></li>
+              <li><a href="https://www.instagram.com/_wandofi/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              </a></li>
+            </ul>
+          </div>
+
+          <nav aria-labelledby="ft-serv">
+            <p class="footer__title" id="ft-serv">Serviços</p>
+            <ul class="footer__list">
+              <li><a href="/seo/">SEO</a></li>
+              <li><a href="/seo/consultor-seo/">Consultor de SEO</a></li>
+              <li><a href="/criacao-de-sites/">Criação de sites</a></li>
+              <li><a href="/gestao-de-trafego/">Gestão de tráfego</a></li>
+              <li><a href="/gestao-de-trafego/chatgpt-ads/">Anúncios no ChatGPT</a></li>
+              <li><a href="/automacoes/">Automações</a></li>
+            </ul>
+          </nav>
+
+          <nav aria-labelledby="ft-site">
+            <p class="footer__title" id="ft-site">Site</p>
+            <ul class="footer__list">
+              <li><a href="/casos/">Casos</a></li>
+              <li><a href="/blog/">Blog</a></li>
+              <li><a href="/sobre/">Sobre</a></li>
+              <li><a href="/seo/sectores/">Sectores</a></li>
+              <li><a href="/seo/geo-aeo/">GEO e AEO</a></li>
+              <li><a href="/privacidade/">Privacidade</a></li>
+              <li><a href="/termos/">Termos</a></li>
+            </ul>
+          </nav>
+
+          <nav aria-labelledby="ft-cont">
+            <p class="footer__title" id="ft-cont">Contacto</p>
+            <ul class="footer__list">
+              <li><a data-cta="rodape" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Marcar diagnóstico</a></li>
+              <li><a href="/diagnostico/">Teste de diagnóstico</a></li>
+              <li><a data-cta="rodape" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></li>
+              <li><a data-cta="rodape" href="https://wa.me/351937733527?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Wandofi%20e%20queria%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">WhatsApp +351 937 733 527</a></li>
+              <li><a href="/contactos/">Página de contactos</a></li>
+              <li><a href="/seo/agencia-seo-lisboa/">Lisboa</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="footer__base">
+          <p class="footer__line">© 2026 Wandofi PM · wandofi.pt</p>
+          <a class="footer__zaask" target="_blank" rel="noopener" href="https://www.zaask.pt/user/wandofipm"><img src="/assets/zaask-selo.svg" width="112" height="28" alt="Wandofi PM no Zaask" loading="lazy" decoding="async" /></a>
+        </div>
+      </div>
+    </footer>
+
+<div class="dock" role="group" aria-label="Acções rápidas">
+      <a class="btn btn--red" data-cta="barra-movel" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Marcar diagnóstico</a>
+      <a class="btn btn--ghost" data-cta="barra-movel" href="https://wa.me/351937733527?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Wandofi%20e%20queria%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener" aria-label="Falar por WhatsApp">WhatsApp</a>
+    </div>
+<script>
+    /* Medicao de conversao. Corre sempre, mesmo com movimento reduzido.
+       Eventos no GA4: clique_diagnostico, contacto_email, fonte_preferida.
+       O parametro "local" diz de que ponto da pagina veio o clique. */
+    (function(){
+      function envia(nome, local){
+        if (typeof gtag !== "function") return;
+        gtag("event", nome, { local: local || "desconhecido", page_location: location.href });
+      }
+      document.addEventListener("click", function(ev){
+        var a = ev.target.closest("a[href]");
+        if (!a) return;
+        var href = a.getAttribute("href") || "";
+        if (href.indexOf("calendly.com") > -1)            envia("clique_diagnostico", a.dataset.cta);
+        else if (href.indexOf("mailto:") === 0)           envia("contacto_email", a.dataset.cta);
+        else if (href.indexOf("wa.me") > -1)            envia("contacto_whatsapp", a.dataset.cta);
+        else if (href.indexOf("preferences/source") > -1) envia("fonte_preferida", "fecho");
+      }, { passive: true });
+    })();
+    </script>
+  <div class="cookies" id="cookies" role="region" aria-label="Cookies" hidden>
+  <p class="cookies__label">Cookies · uma escolha, cinco segundos</p>
+  <p class="cookies__title">Posso contar a sua visita?</p>
+  <p class="cookies__text">Uso o Google Analytics só para ver que páginas são lidas e de onde chegam as visitas. Sem anúncios, sem perfis, sem venda de dados. Pode mudar de ideias quando quiser na <a href="/privacidade/#cookies">política de privacidade</a>.</p>
+  <div class="cookies__actions"><button type="button" class="btn btn--red" data-cookies="aceite">Aceitar</button><button type="button" class="btn btn--ghost" data-cookies="recusado">Recusar</button></div>
+</div>
+<script>
+(function(){
+  var el=document.getElementById('cookies'); if(!el) return;
+  var c=window.wandofiConsent; if(c==='aceite'||c==='recusado') return;
+  el.hidden=false;
+  setTimeout(function(){ el.classList.add('is-on'); }, 60);
+  el.addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-cookies]'); if(!b) return;
+    var v=b.getAttribute('data-cookies');
+    try{ localStorage.setItem('wandofi_consent', JSON.stringify({v:v,t:Date.now()})); }catch(e){}
+    window.wandofiConsent=v;
+    if(v==='aceite' && window.wandofiCarregaGA){ window.wandofiCarregaGA(); }
+    el.classList.remove('is-on'); setTimeout(function(){ el.hidden=true; },450);
+    if(window.wandofiMostraMedicao){ window.wandofiMostraMedicao(); }
+  });
+})();
+</script>
+</body>
+</html>
