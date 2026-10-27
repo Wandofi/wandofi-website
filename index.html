@@ -85,8 +85,14 @@
   --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
   --container:1180px;
-  --gutter:clamp(1.15rem,5vw,3rem);
-  --sec:clamp(2.9rem,5.4vw,4.6rem);
+  --gutter:clamp(1.25rem,5vw,3rem);
+  /* Sistema de medidas (27/10/2026): uma caixa de leitura, uma escala de espaco.
+     --measure: caixa dos blocos de texto (titulos, prosa, FAQ). --text: linha de texto.
+     --s1..--s6: escala de 8 px para margens internas. --sec: respiro entre seccoes. */
+  --measure:46rem;
+  --text:68ch;
+  --s1:.5rem;--s2:1rem;--s3:1.5rem;--s4:2rem;--s5:3rem;--s6:4.5rem;
+  --sec:clamp(3.5rem,2.25rem + 3.2vw,5.25rem);
   --r:8px;
   --ease:cubic-bezier(.22,.61,.36,1);
 }
@@ -113,19 +119,19 @@ a{color:inherit}
 .section{padding-block:var(--sec)}
 [id]{scroll-margin-top:5rem}
 .section--panel{background:var(--paper);border-top:1px solid var(--line-soft)}
-.section--tight{padding-block:clamp(1.7rem,3.4vw,2.7rem)}
+.section--tight{padding-block:clamp(2rem,1.25rem + 2vw,3rem)}
 .section--line{border-top:1px solid var(--line-soft)}
 
 /* ---------- Tipo ---------- */
 .eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin:0 0 .7rem}
-.h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.45rem,5.8vw,4.35rem);line-height:1.03;letter-spacing:-.022em;color:var(--ink);margin:0}
-.h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,3.4vw,2.75rem);line-height:1.1;letter-spacing:-.018em;color:var(--ink);margin:0}
-.h3{font-family:var(--ui);font-weight:600;font-size:1.1rem;line-height:1.35;letter-spacing:-.01em;color:var(--ink);margin:0 0 .55rem}
-.lead{font-size:clamp(1.08rem,1.5vw,1.22rem);line-height:1.55;color:var(--ink-soft);margin:0}
-.body{margin:0;color:var(--mute);font-size:1rem;line-height:1.62}
-.section__head{margin-bottom:clamp(1.8rem,3.5vw,2.8rem);max-width:40rem}
+.h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.5rem,1.5rem + 3.9vw,4.25rem);line-height:1.03;letter-spacing:-.022em;color:var(--ink);margin:0}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,1.2rem + 1.9vw,2.6rem);line-height:1.1;letter-spacing:-.018em;color:var(--ink);margin:0}
+.h3{font-family:var(--ui);font-weight:600;font-size:1.2rem;line-height:1.3;letter-spacing:-.01em;color:var(--ink);margin:0 0 .55rem}
+.lead{font-size:clamp(1.15rem,1rem + .5vw,1.3rem);line-height:1.5;color:var(--ink-soft);margin:0}
+.body{margin:0;color:var(--mute);font-size:1.0625rem;line-height:1.65}
+.section__head{margin-bottom:clamp(1.75rem,1.25rem + 1.6vw,2.75rem);max-width:var(--measure)}
 .section__head .h2{margin-bottom:.6rem}
-.section__head .body{max-width:52ch}
+.section__head .body{max-width:var(--text)}
 p a:not(.btn){color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;transition:text-decoration-color .18s var(--ease),color .18s var(--ease)}
 p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 
@@ -241,7 +247,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .hero__inner{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
 .hero__h1{margin-bottom:1.1rem;max-width:15ch}
 .hero__h1 em{font-style:italic;color:var(--red)}
-.hero__lead{max-width:44ch;margin-bottom:1.6rem}
+.hero__lead{max-width:48ch;margin-bottom:1.6rem}
 .hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
 .hero__micro{font-size:.9rem;color:var(--mute);margin:.85rem 0 0;max-width:42ch}
 .hero__trust{display:flex;flex-wrap:wrap;gap:.45rem 1.4rem;margin:1.5rem 0 0;padding:0;list-style:none}
@@ -280,7 +286,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .signal__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,2rem)}
 .signal__list li{border-top:1px solid var(--line);padding-top:1rem}
 .signal__num{font-family:var(--mono);font-size:.74rem;color:var(--red);letter-spacing:.1em;display:block;margin-bottom:.5rem}
-.signal__list p{margin:0;font-size:1rem;line-height:1.55;color:var(--ink-soft)}
+.signal__list p{margin:0;font-size:1.0625rem;line-height:1.6;color:var(--ink-soft)}
 @media (max-width:760px){.signal__list{grid-template-columns:1fr;gap:1rem}}
 
 /* ---------- Servicos ---------- */
@@ -310,7 +316,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .band{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(1.8rem,3.5vw,2.6rem)}
 .band__grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.4rem 2.5rem}
 .band .h2{color:#fff;max-width:20ch}
-.band p{color:#c9c9c9;margin:.7rem 0 0;max-width:46ch;font-size:1rem}
+.band p{color:#c9c9c9;margin:.7rem 0 0;max-width:48ch;font-size:1.0625rem}
 .band__action{flex:0 0 auto;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
 .band__note{font-size:.85rem;color:#9a9a9a;margin:0}
 @media (max-width:820px){.band__action,.band__action .btn{width:100%}}
@@ -351,18 +357,19 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 /* ---------- FAQ ---------- */
 .faq{border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line)}
+.faq{max-width:var(--measure)}
 .faq summary{list-style:none;cursor:pointer;padding:1.15rem 2.2rem 1.15rem 0;position:relative;
-  font-weight:600;color:var(--ink);font-size:1.02rem;line-height:1.4}
+  font-weight:600;color:var(--ink);font-size:1.0625rem;line-height:1.4}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";position:absolute;right:.2rem;top:1rem;color:var(--red);font-size:1.3rem;line-height:1;font-weight:400}
 .faq details[open] summary::after{content:"\2013"}
 .faq .a{padding:0 0 1.25rem}
-.faq .a{max-width:64ch}
-.faq .a p{margin:0 0 .7rem;color:var(--mute);font-size:1rem;line-height:1.62}
+.faq .a{max-width:var(--text)}
+.faq .a p{margin:0 0 .7rem;color:var(--mute);font-size:1.0625rem;line-height:1.65}
 .faq .a p:last-child{margin-bottom:0}
 
 /* ---------- Sobre ---------- */
-.about__text{font-size:1.08rem;line-height:1.66;color:var(--ink-soft);margin:0;max-width:62ch}
+.about__text{font-size:1.0625rem;line-height:1.65;color:var(--ink-soft);margin:0;max-width:var(--text)}
 
 /* ---------- Fecho: CTA final + fonte preferida ----------
    Um so bloco. As duas linhas partilham a mesma grelha, por isso
@@ -371,7 +378,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .close{border-top:1px solid var(--line-soft)}
 .close__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:1.6rem 3rem;align-items:end}
 .close__copy .h2{max-width:18ch;margin-bottom:.8rem}
-.close__copy .lead{max-width:46ch}
+.close__copy .lead{max-width:48ch}
 .close__action{display:flex;flex-direction:column;gap:.85rem;align-items:stretch}
 .close__email{font-family:var(--mono);font-size:.95rem;color:var(--ink);text-decoration:none;
   border-bottom:1px solid var(--line);padding-bottom:3px;align-self:flex-start;
