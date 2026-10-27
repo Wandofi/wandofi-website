@@ -247,22 +247,22 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 @media (max-width:340px){.nav__brand span{display:none}}
 
 /* ---------- Hero ---------- */
-.hero{padding-block:clamp(2.5rem,5vw,4.5rem) clamp(2.5rem,5vw,4rem);position:relative;overflow:hidden}
+.hero{padding-block:clamp(1.6rem,2.6vw,2.4rem) clamp(1.6rem,2.6vw,2.4rem);position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:auto -20% -40% 40%;height:70%;
   background:radial-gradient(60% 60% at 50% 50%,rgba(225,37,27,.07),transparent 70%);pointer-events:none}
 .hero__inner{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
-.hero__h1{margin-bottom:1.6rem;max-width:none;font-size:clamp(3.2rem,8.6vw,8.2rem);line-height:.9;letter-spacing:-.035em}
+.hero__h1{margin-bottom:1.2rem;max-width:none;font-size:clamp(3.2rem,7vw,6.6rem);line-height:.9;letter-spacing:-.035em}
 
 .hero__h1 em{font-style:italic;color:var(--red)}
-.hero__lead{max-width:36ch;margin-bottom:1.6rem;font-size:clamp(1.2rem,1rem + .9vw,1.6rem)}
+.hero__lead{max-width:40ch;margin-bottom:1.3rem;font-size:clamp(1.2rem,1rem + .7vw,1.45rem)}
 .hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
-.hero__micro{font-size:.9rem;color:var(--mute);margin:.85rem 0 0;max-width:42ch}
-.hero__trust{display:flex;flex-wrap:wrap;gap:.45rem 1.4rem;margin:1.5rem 0 0;padding:0;list-style:none}
+.hero__micro{font-size:.9rem;color:var(--mute);margin:.7rem 0 0;max-width:46ch}
+.hero__trust{display:flex;flex-wrap:wrap;gap:.45rem 1.4rem;margin:1.1rem 0 0;padding:0;list-style:none}
 .hero__trust li{font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--mute);display:flex;align-items:center;gap:.5rem}
 .hero__trust li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--red);flex:0 0 auto}
 /* aro vermelho: envolve o corpo todo, mais largo do que o retrato,
    como na versao escura. So a cabeca fica por cima do arco. */
-.hero__portrait{margin:0 auto;position:relative;width:100%;max-width:23rem}
+.hero__portrait{margin:0 auto;position:relative;width:100%;max-width:20rem;align-self:start}
 .hero__portrait::before{content:"";position:absolute;left:-17%;right:-17%;bottom:0;height:70%;
   background:linear-gradient(to top,rgba(225,37,27,.09),rgba(225,37,27,0));
   border:1px solid rgba(225,37,27,.32);border-bottom:0;border-radius:2rem 2rem 0 0}
