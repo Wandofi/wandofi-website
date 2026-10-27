@@ -673,7 +673,8 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 .deliver{list-style:none;margin:0;padding:0;
   display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem clamp(1.6rem,3vw,2.4rem)}
 .deliver li{position:relative;min-width:0;padding-left:1.4rem;font-size:1.0625rem;line-height:1.65;color:var(--mute);overflow-wrap:anywhere}
-.deliver li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:2px;background:var(--red)}
+/* marcador: hexagono pequeno em vez do traco (pedido do Mauro a 27/10/2026) */
+.deliver li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:8px;background:var(--red);clip-path:polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%)}
 .deliver li b{color:var(--ink);font-weight:600}
 
 /* Ligacoes para outras paginas */
