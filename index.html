@@ -536,6 +536,65 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 .medicao__accoes{display:flex;flex-wrap:wrap;gap:.6rem;margin:.4rem 0 0}
 @media (max-width:760px){.cookies{left:.75rem;right:.75rem;width:auto;max-width:none;transform:translateY(12px);bottom:calc(5.4rem + env(safe-area-inset-bottom))}.cookies.is-on{transform:none}}
 @media (prefers-reduced-motion:reduce){.cookies{transition:none}}
+/* ================= DIFFERENCE MAKER (27/10/2026) =================
+   Receita escolhida pelo Mauro: manual-de-nave 3 (so na pagina inicial;
+   2 nas internas), toque-humano 1, tipografia-cinetica 1. Orcamento 5.
+   Tudo scoped por data-dm no <main>: sem o atributo, nada disto actua.
+   Vive no index.html (fonte) porque a pagina inicial tambem usa as camadas;
+   o refresca_css.py leva-o as outras paginas.
+   Adaptado de ~/.claude/skills/difference-maker/assets/dm-tokens.css
+   aos tokens da marca (--red, --ink, --mono). */
+[data-dm]{--dm-acento:var(--red);--dm-tinta:var(--ink)}
+/* manual-de-nave 2: cotas (linhas de medida com etiqueta em mono) */
+[data-dm*="manual-de-nave:"] .dm-cotas{position:relative}
+[data-dm*="manual-de-nave:"] .dm-cotas::after{content:attr(data-cota);display:block;margin-top:.9rem;padding-top:.55rem;
+  font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);
+  background:linear-gradient(var(--line),var(--line)) left top / 100% 1px no-repeat}
+[data-dm*="manual-de-nave:"] .dm-cotas::before{content:"";position:absolute;left:0;bottom:1.45rem;width:1px;height:7px;background:var(--ink);opacity:.5}
+[data-dm*="manual-de-nave:"] .dm-cotas{padding-bottom:0}
+[data-dm*="manual-de-nave:"] .dm-cotas .dm-tick{position:absolute;right:0;bottom:1.45rem;width:1px;height:7px;background:var(--ink);opacity:.5}
+/* manual-de-nave 2: marcas de cota nas tres metas do cabecalho das paginas internas */
+[data-dm*="manual-de-nave:"] .page-hero__metas div{position:relative}
+[data-dm*="manual-de-nave:"] .page-hero__metas div::before{content:"";position:absolute;left:0;top:-1.3rem;width:1px;height:9px;background:var(--ink);opacity:.45}
+[data-dm*="manual-de-nave:"] .page-hero__metas .k::before{content:"";display:inline-block;width:.7em;height:1px;background:rgba(5,5,5,.4);vertical-align:middle;margin-right:.45em}
+/* manual-de-nave 3: grelha blueprint de fundo (so onde a classe estiver) */
+:is([data-dm~="manual-de-nave:3"],[data-dm~="manual-de-nave:4"]) .dm-blueprint{position:relative}
+:is([data-dm~="manual-de-nave:3"],[data-dm~="manual-de-nave:4"]) .dm-blueprint::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(5,5,5,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(5,5,5,.07) 1px,transparent 1px);background-size:24px 24px;
+  -webkit-mask-image:radial-gradient(70% 90% at 70% 40%,rgba(0,0,0,.9),transparent 100%);mask-image:radial-gradient(70% 90% at 70% 40%,rgba(0,0,0,.9),transparent 100%)}
+:is([data-dm~="manual-de-nave:3"],[data-dm~="manual-de-nave:4"]) .dm-blueprint>*{position:relative;z-index:1}
+/* manual-de-nave 3: diagrama explodido do servico */
+.diagrama{margin:clamp(2rem,1.25rem + 2vw,3rem) 0 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(1.5rem,1rem + 2vw,3rem);align-items:center;
+  border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.25rem,1rem + 1.5vw,2.25rem);overflow:hidden}
+.diagrama__ref{grid-column:1/-1;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin:0 0 .25rem;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.diagrama__ref b{font-weight:500;color:var(--ink)}
+.diagrama__svg{display:block;width:100%;height:auto;max-width:30rem;margin-inline:auto}
+.diagrama__svg .placa{fill:var(--paper);stroke:var(--ink);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.diagrama__svg .placa--topo{fill:rgba(225,37,27,.06);stroke:var(--red)}
+.diagrama__svg .guia{stroke:var(--ink);stroke-width:1;stroke-dasharray:3 4;opacity:.35;vector-effect:non-scaling-stroke}
+.diagrama__svg .chamada{stroke:var(--ink);stroke-width:1;opacity:.5;vector-effect:non-scaling-stroke}
+.diagrama__svg .no{fill:var(--red)}
+.diagrama__svg text{font-family:var(--mono);font-size:11px;letter-spacing:.08em;fill:var(--mute)}
+.diagrama__lista{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.diagrama__lista li{display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:.2rem .9rem;align-items:baseline;padding-top:.8rem;
+  background:linear-gradient(var(--line),var(--line)) left top / 100% 1px no-repeat;position:relative}
+.diagrama__lista li::before{content:"";position:absolute;left:0;top:-4px;width:1px;height:9px;background:var(--ink);opacity:.45}
+.diagrama__num{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.14em;color:var(--red)}
+.diagrama__nome{font-weight:600;color:var(--ink);font-size:1.0625rem}
+.diagrama__desc{grid-column:2;margin:0;font-size:.95rem;line-height:1.55;color:var(--mute)}
+.diagrama__cap{grid-column:1/-1;margin:.25rem 0 0;font-size:.9rem;line-height:1.5;color:var(--mute);max-width:var(--text)}
+.js .diagrama.reveal .placa,.js .diagrama.reveal .guia,.js .diagrama.reveal .chamada{stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 1.6s var(--ease)}
+.js .diagrama.reveal .guia{stroke-dasharray:3 4}
+.js .diagrama.reveal.is-in .placa,.js .diagrama.reveal.is-in .chamada{stroke-dashoffset:0}
+.js .diagrama.reveal.is-in .placa:nth-of-type(2){transition-delay:.15s}.js .diagrama.reveal.is-in .placa:nth-of-type(3){transition-delay:.3s}.js .diagrama.reveal.is-in .placa:nth-of-type(4){transition-delay:.45s}
+@media (max-width:860px){.diagrama{grid-template-columns:1fr}.diagrama__svg{max-width:22rem}}
+/* toque-humano 1: um sublinhado a mao numa palavra do titulo principal */
+[data-dm*="toque-humano:"] .dm-rabisco{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9 C 40 3, 80 13, 120 6 S 180 4, 198 8' fill='none' stroke='%23e1251b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") bottom / 100% .28em no-repeat;padding-bottom:.08em}
+/* tipografia-cinetica 1: a mesma palavra entra com mascara ao carregar */
+@keyframes dm-mascara{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+[data-dm*="tipografia-cinetica:"] .dm-cinetico{display:inline-block;animation:dm-mascara .9s cubic-bezier(.2,.7,.2,1) .15s both}
+@media (prefers-reduced-motion:reduce){[data-dm] .dm-cinetico{animation:none}.js .diagrama.reveal .placa,.js .diagrama.reveal .chamada{stroke-dasharray:none;stroke-dashoffset:0;transition:none}}
 </style>
 
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "name": "Mauro Cordeiro", "jobTitle": "Consultor de SEO e Project Manager", "worksFor": {"@type": "Organization", "name": "Wandofi PM"}, "url": "https://wandofi.pt/", "email": "geral@wandofi.pt", "knowsAbout": ["SEO técnico", "Consultoria de SEO", "Migração de sites", "Automação de processos", "LMS", "Estrutura de negócio"]}, {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt", "description": "Consultor de SEO em Lisboa. SEO técnico, criação e migração de sites e automações para negócios em Portugal.", "logo": "https://wandofi.pt/assets/wandofi-pm-logo-dark.webp", "image": "https://wandofi.pt/assets/og-card.jpg", "sameAs": ["https://www.linkedin.com/in/mauro-cordeiro-5162a1293/", "https://github.com/Wandofi", "https://www.instagram.com/_wandofi/"], "areaServed": "Portugal", "serviceType": ["Consultoria de SEO", "SEO técnico", "Criação de sites", "Migração de sites", "Automações e integrações", "Estrutura e burocracia", "Plataformas e LMS"], "founder": {"@type": "Person", "name": "Mauro Cordeiro"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa trabalhar consigo?", "acceptedAnswer": {"@type": "Answer", "text": "O diagnóstico é uma conversa de 30 minutos e serve para perceber o que faz falta. O orçamento vem depois, fechado e por projecto, sem retainer obrigatório e sem propostas de vinte páginas."}}, {"@type": "Question", "name": "Em quanto tempo vejo resultados de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Correcções técnicas e de indexação podem aparecer em semanas. Ganhos de posição em pesquisas com concorrência levam tipicamente três a seis meses. Quem prometer primeira página em trinta dias está a vender outra coisa."}}, {"@type": "Question", "name": "O que precisa de mim para começar?", "acceptedAnswer": {"@type": "Answer", "text": "Acesso de leitura ao Google Analytics e ao Search Console, se existirem, e acesso ao site. Se não existir nada montado, isso passa a ser o primeiro ponto do plano."}}]}]}</script>
@@ -573,15 +632,15 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
       </div>
     </header>
 
-    <main id="main">
+    <main id="main" data-dm="manual-de-nave:3 toque-humano:1 tipografia-cinetica:1">
 
       <!-- ============ 1. HERO ============ -->
-      <section class="hero">
+      <section class="hero dm-blueprint">
         <div class="container">
           <div class="hero__inner">
             <div>
               <p class="eyebrow">SEO · Sites · Automações · Lisboa</p>
-              <h1 class="h1 hero__h1">Consultor de SEO que <em>constrói</em> o que recomenda.</h1>
+              <h1 class="h1 hero__h1">Consultor de SEO que <em class="dm-rabisco dm-cinetico">constrói</em> o que recomenda.</h1>
               <p class="lead hero__lead">SEO e project management para negócios em formação: ponho o seu negócio a aparecer no Google e monto a estrutura que aguenta o que vem a seguir. Sem agência pelo meio e sem avença obrigatória.</p>
 
               <div class="hero__actions">
@@ -731,22 +790,44 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
             <h2 class="h2">Do diagnóstico à entrega</h2>
           </header>
           <div class="steps stagger">
-            <article class="step">
+            <article class="step dm-cotas" data-cota="30 min · videochamada">
               <span class="step__num">01</span>
               <h3 class="h3">Diagnóstico</h3>
               <p class="body">Conversa guiada e leitura dos documentos, ferramentas e bloqueios.</p>
             </article>
-            <article class="step">
+            <article class="step dm-cotas" data-cota="2 a 8 semanas">
               <span class="step__num">02</span>
               <h3 class="h3">Sprint</h3>
               <p class="body">Priorização, implementação e coordenação dos fornecedores.</p>
             </article>
-            <article class="step">
+            <article class="step dm-cotas" data-cota="documentado · sem retainer">
               <span class="step__num">03</span>
               <h3 class="h3">Entrega</h3>
               <p class="body">Sistema pronto, decisões documentadas e próximos passos claros.</p>
             </article>
           </div>
+          <figure class="diagrama reveal dm-blueprint" aria-labelledby="diagrama-cap">
+            <p class="diagrama__ref"><span>Ref <b>WPM-INF-04</b> · vista explodida</span><span>Quatro camadas · escala 1:1</span></p>
+            <svg class="diagrama__svg" viewBox="0 0 480 400" aria-hidden="true" focusable="false">
+              <line class="guia" x1="60" y1="60" x2="60" y2="360"/><line class="guia" x1="240" y1="10" x2="240" y2="300"/><line class="guia" x1="420" y1="60" x2="420" y2="360"/>
+              <path class="placa" d="M60 300 L240 240 L420 300 L240 360 Z"/>
+              <path class="placa" d="M60 230 L240 170 L420 230 L240 290 Z"/>
+              <path class="placa" d="M60 160 L240 100 L420 160 L240 220 Z"/>
+              <path class="placa placa--topo" d="M60 90 L240 30 L420 90 L240 150 Z"/>
+              <line class="chamada" x1="420" y1="90" x2="470" y2="90"/><circle class="no" cx="470" cy="90" r="3"/><text x="440" y="80" text-anchor="end">04</text>
+              <line class="chamada" x1="420" y1="160" x2="470" y2="160"/><circle class="no" cx="470" cy="160" r="3"/><text x="440" y="150" text-anchor="end">03</text>
+              <line class="chamada" x1="420" y1="230" x2="470" y2="230"/><circle class="no" cx="470" cy="230" r="3"/><text x="440" y="220" text-anchor="end">02</text>
+              <line class="chamada" x1="420" y1="300" x2="470" y2="300"/><circle class="no" cx="470" cy="300" r="3"/><text x="440" y="290" text-anchor="end">01</text>
+              <text x="12" y="388">0</text><text x="228" y="388">240</text><text x="440" y="388">480</text>
+            </svg>
+            <ol class="diagrama__lista">
+              <li><span class="diagrama__num">04</span><span class="diagrama__nome">Gestão de projecto</span><p class="diagrama__desc">Fornecedores, prazos e decisões coordenados por uma pessoa.</p></li>
+              <li><span class="diagrama__num">03</span><span class="diagrama__nome">Marca e presença</span><p class="diagrama__desc">Site, SEO, anúncios e materiais a dizer a mesma coisa.</p></li>
+              <li><span class="diagrama__num">02</span><span class="diagrama__nome">Sistemas</span><p class="diagrama__desc">Ferramentas ligadas, automações e fluxos documentais.</p></li>
+              <li><span class="diagrama__num">01</span><span class="diagrama__nome">Estrutura</span><p class="diagrama__desc">Forma jurídica, registos, contabilidade e contratos no sítio.</p></li>
+            </ol>
+            <figcaption class="diagrama__cap" id="diagrama-cap">A infraestrutura de um negócio pequeno, por camadas. Cada projecto monta ou arruma uma delas; o diagnóstico diz qual vem primeiro.</figcaption>
+          </figure>
           <p class="seal reveal">Três passos. Sem retainer obrigatório, sem propostas longas.</p>
           <div class="related reveal"><a href="/gestao-de-trafego/">Gestão de tráfego</a><a href="/seo/sectores/">SEO por sector</a><a href="/casos/">Casos</a><a href="/sobre/">Sobre</a><a href="/contactos/">Contactos</a></div>
         </div>
