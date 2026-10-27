@@ -19,7 +19,8 @@ A Wandofi PM desenha, coordena, implementa e documenta a infraestrutura digital 
 - [Apps Android para negócios em Angola](https://wandofi.pt/criacao-de-sites/apps-android-angola/): construção da app, front-end e back-end, e submissão no Google Play, com os testes fechados e a política de privacidade exigidos; Android tem cerca de 80 por cento dos telemóveis em Angola.
 - [Meta Ads e Google Ads em Angola](https://wandofi.pt/gestao-de-trafego/angola/): anúncios para negócios em Angola geridos a partir de Portugal, com facturação em euros ou em kwanzas; o SEO orgânico em Angola é de base, não de volume.
 - [Criação e migração de sites](https://wandofi.pt/criacao-de-sites/): sites rápidos e indexáveis; migração sem perder SEO. Site essencial a preço fixo, desde 350€.
-- [Automações e integrações](https://wandofi.pt/automacoes/): Apps Script, CRM e reconciliação de dados.
+- [Automação de processos para pequenas empresas](https://wandofi.pt/automacoes/): integrações entre facturação, folhas, email e WhatsApp com n8n, Apps Script, Make e Zapier; processos de escritório, não automação industrial nem RPA de grande empresa.
+- [Chatbot de WhatsApp para empresas](https://wandofi.pt/automacoes/chatbot-whatsapp/): assistente que responde com a base de conhecimento da empresa, passa ao humano fora do guião, corre em n8n na nuvem em conta do cliente, na plataforma oficial da Meta; respostas nas 24 horas sem custo de mensagens.
 
 ## SEO por sector
 - [SEO por sector](https://wandofi.pt/seo/sectores/): índice dos sectores acompanhados.
@@ -57,6 +58,7 @@ Site essencial de uma página a preço fixo, desde 350€, com SEO local incluí
 - [Grok Bot, Muse e Dots: agentes de IA simples](https://wandofi.pt/blog/agentes-de-ia-simples-grok-bot-muse-dots/): Três agentes de IA para quem não é técnico, por ordem: o Grok Bot, que agora chama o Claude para o trabalho pesado, o Muse da Meta, e os Dots do ChatGPT.
 - [Política de Privacidade](https://wandofi.pt/privacidade/): responsável, dados tratados, prazos, fornecedores, cookies e direitos.
 - [Termos de Utilização](https://wandofi.pt/termos/): natureza da informação, resultados de SEO e anúncios não garantidos, estimativas, propriedade intelectual, lei aplicável.
+- [n8n: o que é, para que serve e quando faz sentido numa pequena empresa](https://wandofi.pt/blog/n8n-o-que-e-para-que-serve/): o que é o n8n, exemplos de uso em empresas de cinco a vinte pessoas, comparação com Zapier e Make, preços de Outubro de 2026 (Cloud Starter 20 euros por mês, 2.500 execuções; teste gratuito com 1.000), o assistente de WhatsApp de 28 nós, e quando não compensa.
 - [Agentes de IA à medida](https://wandofi.pt/automacoes/agentes-de-ia/): construção e instalação de agentes de IA para pequenas empresas em Portugal, com exemplos (assistente de WhatsApp, revisão de facturas em atraso, relatório mensal automático), guarda-rails em código e modo de acompanhamento ou autónomo.
 - [Como automatizar a reconciliação bancária com o TOConline](https://wandofi.pt/blog/reconciliacao-bancaria-toconline/): caso real num escritório de advogados em Lisboa, 92 por cento reconciliado sem intervenção, fecho mensal de 5 horas para 20 minutos, seis passos com Apps Script.
 - [Como aparecer nas respostas do ChatGPT em Portugal](https://wandofi.pt/blog/aparecer-nas-respostas-do-chatgpt/): seis passos, OAI-SearchBot, páginas de resposta, provas, menções, llms.txt e medição semanal.
