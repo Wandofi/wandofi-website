@@ -118,13 +118,13 @@ a{color:inherit}
 .section--line{border-top:1px solid var(--line-soft)}
 
 /* ---------- Tipo ---------- */
-.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin:0 0 .7rem}
-.h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.5rem,1.5rem + 3.9vw,4.25rem);line-height:1.03;letter-spacing:-.022em;color:var(--ink);margin:0}
-.h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,1.2rem + 1.9vw,2.6rem);line-height:1.1;letter-spacing:-.018em;color:var(--ink);margin:0}
-.h3{font-family:var(--ui);font-weight:600;font-size:1.2rem;line-height:1.3;letter-spacing:-.01em;color:var(--ink);margin:0 0 .55rem}
-.lead{font-size:clamp(1.15rem,1rem + .5vw,1.3rem);line-height:1.5;color:var(--ink-soft);margin:0}
+.eyebrow{font-family:var(--mono);font-size:.78rem;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin:0 0 .7rem}
+.h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.9rem,8vw,7.6rem);line-height:.92;letter-spacing:-.03em;color:var(--ink);margin:0}
+.h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.4rem,5vw,4.6rem);line-height:.95;letter-spacing:-.03em;color:var(--ink);margin:0}
+.h3{font-family:var(--ui);font-weight:600;font-size:1.45rem;line-height:1.25;letter-spacing:-.012em;color:var(--ink);margin:0 0 .55rem}
+.lead{font-size:clamp(1.2rem,1rem + .9vw,1.6rem);line-height:1.5;color:var(--ink-soft);margin:0}
 .body{margin:0;color:var(--mute);font-size:1.0625rem;line-height:1.65}
-.section__head{margin-bottom:clamp(1.75rem,1.25rem + 1.6vw,2.75rem);max-width:var(--measure)}
+.section__head{margin-bottom:clamp(1.75rem,1.25rem + 1.6vw,2.75rem);max-width:none}
 .section__head .h2{margin-bottom:.6rem}
 .section__head .body{max-width:var(--text)}
 p a:not(.btn){color:var(--ink);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;transition:text-decoration-color .18s var(--ease),color .18s var(--ease)}
@@ -240,9 +240,9 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .hero::before{content:"";position:absolute;inset:auto -20% -40% 40%;height:70%;
   background:radial-gradient(60% 60% at 50% 50%,rgba(225,37,27,.07),transparent 70%);pointer-events:none}
 .hero__inner{position:relative;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(2rem,4vw,3.5rem);align-items:center}
-.hero__h1{margin-bottom:1.1rem;max-width:15ch}
-.hero__h1 em{font-style:italic;color:var(--red)}
-.hero__lead{max-width:48ch;margin-bottom:1.6rem}
+.hero__h1{margin-bottom:1.6rem;max-width:none;font-size:clamp(3.2rem,8.6vw,8.2rem);line-height:.9;letter-spacing:-.035em}
+
+.hero__lead{max-width:36ch;margin-bottom:1.6rem;font-size:clamp(1.2rem,1rem + .9vw,1.6rem)}
 .hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center}
 .hero__micro{font-size:.9rem;color:var(--mute);margin:.85rem 0 0;max-width:42ch}
 .hero__trust{display:flex;flex-wrap:wrap;gap:.45rem 1.4rem;margin:1.5rem 0 0;padding:0;list-style:none}
@@ -250,7 +250,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .hero__trust li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--red);flex:0 0 auto}
 /* aro vermelho: envolve o corpo todo, mais largo do que o retrato,
    como na versao escura. So a cabeca fica por cima do arco. */
-.hero__portrait{margin:0 auto;position:relative;width:100%;max-width:20rem}
+.hero__portrait{margin:0 auto;position:relative;width:100%;max-width:23rem}
 .hero__portrait::before{content:"";position:absolute;left:-17%;right:-17%;bottom:0;height:70%;
   background:linear-gradient(to top,rgba(225,37,27,.09),rgba(225,37,27,0));
   border:1px solid rgba(225,37,27,.32);border-bottom:0;border-radius:2rem 2rem 0 0}
@@ -258,7 +258,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
   filter:drop-shadow(0 22px 44px rgba(5,5,5,.16))}
 @media (max-width:900px){
   .hero__inner{grid-template-columns:1fr}
-  .hero__h1{max-width:20ch}
+  .hero__h1{font-size:clamp(2.9rem,13vw,3.6rem)}
   .hero__portrait{max-width:15rem;margin:1.2rem auto 0}
   .hero__portrait::before{left:-13%;right:-13%;height:68%}
 }
@@ -268,7 +268,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .proof__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line-soft)}
 .proof__cell{background:var(--paper);padding:clamp(1.4rem,3vw,2.1rem) clamp(1rem,2.5vw,1.8rem)}
 .proof__num .n,.stat__value .n{font-variant-numeric:tabular-nums}
-.proof__num{display:block;font-family:var(--serif);font-size:clamp(1.9rem,4vw,2.9rem);line-height:1;color:var(--ink);letter-spacing:-.02em}
+.proof__num{display:block;font-family:var(--serif);font-size:clamp(2.6rem,5.4vw,4.2rem);line-height:1;color:var(--ink);letter-spacing:-.02em}
 .proof__num .to{color:var(--red);padding:0 .15em}
 .proof__num .unit{font-family:var(--ui);font-size:.4em;font-weight:600;letter-spacing:0}
 .proof__label{display:block;margin-top:.5rem;font-size:.92rem;color:var(--mute);line-height:1.4}
@@ -276,7 +276,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 @media (max-width:760px){.proof__grid{grid-template-columns:1fr}}
 
 /* ---------- Sinal ---------- */
-.signal__anchor{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.3rem);line-height:1.22;letter-spacing:-.015em;color:var(--ink);margin:0 0 clamp(1.8rem,3.5vw,2.6rem);max-width:26ch}
+.signal__anchor{font-family:var(--serif);font-size:clamp(1.9rem,3.8vw,3rem);line-height:1.18;letter-spacing:-.02em;color:var(--ink);margin:0 0 clamp(1.8rem,3.5vw,2.6rem);max-width:24ch}
 .signal__anchor em{font-style:italic;color:var(--red)}
 .signal__list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,2rem)}
 .signal__list li{border-top:1px solid var(--line);padding-top:1rem}
@@ -310,7 +310,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 /* ---------- Faixa de conversao ---------- */
 .band{background:var(--ink);color:#fff;border-radius:var(--r);padding:clamp(1.8rem,3.5vw,2.6rem)}
 .band__grid{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.4rem 2.5rem}
-.band .h2{color:#fff;max-width:20ch}
+.band .h2{color:#fff;max-width:20ch;font-size:clamp(2rem,3.6vw,3.2rem)}
 .band p{color:#c9c9c9;margin:.7rem 0 0;max-width:48ch;font-size:1.0625rem}
 .band__action{flex:0 0 auto;display:flex;flex-direction:column;gap:.6rem;align-items:flex-start}
 .band__note{font-size:.85rem;color:#9a9a9a;margin:0}
@@ -346,7 +346,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 @media (max-width:760px){.steps{grid-template-columns:1fr}}
 .step{border-top:2px solid var(--ink);padding-top:1.1rem}
 .step__num{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;color:var(--red);display:block;margin-bottom:.6rem}
-.seal{margin:clamp(1.8rem,3.5vw,2.6rem) 0 0;font-family:var(--serif);font-size:clamp(1.2rem,2.2vw,1.65rem);
+.seal{margin:clamp(1.8rem,3.5vw,2.6rem) 0 0;font-family:var(--serif);font-size:clamp(1.5rem,2.8vw,2.2rem);
   line-height:1.3;color:var(--ink);letter-spacing:-.015em}
 
 /* ---------- FAQ ---------- */
@@ -354,7 +354,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 .faq details{border-bottom:1px solid var(--line)}
 .faq{max-width:var(--measure)}
 .faq summary{list-style:none;cursor:pointer;padding:1.15rem 2.2rem 1.15rem 0;position:relative;
-  font-weight:600;color:var(--ink);font-size:1.0625rem;line-height:1.4}
+  font-weight:600;color:var(--ink);font-size:1.15rem;line-height:1.4}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";position:absolute;right:.2rem;top:1rem;color:var(--red);font-size:1.3rem;line-height:1;font-weight:400}
 .faq details[open] summary::after{content:"\2013"}
@@ -372,7 +372,7 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
    margens do resto da pagina. */
 .close{border-top:1px solid var(--line-soft)}
 .close__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:1.6rem 3rem;align-items:end}
-.close__copy .h2{max-width:18ch;margin-bottom:.8rem}
+.close__copy .h2{max-width:18ch;margin-bottom:.8rem;font-size:clamp(2.2rem,4.4vw,3.8rem);line-height:.98}
 .close__copy .lead{max-width:48ch}
 .close__action{display:flex;flex-direction:column;gap:.85rem;align-items:stretch}
 .close__email{font-family:var(--mono);font-size:.95rem;color:var(--ink);text-decoration:none;
@@ -586,6 +586,8 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 @media (max-width:860px){.diagrama{grid-template-columns:1fr}.diagrama__svg{max-width:22rem}}
 /* toque-humano 1: um sublinhado a mao numa palavra do titulo principal */
 [data-dm*="toque-humano:"] .dm-rabisco{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9 C 40 3, 80 13, 120 6 S 180 4, 198 8' fill='none' stroke='%23e1251b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") bottom / 100% .28em no-repeat;padding-bottom:.08em}
+/* bloco vermelho: palavra destacada nos titulos de todo o site (formato do blog, 27/10/2026) */
+.dm-bloco-cor{background:var(--red);color:#fff;font-style:normal;padding:0 .14em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 /* maximalismo-asterisco 3: so na zona do blog (listagem e artigos), por escolha do Mauro a 27/10/2026.
    Titulo ate 10,5vw, palavra-chave em bloco vermelho, palavra fantasma em contorno cortada na borda,
    contadores grandes na listagem, datas em serifa, capitular no artigo. A coluna de leitura nao muda. */
@@ -636,8 +638,8 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 .page-hero__crumb a:hover{color:var(--red)}
 .page-hero__crumb a:last-of-type{color:var(--ink)}
 .page-hero__crumb .sep{color:rgba(5,5,5,.28)}
-.page-hero__title{max-width:15ch;margin-bottom:1.1rem}   /* = .hero__h1 */
-.page-hero__lead{max-width:48ch}   /* = .lead da pagina inicial */
+.page-hero__title{max-width:none;margin-bottom:1.3rem}   /* = .hero__h1, formato do blog */
+.page-hero__lead{max-width:38ch}   /* = .lead da pagina inicial */
 .page-hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:1.6rem}
 .page-hero__metas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
   gap:clamp(.9rem,1.8vw,1.25rem);margin-top:clamp(2rem,4vw,3rem);
@@ -692,14 +694,14 @@ div.proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
   background:var(--line-soft);border:1px solid var(--line);border-radius:var(--r);
   overflow:hidden;margin-top:clamp(1.4rem,2.6vw,1.9rem)}
 div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
-.stat__v{font-family:var(--serif);font-weight:400;font-size:clamp(1.85rem,3.4vw,2.75rem);
+.stat__v{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4.4vw,3.6rem);
   line-height:1.1;letter-spacing:-.018em;color:var(--ink);font-variant-numeric:tabular-nums}
 .stat__l{margin-top:.45rem;font-size:1.0625rem;line-height:1.5;color:var(--mute)}
 
 /* CTA de fim de pagina */
 .section.cta .container--narrow{max-width:var(--container)}
 .cta.final{border-top:1px solid var(--line-soft);padding-bottom:clamp(1.8rem,3.6vw,2.8rem)}
-.cta__title{max-width:20ch;margin-bottom:.8rem}
+.cta__title{max-width:20ch;margin-bottom:.8rem;font-size:clamp(2.2rem,4.4vw,3.8rem);line-height:.98}
 .cta .lead{max-width:48ch}
 .cta__actions{display:flex;flex-wrap:wrap;gap:.9rem 1.6rem;align-items:center;margin-top:1.6rem}
 /* O email e o WhatsApp herdam estilos pensados para a coluna do .close; aqui ficam lado a lado,
@@ -725,7 +727,6 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   .grid--2,.grid--3{grid-template-columns:1fr}
   .deliver{grid-template-columns:1fr}
   .page-hero__metas{grid-template-columns:1fr;gap:.9rem}
-  .page-hero__title{max-width:20ch}
 }
 
 /* ================= ARTIGOS DO BLOG =================
@@ -965,7 +966,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         <div class="container">
           <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/seo/">SEO</a><span class="sep">/</span><a href="/seo/consultor-seo/">Consultor SEO</a></p>
           <p class="eyebrow">SEO · Consultoria</p>
-          <h1 class="h1 page-hero__title">Consultor SEO em Lisboa que também <span class="dm-rabisco dm-cinetico">constrói</span>.</h1>
+          <h1 class="h1 page-hero__title">Consultor SEO em Lisboa que também <span class="dm-bloco-cor dm-cinetico">constrói</span>.</h1>
           <p class="lead page-hero__lead">Se tem equipa mas falta direcção técnica, oriento a estratégia e acompanho a execução. Não entrego só um documento, coordeno, mostro como fazer e documento as decisões.</p>
           <div class="page-hero__actions"><a class="btn btn--red" href="/#contacto">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a></div>
           
