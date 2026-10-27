@@ -202,9 +202,16 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 /* ---------- Navegacao ---------- */
 .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-soft)}
 .nav__inner{max-width:var(--container);margin-inline:auto;padding:.7rem var(--gutter);display:flex;align-items:center;gap:1.5rem}
-.nav__brand{display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;flex:0 0 auto;margin-right:auto}
-.nav__brand img{width:30px;height:30px}
-.nav__brand span{font-family:var(--serif);font-size:1.22rem;letter-spacing:-.02em;color:var(--ink);line-height:1}
+.nav__brand{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;flex:0 0 auto;margin-right:auto;perspective:220px}
+/* Marca maior e com relevo (27/10/2026): a marca ganha sombra em duas camadas e
+   roda em 3D ao passar o rato; o nome sobe de tamanho e de peso. */
+.nav__brand img{width:40px;height:40px;transform:rotateY(-14deg) rotateX(4deg);transform-origin:left center;
+  filter:drop-shadow(0 2px 2px rgba(153,20,15,.35)) drop-shadow(0 7px 12px rgba(5,5,5,.28));
+  transition:transform .45s var(--ease),filter .45s var(--ease)}
+.nav__brand:hover img{transform:rotateY(10deg) rotateX(-3deg);
+  filter:drop-shadow(0 2px 2px rgba(153,20,15,.4)) drop-shadow(0 10px 16px rgba(5,5,5,.32))}
+.nav__brand span{font-family:var(--serif);font-size:1.55rem;letter-spacing:-.022em;color:var(--ink);line-height:1;text-shadow:0 1px 0 rgba(5,5,5,.08)}
+.nav__brand span b{font-weight:400;color:var(--red)}
 .nav__links{display:flex;gap:1.5rem;align-items:center}
 .nav__links a{font-size:.95rem;font-weight:500;color:var(--ink-soft);text-decoration:none;transition:color .18s var(--ease)}
 .nav__links a:hover{color:var(--red)}
@@ -400,29 +407,31 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
 @media (max-width:860px){.prefsrc{grid-template-columns:1fr;padding:1.25rem 1.15rem}}
 
 /* ---------- Rodape ---------- */
-.footer{border-top:1px solid var(--line);background:var(--paper);
+/* Rodape em vermelho (27/10/2026, pedido do Mauro; excepcao consciente a regra
+   "vermelho nunca e fundo de area grande"). Marca num cracha branco, texto branco. */
+.footer{border-top:0;background:linear-gradient(180deg,var(--red),var(--red-deep));color:#fff;
   padding-block:clamp(2.5rem,5vw,3.5rem) calc(clamp(2.5rem,5vw,3.5rem) + 4.5rem)}
 @media (min-width:761px){.footer{padding-bottom:clamp(2.5rem,5vw,3.5rem)}}
 .footer__grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:2.4rem 2rem}
 @media (max-width:960px){.footer__grid{grid-template-columns:repeat(3,minmax(0,1fr))}.footer__brand{grid-column:1/-1}}
 @media (max-width:560px){.footer__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem 1.25rem}}
-.footer__logo{width:140px;height:auto;aspect-ratio:600/470}
-.footer__tagline{margin:.9rem 0 0;font-size:.92rem;line-height:1.5;color:var(--mute);max-width:30ch}
+.footer__logo{width:150px;height:auto;aspect-ratio:600/470;background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 20px 44px -24px rgba(5,5,5,.55)}
+.footer__tagline{margin:1rem 0 0;font-size:.95rem;line-height:1.5;color:#fff;max-width:30ch}
 .footer__title{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;
-  color:var(--ink);margin:0 0 .9rem;font-weight:500}
+  color:#fff;margin:0 0 .9rem;font-weight:500;opacity:.9}
 .footer__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem}
-.footer__list a{font-size:.93rem;color:var(--mute);text-decoration:none;transition:color .18s var(--ease)}
-.footer__list a:hover{color:var(--red)}
+.footer__list a{font-size:.95rem;color:#fff;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .18s var(--ease)}
+.footer__list a:hover{border-color:#fff}
 .footer__social{display:flex;gap:.6rem;list-style:none;margin:1.2rem 0 0;padding:0}
 .footer__social a{display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;
-  border:1px solid var(--line);border-radius:var(--r);color:var(--mute);
-  transition:color .18s var(--ease),border-color .18s var(--ease)}
-.footer__social a:hover{color:var(--red);border-color:var(--red)}
+  border:1px solid rgba(255,255,255,.45);border-radius:var(--r);color:#fff;
+  transition:color .18s var(--ease),border-color .18s var(--ease),background-color .18s var(--ease)}
+.footer__social a:hover{color:var(--red);border-color:#fff;background:#fff}
 .footer__social svg{width:17px;height:17px}
-.footer__base{margin-top:clamp(2rem,4vw,2.8rem);padding-top:1.4rem;border-top:1px solid var(--line-soft);
+.footer__base{margin-top:clamp(2rem,4vw,2.8rem);padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.3);
   display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:center}
-.footer__line{margin:0;font-size:.85rem;color:var(--mute)}
-.footer__zaask{opacity:.55;transition:opacity .18s var(--ease)}
+.footer__line{margin:0;font-size:.88rem;color:#fff}
+.footer__zaask{opacity:.9;background:#fff;border-radius:8px;padding:5px 9px;display:inline-flex;transition:opacity .18s var(--ease)}
 .footer__zaask:hover{opacity:.9}
 .footer__zaask img{height:28px;width:auto}
 
