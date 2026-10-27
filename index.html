@@ -617,6 +617,28 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 @media (max-width:860px){.diagrama{grid-template-columns:1fr}.diagrama__svg{max-width:22rem}}
 /* toque-humano 1: um sublinhado a mao numa palavra do titulo principal */
 [data-dm*="toque-humano:"] .dm-rabisco{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 14' preserveAspectRatio='none'%3E%3Cpath d='M2 9 C 40 3, 80 13, 120 6 S 180 4, 198 8' fill='none' stroke='%23e1251b' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") bottom / 100% .28em no-repeat;padding-bottom:.08em}
+/* Cartoes de servicos da pagina inicial (27/10/2026, pedido do Mauro): fundo vermelho,
+   letras claras, doodle desenhado a mao no fundo, hover que escurece para preto com detalhes
+   vermelhos e ligacao sempre visivel. Os doodles vivem em /assets/doodles/. */
+#servicos .card{background:linear-gradient(160deg,var(--red),var(--red-deep));border-color:rgba(255,255,255,.16);color:#fff;overflow:hidden;
+  transition:background-color .4s var(--ease),transform .25s var(--ease),border-color .4s var(--ease)}
+#servicos .card>*{position:relative;z-index:1}
+#servicos .card::after{content:"";position:absolute;right:-6%;bottom:-8%;width:62%;aspect-ratio:1;z-index:0;pointer-events:none;
+  background:var(--svc) center/contain no-repeat;opacity:.3;transform:rotate(-2deg);
+  transition:opacity .4s var(--ease),transform .55s var(--ease)}
+#servicos .card::before{background:#fff;z-index:2}
+#servicos .card .h3,#servicos .card .card__tag{color:#fff}
+#servicos .card .body{color:#fff;opacity:.94}
+#servicos .card .body a{color:#fff;text-decoration-color:rgba(255,255,255,.55)}
+#servicos .card .body a:hover{color:#fff;text-decoration-color:#fff}
+#servicos .card__more{color:#fff;border-color:rgba(255,255,255,.6)}
+#servicos .card--wide{border-left:2px solid #fff}
+#servicos .card:hover{background:#0b0b0b;border-color:rgba(225,37,27,.55);transform:translateY(-4px)}
+#servicos .card:hover::before{background:var(--red)}
+#servicos .card:hover::after{opacity:.44;transform:rotate(1.5deg) scale(1.05)}
+#servicos .card:hover .card__tag{color:var(--red)}
+#servicos .card:hover .card__more{color:var(--red);border-color:var(--red)}
+@media (prefers-reduced-motion:reduce){#servicos .card,#servicos .card::after{transition:none}}
 /* bloco vermelho: palavra destacada nos titulos de todo o site (formato do blog, 27/10/2026) */
 .dm-bloco-cor{background:var(--red);color:#fff;font-style:normal;padding:0 .14em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 /* maximalismo-asterisco 3: so na zona do blog (listagem e artigos), por escolha do Mauro a 27/10/2026.
@@ -734,37 +756,37 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
             <p class="body">Sete frentes. Na maior parte dos projectos entram duas ou três, nunca todas ao mesmo tempo.</p>
           </header>
           <div class="cards stagger">
-            <article class="card">
+            <article class="card" style="--svc:url('/assets/doodles/svc-seo.webp')">
               <h3 class="h3">SEO técnico e consultoria</h3>
               <p class="body">Schema, canonicals, sitemaps, indexação e medição de conversão. Também entro como <a href="/seo/consultor-seo/">consultor de SEO</a> em projectos que já têm quem execute.</p>
               <a class="card__more" href="/seo/">Ver SEO ↗</a>
             </article>
-            <article class="card">
+            <article class="card" style="--svc:url('/assets/doodles/svc-sites.webp')">
               <h3 class="h3">Criação de sites</h3>
               <p class="body">Sites novos, rápidos e indexáveis, feitos para durar e para o cliente conseguir gerir sozinho.</p>
               <a class="card__more" href="/criacao-de-sites/">Ver criação de sites ↗</a>
             </article>
-            <article class="card">
+            <article class="card" style="--svc:url('/assets/doodles/svc-migracao.webp')">
               <h3 class="h3">Migração de sites</h3>
               <p class="body">Mudar de plataforma sem perder posições, histórico nem email. Astro, Cloudflare Pages e GitHub, com MX e redireccionamentos preservados.</p>
               <a class="card__more" href="/seo/seo-tecnico/">Ver SEO técnico ↗</a>
             </article>
-            <article class="card">
+            <article class="card" style="--svc:url('/assets/doodles/svc-automacoes.webp')">
               <h3 class="h3">Automações e integrações</h3>
               <p class="body">Apps Script, CRM, reconciliação bancária, fluxos documentais e agentes de IA à medida. O trabalho repetitivo que rouba horas todos os meses.</p>
               <a class="card__more" href="/automacoes/">Ver automações ↗</a>
             </article>
-            <article class="card">
+            <article class="card" style="--svc:url('/assets/doodles/svc-estrutura.webp')">
               <h3 class="h3">Estrutura e burocracia</h3>
               <p class="body">Apoio técnico e operacional, com conhecimento dos processos jurídicos e contabilísticos para identificar quando envolver advogados e contabilistas e coordenar a sua participação. Sem prestar aconselhamento jurídico ou contabilístico.</p>
               <a class="card__more" href="/blog/como-abrir-uma-empresa-em-portugal/">Como abrir uma empresa ↗</a>
             </article>
-            <article class="card">
+            <article class="card" style="--svc:url('/assets/doodles/svc-lms.webp')">
               <h3 class="h3">Plataformas e LMS</h3>
               <p class="body">Áreas de cliente, escolas online em Moodle, pagamentos com Stripe e certificação.</p>
               <a class="card__more" href="/casos/">Ver casos ↗</a>
             </article>
-            <article class="card card--wide">
+            <article class="card card--wide" style="--svc:url('/assets/doodles/svc-trafego.webp')">
               <div class="card--wide__copy">
                 <p class="card__tag">Novo desde Agosto de 2026</p>
                 <h3 class="h3">Gestão de tráfego, incluindo anúncios no ChatGPT</h3>
