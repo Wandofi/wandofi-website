@@ -15,6 +15,8 @@
           gtag('js', new Date()); gtag('config', 'G-510WQZ4YQ7');
         };
         if(v==='aceite'){ window.wandofiCarregaGA(); }
+        /* Rede de seguranca das animacoes de titulo: ao fim de 2,6 s a palavra fica visivel aconteca o que acontecer */
+        setTimeout(function(){ document.documentElement.classList.add('dm-feito'); }, 2600);
       })();
     </script>
     <meta charset="UTF-8" />
@@ -611,8 +613,10 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 [data-dm*="maximalismo-asterisco:"] .artigo__body .prose .eyebrow{display:inline-block;font-size:.95rem;background:var(--red);color:#fff;padding:.1em .45em}
 @media (max-width:760px){[data-dm*="maximalismo-asterisco:"] .dm-fantasma{font-size:7rem;top:auto;bottom:-.25em;right:-.1em}[data-dm*="maximalismo-asterisco:"] .page-hero--artigo .dm-fantasma{display:none}[data-dm*="maximalismo-asterisco:"] .artigo__capa{margin-top:0}}
 /* tipografia-cinetica 1: a mesma palavra entra com mascara ao carregar */
-@keyframes dm-mascara{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+/* A caixa de recorte sai .3em para fora da linha, senao corta as descendentes (g, p, q) e os acentos. */
+@keyframes dm-mascara{from{clip-path:inset(-.35em 100% -.35em -.1em)}to{clip-path:inset(-.35em -.15em -.35em -.1em)}}
 [data-dm*="tipografia-cinetica:"] .dm-cinetico{display:inline-block;animation:dm-mascara .9s cubic-bezier(.2,.7,.2,1) .15s both}
+.dm-feito .dm-cinetico,.dm-feito .dm-cinetico::after{animation:none!important;clip-path:none!important}
 @media (prefers-reduced-motion:reduce){[data-dm] .dm-cinetico{animation:none}.js .diagrama.reveal .placa,.js .diagrama.reveal .chamada{stroke-dasharray:none;stroke-dashoffset:0;transition:none}}
 
 /* ================= PAGINAS INTERNAS =================
