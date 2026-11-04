@@ -45,6 +45,11 @@ Site essencial de uma página a preço fixo, desde 350€, com SEO local incluí
 - [Casos e resultados](https://wandofi.pt/casos/): sistema de reconciliação financeira para um escritório jurídico, com cerca de 92% de reconciliação automática e o fecho mensal reduzido de 5h para 20 min.
 - [Contactos](https://wandofi.pt/contactos/): geral@wandofi.pt, Lisboa e todo o país.
 
+## In English
+- [SEO consultant in Lisbon, in English](https://wandofi.pt/en/): SEO, websites, paid traffic, automation and project management for businesses trading in Portugal, handled in English by one consultant based in Lisbon. Technical and operational support, not legal or accounting advice.
+- [SEO consultant in Lisbon, English speaking](https://wandofi.pt/en/seo-consultant-lisbon/): technical SEO, local SEO and content in European Portuguese, with the audit and the reporting delivered in English.
+- [Digital marketing in Lisbon, in English](https://wandofi.pt/en/digital-marketing-lisbon/): Google Ads, Meta Ads and ChatGPT ads in accounts that stay in the client's name, with GA4 measurement and consent set up before any spending.
+
 ## Mais páginas
 
 - [Agentes de IA à medida: skills, workflows e implementação remota](https://wandofi.pt/blog/agentes-de-ia-a-medida/): Construo agentes de IA à medida para pessoas e empresas: skills, workflows, instalação e implementação remota. Autónomos ou de acompanhamento, ligados às suas ferramentas.
