@@ -1,0 +1,35 @@
+FERRAMENTAS DO SITE
+=============================================================
+Estes cinco scripts de Python nao fazem parte do site. Sao as
+ferramentas que mantem as paginas coerentes entre si. Correm da raiz
+do repositorio e nao precisam de nada instalado alem do Python 3.
+
+  refresca_css.py   reescreve o bloco <style id="home-light"> em todas
+                    as paginas, a partir do index.html e do paginas.css
+  sincroniza.py     copia a navegacao e o rodape do index.html para as
+                    paginas em portugues, e os de en/index.html para as
+                    paginas em ingles
+  linkagem.py       reescreve os blocos "Onde ir a partir daqui" e as
+                    listas "Outros artigos do blog"
+  auditoria.py      verifica ligacoes internas, orfas, partidos e a
+                    coerencia com o sitemap
+  normaliza.py      poe as paginas internas com as classes da inicial
+
+  paginas.css       nao e servido ao publico: e fonte para o refrescador
+
+Ordem normal de trabalho:
+
+  python3 ferramentas/refresca_css.py     se mexeu em CSS
+  python3 ferramentas/sincroniza.py       se mexeu no menu ou no rodape
+  python3 ferramentas/linkagem.py         se acrescentou paginas
+  python3 ferramentas/auditoria.py        sempre, antes de commit
+
+A auditoria tem de terminar com orfas nenhuma, partidos nenhum, e nada
+fora do sitemap.
+
+NOTA SOBRE ESTA PASTA ESTAR PUBLICA
+O site nao tem build e o Jekyll esta desligado, por isso tudo o que
+esta no ramo fica acessivel em wandofi.pt. Esta pasta tem uma linha
+Disallow no robots.txt. Nao ha segredos nenhuns aqui dentro, e assim
+deve continuar: nunca ponha chaves, tokens nem dados de clientes
+nestes ficheiros.

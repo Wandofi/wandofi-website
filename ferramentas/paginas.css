@@ -1,0 +1,308 @@
+
+/* ================= PAGINAS INTERNAS =================
+   Regra: nada aqui redefine tipografia nem ritmo. As paginas
+   internas usam as mesmas classes da pagina inicial (.h1 .h2 .h3
+   .lead .body .eyebrow .section .container .card .btn) e aqui so
+   ficam as pecas que a pagina inicial nao tem. Medidas herdadas:
+   --sec para as seccoes, --container para a largura, 52ch para o
+   texto corrido.
+   ==================================================== */
+
+/* Cabecalho de pagina: mesmo respiro do .hero da pagina inicial */
+.page-hero{padding-block:clamp(2.5rem,5vw,4.5rem) clamp(2.5rem,5vw,4rem);position:relative}
+.page-hero__crumb{font-family:var(--mono);font-size:.72rem;color:var(--mute);
+  margin:0 0 1.1rem;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.page-hero__crumb a{color:var(--mute);text-decoration:none;transition:color .18s var(--ease)}
+.page-hero__crumb a:hover{color:var(--red)}
+.page-hero__crumb a:last-of-type{color:var(--ink)}
+.page-hero__crumb .sep{color:rgba(5,5,5,.28)}
+.page-hero__title{max-width:none;margin-bottom:1.3rem}   /* = .hero__h1, formato do blog */
+.page-hero__lead{max-width:38ch}   /* = .lead da pagina inicial */
+.page-hero__actions{display:flex;flex-wrap:wrap;gap:.7rem;align-items:center;margin-top:1.6rem}
+.page-hero__metas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(.9rem,1.8vw,1.25rem);margin-top:clamp(2rem,4vw,3rem);
+  border-top:1px solid var(--line);padding-top:1.3rem}
+.page-hero__metas .k{font-family:var(--mono);font-size:.72rem;font-weight:500;
+  text-transform:uppercase;letter-spacing:.14em;color:var(--mute);margin-bottom:.35rem}
+.page-hero__metas,.page-hero__metas div,.page-hero__metas dd{margin-block:0;margin-inline:0}
+.page-hero__metas .v{color:var(--ink);font-weight:600;font-size:1rem;line-height:1.45}
+
+/* Texto corrido. A caixa tem a largura do .section__head da pagina
+   inicial (40rem) e as linhas de texto a medida do .body (52ch a 16px),
+   para os titulos quebrarem no mesmo ponto e as linhas terem o mesmo
+   comprimento que na pagina inicial. */
+.prose{max-width:var(--measure)}
+.prose .body,.prose>p,.prose .answer{max-width:var(--text)}
+.prose>*+*{margin-top:1.05rem}
+.prose .h2{margin-bottom:.6rem}
+.prose .h2+.body,.prose .h2+.answer{margin-top:.6rem}
+.prose .h3{margin-top:1.6rem}
+.answer{font-size:1.0625rem;line-height:1.65;color:var(--ink);margin:0;
+  border-left:2px solid var(--red);padding-left:1rem}
+.prose>.answer+*{margin-top:1.2rem}
+
+/* Lista de entregaveis */
+.deliver{list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem clamp(1.6rem,3vw,2.4rem)}
+.deliver li{position:relative;min-width:0;padding-left:1.4rem;font-size:1.0625rem;line-height:1.65;color:var(--mute);overflow-wrap:anywhere}
+/* marcador: hexagono pequeno em vez do traco (pedido do Mauro a 27/10/2026) */
+.deliver li::before{content:"";position:absolute;left:0;top:.5em;width:9px;height:8px;background:var(--red);clip-path:polygon(25% 0%,75% 0%,100% 50%,75% 100%,25% 100%,0% 50%)}
+.deliver li b{color:var(--ink);font-weight:600}
+
+/* Ligacoes para outras paginas */
+.related{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:clamp(1.4rem,2.6vw,1.9rem)}
+.related a{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:var(--r);
+  padding:.55rem .95rem;font-size:.92rem;font-weight:500;color:var(--ink);text-decoration:none;
+  transition:border-color .18s var(--ease),color .18s var(--ease)}
+.related a:hover{border-color:var(--red);color:var(--red)}
+
+/* Grelhas: o mesmo gap da grelha da pagina inicial */
+.grid{display:grid;gap:clamp(.9rem,1.8vw,1.25rem)}
+.grid--2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid--3{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+.card__num{display:block;font-family:var(--mono);font-size:.72rem;font-weight:500;
+  letter-spacing:.14em;color:var(--red);margin-bottom:.6rem}
+.card__more{display:inline-block;margin-top:1rem;font-size:.92rem;font-weight:600;color:var(--ink);
+  text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;
+  transition:color .18s var(--ease),border-color .18s var(--ease)}
+.card__more:hover{color:var(--red);border-color:var(--red)}
+
+/* Barra de numeros dentro de uma seccao. Mesmo preenchimento do .card */
+div.proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;
+  background:var(--line-soft);border:1px solid var(--line);border-radius:var(--r);
+  overflow:hidden;margin-top:clamp(1.4rem,2.6vw,1.9rem)}
+div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
+.stat__v{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4.4vw,3.6rem);
+  line-height:1.1;letter-spacing:-.018em;color:var(--ink);font-variant-numeric:tabular-nums}
+.stat__l{margin-top:.45rem;font-size:1.0625rem;line-height:1.5;color:var(--mute)}
+
+/* CTA de fim de pagina */
+.section.cta .container--narrow{max-width:var(--container)}
+.cta.final{border-top:1px solid var(--line-soft);padding-bottom:clamp(1.8rem,3.6vw,2.8rem)}
+.cta__title{max-width:20ch;margin-bottom:.8rem;font-size:clamp(2.2rem,4.4vw,3.8rem);line-height:.98}
+.cta .lead{max-width:48ch}
+.cta__actions{display:flex;flex-wrap:wrap;gap:.9rem 1.6rem;align-items:center;margin-top:1.6rem}
+/* O email e o WhatsApp herdam estilos pensados para a coluna do .close; aqui ficam lado a lado,
+   com a mesma letra, a mesma linha por baixo e a mesma base. */
+.cta__actions .close__email,.cta__actions .close__whats{align-self:center;margin:0;font-family:var(--ui);font-size:.95rem;font-weight:600;line-height:1;padding-bottom:3px;border-bottom:1px solid var(--line);display:inline-flex;align-items:center;gap:.45rem}
+@media (max-width:620px){.cta__actions{flex-direction:column;align-items:stretch}.cta__actions .btn{width:100%}.cta__actions .close__email,.cta__actions .close__whats{align-self:flex-start}}
+.final__email{font-family:var(--mono);font-size:.95rem;color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--line);padding-bottom:3px;
+  transition:border-color .18s var(--ease),color .18s var(--ease)}
+.final__email:hover{color:var(--red);border-color:var(--red)}
+
+/* Fonte preferida: a caixa ja traz margem, a seccao nao soma outra */
+.section--prefsrc{padding-block:0 var(--sec)}
+.section--prefsrc .prefsrc{margin-top:0}
+
+/* Corridas de texto: duas seccoes de prosa seguidas nao somam
+   padding de baixo e de cima, senao o artigo parte se ao meio. */
+.section--seguida{padding-top:0}
+
+@media (max-width:900px){.grid--3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){div.proof{grid-template-columns:1fr}}
+@media (max-width:620px){
+  .grid--2,.grid--3{grid-template-columns:1fr}
+  .deliver{grid-template-columns:1fr}
+  .page-hero__metas{grid-template-columns:1fr;gap:.9rem}
+}
+
+/* ================= ARTIGOS DO BLOG =================
+   Convertidos ao tema claro. A zona de leitura propria foi
+   retirada: o artigo usa agora o mesmo container e a mesma
+   medida de texto das paginas de servico.
+   ==================================================== */
+.post__read,.post__rail{display:block;width:100%;background:transparent;border:0;padding:0;margin:0}
+.lead-answer{font-size:1.0625rem;line-height:1.65;color:var(--ink);margin:0;max-width:var(--text);
+  border-left:2px solid var(--red);padding-left:1rem}
+.prose>.lead-answer+*{margin-top:1.2rem}
+.mono-inline{font-family:var(--mono);font-size:.92em;color:var(--ink);
+  background:var(--line-soft);border-radius:4px;padding:.1em .35em;overflow-wrap:anywhere}
+.post__prefsrc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,22rem);gap:1.1rem 3rem;
+  align-items:center;margin-top:clamp(2rem,4vw,3rem);padding:1.4rem 1.6rem;background:var(--paper);
+  border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r)}
+.prefsrc__btn{width:100%;justify-content:space-between;text-align:left}
+@media (max-width:860px){.post__prefsrc{grid-template-columns:1fr;padding:1.25rem 1.15rem}}
+
+/* ================= BLOG: listagem e leitura (2026-10-10) =================
+   Listagem em lista de artigos com data, etiqueta e tempo de leitura.
+   Artigo com coluna de leitura mais larga e continua, indice no topo e
+   lista dos outros artigos no fim. Fonte: ferramentas/paginas.css */
+.mono-inline { font-family: var(--mono); font-size: 0.9em; background: rgba(5,5,5,.05); padding: 0.12em 0.36em; border-radius: 3px; color: var(--ink); word-break: break-word; }
+/* Listagem do blog (modelo Best Account): um artigo em destaque com
+   imagem a esquerda e texto a direita, depois uma grelha de cartoes com
+   imagem, data e resumo. Fonte: ferramentas/paginas.css */
+.posts{list-style:none;margin:0;padding:0}
+.post{margin:0;padding:0}
+.post__link{display:block;text-decoration:none;color:inherit;border-radius:14px;background:var(--paper);border:1px solid var(--line);overflow:hidden;height:100%;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}
+.post__link:hover{transform:translateY(-4px);box-shadow:0 28px 50px -30px rgba(5,5,5,.35);border-color:rgba(5,5,5,.2)}
+.post__figure{margin:0;overflow:hidden;background:var(--line-soft)}
+.post__img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;transition:transform .6s var(--ease)}
+.post__link:hover .post__img{transform:scale(1.03)}
+.post__text{padding:1.3rem 1.4rem 1.5rem}
+.post__meta{display:flex;flex-wrap:wrap;gap:.3rem .9rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin-bottom:.7rem}
+.post__meta time{color:var(--ink);font-weight:500}
+.post__title{font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.015em;color:var(--ink);margin:0 0 .6rem;transition:color .18s var(--ease)}
+.post__link:hover .post__title{color:var(--red)}
+.post__excerpt{margin:0;color:var(--mute);font-size:.98rem;line-height:1.6}
+.post__more{display:inline-block;margin-top:1rem;font-size:.92rem;font-weight:600;color:var(--ink)}
+.post__link:hover .post__more{color:var(--red)}
+.posts__destaque{margin-bottom:clamp(2.6rem,5vw,4rem)}
+.post--destaque .post__link{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center}
+.post--destaque .post__figure{height:100%}
+.post--destaque .post__img{height:100%;aspect-ratio:auto;min-height:18rem}
+.post--destaque .post__text{padding:clamp(1.6rem,3.5vw,2.8rem)}
+.post--destaque .post__title{font-size:clamp(1.7rem,2.8vw,2.3rem);max-width:20ch}
+.post--destaque .post__excerpt{font-size:1.05rem;max-width:48ch}
+.posts__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.4rem}
+@media (max-width:980px){.posts__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:760px){.post--destaque .post__link{grid-template-columns:1fr}.post--destaque .post__img{min-height:0;aspect-ratio:16/9}}
+@media (max-width:620px){.posts__grid{grid-template-columns:1fr}.post__text{padding:1.1rem 1.15rem 1.3rem}}
+@media (prefers-reduced-motion:reduce){.post__link,.post__img{transition:none}.post__link:hover{transform:none}.post__link:hover .post__img{transform:none}}
+/* artigo: coluna de leitura */
+.artigo .post__byline{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin:1.2rem 0 0;display:flex;flex-wrap:wrap;gap:.4rem .9rem}
+.artigo .post__byline time{color:var(--ink);font-weight:500}
+.artigo .section{padding-block:clamp(2rem,1.25rem + 2vw,3rem)}
+.artigo .section--panel{background:var(--paper)}
+.artigo .section:first-of-type + .section{padding-top:clamp(2rem,4vw,3rem)}
+.artigo .prose{max-width:var(--measure)}
+.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer{max-width:var(--text);font-size:1.0625rem;line-height:1.7;color:var(--ink-soft)}
+.artigo .prose .body strong,.artigo .prose .body b{color:var(--ink)}
+.artigo .prose>*+*{margin-top:1.3rem}
+.artigo .prose .h2{padding-top:1.5rem;border-top:1px solid var(--line);margin-bottom:.8rem}
+.artigo .prose .h2+.body,.artigo .prose .h2+.answer{margin-top:.8rem}
+.artigo .prose .h3{margin-top:1.9rem}
+.artigo .deliver li,.artigo .prose li{font-size:1.0625rem;line-height:1.7;color:var(--ink-soft)}
+.artigo .deliver{margin-top:1.1rem}
+.artigo .faq .a p{font-size:1.0625rem;line-height:1.7}
+.toc{margin:1.6rem 0 0;padding:1.1rem 1.3rem 1.2rem;border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r);max-width:var(--measure)}
+.toc__label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);margin:0 0 .6rem}
+.toc ol{margin:0;padding:0 0 0 1.3rem;columns:2;column-gap:2rem}
+.toc li{font-size:.98rem;line-height:1.5;margin:0 0 .35rem;break-inside:avoid}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);transition:color .18s var(--ease),border-color .18s var(--ease)}
+.toc a:hover{color:var(--red);border-color:var(--red)}
+.morelist{list-style:none;margin:1.2rem 0 0;padding:0;border-top:1px solid var(--line);max-width:var(--measure)}
+.morelist li{border-bottom:1px solid var(--line)}
+.morelist a{display:grid;grid-template-columns:minmax(0,7.5rem) minmax(0,1fr);gap:.3rem 1.4rem;padding:.9rem 0;text-decoration:none;color:inherit;align-items:baseline}
+.morelist time{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.morelist .t{font-family:var(--serif);font-size:1.25rem;line-height:1.2;color:var(--ink);transition:color .18s var(--ease)}
+.morelist a:hover .t{color:var(--red)}
+@media (max-width:760px){.toc ol{columns:1}.morelist a{grid-template-columns:1fr}.artigo .prose .body,.artigo .prose>p,.artigo .prose .answer,.artigo .deliver li,.artigo .prose li{font-size:1.04rem;line-height:1.7}}
+
+/* ================= ARTIGO em fundo branco (27/10/2026) =================
+   A faixa escura foi retirada: a pagina e toda branca, por isso o
+   cabecalho do artigo e igual ao das paginas de servico. A capa fica
+   dentro do container, logo abaixo do cabecalho, num cartao com linha.
+   Corpo em duas colunas a partir de 980px: leitura a esquerda, na mesma
+   medida de texto do resto do site (--text), e uma coluna fixa a direita
+   com o indice e o cartao de conversao (diagnostico e WhatsApp). Abaixo
+   de 980px o indice sobe para cima do texto e o cartao vai para o fim.
+   Fonte: ferramentas/paginas.css */
+.page-hero--escuro{background:var(--paper);color:var(--ink)}
+.page-hero--artigo{padding-bottom:clamp(1.75rem,1rem + 2vw,2.75rem)}
+.page-hero--artigo .page-hero__title{max-width:18ch}
+.page-hero--artigo .page-hero__lead{max-width:var(--text)}
+.artigo__capa{margin:0;position:relative}
+.artigo__capa img{display:block;width:100%;height:auto;aspect-ratio:1344/752;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+.artigo__grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,17rem);gap:clamp(2rem,1rem + 3vw,4.5rem);align-items:start;padding-top:clamp(2.25rem,1.5rem + 2vw,3.5rem);padding-bottom:clamp(2rem,1.25rem + 2vw,3rem)}
+.artigo__aside{order:2;position:sticky;top:5.5rem;display:flex;flex-direction:column;gap:1rem}
+.artigo__aside .toc{margin:0;padding:1.1rem 1.2rem 1.2rem;border:1px solid var(--line);border-left:2px solid var(--red);border-radius:var(--r);background:var(--paper);max-width:none;box-shadow:none}
+.artigo__aside .toc ol{columns:1;list-style:none;padding:0;margin:0}
+.artigo__aside .toc li{margin:0;font-size:.93rem;line-height:1.45}
+.artigo__aside .toc li+li{margin-top:.5rem}
+.artigo__aside .toc a{display:block;border:0;color:var(--ink-soft);transition:color .18s var(--ease)}
+.artigo__aside .toc a:hover{color:var(--red)}
+.aside__cta{border:1px solid var(--line);border-radius:var(--r);padding:1.15rem 1.2rem 1.25rem;background:var(--paper)}
+.aside__cta .eyebrow{margin-bottom:.45rem}
+.aside__cta-text{margin:0 0 .9rem;font-size:.95rem;line-height:1.5;color:var(--ink-soft)}
+.aside__cta .btn{width:100%;min-height:46px;font-size:.95rem;animation:none}
+.aside__whats{display:inline-flex;align-items:center;gap:.4rem;margin-top:.8rem;font-size:.9rem;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .18s var(--ease),border-color .18s var(--ease)}
+.aside__whats:hover{color:var(--red);border-color:var(--red)}
+.aside__whats svg{width:16px;height:16px;flex:0 0 auto}
+.artigo__body{order:1;min-width:0}
+.artigo__body .section{padding-block:0}
+.artigo__body .section+.section{margin-top:clamp(2.25rem,1.5rem + 2.2vw,3.5rem)}
+.artigo__body .section--panel{background:transparent;border-top:0}
+.artigo__body .container{padding-inline:0;max-width:none}
+.artigo__body .prose{max-width:var(--measure)}
+.artigo__body .prose .body,.artigo__body .prose>p,.artigo__body .prose .answer,.artigo__body .deliver li,.artigo__body .prose li{max-width:var(--text);font-size:1.0625rem;line-height:1.7}
+.artigo__body .prose>.answer:first-child{font-size:clamp(1.15rem,1rem + .5vw,1.3rem);line-height:1.55;color:var(--ink);border-left:3px solid var(--red);padding-left:1.25rem;max-width:var(--text)}
+.artigo__body .prose .h2{border-top:0;padding-top:0;margin-bottom:.6rem}
+.artigo__body .section__head{margin-bottom:1.2rem}
+.artigo__body .faq{max-width:var(--measure)}
+.artigo__body .faq .a{max-width:var(--text)}
+.artigo__body .morelist{max-width:var(--measure)}
+.artigo__body .prefsrc{margin-top:0}
+.artigo__body .related{margin-top:1.4rem}
+.artigo__body .deliver{grid-template-columns:1fr}
+@media (max-width:980px){.artigo__grid{grid-template-columns:1fr;gap:1.75rem}.artigo__aside{position:static;display:contents}.artigo__aside .toc{order:0}.aside__cta{order:3;max-width:var(--measure)}.artigo__aside .toc ol{columns:2;column-gap:1.5rem}.artigo__aside .toc li{break-inside:avoid}}
+@media (max-width:620px){.artigo__aside .toc ol{columns:1}.artigo__capa img{border-radius:10px}}
+
+/* ================= COLUNA ÚNICA (casos) =================
+   Tudo acaba na mesma margem direita: cabeçalhos, texto, barras de
+   números, grelha de sites, FAQ e ligações. Medida: 42rem. */
+.estreito .section__head,.estreito .prose,.estreito div.proof,.estreito .sites,.estreito .faq,.estreito .related,.estreito .page-hero__lead{max-width:42rem}
+.estreito .prose .body,.estreito .prose>p,.estreito .prose .answer,.estreito .section__head .body{max-width:none}
+.estreito .page-hero__title{max-width:14ch}
+.estreito div.proof .stat__v{font-size:clamp(1.5rem,2.4vw,2.1rem)}
+.estreito .sites{grid-template-columns:repeat(2,1fr)}
+/* reserva de altura ao teste de diagnóstico, para a secção seguinte não saltar */
+#quiz{min-height:26rem}
+@media (max-width:760px){#quiz{min-height:30rem}}
+
+/* ================= CASOS: luz, carril e brilho (2026-10-11) =================
+   Tudo em transform, opacity e background. Elementos decorativos fora do
+   fluxo, por isso sem deslocamento de layout. Desligado para quem pede
+   menos movimento. */
+.luz .page-hero{position:relative;overflow:hidden;isolation:isolate}
+.luz__a,.luz__b{position:absolute;pointer-events:none;z-index:-1;border-radius:50%;filter:blur(40px);will-change:transform}
+.luz__a{width:44rem;height:44rem;right:-14rem;top:-18rem;background:radial-gradient(closest-side,rgba(225,37,27,.16),rgba(225,37,27,0))}
+.luz__b{width:30rem;height:30rem;left:-10rem;bottom:-16rem;background:radial-gradient(closest-side,rgba(5,5,5,.07),rgba(5,5,5,0))}
+.luz .page-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(rgba(5,5,5,.07) 1px,transparent 1.2px);background-size:22px 22px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%);-webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent 85%)}
+@supports (animation-timeline: scroll()){
+  .luz__a{animation:luz-a linear both;animation-timeline:scroll();animation-range:0 120vh}
+  .luz__b{animation:luz-b linear both;animation-timeline:scroll();animation-range:0 120vh}
+  @keyframes luz-a{to{transform:translate3d(-6rem,10rem,0)}}
+  @keyframes luz-b{to{transform:translate3d(6rem,-4rem,0)}}
+}
+/* carril de capítulos */
+.rail{display:none}
+@media (min-width:1180px){
+  .rail{display:block;position:fixed;left:max(1.2rem,calc((100vw - 1180px) / 2 - 7.5rem));top:50%;transform:translateY(-50%);z-index:5;width:7rem}
+  .rail__line{position:absolute;left:.3rem;top:-.2rem;bottom:-.2rem;width:1px;background:var(--line)}
+  .rail__line::after{content:"";position:absolute;left:0;top:0;width:1px;height:100%;background:var(--red);transform:scaleY(0);transform-origin:top}
+  .rail__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.1rem}
+  .rail__list a{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--mute);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .25s var(--ease)}
+  .rail__dot{width:.6rem;height:.6rem;border-radius:50%;border:1px solid var(--line);background:var(--paper);box-shadow:0 0 0 0 rgba(225,37,27,0);transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .35s var(--ease)}
+  .rail__list a.is-on{color:var(--ink)}
+  .rail__list a.is-on .rail__dot{background:var(--red);border-color:var(--red);box-shadow:0 0 0 5px rgba(225,37,27,.14)}
+  .rail__list a:hover{color:var(--red)}
+  @supports (animation-timeline: scroll()){.rail__line::after{animation:rail-fill linear both;animation-timeline:scroll()}@keyframes rail-fill{to{transform:scaleY(1)}}}
+}
+/* linha que se desenha sob o sobretítulo de cada secção */
+.luz .section__head .eyebrow{position:relative;display:inline-block;padding-bottom:.45rem}
+.luz .section__head .eyebrow::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left}
+@supports (animation-timeline: view()){.luz .section__head .eyebrow::after{animation:traco linear both;animation-timeline:view();animation-range:entry 0% entry 40%}@keyframes traco{to{transform:scaleX(1)}}}
+/* brilho que segue o cursor nos cartões e nas barras de números */
+.luz .site,.luz div.proof .stat{--mx:50%;--my:50%;background-image:radial-gradient(24rem circle at var(--mx) var(--my),rgba(225,37,27,.10),transparent 60%);background-repeat:no-repeat;background-size:100% 100%;background-color:var(--paper)}
+.luz .site{background-blend-mode:normal}
+.luz .site:not(:hover),.luz div.proof .stat:not(:hover){background-image:none}
+.luz .site:hover{box-shadow:0 24px 44px -26px rgba(5,5,5,.42),0 0 0 1px rgba(225,37,27,.18),0 0 40px -10px rgba(225,37,27,.25)}
+.luz div.proof .stat:hover{box-shadow:inset 0 0 0 1px rgba(225,37,27,.14)}
+.luz .stat__v{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.luz__a,.luz__b,.rail__line::after,.luz .section__head .eyebrow::after{animation:none}.luz .section__head .eyebrow::after{transform:scaleX(1)}}
+
+/* telemóvel: grelha de sites numa só coluna, por cima da regra da coluna única */
+@media (max-width:760px){.estreito .sites{grid-template-columns:1fr}}
+
+/* Quadro comparativo (GEO e AEO). Fonte: ferramentas/paginas.css */
+.quadro{width:100%;max-width:none;border-collapse:collapse;margin:1.2rem 0 0;font-size:.95rem;line-height:1.5}
+.quadro th,.quadro td{text-align:left;vertical-align:top;padding:.7rem .8rem;border-bottom:1px solid var(--line)}
+.quadro th{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:500;border-bottom:1px solid var(--ink)}
+.quadro td:first-child{font-weight:600;color:var(--ink);white-space:nowrap}
+.prose .quadro{max-width:none}
+.quadro-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.2rem}
+.quadro-wrap .quadro{margin-top:0}
+@media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
+
