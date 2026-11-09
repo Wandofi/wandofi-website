@@ -970,6 +970,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "O SEO mudou: AI Overviews, Modo IA e o que faço de diferente", "description": "O que mudou na Pesquisa Google entre 2025 e 2026, o que a documentação da Google diz por escrito sobre aparecer nas respostas de IA, o que o novo relatório do Search Console mede e o que não mede, e as seis coisas que mudei no método.", "image": "https://wandofi.pt/assets/blog/seo-ai-overviews-modo-ia-google-og.jpg", "datePublished": "2026-11-09", "dateModified": "2026-11-09", "inLanguage": "pt-PT", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/sobre/"}, "publisher": {"@type": "Organization", "name": "Wandofi PM", "url": "https://wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/seo-ai-overviews-modo-ia-google/", "url": "https://wandofi.pt/blog/seo-ai-overviews-modo-ia-google/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "AEO e GEO são a mesma coisa que SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Na parte técnica, hoje, quase. A elegibilidade para aparecer nos AI Overviews e no Modo IA é a mesma da pesquisa normal, e a documentação da Google diz que não há requisitos técnicos adicionais nem marcação própria para estas funcionalidades. O que AEO e GEO acrescentam é uma forma de escrever e de estruturar as páginas, não uma camada técnica nova."}}, {"@type": "Question", "name": "Preciso de um ficheiro llms.txt para aparecer nas respostas de IA?", "acceptedAnswer": {"@type": "Answer", "text": "Para a Google, não. A documentação da Google diz que não é preciso criar ficheiros novos, ficheiros de texto para IA nem marcação nova para aparecer nos AI Overviews ou no Modo IA. Há assistentes fora da Google que leem o llms.txt, por isso mantenho um neste site, mas como complemento e nunca como estratégia."}}, {"@type": "Question", "name": "Consigo ver em que pesquisas o meu site apareceu nas respostas de IA?", "acceptedAnswer": {"@type": "Answer", "text": "Não. O relatório de funcionalidades de IA generativa do Search Console dá impressões e permite agrupar por página, país, data e dispositivo, com filtro por tipo de pesquisa. Não tem dimensão de consulta e não dá cliques, taxa de cliques nem posição média. O tema só se consegue inferir ao cruzar estes números com o relatório de desempenho normal."}}, {"@type": "Question", "name": "Vale a pena escrever conteúdo novo se a IA responde por cima dos resultados?", "acceptedAnswer": {"@type": "Answer", "text": "Vale, por uma razão prática: as respostas de IA citam páginas, e as páginas citadas são as que estão indexadas e respondem bem a um subtema. Quem deixa de publicar deixa de ter o que ser citado. O que deixou de valer a pena é escrever páginas longas que tocam em tudo sem responder bem a nada."}}]}</script>
@@ -1025,10 +1047,10 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 <p class="eyebrow">01</p>
 <h2 class="h2" id="o-que-mudou-com-datas">O que mudou, com datas</h2>
 <p class="body">Quando alguém diz que «o SEO mudou», convém perguntar quando e em quê. Três datas explicam quase tudo o que mudou na forma de aparecer no Google, e todas as três têm anúncio oficial.</p>
-<div class="quadro-wrap"><table class="quadro"><thead><tr><th>Data</th><th>O que a Google anunciou</th><th>Consequência prática</th></tr></thead><tbody>
-<tr><td>20 de Maio de 2025</td><td>Os AI Overviews ficam disponíveis em mais de 200 países e territórios e em mais de 40 idiomas</td><td>A resposta passa a estar por cima dos resultados em quase todo o mundo</td></tr>
-<tr><td>7 de Outubro de 2025</td><td>O Modo IA chega a mais de 35 novos idiomas e a mais de 40 novos países e territórios, com o total também acima dos 200</td><td>Deixa de ser uma experiência e passa a ser um separador da Pesquisa</td></tr>
-<tr><td>31 de Agosto de 2026</td><td>Fica concluída a distribuição mundial do relatório de funcionalidades de IA generativa no Search Console</td><td>Pela primeira vez há um número oficial de quantas vezes um site aparece nas respostas de IA</td></tr>
+<div class="quadro-wrap"><table class="quadro quadro--cartoes"><thead><tr><th>Data</th><th>O que a Google anunciou</th><th>Consequência prática</th></tr></thead><tbody>
+<tr><td data-r="Data">20 de Maio de 2025</td><td data-r="O que a Google anunciou">Os AI Overviews ficam disponíveis em mais de 200 países e territórios e em mais de 40 idiomas</td><td data-r="Consequência prática">A resposta passa a estar por cima dos resultados em quase todo o mundo</td></tr>
+<tr><td data-r="Data">7 de Outubro de 2025</td><td data-r="O que a Google anunciou">O Modo IA chega a mais de 35 novos idiomas e a mais de 40 novos países e territórios, com o total também acima dos 200</td><td data-r="Consequência prática">Deixa de ser uma experiência e passa a ser um separador da Pesquisa</td></tr>
+<tr><td data-r="Data">31 de Agosto de 2026</td><td data-r="O que a Google anunciou">Fica concluída a distribuição mundial do relatório de funcionalidades de IA generativa no Search Console</td><td data-r="Consequência prática">Pela primeira vez há um número oficial de quantas vezes um site aparece nas respostas de IA</td></tr>
 </tbody></table></div>
 <p class="body">Uma nota de rigor sobre a segunda linha. O anúncio da Google de 7 de Outubro de 2025 não nomeia Portugal nem o português. Quem noticiou a chegada a Portugal nesse dia e no dia seguinte foi a imprensa portuguesa, com base na informação da Lusa. Escrevo a diferença porque ela conta: uma coisa é a Google ter dito, outra é terem dito que a Google disse.</p>
 <p class="body">Repare que nenhuma destas datas é uma actualização de algoritmo. São mudanças de interface. E mudanças de interface mexem mais com um negócio do que a maioria das actualizações de algoritmo, porque alteram o que a pessoa vê antes de decidir se clica.</p>
@@ -1088,7 +1110,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 <h2 class="h2" id="o-que-nao-mudei">O que não mudei</h2>
 <p class="body">Vale a pena dizer o que continua igual, porque a parte mais ruidosa do mercado vive de sugerir que tudo mudou e que por isso tem de comprar algo novo.</p>
 <p class="body">Continua a contar: estar indexado, abrir depressa, ter uma estrutura que se percorre sem adivinhar, ter dados estruturados coerentes com o texto visível na página, e ter quem fale do seu negócio noutros sites. Na página de ajuda da Google, a lista de fundamentos para aparecer nas respostas de IA é, quase palavra por palavra, a lista de fundamentos de SEO de sempre. Um deles é mesmo «garantir que os dados estruturados correspondem ao texto visível na página», que é um conselho de 2015.</p>
-<p class="body">E continua a contar o perfil de empresa no Google, que não é SEO de conteúdo nenhum, é de graça, e para a maioria dos negócios locais é a coisa que mexe mais a agulha. Vejo com frequência sites a investir em artigos com o perfil da empresa por preencher. É começar pelo telhado.</p>
+<p class="body">E continua a contar o <a href="/seo/seo-local/">perfil de empresa no Google</a>, que não é SEO de conteúdo nenhum, é de graça, e para a maioria dos negócios locais é a coisa que mexe mais a agulha. Vejo com frequência sites a investir em artigos com o perfil da empresa por preencher. É começar pelo telhado.</p>
 </div></div></section>
 <section class="section section--panel"><div class="container"><div class="prose">
 <p class="eyebrow">08</p>

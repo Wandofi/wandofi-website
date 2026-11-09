@@ -970,6 +970,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Gestão de campanhas no ChatGPT", "serviceType": "Gestão de campanhas ChatGPT Ads", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "Gestão de campanhas no ChatGPT em Portugal: conta no Ads Manager, medição, temas de conversa, anúncios e página de destino.", "url": "https://wandofi.pt/gestao-de-trafego/chatgpt-ads/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Já se pode anunciar no ChatGPT em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. A OpenAI abriu a publicidade aos mercados europeus em Agosto de 2026 e Portugal está na lista. Existe um gestor de anúncios próprio, ainda em beta, onde qualquer anunciante cria conta sem passar por agência. As marcas grandes continuam a comprar por parceiros de meios, mas isso é uma opção, não uma obrigação."}}, {"@type": "Question", "name": "Quantas empresas já anunciam no ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "Mais de 100 mil anunciantes em 89 países, segundo a The Next Web, depois de a OpenAI ter alargado a publicidade a mais 26 países a 21 de Outubro de 2026. Em Portugal, o canal está aberto desde Agosto de 2026 e continua em beta no gestor de anúncios."}}, {"@type": "Question", "name": "Quem vê os anúncios?", "acceptedAnswer": {"@type": "Answer", "text": "Utilizadores autenticados, adultos, nos planos gratuito e Go. Quem paga ChatGPT Pro, Business, Enterprise ou Education não vê publicidade nenhuma. Vale a pena pensar nisto antes de investir: se o seu comprador é um director que tem conta paga, provavelmente não está desse lado."}}, {"@type": "Question", "name": "Dá para segmentar por público, como no Meta?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Na Europa a escolha é contextual: o tema da conversa, o país, o dispositivo e a hora. Sem histórico e sem memória, por causa do RGPD. Não há audiências, não há semelhantes, não há retargeting de listas. É por isso que o trabalho muda de sítio: quem decide o resultado é a página de destino e a medição, não a segmentação."}}, {"@type": "Question", "name": "Quanto custa anunciar no ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "A OpenAI não publica um mínimo oficial, e os primeiros custos por clique em Portugal são de poucas campanhas e não servem de referência. Prefiro definir consigo um orçamento de teste com volume suficiente para dar leitura, em vez de citar um número que muda no mês seguinte."}}, {"@type": "Question", "name": "Isto substitui o Google Ads?", "acceptedAnswer": {"@type": "Answer", "text": "Não. O Google Ads apanha quem já sabe o que procura e escreve a pesquisa. O ChatGPT apanha quem está a descrever um problema em conversa, muitas vezes mais cedo na decisão. São momentos diferentes e o normal é manter os dois, com orçamentos separados."}}, {"@type": "Question", "name": "Qual a diferença entre pagar anúncios e aparecer nas respostas?", "acceptedAnswer": {"@type": "Answer", "text": "São dois canais. O anúncio é comprado e aparece identificado como publicidade, ao lado da resposta. Aparecer dentro da própria resposta é orgânico e exige outro trabalho, de conteúdo e de estrutura. Trato dos dois, mas não são a mesma factura nem o mesmo prazo."}}]}</script>

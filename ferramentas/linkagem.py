@@ -64,7 +64,7 @@ SECTORES = ['/seo/advogados/', '/seo/clinicas/', '/seo/contabilistas/',
 # A ordem conta: o que estiver primeiro fica primeiro.
 JUNTAR = {
  '/automacoes/agentes-de-ia/': ['/automacoes/', '/automacoes/chatbot-whatsapp/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/blog/reconciliacao-bancaria-toconline/', '/diagnostico/'],
- '/automacoes/chatbot-whatsapp/': ['/automacoes/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/diagnostico/'],
+ '/automacoes/chatbot-whatsapp/': ['/automacoes/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/casos/', '/diagnostico/'],
  '/seo/':                     ['/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
                                '/seo/seo-local/', '/seo/seo-para-empresas/', '/seo/geo-aeo/',
                                '/seo/agencia-seo-lisboa/', '/seo/agencia-seo-porto/',
@@ -72,9 +72,9 @@ JUNTAR = {
  '/seo/sectores/':            SECTORES + ['/diagnostico/'],
  '/seo/consultor-seo/':       ['/seo/sectores/', '/sobre/', '/diagnostico/'],
  '/seo/geo-aeo/':             ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/chatgpt-ads/', '/blog/google-preferred-sources/', '/blog/tendencias-de-ia-em-portugal/', '/diagnostico/'],
- '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/seo/consultor-seo/', '/diagnostico/'],
- '/seo/seo-local/':           ['/seo/sectores/', '/diagnostico/'],
- '/seo/seo-para-empresas/':   ['/seo/sectores/', '/diagnostico/'],
+ '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/seo/consultor-seo/', '/blog/siglas-seo-marketing-digital/', '/diagnostico/'],
+ '/seo/seo-local/':           ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/diagnostico/'],
+ '/seo/seo-para-empresas/':   ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/diagnostico/'],
  '/seo/agencia-seo-lisboa/':  ['/seo/consultor-seo/', '/diagnostico/'],
  '/seo/agencia-seo-porto/':   ['/seo/consultor-seo/', '/seo/', '/diagnostico/'],
  '/seo/advogados/':           ['/seo/sectores/', '/diagnostico/'],
@@ -83,14 +83,17 @@ JUNTAR = {
  '/seo/imobiliarias/':        ['/seo/sectores/', '/diagnostico/'],
  '/seo/escolas-de-linguas/':  ['/seo/sectores/', '/diagnostico/'],
  '/criacao-de-sites/':        ['/criacao-de-sites/apps-android-angola/', '/seo/seo-local/', '/blog/php2shell-dados-de-clientes/', '/diagnostico/'],
- '/criacao-de-sites/sintra/': ['/diagnostico/'],
- '/criacao-de-sites/queluz/': ['/diagnostico/'],
- '/criacao-de-sites/marvila/':['/diagnostico/'],
+ # As tres paginas de bairro nao apontavam sequer para o servico de que sao
+ # filhas: so umas para as outras e para o diagnostico. Quem chega por "sites
+ # em Sintra" ficava sem caminho nenhum para a pagina que vende o servico.
+ '/criacao-de-sites/sintra/': ['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
+ '/criacao-de-sites/queluz/': ['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
+ '/criacao-de-sites/marvila/':['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
  '/gestao-de-trafego/':       ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
  '/gestao-de-trafego/google-ads/': ['/gestao-de-trafego/chatgpt-ads/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
  '/gestao-de-trafego/meta-ads/':   ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/diagnostico/'],
  '/gestao-de-trafego/angola/':     ['/gestao-de-trafego/meta-ads/', '/gestao-de-trafego/google-ads/', '/criacao-de-sites/apps-android-angola/', '/criacao-de-sites/', '/diagnostico/'],
- '/criacao-de-sites/apps-android-angola/': ['/gestao-de-trafego/angola/', '/criacao-de-sites/', '/automacoes/', '/diagnostico/'],
+ '/criacao-de-sites/apps-android-angola/': ['/gestao-de-trafego/angola/', '/criacao-de-sites/', '/automacoes/', '/blog/php2shell-dados-de-clientes/', '/diagnostico/'],
  '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/', '/diagnostico/'],
  '/automacoes/':              ['/automacoes/chatbot-whatsapp/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/reconciliacao-bancaria-toconline/', '/blog/agentes-de-ia-a-medida/', '/diagnostico/'],
  # O blog. Cada artigo leva artigos vizinhos e as paginas de servico do tema.
@@ -108,13 +111,18 @@ JUNTAR = {
  '/blog/reconciliacao-bancaria-toconline/':  ['/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/tendencias-de-ia-em-portugal/':      ['/blog/agentes-de-ia-a-medida/'],
  '/casos/':                   ['/blog/reconciliacao-bancaria-toconline/', '/blog/', '/diagnostico/'],
- '/sobre/':                   ['/en/', '/diagnostico/'],
+ '/sobre/':                   ['/en/', '/casos/', '/diagnostico/'],
  '/contactos/':               ['/sobre/', '/en/', '/diagnostico/'],
- '/diagnostico/':             ['/seo/', '/criacao-de-sites/', '/automacoes/', '/casos/'],
+ # Faltava aqui um dos quatro pilares: quem acaba o diagnostico via SEO,
+ # sites e automacoes, e nao via a gestao de trafego nem o blog.
+ '/diagnostico/':             ['/seo/', '/criacao-de-sites/', '/automacoes/', '/gestao-de-trafego/', '/casos/', '/blog/'],
 }
 
 MAX = 6
-# O hub do SEO e um indice: leva o conjunto todo, sem tecto de 6.
+# Os indices levam o conjunto todo, sem tecto de 6. O /seo/sectores/ estava a
+# cortar no sexto item e ficava sem as escolas de linguas, ou seja, o indice
+# dos cinco sectores so mostrava quatro. Um indice que esconde um dos seus
+# itens esta errado, nao e uma questao de gosto.
 # As paginas abaixo levam 7 porque ja estavam no tecto e o artigo novo nao
 # entrava: a fusao e "atuais + juntar", por isso uma pagina cheia ignora em
 # silencio tudo o que se lhe acrescente. Subir o tecto acrescenta sem tirar
@@ -126,6 +134,7 @@ MAX = 6
 # sobre as ligacoes ja presentes, o que reordena os blocos de 40 paginas.
 # Enquanto nao estiver decidido, cada excepcao fica escrita aqui.
 TECTO = {'/seo/': 10,
+         '/seo/sectores/': 8,
          '/seo/geo-aeo/': 7,
          '/blog/aparecer-nas-respostas-do-chatgpt/': 7,
          '/blog/seo-ai-overviews-modo-ia-google/': 7,

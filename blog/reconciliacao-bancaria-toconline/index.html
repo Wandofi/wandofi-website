@@ -970,6 +970,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Automatizar a reconciliação bancária com o TOConline", "description": "Passo a passo real: extractos do BPI e do Millennium, documentos do TOConline e do Avaza, cruzados por chave referencial em Apps Script. 92 por cento automático, fecho de 5 horas para 20 minutos.", "inLanguage": "pt-PT", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/reconciliacao-bancaria-toconline/", "url": "https://wandofi.pt/blog/reconciliacao-bancaria-toconline/", "image": "https://wandofi.pt/assets/blog/reconciliacao-bancaria-toconline-og.jpg"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O TOConline não faz a reconciliação bancária sozinho?", "acceptedAnswer": {"@type": "Answer", "text": "O TOConline trata da facturação e da contabilidade, e permite registar os pagamentos, mas alguém tem de lhe dizer que movimento do banco paga que factura. Quando as referências estão certas e os volumes são pequenos, é feito à mão. Quando há várias contas, vários sistemas ou centenas de movimentos, compensa automatizar o cruzamento fora dele e levar o resultado para o TOConline."}}, {"@type": "Question", "name": "Preciso de ligar o banco por API?", "acceptedAnswer": {"@type": "Answer", "text": "Não. O método funciona com os extractos exportados em CSV ou Excel, que todos os bancos portugueses disponibilizam. A ligação directa poupa o passo de exportar, mas depende do banco e tem custos e autorizações próprias."}}, {"@type": "Question", "name": "E se os clientes não puserem a referência na transferência?", "acceptedAnswer": {"@type": "Answer", "text": "A automação apanha a maioria pelo valor e pela data, e junta transferências que somam várias facturas. Mas a taxa de acerto sobe muito quando a factura pede o número como referência de pagamento. É o primeiro hábito a mudar."}}, {"@type": "Question", "name": "Isto serve para um ENI ou uma empresa com uma conta só?", "acceptedAnswer": {"@type": "Answer", "text": "Serve, mas pode não compensar. Com uma conta e poucas dezenas de movimentos por mês, meia hora à mão resolve. A automação compensa a partir de duas contas, dois sistemas ou algumas centenas de movimentos, ou quando os erros começam a custar dinheiro."}}, {"@type": "Question", "name": "Quanto custa montar isto?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do número de contas, de sistemas e de regras. O teste de diagnóstico do site dá uma estimativa para automações em dois minutos, e o orçamento fechado sai depois de ver os ficheiros reais. Não há licenças novas: corre no Google Workspace que a empresa já tem."}}]}</script>

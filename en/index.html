@@ -974,6 +974,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/en/", "description": "SEO, websites, paid traffic and automation for businesses trading in Portugal, handled in English by a consultant based in Lisbon.", "email": "geral@wandofi.pt", "areaServed": "Portugal", "availableLanguage": ["en", "pt-PT"], "address": {"@type": "PostalAddress", "addressLocality": "Lisbon", "addressCountry": "PT"}, "founder": {"@type": "Person", "name": "Mauro Cordeiro", "jobTitle": "SEO consultant and project manager"}}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you work in English?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Calls, email, reports and documentation in English. The content I write for a Portuguese audience is written in European Portuguese, because that is what the market searches in."}}, {"@type": "Question", "name": "Are you an agency?", "acceptedAnswer": {"@type": "Answer", "text": "No. I am one consultant. You talk to the person doing the work, and I bring in a designer, a developer or a copywriter when the project needs one."}}, {"@type": "Question", "name": "Can you help if my company is registered in Portugal but I live abroad?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Most of the work is remote anyway. I am based in Lisbon when something has to happen in person."}}, {"@type": "Question", "name": "Are you a lawyer or an accountant?", "acceptedAnswer": {"@type": "Answer", "text": "No. I give technical and operational support, not legal or accounting advice. I know those processes well enough to tell you when a lawyer or an accountant is needed, and to coordinate their part."}}, {"@type": "Question", "name": "How much does it cost?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on scope. I would rather define a project with objectives than sell loose hours, and the first call is what sizes it."}}]}</script>

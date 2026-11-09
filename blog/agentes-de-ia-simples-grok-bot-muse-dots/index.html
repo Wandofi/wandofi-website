@@ -970,6 +970,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Grok Bot, Muse e Dots: agentes de IA simples", "description": "Três agentes de IA para quem não é técnico, por ordem: o Grok Bot, que agora chama o Claude para o trabalho pesado, o Muse da Meta, e os Dots do ChatGPT.", "inLanguage": "pt-PT", "datePublished": "2026-10-11", "dateModified": "2026-10-11", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/agentes-de-ia-simples-grok-bot-muse-dots/", "url": "https://wandofi.pt/blog/agentes-de-ia-simples-grok-bot-muse-dots/", "image": "https://wandofi.pt/assets/blog/agentes-de-ia-simples-grok-bot-muse-dots-og.jpg"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Posso usar o Muse em Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "Ainda não. A Meta lançou o Muse só nos Estados Unidos, para maiores de 18 anos, e não deu data para outros países. Qualquer forma de o usar cá passa por contornar essa limitação, e com dados de clientes isso não é boa ideia."}}, {"@type": "Question", "name": "O Grok Bot usa sempre o Claude?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Segundo o anúncio de 7 de Outubro de 2026, o Bot escolhe o modelo conforme a tarefa: o Claude Opus 5.5 para raciocínio e código pesados, o Midjourney para imagem e o Suno para áudio. O utilizador não escolhe, e a lista exacta de que tarefa vai para que modelo não foi publicada."}}, {"@type": "Question", "name": "Preciso de saber programar para usar algum destes?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Os três são feitos para pedir em linguagem corrente. O que precisa é de decidir o que deixa o agente fazer sozinho e o que exige a sua aprovação, e de ver a que dados lhe dá acesso."}}]}</script>

@@ -970,6 +970,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Tendências de IA em Portugal em 2026", "description": "O que está em alta na inteligência artificial em Portugal em 2026: agentes de IA, ferramentas, automação e marketing. Guia prático, em linguagem clara.", "inLanguage": "pt-PT", "datePublished": "2026-09-03", "dateModified": "2026-09-03", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/", "url": "https://wandofi.pt/blog/tendencias-de-ia-em-portugal/", "image": "https://wandofi.pt/assets/blog/tendencias-de-ia-em-portugal-og.jpg"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O que é um agente de IA, em palavras simples?", "acceptedAnswer": {"@type": "Answer", "text": "É um assistente de software que não se limita a responder, executa. Recebe um objectivo, decide os passos, usa outras ferramentas e entrega o resultado. Pense num colaborador digital para uma tarefa específica, como triar pedidos ou preparar orçamentos."}}, {"@type": "Question", "name": "Que ferramentas de IA valem a pena para uma empresa pequena?", "acceptedAnswer": {"@type": "Answer", "text": "As que resolvem uma dor concreta. Para a maioria começa em três: uma para conteúdo, uma para atendimento no site, e automação para ligar tudo. Vale mais dominar três bem escolhidas do que saltar entre dezenas."}}, {"@type": "Question", "name": "A IA vai acabar com o SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Não, muda o SEO. As pessoas passam a perguntar também à IA, por isso o objectivo alarga: aparecer no Google e ser a fonte que a IA cita na resposta. Quem tiver conteúdo claro e de confiança ganha dos dois lados."}}]}</script>

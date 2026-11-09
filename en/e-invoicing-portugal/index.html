@@ -973,6 +973,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "E-invoicing in Portugal: what is actually required, and when", "description": "What Portugal actually requires on invoices, what changes on 31 December 2026, and the 2027 budget vote that may move it again. Checked on 6 November 2026.", "url": "https://wandofi.pt/en/e-invoicing-portugal/", "inLanguage": "en", "datePublished": "2026-11-06", "dateModified": "2026-11-06", "author": {"@type": "Person", "name": "Mauro Cordeiro", "jobTitle": "SEO consultant and project manager", "url": "https://wandofi.pt/en/"}, "publisher": {"@type": "Organization", "name": "Wandofi PM", "url": "https://wandofi.pt"}, "about": {"@type": "Thing", "name": "Electronic invoicing in Portugal"}}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is B2B electronic invoicing mandatory in Portugal?", "acceptedAnswer": {"@type": "Answer", "text": "No. Portugal has no business to business e-invoicing mandate and no clearance system. You may invoice on paper or by PDF, provided the customer accepts it. What is mandatory is the software that produces the invoice, the QR code and the ATCUD on it, and the monthly report to the tax authority."}}, {"@type": "Question", "name": "Can I still send invoices as a PDF by email?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, until 31 December 2026. Article 95 of the 2026 budget law accepts a PDF file as an electronic invoice for all tax purposes until that date. The 2027 budget proposal would extend it by a year, and Parliament votes on 24 November 2026."}}, {"@type": "Question", "name": "What happens on 1 January 2027 if nothing changes?", "acceptedAnswer": {"@type": "Answer", "text": "A PDF would stop counting as an electronic invoice on its own. To keep that status it would need a qualified electronic signature or seal, or an EDI arrangement that guarantees the origin and the integrity of the document in the same way."}}, {"@type": "Question", "name": "I am a foreign company with a Portuguese VAT number. Do these rules apply to me?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A Portuguese VAT registration brings the invoicing obligations with it. There is no exemption for foreign companies, and invoicing a Portuguese customer from a spreadsheet or from software that is not certified here is the most common mistake I see."}}, {"@type": "Question", "name": "Do you give tax advice on this?", "acceptedAnswer": {"@type": "Answer", "text": "No. I am not an accountant and I am not a lawyer. I do the technical and operational side: choosing and connecting certified software, moving the data, automating what is manual, and coordinating with the accountant who does advise you."}}]}</script>

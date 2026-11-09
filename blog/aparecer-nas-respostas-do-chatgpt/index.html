@@ -970,6 +970,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "Aparecer nas respostas do ChatGPT em Portugal", "description": "Seis passos para a sua empresa ser citada pelo ChatGPT, pelo Gemini e pelo Google com IA em Portugal: robôs, páginas de resposta, provas, menções, llms.txt e medição semanal.", "inLanguage": "pt-PT", "datePublished": "2026-10-21", "dateModified": "2026-10-21", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/aparecer-nas-respostas-do-chatgpt/", "url": "https://wandofi.pt/blog/aparecer-nas-respostas-do-chatgpt/", "image": "https://wandofi.pt/assets/blog/aparecer-nas-respostas-do-chatgpt-og.jpg"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Tenho de pagar à OpenAI para aparecer nas respostas do ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "Não. Aparecer dentro da resposta, como fonte citada, é orgânico e grátis: depende de o site ser legível pelo OAI-SearchBot e de ter conteúdo que responda à pergunta. Os anúncios no ChatGPT são outro canal, pago, que aparece identificado como publicidade ao lado da resposta."}}, {"@type": "Question", "name": "Bloquear o GPTBot faz sair das respostas do ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "Não. O GPTBot serve para treinar modelos; o OAI-SearchBot serve para a pesquisa. Pode bloquear o primeiro e deixar o segundo. É o OAI-SearchBot que decide se aparece nas respostas de pesquisa."}}, {"@type": "Question", "name": "Quanto tempo demora até o ChatGPT me citar?", "acceptedAnswer": {"@type": "Answer", "text": "Depois de o site estar legível e de as páginas de resposta estarem no ar, as citações podem aparecer em dias ou semanas, conforme os robôs voltam a ler as páginas. As menções externas levam mais tempo, porque dependem de terceiros. Meço todas as semanas para saber quando acontece."}}, {"@type": "Question", "name": "Isto é o mesmo que SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Assenta no SEO e vai um passo além. Sem páginas indexadas, rápidas e claras, nenhuma IA o cita. Por cima disso entram a resposta directa no início de cada página, as provas próprias, a identidade de quem escreve e as menções fora do site. A isto chama a Google e a OpenAI GEO e AEO, e explico a diferença na página de serviço."}}, {"@type": "Question", "name": "E no Gemini e no Google com IA?", "acceptedAnswer": {"@type": "Answer", "text": "Seguem as mesmas regras do SEO clássico: página indexada, com snippet permitido, e conteúdo em texto. O Google escreve que não há marcação especial para aparecer nas respostas de IA. Por isso o trabalho é o mesmo, e serve os três de uma vez."}}]}</script>
@@ -1044,7 +1066,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 <section class="section section--panel"><div class="container"><div class="prose">
 <p class="eyebrow">Passo 3</p>
 <h2 class="h2" id="dizer-quem-e-com-provas">Dizer quem é, com provas</h2>
-<p class="body">Os modelos preferem fontes que se identificam e que mostram trabalho feito. Isso significa uma página sobre si ou sobre a empresa, com nome, experiência e zona, um Perfil de Empresa no Google com a mesma informação, e casos com números e datas. Um "mais de 55 contactos em três meses" com contexto vale mais do que um "resultados comprovados" sem nada atrás. Datas visíveis de publicação e de actualização também contam: a IA desconfia de páginas sem data.</p>
+<p class="body">Os modelos preferem fontes que se identificam e que mostram trabalho feito. Isso significa uma página sobre si ou sobre a empresa, com nome, experiência e zona, um <a href="/seo/seo-local/">Perfil de Empresa no Google</a> com a mesma informação, e casos com números e datas. Um "mais de 55 contactos em três meses" com contexto vale mais do que um "resultados comprovados" sem nada atrás. Datas visíveis de publicação e de actualização também contam: a IA desconfia de páginas sem data.</p>
 </div></div></section>
 
 <section class="section"><div class="container"><div class="prose">

@@ -970,6 +970,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Consultor SEO", "serviceType": "Consultoria de SEO", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Lisboa, Portugal", "description": "Consultor SEO em Lisboa e Portugal. Orientação e acompanhamento para a sua equipa executar SEO com método, sem depender de uma agência.", "url": "https://wandofi.pt/seo/consultor-seo/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qual a diferença entre um consultor SEO e uma agência?", "acceptedAnswer": {"@type": "Answer", "text": "A agência costuma executar tudo por si, criando dependência. Um consultor orienta e capacita a sua equipa para executar e manter. Faço consultoria, mas também executo quando o cliente prefere que assim seja."}}, {"@type": "Question", "name": "Consultor de SEO ou consultoria de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "É a mesma coisa vista de dois lados. Diga consultor de SEO se pensa numa pessoa que orienta, ou consultoria de SEO se pensa no serviço. Em qualquer dos casos, oriento e, quando é preciso, executo."}}, {"@type": "Question", "name": "Quanto custa um consultor SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Depende do estado do site e do que precisa. Começo sempre por um diagnóstico e só depois fecho um valor, sem avença obrigatória. Assim paga pelo que precisa e não um pacote fixo que não se ajusta a si."}}, {"@type": "Question", "name": "Trabalha com a minha equipa interna ou com os meus fornecedores?", "acceptedAnswer": {"@type": "Answer", "text": "Com ambos. Coordeno programadores, redatores e outros fornecedores, e oriento a equipa interna, para que todos remem no mesmo sentido."}}, {"@type": "Question", "name": "A consultoria é presencial em Lisboa?", "acceptedAnswer": {"@type": "Answer", "text": "Pode ser presencial na zona de Lisboa ou por videochamada. O acompanhamento regular funciona bem à distância, com sessões marcadas."}}]}</script>

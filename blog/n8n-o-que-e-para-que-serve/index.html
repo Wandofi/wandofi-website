@@ -970,6 +970,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "n8n: o que é, para que serve e quando faz sentido numa pequena empresa", "description": "O n8n é a ferramenta de automação mais procurada em Portugal. Explico o que é, para que serve numa pequena empresa, quanto custa, como o uso com WhatsApp e IA, e quando não compensa.", "image": "https://wandofi.pt/assets/blog/n8n-o-que-e-para-que-serve-og.jpg", "datePublished": "2026-10-27", "dateModified": "2026-10-27", "inLanguage": "pt-PT", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/sobre/"}, "publisher": {"@type": "Organization", "name": "Wandofi PM", "url": "https://wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/n8n-o-que-e-para-que-serve/", "url": "https://wandofi.pt/blog/n8n-o-que-e-para-que-serve/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "O n8n é gratuito?", "acceptedAnswer": {"@type": "Answer", "text": "Tem um teste gratuito na nuvem, sem cartão, com mil execuções. A versão para instalar em servidor próprio tem licença gratuita para uso interno, mas o servidor custa a partir de uns cinco euros por mês e precisa de quem o mantenha. O plano Cloud Starter custa 20 euros por mês com facturação anual, nos valores de Outubro de 2026."}}, {"@type": "Question", "name": "Preciso de saber programar para usar o n8n?", "acceptedAnswer": {"@type": "Answer", "text": "Para ligações simples, não: desenha o fluxo com caixas e setas. Para fluxos com WhatsApp, IA e regras, ajuda saber um pouco de JavaScript e de como funcionam as interfaces de programação. É nessa parte que normalmente entro."}}, {"@type": "Question", "name": "O n8n é seguro para dados de clientes?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, se for bem montado. As credenciais ficam guardadas no próprio n8n, os dados passam pelas contas da empresa, e na versão em servidor próprio nem saem de casa. O que fica por sua conta são as regras: o que o fluxo pode ler, o que pode enviar, e o registo do que fez."}}, {"@type": "Question", "name": "O n8n substitui o Zapier?", "acceptedAnswer": {"@type": "Answer", "text": "Na maior parte dos casos, sim, e fica mais barato quando o volume cresce, porque cobra por execução e não por passo. O Zapier continua a ganhar na facilidade para quem só quer ligar duas aplicações em dez minutos."}}]}</script>
@@ -1045,13 +1067,13 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 <p class="eyebrow">03</p>
 <h2 class="h2" id="n8n-zapier-ou-make-qual-escolher">n8n, Zapier ou Make: qual escolher</h2>
 <p class="body">As três fazem a mesma coisa de base, ligar aplicações. A diferença está no preço quando o volume cresce, na liberdade para passos complicados, e em onde ficam os dados.</p>
-<div class="quadro-wrap"><table class="quadro"><thead><tr><th>Critério</th><th>n8n</th><th>Make</th><th>Zapier</th></tr></thead><tbody>
-<tr><td>Como se paga</td><td>Por execução do workflow, com passos ilimitados dentro de cada uma</td><td>Por operação, cada passo conta</td><td>Por tarefa, cada passo conta</td></tr>
-<tr><td>Instalar em servidor próprio</td><td>Sim, com licença gratuita para uso interno</td><td>Não</td><td>Não</td></tr>
-<tr><td>Código à mão quando é preciso</td><td>Sim, JavaScript ou Python num nó</td><td>Limitado</td><td>Limitado</td></tr>
-<tr><td>IA e agentes</td><td>Nós próprios para modelos, memória e ferramentas</td><td>Módulos para os modelos principais</td><td>Módulos para os modelos principais</td></tr>
-<tr><td>Facilidade para quem começa</td><td>Média, pede alguma paciência</td><td>Boa</td><td>Muito boa</td></tr>
-<tr><td>Para quem é</td><td>Fluxos longos, WhatsApp, IA, dados sensíveis</td><td>Lojas online e CRMs com módulos prontos</td><td>Ligações simples de dois ou três passos</td></tr>
+<div class="quadro-wrap"><table class="quadro quadro--cartoes"><thead><tr><th>Critério</th><th>n8n</th><th>Make</th><th>Zapier</th></tr></thead><tbody>
+<tr><td data-r="Critério">Como se paga</td><td data-r="n8n">Por execução do workflow, com passos ilimitados dentro de cada uma</td><td data-r="Make">Por operação, cada passo conta</td><td data-r="Zapier">Por tarefa, cada passo conta</td></tr>
+<tr><td data-r="Critério">Instalar em servidor próprio</td><td data-r="n8n">Sim, com licença gratuita para uso interno</td><td data-r="Make">Não</td><td data-r="Zapier">Não</td></tr>
+<tr><td data-r="Critério">Código à mão quando é preciso</td><td data-r="n8n">Sim, JavaScript ou Python num nó</td><td data-r="Make">Limitado</td><td data-r="Zapier">Limitado</td></tr>
+<tr><td data-r="Critério">IA e agentes</td><td data-r="n8n">Nós próprios para modelos, memória e ferramentas</td><td data-r="Make">Módulos para os modelos principais</td><td data-r="Zapier">Módulos para os modelos principais</td></tr>
+<tr><td data-r="Critério">Facilidade para quem começa</td><td data-r="n8n">Média, pede alguma paciência</td><td data-r="Make">Boa</td><td data-r="Zapier">Muito boa</td></tr>
+<tr><td data-r="Critério">Para quem é</td><td data-r="n8n">Fluxos longos, WhatsApp, IA, dados sensíveis</td><td data-r="Make">Lojas online e CRMs com módulos prontos</td><td data-r="Zapier">Ligações simples de dois ou três passos</td></tr>
 </tbody></table></div>
 <p class="body">A regra que sigo: Zapier para começar em dez minutos e esquecer, Make quando a loja ou o CRM já tem módulos feitos, n8n para tudo o que tem muitos passos, WhatsApp ou IA. Para a maioria dos processos que me pedem, é n8n.</p>
 </div></div></section>
@@ -1059,11 +1081,11 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 <p class="eyebrow">04</p>
 <h2 class="h2" id="quanto-custa-o-n8n">Quanto custa o n8n</h2>
 <p class="body">Valores de referência da página de preços do n8n a 27 de Outubro de 2026, com facturação anual. Confirmo sempre antes de fechar um orçamento, porque mudam.</p>
-<div class="quadro-wrap"><table class="quadro"><thead><tr><th>Plano</th><th>Preço</th><th>Execuções por mês</th><th>Para quem</th></tr></thead><tbody>
-<tr><td>Teste gratuito</td><td>0 €, sem cartão</td><td>1.000</td><td>Para experimentar durante uns dias</td></tr>
-<tr><td>Cloud Starter</td><td>20 € por mês</td><td>2.500</td><td>Um assistente de WhatsApp e dois ou três fluxos de escritório</td></tr>
-<tr><td>Cloud Pro</td><td>50 € por mês</td><td>10.000</td><td>Várias equipas ou volume alto de mensagens</td></tr>
-<tr><td>Servidor próprio</td><td>Licença gratuita, mais o servidor, a partir de uns cinco euros por mês</td><td>Sem limite</td><td>Quem quer os dados em casa e tem quem mantenha</td></tr>
+<div class="quadro-wrap"><table class="quadro quadro--cartoes"><thead><tr><th>Plano</th><th>Preço</th><th>Execuções por mês</th><th>Para quem</th></tr></thead><tbody>
+<tr><td data-r="Plano">Teste gratuito</td><td data-r="Preço">0 €, sem cartão</td><td data-r="Execuções por mês">1.000</td><td data-r="Para quem">Para experimentar durante uns dias</td></tr>
+<tr><td data-r="Plano">Cloud Starter</td><td data-r="Preço">20 € por mês</td><td data-r="Execuções por mês">2.500</td><td data-r="Para quem">Um assistente de WhatsApp e dois ou três fluxos de escritório</td></tr>
+<tr><td data-r="Plano">Cloud Pro</td><td data-r="Preço">50 € por mês</td><td data-r="Execuções por mês">10.000</td><td data-r="Para quem">Várias equipas ou volume alto de mensagens</td></tr>
+<tr><td data-r="Plano">Servidor próprio</td><td data-r="Preço">Licença gratuita, mais o servidor, a partir de uns cinco euros por mês</td><td data-r="Execuções por mês">Sem limite</td><td data-r="Para quem">Quem quer os dados em casa e tem quem mantenha</td></tr>
 </tbody></table></div>
 <p class="body">Uma execução é uma passagem completa pelo workflow, com todos os passos lá dentro. Uma mensagem de WhatsApp recebida é uma execução. Um negócio pequeno raramente passa das 2.500 por mês. O servidor próprio poupa os vinte euros mas custa tempo de manutenção, e só o aconselho quando há vários clientes ou fluxos a correr em paralelo.</p>
 </div></div></section>

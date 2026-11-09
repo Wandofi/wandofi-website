@@ -974,6 +974,28 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .quadro-wrap .quadro{margin-top:0}
 @media (max-width:760px){.quadro{min-width:44rem}.quadro td:first-child{white-space:normal;min-width:7rem}}
 
+/* Quadros em cartões no telemóvel. Fonte: ferramentas/paginas.css
+   A 390 px um quadro de quatro colunas não cabe no ecrã: deslizava para o lado
+   dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
+   fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
+   coluna em cima de cada valor, lido do atributo data-r que o
+   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
+   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+@media (max-width:620px){
+  .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
+  .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
+  .quadro--cartoes thead{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+  .quadro--cartoes tbody,.quadro--cartoes tr,.quadro--cartoes td{display:block}
+  .quadro--cartoes tr{border:1px solid var(--line);border-left:2px solid var(--ink);padding:var(--s2);margin-top:var(--s2)}
+  .quadro--cartoes tbody tr:first-child{margin-top:0}
+  .quadro--cartoes td{border:0;padding:0}
+  .quadro--cartoes td+td{margin-top:.6rem}
+  .quadro--cartoes td::before{content:attr(data-r);display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.2rem}
+  .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
+  .quadro--cartoes td:first-child::before{display:none}
+  .quadro--cartoes td:first-child b{font-weight:400}
+}
+
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Digital marketing in English", "serviceType": "Digital marketing", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt", "availableLanguage": ["en", "pt-PT"]}, "areaServed": "Lisbon, Portugal", "description": "Google Ads, Meta Ads, ChatGPT ads and the measurement behind them, run in English by a consultant based in Lisbon.", "url": "https://wandofi.pt/en/digital-marketing-lisbon/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you run the ads yourself?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The account is yours, the billing is yours, and I work inside it. If we stop working together you keep everything, including the history."}}, {"@type": "Question", "name": "Which platforms do you work with?", "acceptedAnswer": {"@type": "Answer", "text": "Google Ads, Meta Ads and ads inside ChatGPT. Which of them makes sense depends on whether people are already searching for what you sell."}}, {"@type": "Question", "name": "Can you write the ads in Portuguese?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, in European Portuguese. Ad copy translated from English is the fastest way to waste a budget in this market."}}, {"@type": "Question", "name": "How do I know whether it worked?", "acceptedAnswer": {"@type": "Answer", "text": "GA4 and conversion events set up before the first euro is spent, with consent handled properly under the GDPR. If the measurement is not in place, we put it in place first."}}, {"@type": "Question", "name": "Is there a minimum budget?", "acceptedAnswer": {"@type": "Answer", "text": "There is a point below which paid traffic tells you nothing, and it depends on the cost per click in your sector. I say on the first call whether your budget is above it."}}]}</script>
