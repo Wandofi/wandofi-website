@@ -52,6 +52,7 @@ ANCORA = {
  '/blog/agentes-de-ia-a-medida/':            'Agentes de IA à medida',
  '/blog/ai-act-ia-no-marketing/':            'IA no marketing e o AI Act',
  '/blog/como-abrir-uma-empresa-em-portugal/':'Como abrir uma empresa',
+ '/blog/seo-ai-overviews-modo-ia-google/':   'O SEO e as respostas de IA',
  '/en/':                         'SEO in English',
 }
 
@@ -69,7 +70,7 @@ JUNTAR = {
                                '/blog/', '/diagnostico/'],
  '/seo/sectores/':            SECTORES + ['/diagnostico/'],
  '/seo/consultor-seo/':       ['/seo/sectores/', '/sobre/', '/diagnostico/'],
- '/seo/geo-aeo/':             ['/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/chatgpt-ads/', '/blog/google-preferred-sources/', '/blog/tendencias-de-ia-em-portugal/', '/diagnostico/'],
+ '/seo/geo-aeo/':             ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/chatgpt-ads/', '/blog/google-preferred-sources/', '/blog/tendencias-de-ia-em-portugal/', '/diagnostico/'],
  '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/seo/consultor-seo/', '/diagnostico/'],
  '/seo/seo-local/':           ['/seo/sectores/', '/diagnostico/'],
  '/seo/seo-para-empresas/':   ['/seo/sectores/', '/diagnostico/'],
@@ -96,7 +97,8 @@ JUNTAR = {
  '/blog/agentes-de-ia-simples-grok-bot-muse-dots/': ['/automacoes/', '/blog/agentes-de-ia-a-medida/', '/seo/geo-aeo/', '/diagnostico/'],
  '/blog/agentes-de-ia-a-medida/':            ['/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/ai-act-ia-no-marketing/':            ['/blog/tendencias-de-ia-em-portugal/', '/gestao-de-trafego/'],
- '/blog/aparecer-nas-respostas-do-chatgpt/': ['/blog/google-preferred-sources/'],
+ '/blog/aparecer-nas-respostas-do-chatgpt/': ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-preferred-sources/'],
+ '/blog/seo-ai-overviews-modo-ia-google/':   ['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/blog/google-preferred-sources/', '/seo/consultor-seo/', '/casos/', '/diagnostico/'],
  '/blog/como-abrir-uma-empresa-em-portugal/':['/seo/contabilistas/', '/blog/reconciliacao-bancaria-toconline/'],
  '/blog/google-preferred-sources/':          ['/blog/aparecer-nas-respostas-do-chatgpt/', '/seo/consultor-seo/'],
  '/blog/n8n-o-que-e-para-que-serve/':        ['/blog/php2shell-dados-de-clientes/'],
@@ -111,7 +113,13 @@ JUNTAR = {
 
 MAX = 6
 # O hub do SEO e um indice: leva o conjunto todo, sem tecto de 6.
-TECTO = {'/seo/': 10}
+# As duas paginas de GEO e AEO levam 7 porque ja estavam no tecto e o artigo
+# novo nao entrava: a fusao e "atuais + juntar", por isso uma pagina cheia
+# ignora em silencio tudo o que se lhe acrescente. Subir o tecto acrescenta
+# sem tirar nada, que e o contrario de trocar uma ligacao por outra.
+TECTO = {'/seo/': 10,
+         '/seo/geo-aeo/': 7,
+         '/blog/aparecer-nas-respostas-do-chatgpt/': 7}
 
 def caminho(u):
     return 'index.html' if u == '/' else u.strip('/') + '/index.html'

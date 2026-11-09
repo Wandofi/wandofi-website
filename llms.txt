@@ -53,6 +53,7 @@ Site essencial de uma página a preço fixo, desde 350€, com SEO local incluí
 
 ## Mais páginas
 
+- [O SEO mudou: AI Overviews, Modo IA e o que faço de diferente](https://wandofi.pt/blog/seo-ai-overviews-modo-ia-google/): o que mudou na Pesquisa Google entre Maio de 2025 e Setembro de 2026, com datas e fontes oficiais; a documentação da Google diz que para aparecer nos AI Overviews e no Modo IA basta a página estar indexada, sem ficheiros, marcação ou dados estruturados próprios; o que o relatório de funcionalidades de IA generativa do Search Console mede (impressões) e o que não mede (cliques, posição, palavras-chave); e as seis mudanças de método daí resultantes. Verificado a 9 de Novembro de 2026.
 - [Agentes de IA à medida: skills, workflows e implementação remota](https://wandofi.pt/blog/agentes-de-ia-a-medida/): Construo agentes de IA à medida para pessoas e empresas: skills, workflows, instalação e implementação remota. Autónomos ou de acompanhamento, ligados às suas ferramentas.
 - [IA no marketing e o AI Act: o que está em causa](https://wandofi.pt/blog/ai-act-ia-no-marketing/): Desde agosto de 2026 há regras europeias para quem usa IA. Em linguagem simples, o que o AI Act muda para o marketing do seu negócio, sem alarmismo.
 - [Como abrir uma empresa em Portugal, passo a passo](https://wandofi.pt/blog/como-abrir-uma-empresa-em-portugal/): Guia prático para abrir uma empresa em Portugal. O que decidir antes, como criar a empresa na hora ou online, e o que tratar nos primeiros dias.
