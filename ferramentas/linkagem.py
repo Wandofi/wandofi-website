@@ -53,6 +53,7 @@ ANCORA = {
  '/blog/ai-act-ia-no-marketing/':            'IA no marketing e o AI Act',
  '/blog/como-abrir-uma-empresa-em-portugal/':'Como abrir uma empresa',
  '/blog/seo-ai-overviews-modo-ia-google/':   'O SEO e as respostas de IA',
+ '/blog/siglas-seo-marketing-digital/':      'Siglas de SEO e marketing',
  '/en/':                         'SEO in English',
 }
 
@@ -93,12 +94,13 @@ JUNTAR = {
  '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/', '/diagnostico/'],
  '/automacoes/':              ['/automacoes/chatbot-whatsapp/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/reconciliacao-bancaria-toconline/', '/blog/agentes-de-ia-a-medida/', '/diagnostico/'],
  # O blog. Cada artigo leva artigos vizinhos e as paginas de servico do tema.
- '/blog/':                    ['/seo/consultor-seo/', '/automacoes/', '/diagnostico/'],
+ '/blog/':                    ['/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/automacoes/', '/diagnostico/'],
  '/blog/agentes-de-ia-simples-grok-bot-muse-dots/': ['/automacoes/', '/blog/agentes-de-ia-a-medida/', '/seo/geo-aeo/', '/diagnostico/'],
  '/blog/agentes-de-ia-a-medida/':            ['/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/ai-act-ia-no-marketing/':            ['/blog/tendencias-de-ia-em-portugal/', '/gestao-de-trafego/'],
  '/blog/aparecer-nas-respostas-do-chatgpt/': ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-preferred-sources/'],
- '/blog/seo-ai-overviews-modo-ia-google/':   ['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/blog/google-preferred-sources/', '/seo/consultor-seo/', '/casos/', '/diagnostico/'],
+ '/blog/seo-ai-overviews-modo-ia-google/':   ['/blog/siglas-seo-marketing-digital/', '/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/blog/google-preferred-sources/', '/seo/consultor-seo/', '/casos/', '/diagnostico/'],
+ '/blog/siglas-seo-marketing-digital/':      ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/geo-aeo/', '/gestao-de-trafego/', '/blog/como-abrir-uma-empresa-em-portugal/', '/seo/consultor-seo/', '/diagnostico/'],
  '/blog/como-abrir-uma-empresa-em-portugal/':['/seo/contabilistas/', '/blog/reconciliacao-bancaria-toconline/'],
  '/blog/google-preferred-sources/':          ['/blog/aparecer-nas-respostas-do-chatgpt/', '/seo/consultor-seo/'],
  '/blog/n8n-o-que-e-para-que-serve/':        ['/blog/php2shell-dados-de-clientes/'],
@@ -113,13 +115,21 @@ JUNTAR = {
 
 MAX = 6
 # O hub do SEO e um indice: leva o conjunto todo, sem tecto de 6.
-# As duas paginas de GEO e AEO levam 7 porque ja estavam no tecto e o artigo
-# novo nao entrava: a fusao e "atuais + juntar", por isso uma pagina cheia
-# ignora em silencio tudo o que se lhe acrescente. Subir o tecto acrescenta
-# sem tirar nada, que e o contrario de trocar uma ligacao por outra.
+# As paginas abaixo levam 7 porque ja estavam no tecto e o artigo novo nao
+# entrava: a fusao e "atuais + juntar", por isso uma pagina cheia ignora em
+# silencio tudo o que se lhe acrescente. Subir o tecto acrescenta sem tirar
+# nada, que e o contrario de trocar uma ligacao por outra.
+#
+# ATENCAO: esta lista cresce um pouco a cada artigo novo, e isso e sintoma.
+# Ha duas decisoes por tomar, as duas do Mauro, e ambas mexem no site inteiro:
+# subir o MAX de 6 para 7 em todas as paginas, ou dar prioridade ao JUNTAR
+# sobre as ligacoes ja presentes, o que reordena os blocos de 40 paginas.
+# Enquanto nao estiver decidido, cada excepcao fica escrita aqui.
 TECTO = {'/seo/': 10,
          '/seo/geo-aeo/': 7,
-         '/blog/aparecer-nas-respostas-do-chatgpt/': 7}
+         '/blog/aparecer-nas-respostas-do-chatgpt/': 7,
+         '/blog/seo-ai-overviews-modo-ia-google/': 7,
+         '/blog/': 7}
 
 def caminho(u):
     return 'index.html' if u == '/' else u.strip('/') + '/index.html'
