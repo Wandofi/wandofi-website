@@ -975,8 +975,14 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
    dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
    fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
    coluna em cima de cada valor, lido do atributo data-r que o
-   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
-   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+   ferramentas/rotula_quadros.py escreve nas células.
+   Os quadros de duas colunas também passam a cartões, e levam além disso a
+   classe .quadro--par. Ficavam de fora por se ter assumido que cabiam no ecrã,
+   e não cabem: a regra acima dá 44rem de largura mínima a qualquer quadro
+   abaixo dos 760 px, ou seja 704 px dentro de um ecrã de 350. Num quadro de
+   duas colunas a primeira célula costuma ser uma frase inteira e não um nome
+   curto, por isso o .quadro--par tira o tratamento de título em serifa e
+   trata as duas células por igual, cada uma debaixo do nome da sua coluna. */
 @media (max-width:620px){
   .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
   .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
@@ -990,7 +996,17 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
   .quadro--cartoes td:first-child::before{display:none}
   .quadro--cartoes td:first-child b{font-weight:400}
+  .quadro--par td:first-child{font-family:var(--ui);font-weight:400;font-size:1rem;line-height:1.55;letter-spacing:0;padding-bottom:0;border-bottom:0}
+  .quadro--par td:first-child::before{display:block}
+  .quadro--par td:first-child b{font-weight:600}
 }
+
+/* A primeira coluna de um quadro leva white-space:nowrap, para uma data ou um
+   nome curto não partirem a meio. Num quadro de duas colunas a primeira célula
+   costuma ser uma frase, e o nowrap esticava a tabela para 1034 px dentro de
+   736 disponíveis, ou seja deslizava para o lado já no computador. Estes
+   quadros deixam a primeira coluna quebrar como qualquer outra. */
+.quadro--par td:first-child{white-space:normal}
 
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SEO para Empresas", "serviceType": "SEO para empresas", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "SEO contínuo para pequenas e médias empresas em Portugal. Estratégia, conteúdo e optimização para crescer no tráfego orgânico.", "url": "https://wandofi.pt/seo/seo-para-empresas/"}</script>
@@ -1039,7 +1055,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           
         </div>
       </section>
-<section class="section"><div class="container"><div class="prose"><p class="answer">SEO para empresas é tratar o tráfego orgânico como um canal de negócio, planeado, medido e alinhado com o que vende.</p><p class="body">Não é publicar por publicar. É perceber que pesquisas trazem clientes, cobrir esses temas melhor do que a concorrência e converter visitas em contactos.</p></div></div></section><section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">O que inclui</p><h2 class="h2">Como trabalho o SEO de uma empresa</h2></header><ul class="deliver"><li><b>Estratégia de palavras-chave</b>: mapa de temas por intenção de compra.</li><li><b>Plano de conteúdo</b>: páginas de serviço e artigos que respondem a dúvidas reais.</li><li><b>Optimização contínua</b>: melhorar o que já existe antes de criar mais.</li><li><b>Ligações internas</b>: estrutura que distribui autoridade pelas páginas certas.</li><li><b>Medição</b>: Search Console e analítica para ver o que converte.</li><li><b>Relatório mensal</b>: em linguagem clara, com decisões e próximos passos.</li></ul></div></section><section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Método</p><h2 class="h2">Diagnóstico, sprint, entrega</h2></header><div class="prose"><p class="body">Começo com um diagnóstico do site e do mercado. Priorizo o que dá retorno mais depressa. Implemento em sprints e documento cada decisão, para o conhecimento não viver só na minha cabeça. <strong>Sem retainer obrigatório</strong>, a avença existe se fizer sentido continuar.</p></div><div class="related"><a href="/seo/consultor-seo/">Consultor de SEO</a><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/seo/agencia-seo-lisboa/">SEO em Lisboa</a><a href="/seo/sectores/">SEO por sector</a><a href="/diagnostico/">Teste de diagnóstico</a><a href="/blog/como-abrir-uma-empresa-em-portugal/">Como abrir uma empresa</a></div></div></section>
+<section class="section"><div class="container"><div class="prose"><p class="answer">SEO para empresas é tratar o tráfego orgânico como um canal de negócio, planeado, medido e alinhado com o que vende.</p><p class="body">Não é publicar por publicar. É perceber que pesquisas trazem clientes, cobrir esses temas melhor do que a concorrência e converter visitas em contactos.</p></div></div></section><section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">O que inclui</p><h2 class="h2">Como trabalho o SEO de uma empresa</h2></header><ul class="deliver"><li><b>Estratégia de palavras-chave</b>: mapa de temas por intenção de compra.</li><li><b>Plano de conteúdo</b>: páginas de serviço e artigos que respondem a dúvidas reais.</li><li><b>Optimização contínua</b>: melhorar o que já existe antes de criar mais.</li><li><b>Ligações internas</b>: estrutura que distribui autoridade pelas páginas certas.</li><li><b>Medição</b>: Search Console e analítica para ver o que converte.</li><li><b>Relatório mensal</b>: em linguagem clara, com decisões e próximos passos.</li></ul></div></section><section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Método</p><h2 class="h2">Diagnóstico, sprint, entrega</h2></header><div class="prose"><p class="body">Começo com um diagnóstico do site e do mercado. Priorizo o que dá retorno mais depressa. Implemento em sprints e documento cada decisão, para o conhecimento não viver só na minha cabeça. <strong>Sem retainer obrigatório</strong>, a avença existe se fizer sentido continuar.</p></div><div class="related"><a href="/seo/consultor-seo/">Consultor de SEO</a><a href="/seo/geo-aeo/">GEO e AEO</a><a href="/seo/agencia-seo-lisboa/">SEO em Lisboa</a><a href="/seo/sectores/">SEO por sector</a><a href="/diagnostico/">Teste de diagnóstico</a><a href="/blog/como-abrir-uma-empresa-em-portugal/">Como abrir uma empresa</a><a href="/blog/google-core-update-novembro-2026/">Core update de Novembro de 2026</a></div></div></section>
 <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Perguntas frequentes</p><h2 class="h2">Perguntas frequentes</h2></header><div class="faq"><details><summary>Qual a diferença entre SEO para empresas e uma auditoria pontual?</summary><div class="a"><p>A auditoria é um retrato num momento; o SEO para empresas é um trabalho contínuo de estratégia, conteúdo e optimização. Uma corrige o que está mal hoje; o outro faz o canal crescer ao longo do tempo.</p></div></details><details><summary>A minha empresa é pequena. O SEO compensa?</summary><div class="a"><p>Muitas vezes é onde compensa mais, porque um negócio local ou de nicho compete por pesquisas específicas, menos disputadas. O importante é escolher os termos certos e ter paciência para o médio prazo.</p></div></details><details><summary>Preciso de publicar um artigo por semana?</summary><div class="a"><p>Não necessariamente. Vale mais ter poucas páginas fortes e bem optimizadas do que muito conteúdo fraco. A cadência depende do objectivo, não por uma regra.</p></div></details></div></div></section>
       <section class="section close" id="contacto">
         <div class="container">

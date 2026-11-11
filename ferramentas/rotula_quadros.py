@@ -7,9 +7,11 @@ fora do ecra. O CSS resolve isso empilhando cada linha como um cartao, mas para
 o cartao se ler e preciso que cada valor leve o nome da sua coluna.
 
 Este programa le o <thead> de cada quadro e escreve esse nome em data-r="" nas
-celulas do corpo. Quadros com tres ou mais colunas recebem tambem a classe
-quadro--cartoes, que e o que o CSS procura. Quadros de duas colunas ficam como
-estao, porque esses cabem no ecra.
+celulas do corpo, e acrescenta a classe quadro--cartoes, que e o que o CSS
+procura. Os quadros de duas colunas levam ainda a classe quadro--par: tambem
+precisam de cartoes, porque a largura minima de 44rem os faz deslizar num ecra
+de 350 px, mas nesses a primeira celula costuma ser uma frase inteira e nao um
+nome curto, por isso o CSS nao lhe da tratamento de titulo.
 
 Correr da raiz do repositorio, sempre que se acrescentar ou alterar um quadro.
 E idempotente: correr duas vezes da o mesmo resultado.
@@ -19,9 +21,9 @@ import io, os, re, glob
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(BASE)
 
-MIN_COLUNAS = 3
+MIN_COLUNAS = 2
 
-QUADRO = re.compile(r'<table class="quadro(?: quadro--cartoes)?">(.*?)</table>', re.S)
+QUADRO = re.compile(r'<table class="quadro(?: quadro--cartoes)?(?: quadro--par)?">(.*?)</table>', re.S)
 CABECA = re.compile(r'<thead>\s*<tr>(.*?)</tr>\s*</thead>', re.S)
 CELULA_TH = re.compile(r'<th[^>]*>(.*?)</th>', re.S)
 LINHA = re.compile(r'<tr>(.*?)</tr>', re.S)
@@ -67,25 +69,30 @@ def trata(miolo):
 paginas = [q for q in (x.replace(os.sep, '/') for x in glob.glob('**/*.html', recursive=True))
            if not q.startswith('propostas/')]
 
-tocadas = quadros = cartoes = curtos = 0
+tocadas = quadros = cartoes = pares = curtos = 0
 for p in paginas:
     h = io.open(p, encoding='utf-8').read()
     if '<table class="quadro' not in h:
         continue
 
     def troca(m):
-        global quadros, cartoes, curtos
+        global quadros, cartoes, pares, curtos
         quadros += 1
         novo, n = trata(m.group(1))
         if novo is None:
             curtos += 1
             return '<table class="quadro">' + m.group(1) + '</table>'
         cartoes += 1
-        return '<table class="quadro quadro--cartoes">' + novo + '</table>'
+        classe = 'quadro quadro--cartoes'
+        if n == 2:
+            pares += 1
+            classe += ' quadro--par'
+        return '<table class="' + classe + '">' + novo + '</table>'
 
     novo = QUADRO.sub(troca, h)
     if novo != h:
         io.open(p, 'w', encoding='utf-8', newline='\n').write(novo)
         tocadas += 1
 
-print(f"quadros {quadros}, em cartoes {cartoes}, de duas colunas {curtos}, paginas reescritas {tocadas}")
+print(f"quadros {quadros}, em cartoes {cartoes}, de duas colunas {pares}, "
+      f"sem cabeca {curtos}, paginas reescritas {tocadas}")

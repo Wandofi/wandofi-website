@@ -975,8 +975,14 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
    dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
    fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
    coluna em cima de cada valor, lido do atributo data-r que o
-   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
-   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+   ferramentas/rotula_quadros.py escreve nas células.
+   Os quadros de duas colunas também passam a cartões, e levam além disso a
+   classe .quadro--par. Ficavam de fora por se ter assumido que cabiam no ecrã,
+   e não cabem: a regra acima dá 44rem de largura mínima a qualquer quadro
+   abaixo dos 760 px, ou seja 704 px dentro de um ecrã de 350. Num quadro de
+   duas colunas a primeira célula costuma ser uma frase inteira e não um nome
+   curto, por isso o .quadro--par tira o tratamento de título em serifa e
+   trata as duas células por igual, cada uma debaixo do nome da sua coluna. */
 @media (max-width:620px){
   .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
   .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
@@ -990,7 +996,17 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
   .quadro--cartoes td:first-child::before{display:none}
   .quadro--cartoes td:first-child b{font-weight:400}
+  .quadro--par td:first-child{font-family:var(--ui);font-weight:400;font-size:1rem;line-height:1.55;letter-spacing:0;padding-bottom:0;border-bottom:0}
+  .quadro--par td:first-child::before{display:block}
+  .quadro--par td:first-child b{font-weight:600}
 }
+
+/* A primeira coluna de um quadro leva white-space:nowrap, para uma data ou um
+   nome curto não partirem a meio. Num quadro de duas colunas a primeira célula
+   costuma ser uma frase, e o nowrap esticava a tabela para 1034 px dentro de
+   736 disponíveis, ou seja deslizava para o lado já no computador. Estes
+   quadros deixam a primeira coluna quebrar como qualquer outra. */
+.quadro--par td:first-child{white-space:normal}
 
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SEO para Advogados", "serviceType": "SEO para Advogados", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "SEO para advogados e escritórios de advocacia em Portugal. Presença local e conteúdo por área de prática para atrair clientes.", "url": "https://wandofi.pt/seo/advogados/"}</script>

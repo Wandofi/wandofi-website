@@ -975,8 +975,14 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
    dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
    fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
    coluna em cima de cada valor, lido do atributo data-r que o
-   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
-   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+   ferramentas/rotula_quadros.py escreve nas células.
+   Os quadros de duas colunas também passam a cartões, e levam além disso a
+   classe .quadro--par. Ficavam de fora por se ter assumido que cabiam no ecrã,
+   e não cabem: a regra acima dá 44rem de largura mínima a qualquer quadro
+   abaixo dos 760 px, ou seja 704 px dentro de um ecrã de 350. Num quadro de
+   duas colunas a primeira célula costuma ser uma frase inteira e não um nome
+   curto, por isso o .quadro--par tira o tratamento de título em serifa e
+   trata as duas células por igual, cada uma debaixo do nome da sua coluna. */
 @media (max-width:620px){
   .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
   .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
@@ -990,7 +996,17 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
   .quadro--cartoes td:first-child::before{display:none}
   .quadro--cartoes td:first-child b{font-weight:400}
+  .quadro--par td:first-child{font-family:var(--ui);font-weight:400;font-size:1rem;line-height:1.55;letter-spacing:0;padding-bottom:0;border-bottom:0}
+  .quadro--par td:first-child::before{display:block}
+  .quadro--par td:first-child b{font-weight:600}
 }
+
+/* A primeira coluna de um quadro leva white-space:nowrap, para uma data ou um
+   nome curto não partirem a meio. Num quadro de duas colunas a primeira célula
+   costuma ser uma frase, e o nowrap esticava a tabela para 1034 px dentro de
+   736 disponíveis, ou seja deslizava para o lado já no computador. Estes
+   quadros deixam a primeira coluna quebrar como qualquer outra. */
+.quadro--par td:first-child{white-space:normal}
 
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "GEO e AEO: optimização para respostas de IA", "serviceType": "Generative Engine Optimization e Answer Engine Optimization", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "Preparação de sites para aparecerem e serem citados nas respostas do ChatGPT, do Gemini e do Google com IA. Lisboa e todo o país, à distância.", "url": "https://wandofi.pt/seo/geo-aeo/"}</script>
@@ -1048,7 +1064,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 
 <section class="section"><div class="container"><div class="prose"><p class="eyebrow">Prova</p><h2 class="h2">Medido, não prometido</h2><p class="body">Aplico isto no meu próprio site. Em Outubro de 2026, numa ronda de medição com ChatGPT, Gemini e Google com IA, o Gemini cita esta página como fonte na pergunta "Como preparar o meu site para ser citado pelo ChatGPT e pela IA do Google em Portugal". Nas mesmas medições, um gabinete de contabilidade de Lisboa que acompanho aparece como primeira recomendação do Gemini para a sua pesquisa principal. Nas perguntas sobre GEO e AEO em português, o ChatGPT cita hoje sobretudo fontes em inglês. É esse espaço que quero ocupar, consigo.</p><p class="body">Quase nenhum site português tem uma abordagem dedicada a GEO e AEO. É uma vantagem de quem chega primeiro, e o trabalho serve também o SEO clássico. Se quiser perceber o método em detalhe, escrevi um <a href="/blog/aparecer-nas-respostas-do-chatgpt/">guia passo a passo para aparecer nas respostas do ChatGPT em Portugal</a>.</p></div></div></section>
 
-<section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Relacionado</p><h2 class="h2">Ver também</h2></header><div class="related"><a href="/blog/aparecer-nas-respostas-do-chatgpt/">Aparecer nas respostas do ChatGPT</a><a href="/seo/">SEO</a><a href="/seo/seo-tecnico/">SEO técnico</a><a href="/gestao-de-trafego/chatgpt-ads/">Anúncios no ChatGPT</a><a href="/blog/google-preferred-sources/">Fonte preferida no Google</a><a href="/diagnostico/">Teste de diagnóstico</a><a href="/blog/seo-ai-overviews-modo-ia-google/">O SEO e as respostas de IA</a></div></div></section>
+<section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Relacionado</p><h2 class="h2">Ver também</h2></header><div class="related"><a href="/blog/aparecer-nas-respostas-do-chatgpt/">Aparecer nas respostas do ChatGPT</a><a href="/seo/">SEO</a><a href="/seo/seo-tecnico/">SEO técnico</a><a href="/gestao-de-trafego/chatgpt-ads/">Anúncios no ChatGPT</a><a href="/blog/google-preferred-sources/">Fonte preferida no Google</a><a href="/diagnostico/">Teste de diagnóstico</a><a href="/blog/seo-ai-overviews-modo-ia-google/">O SEO e as respostas de IA</a><a href="/blog/tendencias-de-ia-em-portugal/">Tendências de IA em Portugal</a></div></div></section>
 <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Perguntas frequentes</p><h2 class="h2">Perguntas frequentes</h2></header><div class="faq"><details><summary>O que é GEO e AEO, em palavras simples?</summary><div class="a"><p>AEO, ou Answer Engine Optimization, é preparar cada página para ser a resposta directa a uma pergunta, no Google com IA, no Perplexity ou no Bing. GEO, ou Generative Engine Optimization, é fazer com que modelos como o ChatGPT e o Gemini citem o seu site como fonte quando respondem. Os dois assentam no SEO: sem páginas indexadas e claras, nenhuma IA o encontra.</p></div></details><details><summary>Em que é que GEO e AEO são diferentes do SEO tradicional?</summary><div class="a"><p>O SEO trabalha para a lista de resultados do Google. O GEO e o AEO trabalham para a resposta que a IA escreve. Na prática, o SEO continua a ser a base, e por cima entram três coisas: páginas que respondem logo no primeiro parágrafo, dados e provas próprios que a IA prefere citar, e uma identidade clara de quem escreve, com menções fora do site.</p></div></details><details><summary>Como faço para a minha empresa aparecer nas respostas do ChatGPT em Portugal?</summary><div class="a"><p>Deixar o OAI-SearchBot, o robô de pesquisa da OpenAI, ler o site; ter páginas que respondem às perguntas que os clientes fazem, com a resposta no início; ter um Perfil de Empresa no Google e menções noutros sites portugueses; e medir todas as semanas o que o ChatGPT responde. Escrevi um guia passo a passo no blog.</p></div></details><details><summary>Quanto tempo demora?</summary><div class="a"><p>A primeira ronda, com diagnóstico, páginas de resposta e medição montada, leva de duas a oito semanas, consoante o tamanho do site. As citações nas respostas de IA começam a aparecer depois de o Google e a OpenAI voltarem a ler as páginas, o que pode levar de dias a semanas.</p></div></details><details><summary>Como se mede o sucesso em GEO e AEO?</summary><div class="a"><p>Com três medidas: se o site é citado nas respostas do ChatGPT, do Gemini e do Google com IA para as perguntas que interessam, medido todas as semanas; as visitas que chegam de assistentes de IA, visíveis no Google Analytics; e os contactos que essas visitas geram. É um campo novo, por isso acompanho e ajusto, e mostro os números tal como são.</p></div></details><details><summary>Vale a pena investir nisto agora?</summary><div class="a"><p>Sim, por duas razões. A concorrência em Portugal ainda é pequena: nas perguntas que testo, muitas respostas de IA não citam nenhuma fonte portuguesa. E o trabalho que serve o GEO e o AEO, conteúdo claro, perguntas frequentes, dados estruturados, também reforça o SEO clássico.</p></div></details></div></div></section>
       <section class="section close" id="contacto">
         <div class="container">

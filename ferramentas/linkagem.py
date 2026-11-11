@@ -54,6 +54,7 @@ ANCORA = {
  '/blog/como-abrir-uma-empresa-em-portugal/':'Como abrir uma empresa',
  '/blog/seo-ai-overviews-modo-ia-google/':   'O SEO e as respostas de IA',
  '/blog/siglas-seo-marketing-digital/':      'Siglas de SEO e marketing',
+ '/blog/google-core-update-novembro-2026/':  'Core update de Novembro de 2026',
  '/en/':                         'SEO in English',
 }
 
@@ -68,14 +69,17 @@ JUNTAR = {
  '/seo/':                     ['/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
                                '/seo/seo-local/', '/seo/seo-para-empresas/', '/seo/geo-aeo/',
                                '/seo/agencia-seo-lisboa/', '/seo/agencia-seo-porto/',
+                               '/blog/google-core-update-novembro-2026/',
                                '/blog/', '/diagnostico/'],
  '/seo/sectores/':            SECTORES + ['/diagnostico/'],
- '/seo/consultor-seo/':       ['/seo/sectores/', '/sobre/', '/diagnostico/'],
- '/seo/geo-aeo/':             ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/chatgpt-ads/', '/blog/google-preferred-sources/', '/blog/tendencias-de-ia-em-portugal/', '/diagnostico/'],
- '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/seo/consultor-seo/', '/blog/siglas-seo-marketing-digital/', '/diagnostico/'],
- '/seo/seo-local/':           ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/diagnostico/'],
- '/seo/seo-para-empresas/':   ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/diagnostico/'],
- '/seo/agencia-seo-lisboa/':  ['/seo/consultor-seo/', '/diagnostico/'],
+ # O artigo do core update entra nas paginas de SEO todas. E noticia datada:
+ # quando a actualizacao acabar, o valor desta ligacao cai e sai daqui.
+ '/seo/consultor-seo/':       ['/seo/sectores/', '/blog/google-core-update-novembro-2026/', '/sobre/', '/diagnostico/'],
+ '/seo/geo-aeo/':             ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/chatgpt-ads/', '/blog/google-preferred-sources/', '/blog/tendencias-de-ia-em-portugal/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
+ '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/seo/consultor-seo/', '/blog/siglas-seo-marketing-digital/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
+ '/seo/seo-local/':           ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
+ '/seo/seo-para-empresas/':   ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
+ '/seo/agencia-seo-lisboa/':  ['/seo/consultor-seo/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/seo/agencia-seo-porto/':   ['/seo/consultor-seo/', '/seo/', '/diagnostico/'],
  '/seo/advogados/':           ['/seo/sectores/', '/diagnostico/'],
  '/seo/clinicas/':            ['/seo/sectores/', '/diagnostico/'],
@@ -97,15 +101,16 @@ JUNTAR = {
  '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/', '/diagnostico/'],
  '/automacoes/':              ['/automacoes/chatbot-whatsapp/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/reconciliacao-bancaria-toconline/', '/blog/agentes-de-ia-a-medida/', '/diagnostico/'],
  # O blog. Cada artigo leva artigos vizinhos e as paginas de servico do tema.
- '/blog/':                    ['/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/automacoes/', '/diagnostico/'],
+ '/blog/':                    ['/blog/google-core-update-novembro-2026/', '/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/automacoes/', '/diagnostico/'],
+ '/blog/google-core-update-novembro-2026/':  ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/consultor-seo/', '/seo/seo-tecnico/', '/blog/siglas-seo-marketing-digital/', '/seo/', '/diagnostico/'],
  '/blog/agentes-de-ia-simples-grok-bot-muse-dots/': ['/automacoes/', '/blog/agentes-de-ia-a-medida/', '/seo/geo-aeo/', '/diagnostico/'],
  '/blog/agentes-de-ia-a-medida/':            ['/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/ai-act-ia-no-marketing/':            ['/blog/tendencias-de-ia-em-portugal/', '/gestao-de-trafego/'],
- '/blog/aparecer-nas-respostas-do-chatgpt/': ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-preferred-sources/'],
- '/blog/seo-ai-overviews-modo-ia-google/':   ['/blog/siglas-seo-marketing-digital/', '/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/blog/google-preferred-sources/', '/seo/consultor-seo/', '/casos/', '/diagnostico/'],
- '/blog/siglas-seo-marketing-digital/':      ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/geo-aeo/', '/gestao-de-trafego/', '/blog/como-abrir-uma-empresa-em-portugal/', '/seo/consultor-seo/', '/diagnostico/'],
+ '/blog/aparecer-nas-respostas-do-chatgpt/': ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-preferred-sources/', '/blog/google-core-update-novembro-2026/'],
+ '/blog/seo-ai-overviews-modo-ia-google/':   ['/blog/siglas-seo-marketing-digital/', '/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/blog/google-preferred-sources/', '/seo/consultor-seo/', '/casos/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
+ '/blog/siglas-seo-marketing-digital/':      ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/geo-aeo/', '/gestao-de-trafego/', '/blog/como-abrir-uma-empresa-em-portugal/', '/seo/consultor-seo/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/blog/como-abrir-uma-empresa-em-portugal/':['/seo/contabilistas/', '/blog/reconciliacao-bancaria-toconline/'],
- '/blog/google-preferred-sources/':          ['/blog/aparecer-nas-respostas-do-chatgpt/', '/seo/consultor-seo/'],
+ '/blog/google-preferred-sources/':          ['/blog/aparecer-nas-respostas-do-chatgpt/', '/seo/consultor-seo/', '/blog/google-core-update-novembro-2026/'],
  '/blog/n8n-o-que-e-para-que-serve/':        ['/blog/php2shell-dados-de-clientes/'],
  '/blog/php2shell-dados-de-clientes/':       ['/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/reconciliacao-bancaria-toconline/':  ['/blog/n8n-o-que-e-para-que-serve/'],
@@ -133,12 +138,24 @@ MAX = 6
 # subir o MAX de 6 para 7 em todas as paginas, ou dar prioridade ao JUNTAR
 # sobre as ligacoes ja presentes, o que reordena os blocos de 40 paginas.
 # Enquanto nao estiver decidido, cada excepcao fica escrita aqui.
-TECTO = {'/seo/': 10,
+#
+# 11 de Novembro de 2026: o artigo do core update entrou e obrigou a mais seis
+# excepcoes. Onze linhas de excepcao para um tecto de seis e a prova de que o
+# tecto esta errado, nao de que as paginas sao especiais. MAX = 7 apagava esta
+# tabela quase toda, e continua a ser decisao do Mauro.
+TECTO = {'/seo/': 11,
          '/seo/sectores/': 8,
-         '/seo/geo-aeo/': 7,
-         '/blog/aparecer-nas-respostas-do-chatgpt/': 7,
-         '/blog/seo-ai-overviews-modo-ia-google/': 7,
-         '/blog/': 7}
+         '/seo/geo-aeo/': 8,
+         '/seo/consultor-seo/': 7,
+         '/seo/seo-tecnico/': 7,
+         '/seo/seo-local/': 7,
+         '/seo/seo-para-empresas/': 7,
+         '/seo/agencia-seo-lisboa/': 7,
+         '/blog/aparecer-nas-respostas-do-chatgpt/': 8,
+         '/blog/seo-ai-overviews-modo-ia-google/': 8,
+         '/blog/siglas-seo-marketing-digital/': 7,
+         '/blog/google-preferred-sources/': 7,
+         '/blog/': 8}
 
 def caminho(u):
     return 'index.html' if u == '/' else u.strip('/') + '/index.html'

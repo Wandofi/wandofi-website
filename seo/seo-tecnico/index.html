@@ -975,8 +975,14 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
    dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
    fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
    coluna em cima de cada valor, lido do atributo data-r que o
-   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
-   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+   ferramentas/rotula_quadros.py escreve nas células.
+   Os quadros de duas colunas também passam a cartões, e levam além disso a
+   classe .quadro--par. Ficavam de fora por se ter assumido que cabiam no ecrã,
+   e não cabem: a regra acima dá 44rem de largura mínima a qualquer quadro
+   abaixo dos 760 px, ou seja 704 px dentro de um ecrã de 350. Num quadro de
+   duas colunas a primeira célula costuma ser uma frase inteira e não um nome
+   curto, por isso o .quadro--par tira o tratamento de título em serifa e
+   trata as duas células por igual, cada uma debaixo do nome da sua coluna. */
 @media (max-width:620px){
   .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
   .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
@@ -990,7 +996,17 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
   .quadro--cartoes td:first-child::before{display:none}
   .quadro--cartoes td:first-child b{font-weight:400}
+  .quadro--par td:first-child{font-family:var(--ui);font-weight:400;font-size:1rem;line-height:1.55;letter-spacing:0;padding-bottom:0;border-bottom:0}
+  .quadro--par td:first-child::before{display:block}
+  .quadro--par td:first-child b{font-weight:600}
 }
+
+/* A primeira coluna de um quadro leva white-space:nowrap, para uma data ou um
+   nome curto não partirem a meio. Num quadro de duas colunas a primeira célula
+   costuma ser uma frase, e o nowrap esticava a tabela para 1034 px dentro de
+   736 disponíveis, ou seja deslizava para o lado já no computador. Estes
+   quadros deixam a primeira coluna quebrar como qualquer outra. */
+.quadro--par td:first-child{white-space:normal}
 
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SEO Técnico", "serviceType": "SEO técnico", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "Auditoria de SEO técnico, velocidade, indexação e migração de sites sem perder posições no Google. Para empresas em Portugal.", "url": "https://wandofi.pt/seo/seo-tecnico/"}</script>
@@ -1039,7 +1055,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           
         </div>
       </section>
-<section class="section"><div class="container"><div class="prose"><p class="answer">SEO técnico é tudo o que faz o Google rastrear, entender e confiar no seu site, antes sequer de falarmos de conteúdo.</p><p class="body">Um site pode ter bom conteúdo e mesmo assim não aparecer, por causa de problemas técnicos invisíveis ao utilizador. É aí que começo: diagnostico, priorizo e corrijo.</p></div></div></section><section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">O que inclui</p><h2 class="h2">O que faço numa auditoria técnica</h2></header><ul class="deliver"><li><b>Rastreio e indexação</b>: o que o Google vê, o que ignora e porquê.</li><li><b>Core Web Vitals</b>: velocidade, estabilidade e experiência em telemóvel.</li><li><b>Arquitectura e ligações internas</b>: estrutura de URLs e hierarquia de páginas.</li><li><b>Dados estruturados</b>: schema para resultados enriquecidos.</li><li><b>Correcção de erros</b>: redireccionamentos, canónicos, duplicados e 404.</li><li><b>Migração segura</b>: mudança de domínio ou plataforma sem perder posições.</li></ul></div></section><section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Vantagem</p><h2 class="h2">A migração é o meu terreno</h2></header><div class="prose"><p class="body">Migrar um site é o momento em que muitos negócios perdem meses de posicionamento de uma só vez. Faço migrações com mapa de redireccionamentos, verificação de indexação e monitorização depois da mudança. <strong>O tráfego que conquistou continua consigo.</strong></p></div><div class="related"><a href="/criacao-de-sites/">Criação de sites</a><a href="/seo/">SEO</a><a href="/seo/consultor-seo/">Consultor de SEO</a><a href="/diagnostico/">Teste de diagnóstico</a><a href="/blog/php2shell-dados-de-clientes/">PHP2Shell e os dados dos clientes</a><a href="/blog/siglas-seo-marketing-digital/">Siglas de SEO e marketing</a></div></div></section>
+<section class="section"><div class="container"><div class="prose"><p class="answer">SEO técnico é tudo o que faz o Google rastrear, entender e confiar no seu site, antes sequer de falarmos de conteúdo.</p><p class="body">Um site pode ter bom conteúdo e mesmo assim não aparecer, por causa de problemas técnicos invisíveis ao utilizador. É aí que começo: diagnostico, priorizo e corrijo.</p></div></div></section><section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">O que inclui</p><h2 class="h2">O que faço numa auditoria técnica</h2></header><ul class="deliver"><li><b>Rastreio e indexação</b>: o que o Google vê, o que ignora e porquê.</li><li><b>Core Web Vitals</b>: velocidade, estabilidade e experiência em telemóvel.</li><li><b>Arquitectura e ligações internas</b>: estrutura de URLs e hierarquia de páginas.</li><li><b>Dados estruturados</b>: schema para resultados enriquecidos.</li><li><b>Correcção de erros</b>: redireccionamentos, canónicos, duplicados e 404.</li><li><b>Migração segura</b>: mudança de domínio ou plataforma sem perder posições.</li></ul></div></section><section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Vantagem</p><h2 class="h2">A migração é o meu terreno</h2></header><div class="prose"><p class="body">Migrar um site é o momento em que muitos negócios perdem meses de posicionamento de uma só vez. Faço migrações com mapa de redireccionamentos, verificação de indexação e monitorização depois da mudança. <strong>O tráfego que conquistou continua consigo.</strong></p></div><div class="related"><a href="/criacao-de-sites/">Criação de sites</a><a href="/seo/">SEO</a><a href="/seo/consultor-seo/">Consultor de SEO</a><a href="/diagnostico/">Teste de diagnóstico</a><a href="/blog/php2shell-dados-de-clientes/">PHP2Shell e os dados dos clientes</a><a href="/blog/siglas-seo-marketing-digital/">Siglas de SEO e marketing</a><a href="/blog/google-core-update-novembro-2026/">Core update de Novembro de 2026</a></div></div></section>
 <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Perguntas frequentes</p><h2 class="h2">Perguntas frequentes</h2></header><div class="faq"><details><summary>O que é uma migração de site sem perder SEO?</summary><div class="a"><p>É mudar de domínio, de plataforma ou de estrutura mantendo as posições no Google. A migração é feita com um mapa de redireccionamentos 301, verificação de indexação e acompanhamento nas semanas seguintes para corrigir o que oscilar.</p></div></details><details><summary>Como sei se o meu site tem problemas técnicos?</summary><div class="a"><p>Sinais comuns são páginas que não aparecem no Google, quedas súbitas de tráfego, site lento no telemóvel ou erros no Search Console. Uma auditoria confirma a causa e prioriza a correcção.</p></div></details><details><summary>Preciso de SEO técnico se o site é novo?</summary><div class="a"><p>Sim, e é o melhor momento. Deixar as bases certas desde o início evita ter de remendar mais tarde e acelera a indexação das primeiras páginas.</p></div></details></div></div></section>
       <section class="section close" id="contacto">
         <div class="container">

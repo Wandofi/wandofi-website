@@ -975,8 +975,14 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
    dentro do .quadro-wrap e a última coluna, que costuma ser a mais útil, nascia
    fora do ecrã. Abaixo dos 620 px cada linha passa a cartão, com o nome da
    coluna em cima de cada valor, lido do atributo data-r que o
-   ferramentas/rotula_quadros.py escreve nas células. Quadros de duas colunas
-   não levam a classe e ficam como tabela, porque esses cabem no ecrã. */
+   ferramentas/rotula_quadros.py escreve nas células.
+   Os quadros de duas colunas também passam a cartões, e levam além disso a
+   classe .quadro--par. Ficavam de fora por se ter assumido que cabiam no ecrã,
+   e não cabem: a regra acima dá 44rem de largura mínima a qualquer quadro
+   abaixo dos 760 px, ou seja 704 px dentro de um ecrã de 350. Num quadro de
+   duas colunas a primeira célula costuma ser uma frase inteira e não um nome
+   curto, por isso o .quadro--par tira o tratamento de título em serifa e
+   trata as duas células por igual, cada uma debaixo do nome da sua coluna. */
 @media (max-width:620px){
   .quadro-wrap:has(.quadro--cartoes){overflow-x:visible}
   .quadro--cartoes{min-width:0;display:block;font-size:1rem;margin-top:0}
@@ -990,7 +996,17 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   .quadro--cartoes td:first-child{white-space:normal;min-width:0;font-family:var(--serif);font-weight:400;font-size:1.45rem;line-height:1.15;letter-spacing:-.01em;padding-bottom:.6rem;border-bottom:1px solid var(--line-soft)}
   .quadro--cartoes td:first-child::before{display:none}
   .quadro--cartoes td:first-child b{font-weight:400}
+  .quadro--par td:first-child{font-family:var(--ui);font-weight:400;font-size:1rem;line-height:1.55;letter-spacing:0;padding-bottom:0;border-bottom:0}
+  .quadro--par td:first-child::before{display:block}
+  .quadro--par td:first-child b{font-weight:600}
 }
+
+/* A primeira coluna de um quadro leva white-space:nowrap, para uma data ou um
+   nome curto não partirem a meio. Num quadro de duas colunas a primeira célula
+   costuma ser uma frase, e o nowrap esticava a tabela para 1034 px dentro de
+   736 disponíveis, ou seja deslizava para o lado já no computador. Estes
+   quadros deixam a primeira coluna quebrar como qualquer outra. */
+.quadro--par td:first-child{white-space:normal}
 
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "SEO Local", "serviceType": "SEO local", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": "Portugal", "description": "SEO local para negócios em Portugal. Apareça no Google Maps e nas pesquisas com intenção local, com um perfil de empresa optimizado.", "url": "https://wandofi.pt/seo/seo-local/"}</script>
@@ -1039,7 +1055,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           
         </div>
       </section>
-<section class="section"><div class="container"><div class="prose"><p class="answer">SEO local é fazer o seu negócio aparecer nas pesquisas com intenção geográfica, "perto de mim", o nome da cidade, o mapa do Google.</p><p class="body">É onde a decisão de contacto acontece depressa. Um perfil bem construído e sinais locais consistentes fazem a diferença entre ser encontrado ou não.</p></div></div></section><section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">O que inclui</p><h2 class="h2">O que trabalho no SEO local</h2></header><ul class="deliver"><li><b>Perfil de empresa no Google</b>: criação e optimização, com áreas de serviço.</li><li><b>Privacidade da morada</b>: configuração como empresa de área de serviço, sem expor morada pessoal.</li><li><b>Citações e directórios</b>: presença consistente em PAI.pt, Cylex e afins.</li><li><b>Páginas de cidade</b>: conteúdo local real para cada zona que serve.</li><li><b>Avaliações</b>: estratégia para pedir e responder a avaliações no Google.</li><li><b>Schema LocalBusiness</b>: dados estruturados com áreas servidas.</li></ul></div></section><section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Nota</p><h2 class="h2">Trabalha a partir de casa? A morada fica privada.</h2></header><div class="prose"><p class="body">Não precisa de loja para ter presença local. Configuro o perfil como empresa de área de serviço, mantém o mapa, as avaliações e a visibilidade, mas <strong>a morada pessoal não é mostrada</strong>. Em troca, reforçamos avaliações, citações e páginas de cidade.</p></div><div class="related"><a href="/seo/seo-tecnico/">SEO técnico</a><a href="/seo/">SEO</a><a href="/seo/agencia-seo-lisboa/">SEO em Lisboa</a><a href="/seo/sectores/">SEO por sector</a><a href="/diagnostico/">Teste de diagnóstico</a><a href="/blog/seo-ai-overviews-modo-ia-google/">O SEO e as respostas de IA</a></div></div></section>
+<section class="section"><div class="container"><div class="prose"><p class="answer">SEO local é fazer o seu negócio aparecer nas pesquisas com intenção geográfica, "perto de mim", o nome da cidade, o mapa do Google.</p><p class="body">É onde a decisão de contacto acontece depressa. Um perfil bem construído e sinais locais consistentes fazem a diferença entre ser encontrado ou não.</p></div></div></section><section class="section section--panel"><div class="container"><header class="section__head"><p class="eyebrow">O que inclui</p><h2 class="h2">O que trabalho no SEO local</h2></header><ul class="deliver"><li><b>Perfil de empresa no Google</b>: criação e optimização, com áreas de serviço.</li><li><b>Privacidade da morada</b>: configuração como empresa de área de serviço, sem expor morada pessoal.</li><li><b>Citações e directórios</b>: presença consistente em PAI.pt, Cylex e afins.</li><li><b>Páginas de cidade</b>: conteúdo local real para cada zona que serve.</li><li><b>Avaliações</b>: estratégia para pedir e responder a avaliações no Google.</li><li><b>Schema LocalBusiness</b>: dados estruturados com áreas servidas.</li></ul></div></section><section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Nota</p><h2 class="h2">Trabalha a partir de casa? A morada fica privada.</h2></header><div class="prose"><p class="body">Não precisa de loja para ter presença local. Configuro o perfil como empresa de área de serviço, mantém o mapa, as avaliações e a visibilidade, mas <strong>a morada pessoal não é mostrada</strong>. Em troca, reforçamos avaliações, citações e páginas de cidade.</p></div><div class="related"><a href="/seo/seo-tecnico/">SEO técnico</a><a href="/seo/">SEO</a><a href="/seo/agencia-seo-lisboa/">SEO em Lisboa</a><a href="/seo/sectores/">SEO por sector</a><a href="/diagnostico/">Teste de diagnóstico</a><a href="/blog/seo-ai-overviews-modo-ia-google/">O SEO e as respostas de IA</a><a href="/blog/google-core-update-novembro-2026/">Core update de Novembro de 2026</a></div></div></section>
 <section class="section"><div class="container"><header class="section__head"><p class="eyebrow">Perguntas frequentes</p><h2 class="h2">Perguntas frequentes</h2></header><div class="faq"><details><summary>Consigo aparecer no Google Maps sem mostrar a minha morada de casa?</summary><div class="a"><p>Sim. Configure o perfil como empresa de área de serviço: define as zonas que serve e a morada fica oculta. A verificação continua a ser necessária, mas o público vê apenas as áreas servidas, não a morada.</p></div></details><details><summary>Quanto tempo demora a aparecer nas pesquisas locais?</summary><div class="a"><p>Um perfil novo pode começar a aparecer em semanas, mas a posição ganha solidez com avaliações, citações consistentes e conteúdo local ao longo de alguns meses.</p></div></details><details><summary>O SEO local serve para negócios que se deslocam ao cliente?</summary><div class="a"><p>Sim, é exactamente para isso que existe o formato de área de serviço, profissionais e empresas que vão ter com o cliente em vez de terem loja física.</p></div></details></div></div></section>
       <section class="section close" id="contacto">
         <div class="container">
