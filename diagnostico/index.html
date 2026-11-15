@@ -667,7 +667,14 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 [data-dm*="maximalismo-asterisco:"] .post__meta span:first-of-type{background:var(--red);color:#fff;padding:.15em .5em;border-radius:3px;letter-spacing:.12em}
 [data-dm*="maximalismo-asterisco:"] .posts__grid .post__title{font-size:clamp(1.6rem,2.2vw,2.1rem);line-height:1.05;letter-spacing:-.025em}
 [data-dm*="maximalismo-asterisco:"] .post__link{border-radius:6px}
-[data-dm*="maximalismo-asterisco:"] .artigo__capa{margin-top:calc(-1*clamp(1.5rem,4vw,4rem))}
+/* A capa do artigo sobe para encostar ao cabecalho, mas a subida tem de ficar
+   dentro do espaco que o .page-hero--artigo deixa por baixo, que e
+   clamp(1.75rem,1rem + 2vw,2.75rem). O valor anterior era clamp(1.5rem,4vw,4rem),
+   que a 1280 px dava 51,2 px de subida contra 41,6 px de espaco: a imagem
+   passava 10 px por cima da linha da data e cortava-a ao meio. Nao se via
+   enquanto as capas eram em creme, por ser quase a cor da pagina. Assim a
+   subida acompanha o mesmo clamp do cabecalho e deixa sempre 12 px de folga. */
+[data-dm*="maximalismo-asterisco:"] .artigo__capa{margin-top:calc(0.75rem - clamp(1.75rem,1rem + 2vw,2.75rem))}
 [data-dm*="maximalismo-asterisco:"] .artigo__capa img{border-radius:0;border:0;box-shadow:0 30px 60px -36px rgba(5,5,5,.5)}
 [data-dm*="maximalismo-asterisco:"] .artigo__body .prose>.answer:first-child{border:0;padding:0;font-size:clamp(1.35rem,1.1rem + .9vw,1.8rem);line-height:1.35;color:var(--ink);font-family:var(--serif);letter-spacing:-.01em;max-width:30ch}
 [data-dm*="maximalismo-asterisco:"] .artigo__body .prose>.answer:first-child::first-letter{font-size:3.2em;line-height:.8;float:left;margin:.08em .12em 0 0;color:var(--red)}
