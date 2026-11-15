@@ -57,6 +57,7 @@ ANCORA = {
  '/blog/google-core-update-novembro-2026/':  'Core update de Novembro de 2026',
  '/blog/criar-site-com-ia/':                 'Criar um site com IA',
  '/blog/sites-e-ia-em-2027/':                'Sites e IA em 2027',
+ '/blog/lancar-um-negocio-em-2027/':         'Lançar um negócio em 2027',
  '/en/':                         'SEO in English',
 }
 
@@ -68,7 +69,7 @@ SECTORES = ['/seo/advogados/', '/seo/clinicas/', '/seo/contabilistas/',
 JUNTAR = {
  '/automacoes/agentes-de-ia/': ['/automacoes/', '/automacoes/chatbot-whatsapp/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/blog/reconciliacao-bancaria-toconline/', '/diagnostico/'],
  '/automacoes/chatbot-whatsapp/': ['/automacoes/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/casos/', '/diagnostico/'],
- '/seo/':                     ['/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
+ '/seo/':                     ['/blog/lancar-um-negocio-em-2027/', '/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
                                '/seo/seo-local/', '/seo/seo-para-empresas/', '/seo/geo-aeo/',
                                '/seo/agencia-seo-lisboa/', '/seo/agencia-seo-porto/',
                                '/blog/google-core-update-novembro-2026/',
@@ -90,20 +91,20 @@ JUNTAR = {
  '/seo/escolas-de-linguas/':  ['/seo/sectores/', '/diagnostico/'],
  # A criacao de sites nao tinha artigo nenhum no bloco. Os dois de 15 de
  # Novembro sao os primeiros escritos para quem compra um site.
- '/criacao-de-sites/':        ['/criacao-de-sites/apps-android-angola/', '/seo/seo-local/', '/blog/php2shell-dados-de-clientes/', '/blog/criar-site-com-ia/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
+ '/criacao-de-sites/':        ['/criacao-de-sites/apps-android-angola/', '/seo/seo-local/', '/blog/lancar-um-negocio-em-2027/', '/blog/php2shell-dados-de-clientes/', '/blog/criar-site-com-ia/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
  # As tres paginas de bairro nao apontavam sequer para o servico de que sao
  # filhas: so umas para as outras e para o diagnostico. Quem chega por "sites
  # em Sintra" ficava sem caminho nenhum para a pagina que vende o servico.
  '/criacao-de-sites/sintra/': ['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
  '/criacao-de-sites/queluz/': ['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
  '/criacao-de-sites/marvila/':['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
- '/gestao-de-trafego/':       ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
+ '/gestao-de-trafego/':       ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/blog/lancar-um-negocio-em-2027/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
  '/gestao-de-trafego/google-ads/': ['/gestao-de-trafego/chatgpt-ads/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
  '/gestao-de-trafego/meta-ads/':   ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/diagnostico/'],
  '/gestao-de-trafego/angola/':     ['/gestao-de-trafego/meta-ads/', '/gestao-de-trafego/google-ads/', '/criacao-de-sites/apps-android-angola/', '/criacao-de-sites/', '/diagnostico/'],
  '/criacao-de-sites/apps-android-angola/': ['/gestao-de-trafego/angola/', '/criacao-de-sites/', '/automacoes/', '/blog/php2shell-dados-de-clientes/', '/diagnostico/'],
  '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/', '/diagnostico/'],
- '/automacoes/':              ['/automacoes/chatbot-whatsapp/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/reconciliacao-bancaria-toconline/', '/blog/agentes-de-ia-a-medida/', '/diagnostico/'],
+ '/automacoes/':              ['/blog/lancar-um-negocio-em-2027/', '/automacoes/chatbot-whatsapp/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/reconciliacao-bancaria-toconline/', '/blog/agentes-de-ia-a-medida/', '/diagnostico/'],
  # O blog. Cada artigo leva artigos vizinhos e as paginas de servico do tema.
  '/blog/':                    ['/blog/criar-site-com-ia/', '/blog/sites-e-ia-em-2027/', '/blog/google-core-update-novembro-2026/', '/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/automacoes/', '/diagnostico/'],
  '/blog/google-core-update-novembro-2026/':  ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/consultor-seo/', '/seo/seo-tecnico/', '/blog/siglas-seo-marketing-digital/', '/seo/', '/diagnostico/'],
@@ -117,7 +118,10 @@ JUNTAR = {
  '/blog/aparecer-nas-respostas-do-chatgpt/': ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-preferred-sources/', '/blog/google-core-update-novembro-2026/'],
  '/blog/seo-ai-overviews-modo-ia-google/':   ['/blog/siglas-seo-marketing-digital/', '/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/blog/google-preferred-sources/', '/seo/consultor-seo/', '/casos/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/blog/siglas-seo-marketing-digital/':      ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/geo-aeo/', '/gestao-de-trafego/', '/blog/como-abrir-uma-empresa-em-portugal/', '/seo/consultor-seo/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
- '/blog/como-abrir-uma-empresa-em-portugal/':['/seo/contabilistas/', '/blog/reconciliacao-bancaria-toconline/'],
+ '/blog/como-abrir-uma-empresa-em-portugal/':['/seo/contabilistas/', '/blog/lancar-um-negocio-em-2027/', '/blog/reconciliacao-bancaria-toconline/'],
+ # O pilar do lancamento. Toca em todas as frentes, por isso entra nas quatro
+ # paginas de servico e puxa para o artigo da burocracia, que e o passo um.
+ '/blog/lancar-um-negocio-em-2027/': ['/criacao-de-sites/', '/seo/', '/gestao-de-trafego/', '/automacoes/', '/blog/como-abrir-uma-empresa-em-portugal/', '/diagnostico/'],
  '/blog/google-preferred-sources/':          ['/blog/aparecer-nas-respostas-do-chatgpt/', '/seo/consultor-seo/', '/blog/google-core-update-novembro-2026/'],
  '/blog/n8n-o-que-e-para-que-serve/':        ['/blog/php2shell-dados-de-clientes/'],
  '/blog/php2shell-dados-de-clientes/':       ['/blog/n8n-o-que-e-para-que-serve/'],
@@ -154,7 +158,7 @@ MAX = 6
 #
 # 15 de Novembro de 2026: mais tres excepcoes, pelos dois artigos novos. A
 # /criacao-de-sites/ nao tinha artigo nenhum no bloco e passa a ter dois.
-TECTO = {'/seo/': 11,
+TECTO = {'/seo/': 12,
          '/seo/sectores/': 8,
          '/seo/geo-aeo/': 9,
          '/seo/consultor-seo/': 7,
@@ -162,7 +166,10 @@ TECTO = {'/seo/': 11,
          '/seo/seo-local/': 8,
          '/seo/seo-para-empresas/': 7,
          '/seo/agencia-seo-lisboa/': 7,
-         '/criacao-de-sites/': 8,
+         '/criacao-de-sites/': 9,
+         '/automacoes/': 9,
+         '/gestao-de-trafego/': 7,
+         '/blog/como-abrir-uma-empresa-em-portugal/': 7,
          '/blog/aparecer-nas-respostas-do-chatgpt/': 8,
          '/blog/seo-ai-overviews-modo-ia-google/': 8,
          '/blog/siglas-seo-marketing-digital/': 7,
