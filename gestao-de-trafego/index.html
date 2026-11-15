@@ -283,6 +283,19 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
   .hero__portrait{max-width:15rem;margin:1.2rem auto 0}
   .hero__portrait::before{left:-13%;right:-13%;height:68%}
 }
+/* prova logo a seguir aos botões: um resultado já publicado em /casos/ */
+.hero__prova{margin:.95rem 0 0;font-size:1rem;line-height:1.5;color:var(--ink);max-width:46ch}
+.hero__prova b{color:var(--red);font-weight:600}
+.hero__prova a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(225,37,27,.45);white-space:nowrap}
+/* telemóvel: a cara aparece no primeiro ecrã, sem empurrar os botões para baixo */
+.hero__quem{display:none}
+@media (max-width:900px){
+  .hero__quem{display:flex;align-items:center;gap:.75rem;margin:0 0 1rem;font-size:.95rem;font-weight:600;color:var(--ink)}
+  .hero__quem .rosto{position:relative;width:52px;height:52px;flex:0 0 52px;border-radius:50%;overflow:hidden;
+    background:linear-gradient(to top,rgba(225,37,27,.12),#fff);border:2px solid rgba(225,37,27,.35)}
+  .hero__quem .rosto img{position:absolute;width:150%;max-width:none;left:-25%;top:-6%}
+  .hero__quem small{display:block;font-weight:400;color:var(--mute);font-size:.82rem}
+}
 
 /* ---------- Barra de prova ---------- */
 .proof{border-block:1px solid var(--line-soft);background:var(--paper)}

@@ -55,6 +55,8 @@ ANCORA = {
  '/blog/seo-ai-overviews-modo-ia-google/':   'O SEO e as respostas de IA',
  '/blog/siglas-seo-marketing-digital/':      'Siglas de SEO e marketing',
  '/blog/google-core-update-novembro-2026/':  'Core update de Novembro de 2026',
+ '/blog/criar-site-com-ia/':                 'Criar um site com IA',
+ '/blog/sites-e-ia-em-2027/':                'Sites e IA em 2027',
  '/en/':                         'SEO in English',
 }
 
@@ -75,9 +77,9 @@ JUNTAR = {
  # O artigo do core update entra nas paginas de SEO todas. E noticia datada:
  # quando a actualizacao acabar, o valor desta ligacao cai e sai daqui.
  '/seo/consultor-seo/':       ['/seo/sectores/', '/blog/google-core-update-novembro-2026/', '/sobre/', '/diagnostico/'],
- '/seo/geo-aeo/':             ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/chatgpt-ads/', '/blog/google-preferred-sources/', '/blog/tendencias-de-ia-em-portugal/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
+ '/seo/geo-aeo/':             ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/chatgpt-ads/', '/blog/google-preferred-sources/', '/blog/tendencias-de-ia-em-portugal/', '/blog/google-core-update-novembro-2026/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
  '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/seo/consultor-seo/', '/blog/siglas-seo-marketing-digital/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
- '/seo/seo-local/':           ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
+ '/seo/seo-local/':           ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-core-update-novembro-2026/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
  '/seo/seo-para-empresas/':   ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/seo/agencia-seo-lisboa/':  ['/seo/consultor-seo/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/seo/agencia-seo-porto/':   ['/seo/consultor-seo/', '/seo/', '/diagnostico/'],
@@ -86,7 +88,9 @@ JUNTAR = {
  '/seo/contabilistas/':       ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/diagnostico/'],
  '/seo/imobiliarias/':        ['/seo/sectores/', '/diagnostico/'],
  '/seo/escolas-de-linguas/':  ['/seo/sectores/', '/diagnostico/'],
- '/criacao-de-sites/':        ['/criacao-de-sites/apps-android-angola/', '/seo/seo-local/', '/blog/php2shell-dados-de-clientes/', '/diagnostico/'],
+ # A criacao de sites nao tinha artigo nenhum no bloco. Os dois de 15 de
+ # Novembro sao os primeiros escritos para quem compra um site.
+ '/criacao-de-sites/':        ['/criacao-de-sites/apps-android-angola/', '/seo/seo-local/', '/blog/php2shell-dados-de-clientes/', '/blog/criar-site-com-ia/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
  # As tres paginas de bairro nao apontavam sequer para o servico de que sao
  # filhas: so umas para as outras e para o diagnostico. Quem chega por "sites
  # em Sintra" ficava sem caminho nenhum para a pagina que vende o servico.
@@ -101,8 +105,12 @@ JUNTAR = {
  '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/', '/diagnostico/'],
  '/automacoes/':              ['/automacoes/chatbot-whatsapp/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/reconciliacao-bancaria-toconline/', '/blog/agentes-de-ia-a-medida/', '/diagnostico/'],
  # O blog. Cada artigo leva artigos vizinhos e as paginas de servico do tema.
- '/blog/':                    ['/blog/google-core-update-novembro-2026/', '/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/automacoes/', '/diagnostico/'],
+ '/blog/':                    ['/blog/criar-site-com-ia/', '/blog/sites-e-ia-em-2027/', '/blog/google-core-update-novembro-2026/', '/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/automacoes/', '/diagnostico/'],
  '/blog/google-core-update-novembro-2026/':  ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/consultor-seo/', '/seo/seo-tecnico/', '/blog/siglas-seo-marketing-digital/', '/seo/', '/diagnostico/'],
+ # Os dois de 15 de Novembro falam um com o outro: um e sobre como o site e
+ # feito, o outro sobre quem o vai ler. Ambos levam a criacao de sites.
+ '/blog/criar-site-com-ia/':  ['/criacao-de-sites/', '/blog/sites-e-ia-em-2027/', '/seo/seo-tecnico/', '/casos/', '/seo/consultor-seo/', '/diagnostico/'],
+ '/blog/sites-e-ia-em-2027/': ['/seo/geo-aeo/', '/blog/criar-site-com-ia/', '/blog/seo-ai-overviews-modo-ia-google/', '/seo/seo-local/', '/criacao-de-sites/', '/diagnostico/'],
  '/blog/agentes-de-ia-simples-grok-bot-muse-dots/': ['/automacoes/', '/blog/agentes-de-ia-a-medida/', '/seo/geo-aeo/', '/diagnostico/'],
  '/blog/agentes-de-ia-a-medida/':            ['/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/ai-act-ia-no-marketing/':            ['/blog/tendencias-de-ia-em-portugal/', '/gestao-de-trafego/'],
@@ -143,19 +151,23 @@ MAX = 6
 # excepcoes. Onze linhas de excepcao para um tecto de seis e a prova de que o
 # tecto esta errado, nao de que as paginas sao especiais. MAX = 7 apagava esta
 # tabela quase toda, e continua a ser decisao do Mauro.
+#
+# 15 de Novembro de 2026: mais tres excepcoes, pelos dois artigos novos. A
+# /criacao-de-sites/ nao tinha artigo nenhum no bloco e passa a ter dois.
 TECTO = {'/seo/': 11,
          '/seo/sectores/': 8,
-         '/seo/geo-aeo/': 8,
+         '/seo/geo-aeo/': 9,
          '/seo/consultor-seo/': 7,
          '/seo/seo-tecnico/': 7,
-         '/seo/seo-local/': 7,
+         '/seo/seo-local/': 8,
          '/seo/seo-para-empresas/': 7,
          '/seo/agencia-seo-lisboa/': 7,
+         '/criacao-de-sites/': 8,
          '/blog/aparecer-nas-respostas-do-chatgpt/': 8,
          '/blog/seo-ai-overviews-modo-ia-google/': 8,
          '/blog/siglas-seo-marketing-digital/': 7,
          '/blog/google-preferred-sources/': 7,
-         '/blog/': 8}
+         '/blog/': 9}
 
 def caminho(u):
     return 'index.html' if u == '/' else u.strip('/') + '/index.html'
