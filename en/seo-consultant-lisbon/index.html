@@ -1033,7 +1033,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           <a href="/" hreflang="pt-PT" lang="pt-PT">Português</a>
         </nav>
         <div class="nav__cta">
-          <a class="btn btn--red" data-cta="navegacao" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Book a call</a>
+          <a class="btn btn--red" data-cta="navegacao" href="https://calendar.app.google/zDSGkBP7xeXmWkmx8" target="_blank" rel="noopener">Book a call</a>
         </div>
         <details class="nav__toggle">
           <summary aria-label="Open menu">Menu</summary>
@@ -1073,7 +1073,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
               <p class="lead">We start with your site and the competition that is already ranking for your terms.</p>
             </div>
             <div class="close__action">
-              <a class="btn btn--red btn--wide" data-cta="fecho" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Book a 30 minute call <span class="arrow" aria-hidden="true">↗</span></a>
+              <a class="btn btn--red btn--wide" data-cta="fecho" href="https://calendar.app.google/zDSGkBP7xeXmWkmx8" target="_blank" rel="noopener">Book a 30 minute call <span class="arrow" aria-hidden="true">↗</span></a>
               <a class="close__email" data-cta="fecho" href="mailto:geral@wandofi.pt?subject=Wandofi%20enquiry">geral@wandofi.pt</a>
               <a class="close__whats" data-cta="fecho" href="https://wa.me/351937733527?text=Hello%2C%20I%20came%20from%20the%20Wandofi%20site%20and%20I%20would%20like%20to%20talk%20about%20my%20business." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg>WhatsApp +351 937 733 527</a>
               <p class="close__micro">Prefer to write? WhatsApp or email reach the same place, and I reply within 24 hours.</p>
@@ -1135,7 +1135,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
           <nav aria-labelledby="ft-cont">
             <p class="footer__title" id="ft-cont">Contact</p>
             <ul class="footer__list">
-              <li><a data-cta="rodape" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Book a call</a></li>
+              <li><a data-cta="rodape" href="https://calendar.app.google/zDSGkBP7xeXmWkmx8" target="_blank" rel="noopener">Book a call</a></li>
               <li><a data-cta="rodape" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a></li>
               <li><a data-cta="rodape" href="tel:+351937733527">Phone +351 937 733 527</a></li>
               <li><a data-cta="rodape" href="https://wa.me/351937733527?text=Hello%2C%20I%20came%20from%20the%20Wandofi%20site%20and%20I%20would%20like%20to%20talk%20about%20my%20business." target="_blank" rel="noopener">WhatsApp +351 937 733 527</a></li>
@@ -1153,7 +1153,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
     </footer>
 
 <div class="dock" role="group" aria-label="Quick actions">
-      <a class="btn btn--red" data-cta="barra-movel" href="https://calendly.com/wandofi/30min" target="_blank" rel="noopener">Book a call</a>
+      <a class="btn btn--red" data-cta="barra-movel" href="https://calendar.app.google/zDSGkBP7xeXmWkmx8" target="_blank" rel="noopener">Book a call</a>
       <a class="btn btn--ghost" data-cta="barra-movel" href="https://wa.me/351937733527?text=Hello%2C%20I%20came%20from%20the%20Wandofi%20site%20and%20I%20would%20like%20to%20talk%20about%20my%20business." target="_blank" rel="noopener" aria-label="Talk on WhatsApp">WhatsApp</a>
     </div>
 <script>
@@ -1169,7 +1169,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
         var a = ev.target.closest("a[href]");
         if (!a) return;
         var href = a.getAttribute("href") || "";
-        if (href.indexOf("calendly.com") > -1)            envia("clique_diagnostico", a.dataset.cta);
+        if ((href.indexOf("calendly.com") > -1 || href.indexOf("calendar.app.google") > -1))            envia("clique_diagnostico", a.dataset.cta);
         else if (href.indexOf("mailto:") === 0)           envia("contacto_email", a.dataset.cta);
         else if (href.indexOf("wa.me") > -1)            envia("contacto_whatsapp", a.dataset.cta);
         else if (href.indexOf("preferences/source") > -1) envia("fonte_preferida", "fecho");
