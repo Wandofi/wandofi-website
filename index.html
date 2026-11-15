@@ -294,6 +294,19 @@ p a:not(.btn):hover{color:var(--red);text-decoration-color:var(--red)}
   .hero__portrait{max-width:15rem;margin:1.2rem auto 0}
   .hero__portrait::before{left:-13%;right:-13%;height:68%}
 }
+/* prova logo a seguir aos botões: um resultado já publicado em /casos/ */
+.hero__prova{margin:.95rem 0 0;font-size:1rem;line-height:1.5;color:var(--ink);max-width:46ch}
+.hero__prova b{color:var(--red);font-weight:600}
+.hero__prova a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(225,37,27,.45);white-space:nowrap}
+/* telemóvel: a cara aparece no primeiro ecrã, sem empurrar os botões para baixo */
+.hero__quem{display:none}
+@media (max-width:900px){
+  .hero__quem{display:flex;align-items:center;gap:.75rem;margin:0 0 1rem;font-size:.95rem;font-weight:600;color:var(--ink)}
+  .hero__quem .rosto{position:relative;width:52px;height:52px;flex:0 0 52px;border-radius:50%;overflow:hidden;
+    background:linear-gradient(to top,rgba(225,37,27,.12),#fff);border:2px solid rgba(225,37,27,.35)}
+  .hero__quem .rosto img{position:absolute;width:150%;max-width:none;left:-25%;top:-6%}
+  .hero__quem small{display:block;font-weight:400;color:var(--mute);font-size:.82rem}
+}
 
 /* ---------- Barra de prova ---------- */
 .proof{border-block:1px solid var(--line-soft);background:var(--paper)}
@@ -722,6 +735,7 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
         <div class="container">
           <div class="hero__inner">
             <div>
+              <p class="hero__quem"><span class="rosto"><img src="/assets/portrait-v3-480.webp" alt="" width="480" height="721" decoding="async" /></span><span>Mauro Cordeiro<small>Wandofi PM, Lisboa</small></span></p>
               <p class="eyebrow">SEO · Sites · Automações · Lisboa</p>
               <h1 class="h1 hero__h1">Consultor de SEO que <em class="dm-rabisco dm-cinetico">constrói</em> o que recomenda.</h1>
               <p class="lead hero__lead">SEO e project management para negócios em formação: ponho o seu negócio a aparecer no Google e monto a estrutura que aguenta o que vem a seguir. Sem agência pelo meio e sem avença obrigatória.</p>
@@ -731,6 +745,7 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
                 <a class="btn btn--ghost" href="#servicos">Ver o que faço</a>
               </div>
               <p class="hero__micro">30 minutos, por videochamada. Sai da conversa com os próximos passos definidos, avance ou não comigo.</p>
+              <p class="hero__prova"><b>+55 contactos orgânicos</b> em 3 meses para um escritório de advogados em Lisboa. <a href="/casos/">Ver o caso</a></p>
 
               <ul class="hero__trust">
                 <li>Resposta em 24 horas</li>
