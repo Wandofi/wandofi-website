@@ -205,13 +205,13 @@ for u, juntar in sorted(JUNTAR.items()):
         if marca in h:
             h = h.replace(marca,
                 '<section class="section"><div class="container">'
-                '<header class="section__head"><p class="eyebrow">A seguir</p>'
+                '<header class="section__head">'
                 '<h2 class="h2">Onde ir a partir daqui</h2></header>'
                 + novo + '</div></section>\n' + marca, 1)
         else:
             h = h.replace('    </main>',
                 '      <section class="section"><div class="container">'
-                '<header class="section__head"><p class="eyebrow">A seguir</p>'
+                '<header class="section__head">'
                 '<h2 class="h2">Onde ir a partir daqui</h2></header>'
                 + novo + '</div></section>\n    </main>', 1)
 
