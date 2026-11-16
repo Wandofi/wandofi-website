@@ -1,0 +1,16 @@
+# O ficheiro de instrucoes do projecto e interno e nunca pode ser commitado: a
+# raiz do repositorio e servida ao publico, por isso bastava um "git add -A"
+# para ele ficar a ler em wandofi.pt.
+#
+# Ate 16 de Novembro de 2026 tinha outro nome e estava protegido so pelo
+# .git/info/exclude, que e local e nao viaja para outro clone. Com o nome novo
+# perdia essa proteccao, por isso passa a estar aqui, que e partilhado. Ficam
+# os dois nomes, para o antigo continuar coberto se alguem o repuser.
+#
+# Este comentario nao diz o que la esta dentro, de proposito: o .gitignore e
+# publico e a razao de o ficheiro ser interno tambem nao se escreve ca fora.
+INSTRUCOES.md
+CLAUDE.md
+
+# Pasta de configuracao local das ferramentas de agentes.
+.claude/
