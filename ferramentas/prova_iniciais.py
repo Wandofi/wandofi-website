@@ -74,7 +74,39 @@ def parte_a_condicao(h):
 
 
 def tira_a_vitrine_do_guiao(h):
-    return h.replace('montaVitrine', 'montaOutraCoisa')
+    """Apaga SO a definicao da funcao, e deixa os tres usos de pe.
+
+    A primeira versao deste estrago trocava o nome em todo o lado, por isso
+    qualquer conferencia de presenca o apanhava e a prova nao dizia nada sobre
+    o caso dificil. Apagar so a definicao e o caso a serio: o guiao fica
+    partido e o nome continua la tres vezes.
+
+    O nome novo nao pode comecar pelo antigo. A segunda versao chamava-lhe
+    montaVitrineQueJaNaoEChamada e a prova falhou por isso: a marca antiga
+    continuava la dentro do nome novo. Foi dai que saiu o limite de palavra na
+    contagem do gerador."""
+    return h.replace('function montaVitrine', 'function jaNaoMontaNada', 1)
+
+
+def tira_regras_que_nenhuma_marca_cobre(h):
+    """Esvazia o bloco de estilo sem tocar em nenhuma das marcas.
+
+    Este estrago existe por uma razao so: sem ele, a contagem minima de regras
+    nunca se via a trabalhar. Todos os outros estragos disparam por uma marca,
+    por isso a contagem ficava por provar e eu ficava com a ideia de que estava
+    provada, que e o mesmo erro de ter uma conferencia que nunca dispara.
+
+    Renomeia body.inicial em todas as linhas EXCEPTO nas que levam uma marca,
+    por isso as quatro marcas continuam la e unicas. So a contagem o pode
+    apanhar."""
+    marcas = ('body.inicial .vitrine__inclina{', '@keyframes in-desliza',
+              'body.inicial .hero__quem{', 'body.inicial .cartao span{')
+    saida = []
+    for linha in h.split('\n'):
+        if 'body.inicial' in linha and not any(m in linha for m in marcas):
+            linha = linha.replace('body.inicial', 'body.outra')
+        saida.append(linha)
+    return '\n'.join(saida)
 
 
 def muda_uma_frase(h):
@@ -90,8 +122,10 @@ ESTRAGOS = [
      'apanhei a coisa errada'),
     ('a condicao que liga o guiao e mudada', parte_a_condicao, 'para',
      'estragou a condicao que liga o guiao'),
-    ('o guiao perde a vitrine', tira_a_vitrine_do_guiao, 'para',
-     'ficou sem montaVitrine'),
+    ('o guiao perde a definicao da vitrine, e os usos ficam', tira_a_vitrine_do_guiao, 'para',
+     '"function montaVitrine" 0 vezes'),
+    ('o estilo perde regras que nenhuma marca cobre', tira_regras_que_nenhuma_marca_cobre,
+     'para', 'regras body.inicial'),
     ('uma frase portuguesa muda e a chave nao', muda_uma_frase, 'avisa',
      'sem traducao'),
 ]

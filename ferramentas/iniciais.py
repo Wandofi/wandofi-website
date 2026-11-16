@@ -58,6 +58,23 @@ fonte = io.open(PT, encoding='utf-8').read()
 avisos = []
 
 
+def conta(texto, marca):
+    """Conta a marca como palavra inteira, nao como pedaco de outra.
+
+    Isto nasceu de a propria prova desta ferramenta ter caido na armadilha.
+    Para testar a conferencia da funcao montaVitrine, a prova renomeava-a para
+    montaVitrineQueJaNaoEChamada. O nome novo comeca pelo antigo, por isso um
+    count simples continuava a contar uma ocorrencia, a conferencia passava e
+    a prova dizia que a rede nao funcionava quando o problema era a medicao.
+
+    E a mesma lei de que uma marca so confere presenca se for unica, vista por
+    outro lado: o texto tem de acabar onde a marca acaba. Quando a marca ja
+    acaba num sinal que nao e letra, como { ou aspas, nao e preciso limite."""
+    if marca[-1].isalnum() or marca[-1] == '_':
+        return len(re.findall(re.escape(marca) + r'\b', texto))
+    return texto.count(marca)
+
+
 # ----------------------------------------------------------------- pecas da fonte
 def entre(texto, abre, fecha, nome):
     i = texto.find(abre)
@@ -98,10 +115,10 @@ MARCAS_ESTILO = ('body.inicial .vitrine__inclina{', '@keyframes in-desliza',
                  'body.inicial .hero__quem{', 'body.inicial .cartao span{')
 MINIMO_REGRAS = 30
 for marca in MARCAS_ESTILO:
-    if ESTILO_PAGINA.count(marca) != 1:
-        raise SystemExit(f'o bloco de estilo da inicial tem "{marca}" '
-                         f'{ESTILO_PAGINA.count(marca)} vezes em vez de uma: '
-                         f'apanhei a coisa errada, {len(ESTILO_PAGINA)} bytes')
+    n = conta(ESTILO_PAGINA, marca)
+    if n != 1:
+        raise SystemExit(f'o bloco de estilo da inicial tem "{marca}" {n} vezes em vez '
+                         f'de uma: apanhei a coisa errada, {len(ESTILO_PAGINA)} bytes')
 if ESTILO_PAGINA.count('body.inicial') < MINIMO_REGRAS:
     raise SystemExit(f'o bloco de estilo da inicial so tem '
                      f'{ESTILO_PAGINA.count("body.inicial")} regras body.inicial, '
@@ -184,9 +201,24 @@ def traduz_guiao(guiao, lingua):
     # aconteceu quando a troca do campo origem apanhou tambem esta linha.
     if 'classList.contains("inicial")' not in guiao:
         raise SystemExit(f'{lingua}: a traducao estragou a condicao que liga o guiao')
-    for obrigatoria in ('montaVitrine', 'URL_FOLHA', 'formulario_inicial'):
-        if obrigatoria not in guiao:
-            raise SystemExit(f'{lingua}: o guiao ficou sem {obrigatoria}')
+
+    # Estas marcas sao as DEFINICOES, nao os nomes soltos, e sao exigidas uma e
+    # uma so vez. A primeira versao procurava "montaVitrine" e "URL_FOLHA" por
+    # presenca: aparecem 4 e 3 vezes, entre definicao e usos, por isso apagar a
+    # definicao deixava os usos a tapar o buraco e a conferencia passava com o
+    # guiao ja partido. E a mesma lei que apanhou a regra da vitrine pela media
+    # query: uma marca so confere presenca se for unica, e nada garante que
+    # continue unica. Exigir exactamente uma avisa no dia em que deixar de ser.
+    MARCAS_GUIAO = ('function montaVitrine', 'var URL_FOLHA', '"formulario_inicial"',
+                    'function parteTitulo', 'function formulario', 'empresa_web.value')
+    for marca in MARCAS_GUIAO:
+        n = conta(guiao, marca)
+        if n != 1:
+            raise SystemExit(f'{lingua}: o guiao tem "{marca}" {n} vezes em vez de uma')
+    # E um piso, para apanhar o que nenhuma marca cobre. Hoje sao 26.
+    if guiao.count('function ') < 18:
+        raise SystemExit(f'{lingua}: o guiao so tem {guiao.count("function ")} funcoes, '
+                         f'menos do que as 18 que se esperam: perdeu-se alguma coisa')
     return guiao
 
 
