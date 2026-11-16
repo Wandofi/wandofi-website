@@ -386,19 +386,61 @@ def confere(texto):
         return ['nao ha bloco de estilo proprio da pagina']
     bloco_pagina = texto[abre_p:texto.index('</style>', abre_p)]
 
-    # 1. o CSS dos cartoes tem de estar no bloco proprio, e nunca no partilhado,
-    #    que o refresca_css.py reescreve por inteiro e apagaria tudo.
-    for regra in ('.preco__cheio{display:none}', '.preco.tem-valor .preco__vazio',
-                  '.preco.tem-valor .preco__cheio', '.precos{display:grid'):
-        if regra not in bloco_pagina:
+    # 1 e 2. As marcas do CSS. Cada uma tem de aparecer EXACTAMENTE uma vez.
+    #
+    # Procurar so presenca nao chega, e a sessao das iniciais apanhou isso da
+    # maneira mais util: a conferencia dela procurava uma regra que existe
+    # duas vezes, a principal e a do telemovel dentro de uma media query.
+    # Apagada a principal, a conferencia dizia que estava tudo bem, porque a
+    # outra tapava o buraco. A rede deixava passar exactamente a pagina que
+    # existia para apanhar.
+    #
+    # Eu tinha o mesmo buraco em duas marcas: ".res__valor" aparecia tres
+    # vezes e ".captura" quatro, por serem prefixo de outras classes. Aqui
+    # estao as que aparecem uma so vez, e exigir "uma e so uma" faz a
+    # conferencia tomar conta de si propria: no dia em que alguem acrescentar
+    # uma variante e a marca deixar de ser unica, a ferramenta diz, em vez de
+    # perder a conferencia em silencio.
+    MARCAS_CARTOES = ('.precos{display:grid', '.preco{display:flex', '.preco__rotulo',
+                      '.preco__valor{', '.preco__cheio{display:none}',
+                      '.preco.tem-valor .preco__vazio', '.preco.tem-valor .preco__cheio')
+    MARCAS_TESTE = ('.quiz{', '.quiz__top', '.quiz__body', '.res__rotulo',
+                    '.res__valor{', '.res__unidade', '.captura__accoes',
+                    '.obrigado__icone')
+
+    for regra in MARCAS_CARTOES:
+        n = bloco_pagina.count(regra)
+        if n == 0:
             problemas.append(f'falta no bloco proprio: {regra}')
+        elif n > 1:
+            problemas.append(f'a marca deixou de ser unica, aparece {n} vezes '
+                             f'e ja nao confere nada: {regra}')
         if regra in bloco_home:
             problemas.append(f'foi parar ao bloco partilhado, e o refrescador apaga-o: {regra}')
 
-    # 2. o CSS do teste tem de ter vindo do diagnostico
-    for regra in ('.quiz{', '.res__valor', '.captura'):
-        if regra not in bloco_pagina:
+    for regra in MARCAS_TESTE:
+        n = bloco_pagina.count(regra)
+        if n == 0:
             problemas.append(f'o CSS do teste nao veio: {regra}')
+        elif n > 1:
+            problemas.append(f'a marca deixou de ser unica, aparece {n} vezes '
+                             f'e ja nao confere nada: {regra}')
+
+    # 2b. Um minimo de regras. As marcas dizem que certas linhas la estao; isto
+    #     diz que o bloco nao foi cortado a meio. Hoje sao 73 regras, 18 de
+    #     cartoes e 32 do teste. Os minimos ficam abaixo disso com folga, para
+    #     uma limpeza honesta nao disparar, mas um corte a serio dispara.
+    regras = [r for r in re.findall(r'(?m)^\s*([.#a-zA-Z@][^{}\n]{0,160})\{', bloco_pagina)
+              if not r.strip().startswith('@')]
+    n_cartoes = len([r for r in regras if '.preco' in r])
+    n_teste = len([r for r in regras if any(c in r for c in
+                                            ('.quiz', '.res__', '.captura', '.obrigado'))])
+    if len(regras) < 55:
+        problemas.append(f'o bloco proprio tem so {len(regras)} regras, esperava pelo menos 55')
+    if n_cartoes < 14:
+        problemas.append(f'so {n_cartoes} regras de cartoes, esperava pelo menos 14')
+    if n_teste < 24:
+        problemas.append(f'so {n_teste} regras do teste, esperava pelo menos 24')
 
     # 3. as pecas do teste e as do cartao tem de estar no corpo
     for peca in ('id="quiz"', 'var CONFIG = {', 'id="res-valor"', 'id="cartao-estimativa"',
