@@ -404,7 +404,10 @@ main[data-dm*="maximalismo-asterisco:"]{
   color:var(--ink-soft);
   position:relative;
   isolation:isolate;
-  overflow:hidden;
+  /* sem overflow:hidden aqui. Um antepassado que esconde o que transborda
+     desliga o position:sticky de tudo o que esta dentro, e era isso que
+     impedia o indice de acompanhar a leitura. Os hexagonos sao cortados pela
+     propria caixa .hexes, que ja tem overflow:hidden. */
 }
 /* As faixas alternadas deixam de alternar dentro do blog: a seccao e uma so
    cor, como foi pedido, e e tambem o que deixa os hexagonos atravessar a
@@ -462,14 +465,34 @@ main[data-dm*="maximalismo-asterisco:"] .artigo__aside .toc{background:none;bord
     gap:clamp(1.5rem,.5rem + 2vw,2.75rem)}
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose,
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .faq,
-  main[data-dm*="maximalismo-asterisco:"] .artigo__body .morelist{max-width:54rem}
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .morelist{max-width:none}
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose .body,
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose>p,
-  main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose .answer,
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose li,
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .deliver li,
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .faq .a{
-    max-width:none;font-size:clamp(1.0625rem,.86rem + .55vw,1.2rem);line-height:1.6}
+    max-width:none;font-size:clamp(1.0625rem,.84rem + .62vw,1.5rem);line-height:1.6}
+  /* O primeiro paragrafo, o da capitular, tinha a largura medida em ch na
+     serifa: a 28,8 px isso dava 397 px, metade do resto do artigo, e era o que
+     deixava a primeira frase desalinhada do que vem a seguir. Precisa de mais
+     especificidade do que as outras, porque a regra que o prendia tem o
+     data-dm e o :first-child. */
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose>.answer:first-child{
+    max-width:none;font-size:clamp(1.2rem,.98rem + .78vw,1.9rem);line-height:1.45}
+}
+
+/* --- Ecras grandes: o artigo deixa de ficar preso aos 1180 px -------------
+   O contentor do site tem 1180 px de largura maxima, que serve bem uma pagina
+   de servico mas deixa metade de um ecra de 1900 px por usar quando o que la
+   esta e texto para ler. So dentro do blog, e so acima dos 1400 px, o
+   contentor cresce. A barra e o rodape ficam nos 1180, que e onde a marca os
+   tem. */
+@media (min-width:1400px){
+  main[data-dm*="maximalismo-asterisco:"] .container{max-width:1360px}
+  main[data-dm*="maximalismo-asterisco:"] .artigo__grid{grid-template-columns:minmax(0,1fr) minmax(0,15rem)}
+}
+@media (min-width:1700px){
+  main[data-dm*="maximalismo-asterisco:"] .container{max-width:1540px}
 }
 /* A palavra fantasma em contorno volta ao contorno escuro, que e o que tinha
    sobre papel. */

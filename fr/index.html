@@ -31,9 +31,9 @@
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href="https://wandofi.pt/fr/" />
-    <link rel="alternate" hreflang="pt-PT" href="https://wandofi.pt/" />
     <link rel="alternate" hreflang="en" href="https://wandofi.pt/en/" />
     <link rel="alternate" hreflang="fr" href="https://wandofi.pt/fr/" />
+    <link rel="alternate" hreflang="pt-PT" href="https://wandofi.pt/" />
     <link rel="alternate" hreflang="x-default" href="https://wandofi.pt/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://wandofi.pt/fr/" />
@@ -1256,7 +1256,10 @@ main[data-dm*="maximalismo-asterisco:"]{
   color:var(--ink-soft);
   position:relative;
   isolation:isolate;
-  overflow:hidden;
+  /* sem overflow:hidden aqui. Um antepassado que esconde o que transborda
+     desliga o position:sticky de tudo o que esta dentro, e era isso que
+     impedia o indice de acompanhar a leitura. Os hexagonos sao cortados pela
+     propria caixa .hexes, que ja tem overflow:hidden. */
 }
 /* As faixas alternadas deixam de alternar dentro do blog: a seccao e uma so
    cor, como foi pedido, e e tambem o que deixa os hexagonos atravessar a
@@ -1314,14 +1317,34 @@ main[data-dm*="maximalismo-asterisco:"] .artigo__aside .toc{background:none;bord
     gap:clamp(1.5rem,.5rem + 2vw,2.75rem)}
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose,
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .faq,
-  main[data-dm*="maximalismo-asterisco:"] .artigo__body .morelist{max-width:54rem}
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .morelist{max-width:none}
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose .body,
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose>p,
-  main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose .answer,
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose li,
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .deliver li,
   main[data-dm*="maximalismo-asterisco:"] .artigo__body .faq .a{
-    max-width:none;font-size:clamp(1.0625rem,.86rem + .55vw,1.2rem);line-height:1.6}
+    max-width:none;font-size:clamp(1.0625rem,.84rem + .62vw,1.5rem);line-height:1.6}
+  /* O primeiro paragrafo, o da capitular, tinha a largura medida em ch na
+     serifa: a 28,8 px isso dava 397 px, metade do resto do artigo, e era o que
+     deixava a primeira frase desalinhada do que vem a seguir. Precisa de mais
+     especificidade do que as outras, porque a regra que o prendia tem o
+     data-dm e o :first-child. */
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose>.answer:first-child{
+    max-width:none;font-size:clamp(1.2rem,.98rem + .78vw,1.9rem);line-height:1.45}
+}
+
+/* --- Ecras grandes: o artigo deixa de ficar preso aos 1180 px -------------
+   O contentor do site tem 1180 px de largura maxima, que serve bem uma pagina
+   de servico mas deixa metade de um ecra de 1900 px por usar quando o que la
+   esta e texto para ler. So dentro do blog, e so acima dos 1400 px, o
+   contentor cresce. A barra e o rodape ficam nos 1180, que e onde a marca os
+   tem. */
+@media (min-width:1400px){
+  main[data-dm*="maximalismo-asterisco:"] .container{max-width:1360px}
+  main[data-dm*="maximalismo-asterisco:"] .artigo__grid{grid-template-columns:minmax(0,1fr) minmax(0,15rem)}
+}
+@media (min-width:1700px){
+  main[data-dm*="maximalismo-asterisco:"] .container{max-width:1540px}
 }
 /* A palavra fantasma em contorno volta ao contorno escuro, que e o que tinha
    sobre papel. */
@@ -1425,7 +1448,7 @@ main[data-dm*="maximalismo-asterisco:"] ::selection{background:var(--red);color:
         <nav class="nav__links" aria-label="Main navigation">
           <a href="/seo/consultor-seo/" hreflang="pt-PT" lang="pt-PT">SEO</a>
           <a href="/gestao-de-trafego/" hreflang="pt-PT" lang="pt-PT">Publicité en ligne</a>
-          <a href="/en/e-invoicing-portugal/" hreflang="en" lang="en">Facturation électronique</a>
+          <a href="/fr/sites-web/">Sites web</a><a href="/fr/automatisation/">Automatisation</a>
           <span class="idiomas" role="group" aria-label="Idioma"><a href="/" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="/fr/" title="English">EN</a><span aria-current="true" lang="fr">FR</span><!--/idiomas--></span>
         </nav>
         <div class="nav__cta">
@@ -1436,7 +1459,7 @@ main[data-dm*="maximalismo-asterisco:"] ::selection{background:var(--red);color:
           <nav class="nav__panel" aria-label="Mobile navigation">
             <a href="/seo/consultor-seo/" hreflang="pt-PT" lang="pt-PT">SEO</a>
             <a href="/gestao-de-trafego/" hreflang="pt-PT" lang="pt-PT">Publicité en ligne</a>
-            <a href="/en/e-invoicing-portugal/" hreflang="en" lang="en">Facturation électronique</a>
+            <a href="/fr/sites-web/">Sites web</a><a href="/fr/automatisation/">Automatisation</a>
             <span class="idiomas" role="group" aria-label="Idioma"><a href="/" hreflang="pt-PT" lang="pt-PT" title="Português">PT</a><a href="/fr/" title="English">EN</a><span aria-current="true" lang="fr">FR</span><!--/idiomas--></span>
             <a data-cta="menu-movel" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a>
             <a data-cta="menu-movel" href="https://wa.me/351937733527?text=Hello%2C%20I%20came%20from%20the%20Wandofi%20site%20and%20I%20would%20like%20to%20talk%20about%20my%20business." target="_blank" rel="noopener">WhatsApp +351 937 733 527</a>
@@ -1460,7 +1483,7 @@ main[data-dm*="maximalismo-asterisco:"] ::selection{background:var(--red);color:
 <section class="section"><div class="container"><div class="prose"><h2 class="h2">À qui cela s’adresse</h2><p class="body">Des dirigeants étrangers dont l’entreprise vend au Portugal. Des fondateurs qui viennent d’immatriculer une société ici et dont le site ne trouve personne. Des équipes internationales avec un site portugais monté une fois et jamais repris. Des gens qui pilotent une opération portugaise depuis la France, la Belgique, la Suisse ou le Luxembourg et qui ont besoin de quelqu’un sur place à Lisbonne.</p><p class="body">Ces situations ont une chose en commun : un écart entre l’entreprise et le marché portugais. Les recherches se font en portugais, les prestataires chiffrent en portugais, et la personne qui décide ne lit ni l’un ni l’autre. Je comble cet écart et je garde le reporting en français.</p><p class="body">Une partie de cet écart est réglementaire et non commerciale. Si vous facturez depuis le Portugal ou vers des clients portugais, commencez par <a href="/en/e-invoicing-portugal/" hreflang="en" lang="en">la facturation électronique au Portugal</a>, une page en anglais qui dit ce qui est exigé aujourd’hui et ce qui change à la fin de l’année.</p><h2 class="h2">Comment le travail se déroule</h2><p class="body">Trois étapes, toujours les mêmes. Un diagnostic, où je regarde le site, le marché et la concurrence et où je vous dis ce qui mérite d’être fait en premier. Un sprint, avec un périmètre défini et une date. Une livraison documentée, pour que votre équipe ou votre prestataire suivant puisse continuer sans moi.</p><p class="body">Je ne promets pas la première position, parce que personne ne peut la promettre honnêtement. Je montre ce qui a été fait, ce qui a bougé et ce qui n’a pas bougé.</p></div></div></section>
 <section class="section"><div class="container"><div class="prose"><h2 class="h2">Ce que je ne suis pas</h2><p class="body">Je ne suis ni avocat ni comptable. J’apporte un appui technique et opérationnel, pas un conseil juridique ou comptable. J’ai une formation en comptabilité et je travaille tous les jours dans un cabinet d’avocats à Lisbonne, ce qui me permet de vous dire quand un avocat ou un comptable doit intervenir, et de coordonner leur partie du projet. C’est utile. Ce n’est pas la même chose que vous conseiller.</p></div></div></section>
 <section class="section"><div class="container"><header class="section__head"><h2 class="h2">Questions fréquentes</h2></header><div class="faq"><details><summary>Vous travaillez en français ?</summary><div class="a"><p>Oui. Appels, courriels, rapports et documentation en français. Le contenu que j’écris pour une audience portugaise est écrit en portugais européen, parce que c’est dans cette langue que le marché cherche.</p></div></details><details><summary>Êtes-vous une agence ?</summary><div class="a"><p>Non. Je suis un consultant seul. Vous parlez à la personne qui fait le travail, et je fais venir un graphiste, un développeur ou un rédacteur quand le projet en a besoin.</p></div></details><details><summary>Et si ma société est immatriculée au Portugal mais que je vis à l’étranger ?</summary><div class="a"><p>Oui, cela fonctionne. L’essentiel du travail est à distance de toute façon. Je suis à Lisbonne quand quelque chose doit se passer en personne.</p></div></details><details><summary>Êtes-vous avocat ou comptable ?</summary><div class="a"><p>Non. J’apporte un appui technique et opérationnel, pas un conseil juridique ou comptable. Je connais assez bien ces procédures pour vous dire quand un avocat ou un comptable est nécessaire, et pour coordonner leur partie.</p></div></details><details><summary>Combien cela coûte ?</summary><div class="a"><p>Cela dépend du périmètre. Je préfère définir un projet avec des objectifs plutôt que vendre des heures à la pièce, et le premier échange sert à le dimensionner.</p></div></details></div></div></section>
-<section class="section"><div class="container"><header class="section__head"><h2 class="h2">Où aller à partir d’ici</h2></header><div class="related"><a href="/seo/consultor-seo/" hreflang="pt-PT" lang="pt-PT">Consultant SEO à Lisbonne</a><a href="/gestao-de-trafego/" hreflang="pt-PT" lang="pt-PT">Publicité en ligne à Lisbonne</a><a href="/en/e-invoicing-portugal/" hreflang="en" lang="en">Facturation électronique au Portugal</a><a href="/casos/" hreflang="pt-PT" lang="pt-PT">Études de cas</a><a href="/diagnostico/" hreflang="pt-PT" lang="pt-PT">Diagnostic gratuit du site</a><a href="/" hreflang="pt-PT" lang="pt-PT">Site en portugais</a></div></div></section>
+<section class="section"><div class="container"><header class="section__head"><h2 class="h2">Où aller à partir d’ici</h2></header><div class="related"><a href="/fr/seo/">Le SEO</a><a href="/fr/sites-web/">Les sites web</a><a href="/fr/publicite-en-ligne/">La publicité en ligne</a><a href="/fr/automatisation/">L’automatisation</a><a href="/en/e-invoicing-portugal/" hreflang="en" lang="en">La facturation électronique, en anglais</a><a href="/casos/" hreflang="pt-PT" lang="pt-PT">Études de cas, en portugais</a><a href="/diagnostico/" hreflang="pt-PT" lang="pt-PT">Diagnostic gratuit du site</a></div></div></section>
 <section class="section close" id="contact">
         <div class="container">
           <div class="close__grid">
