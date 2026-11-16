@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" preserveAspectRatio="none">
+  <defs>
+    <filter id="pincel" x="-6%" y="-25%" width="112%" height="150%">
+      <!-- bordas irregulares de pincel -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.5" numOctaves="3" seed="7" result="ruido"/>
+      <feDisplacementMap in="SourceGraphic" in2="ruido" scale="26" xChannelSelector="R" yChannelSelector="G" result="borda"/>
+      <!-- riscos do pincel seco, na horizontal -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.003 0.22" numOctaves="2" seed="3" result="riscos"/>
+      <feColorMatrix in="riscos" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.4 2.25" result="mascara"/>
+      <feComposite in="borda" in2="mascara" operator="in" result="seco"/>
+      <!-- grão fino da tinta -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="11" result="grao"/>
+      <feColorMatrix in="grao" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -0.5 1.25" result="graoA"/>
+      <feComposite in="seco" in2="graoA" operator="in"/>
+    </filter>
+    <linearGradient id="carga" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#d22117"/>
+      <stop offset="0.1" stop-color="#e8291e"/>
+      <stop offset="0.85" stop-color="#e1251b"/>
+      <stop offset="1" stop-color="#c41d14"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#pincel)">
+    <path d="M18 46 C 120 22, 300 30, 470 20 S 610 26, 628 34 L 622 120 C 560 146, 420 150, 300 144 S 90 152, 26 140 C 8 110, 12 78, 18 46 Z" fill="url(#carga)"/>
+    <path d="M6 132 C 160 150, 380 160, 600 142 L 596 160 C 380 172, 170 168, 10 154 Z" fill="#e1251b" opacity="0.85"/>
+  </g>
+</svg>
