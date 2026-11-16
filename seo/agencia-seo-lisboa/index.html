@@ -840,6 +840,22 @@ p a:not(.btn):hover,
 .idiomas [aria-current]{color:var(--ink);background:var(--campo);font-weight:500}
 .nav__panel .idiomas{margin:.4rem 0}
 
+/* --- 4e. A hora paga, no fecho ------------------------------------------
+   A conversa de quinze minutos e gratuita e tem botao proprio. Esta e a outra
+   coisa: uma hora de revisao, sempre paga, pedida por email ou por WhatsApp.
+   Fica a seguir ao botao, num cartao com borda a tracejado, para nao competir
+   com ele e para se perceber que e outra coisa e nao outro botao. */
+.oferta{margin-top:1.1rem;padding:1rem 1.1rem 1.1rem;border:1px dashed var(--line);
+  border-radius:var(--r);background:rgba(255,255,255,.03)}
+.oferta__tit{margin:0 0 .35rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--red-txt)}
+.oferta__txt{margin:0 0 .8rem;font-size:.92rem;line-height:1.55;color:var(--ink-soft)}
+.oferta__txt b{color:var(--ink);font-weight:600}
+.oferta__accao{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;margin:0;font-size:.9rem}
+.oferta__accao a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--mute);
+  transition:color .18s var(--ease),border-color .18s var(--ease)}
+.oferta__accao a:hover{color:var(--red-txt);border-color:var(--red-txt)}
+
 /* --- 5. Diagrama ---------------------------------------------------------
    Ja usava tokens, por isso o traco acompanha. Os preenchimentos e que
    precisavam de levantar do fundo. */
