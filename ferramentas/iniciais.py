@@ -87,10 +87,26 @@ GUIAO_PT = entre(fonte, '<!-- inicial cinzenta -->', '</script>', 'o guiao da in
 # procura, que foi buscar um pedaco de comentario a meio do ficheiro em vez do
 # bloco. O ingles e o frances ficaram sem o CSS da vitrine e do formulario, e
 # nao houve erro nenhum: so uma pagina errada. Agora e conferido.
-for marca in ('body.inicial .vitrine{', 'body.inicial .cartao{', 'body.inicial .chips'):
-    if marca not in ESTILO_PAGINA:
-        raise SystemExit(f'o bloco de estilo da inicial nao tem "{marca}": '
+#
+# As marcas sao escolhidas por aparecerem UMA so vez no bloco. A primeira
+# versao desta conferencia procurava "body.inicial .vitrine{", que aparece
+# duas vezes, a regra principal e a do telemovel: apagar a principal deixava a
+# outra a tapar o buraco e a conferencia dizia que estava tudo bem. Foi uma
+# prova a estragar o ficheiro de proposito que deu por isso, e e por isso que
+# essa prova existe. Uma conferencia que nunca dispara nao e uma rede.
+MARCAS_ESTILO = ('body.inicial .vitrine__inclina{', '@keyframes in-desliza',
+                 'body.inicial .hero__quem{', 'body.inicial .cartao span{')
+MINIMO_REGRAS = 30
+for marca in MARCAS_ESTILO:
+    if ESTILO_PAGINA.count(marca) != 1:
+        raise SystemExit(f'o bloco de estilo da inicial tem "{marca}" '
+                         f'{ESTILO_PAGINA.count(marca)} vezes em vez de uma: '
                          f'apanhei a coisa errada, {len(ESTILO_PAGINA)} bytes')
+if ESTILO_PAGINA.count('body.inicial') < MINIMO_REGRAS:
+    raise SystemExit(f'o bloco de estilo da inicial so tem '
+                     f'{ESTILO_PAGINA.count("body.inicial")} regras body.inicial, '
+                     f'menos do que as {MINIMO_REGRAS} que se esperam: '
+                     f'apanhei a coisa errada, {len(ESTILO_PAGINA)} bytes')
 if '<main' in MAIN_PT[10:]:
     raise SystemExit('o corte do <main> apanhou mais do que devia')
 print(f'da fonte: main {len(MAIN_PT)} bytes, estilo {len(ESTILO_PAGINA)} bytes, '
@@ -328,6 +344,25 @@ for lingua, caminho in DESTINOS.items():
         print(f'  {marca:8} {nome}')
     io.open(caminho, 'w', encoding='utf-8', newline='\n').write(h)
     print(f'  gravado: {antes} -> {len(h)} bytes\n')
+
+# O linkagem.py reescreve o bloco <div class="related"> das paginas que estao
+# no JUNTAR dele, com texto de ancora fixo e em portugues. Hoje nao toca em
+# nenhuma pagina de en/ nem de fr/, e as tres iniciais nem sequer tem esse
+# bloco, por isso nao ha choque. Mas se alguem acrescentar uma pagina de outra
+# lingua ao JUNTAR, as duas ferramentas passam a escrever no mesmo sitio e uma
+# desfaz a outra a cada corrida: a pagina aparece sempre suja no git e ninguem
+# percebe porque. Fica aqui a dar o aviso antes de isso acontecer.
+_linkagem = os.path.join(REPO, 'ferramentas', 'linkagem.py')
+if os.path.isfile(_linkagem):
+    _fonte = io.open(_linkagem, encoding='utf-8').read()
+    _juntar = re.search(r'JUNTAR\s*=\s*\{(.*?)\n\}', _fonte, re.S)
+    if _juntar:
+        _chaves = re.findall(r"^\s*'(/[^']*)'\s*:", _juntar.group(1), re.M)
+        _outras = [c for c in _chaves if c.startswith(('/en/', '/fr/'))]
+        if _outras:
+            avisos.append('o linkagem.py passou a escrever em ' + ', '.join(_outras)
+                          + ': confere os textos de ancora contra o ANCORA, senao as '
+                            'duas ferramentas desfazem-se uma a outra')
 
 if avisos:
     print('=========== AVISOS')
