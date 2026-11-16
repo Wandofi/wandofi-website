@@ -92,8 +92,21 @@ def corta_o_bloco_a_meio(h):
     return h[:abre_p] + bloco[:len('<style id="pagina">')] + bloco[len(bloco) // 2:] + h[fecha_p:]
 
 
+def renomeia_para_um_nome_maior(h):
+    """A armadilha do prefixo, que apanhou a prova da sessao das iniciais.
+
+    O nome novo comeca pelo antigo, por isso uma contagem por substring
+    continua a encontrar uma ocorrencia e diz que esta tudo bem. Mas o HTML
+    continua a dizer preco__rotulo e a regra deixou de valer. So uma contagem
+    que exija que o texto acabe onde a marca acaba apanha isto.
+    """
+    return h.replace('.preco__rotulo{', '.preco__rotulo2{', 1)
+
+
 ESTRAGOS = [
     ('o CSS dos cartoes vai para o bloco partilhado', move_css_para_o_bloco_partilhado),
+    ('uma marca renomeada para um nome que comeca por ela',
+     renomeia_para_um_nome_maior),
     ('tiradas regras que nenhuma marca cobre', tira_regras_sem_marca),
     ('apagada a regra principal, fica so a do telemovel', apaga_a_principal_e_deixa_a_do_telemovel),
     ('uma marca deixou de ser unica', duplica_uma_marca),

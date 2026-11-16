@@ -377,6 +377,37 @@ if not n:
 def confere(texto):
     problemas = []
 
+    # Contar por substring nao chega, e a armadilha e a mesma do prefixo que ja
+    # tinha mordido as marcas repetidas, so que pelo outro lado.
+    #
+    # A sessao das iniciais apanhou-a de uma maneira que vale por si: para
+    # provar que a conferencia via uma funcao apagada, a prova renomeava
+    # montaVitrine para montaVitrineQueJaNaoEChamada. O nome novo comeca pelo
+    # antigo, por isso a contagem continuava a dar uma ocorrencia e a prova
+    # dizia que a rede nao funcionava, quando o errado era a medicao. A
+    # armadilha apanhou a propria prova escrita para a apanhar.
+    #
+    # Em CSS da no mesmo: renomear .preco__rotulo para .preco__rotulo2 deixa a
+    # regra sem efeito, porque o HTML continua a dizer preco__rotulo, mas uma
+    # contagem por substring continua a encontrar uma ocorrencia. Onze das
+    # quinze marcas daqui acabavam em caracter de palavra e sofriam disto.
+    #
+    # Por isso a contagem exige que o texto acabe onde a marca acaba. Juntando
+    # as duas regras, uma marca so confere se for unica E se nao se puder
+    # esconder dentro de um nome maior.
+    palavra = re.compile(r'[A-Za-z0-9_-]')
+
+    def conta(onde, marca):
+        n = i = 0
+        i = onde.find(marca)
+        while i >= 0:
+            fim = i + len(marca)
+            if (not palavra.match(marca[-1]) or fim >= len(onde)
+                    or not palavra.match(onde[fim])):
+                n += 1
+            i = onde.find(marca, i + 1)
+        return n
+
     abre_h = texto.index('<style id="home-light">')
     fim_h = texto.index('</style>', abre_h) + len('</style>')
     bloco_home = texto[abre_h:fim_h]
@@ -409,17 +440,17 @@ def confere(texto):
                     '.obrigado__icone')
 
     for regra in MARCAS_CARTOES:
-        n = bloco_pagina.count(regra)
+        n = conta(bloco_pagina, regra)
         if n == 0:
             problemas.append(f'falta no bloco proprio: {regra}')
         elif n > 1:
             problemas.append(f'a marca deixou de ser unica, aparece {n} vezes '
                              f'e ja nao confere nada: {regra}')
-        if regra in bloco_home:
+        if conta(bloco_home, regra):
             problemas.append(f'foi parar ao bloco partilhado, e o refrescador apaga-o: {regra}')
 
     for regra in MARCAS_TESTE:
-        n = bloco_pagina.count(regra)
+        n = conta(bloco_pagina, regra)
         if n == 0:
             problemas.append(f'o CSS do teste nao veio: {regra}')
         elif n > 1:
@@ -445,7 +476,7 @@ def confere(texto):
     # 3. as pecas do teste e as do cartao tem de estar no corpo
     for peca in ('id="quiz"', 'var CONFIG = {', 'id="res-valor"', 'id="cartao-estimativa"',
                  'id="cartao-valor"', 'id="cartao-prazo"', 'MutationObserver'):
-        if peca not in texto:
+        if not conta(texto, peca):
             problemas.append(f'falta no corpo: {peca}')
 
     # 4. nenhum pedaco de comentario pode ter entrado no meio do CSS: se entrou,
