@@ -16,6 +16,12 @@
         setTimeout(function(){ document.documentElement.classList.add('in-pronto'); }, 700);
         document.documentElement.classList.add('in-js');
         setTimeout(function(){ document.documentElement.classList.add('in-pronto'); }, 700);
+        document.documentElement.classList.add('in-js');
+        setTimeout(function(){ document.documentElement.classList.add('in-pronto'); }, 700);
+        document.documentElement.classList.add('in-js');
+        setTimeout(function(){ document.documentElement.classList.add('in-pronto'); }, 700);
+        document.documentElement.classList.add('in-js');
+        setTimeout(function(){ document.documentElement.classList.add('in-pronto'); }, 700);
         window.wandofiCarregaGA=function(){
           if(window.wandofiGAOn) return; window.wandofiGAOn=true;
           var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-510WQZ4YQ7'; document.head.appendChild(s);
@@ -773,6 +779,16 @@ body.inicial .tag--accent{border-color:rgba(255,106,95,.45)}
 body.inicial .hero__prova a{border-bottom-color:rgba(255,106,95,.55)}
 body.inicial .hero__trust li::before{background:var(--red-txt)}
 
+/* As tres caixas de texto do hero estavam medidas em ch, que e a largura do
+   algarismo zero da fonte em uso. Com a fonte de recurso no ecra o zero e
+   outro, a caixa fica 17 por cento mais estreita e o paragrafo ganha uma
+   linha: na troca, a pagina saltava. O size-adjust iguala a medida media das
+   letras, nao a do zero, por isso estas tres passam a rem, com o valor que
+   tinham na Instrument Sans. */
+body.inicial .hero__lead{max-width:38.63rem}
+body.inicial .hero__micro{max-width:27.57rem}
+body.inicial .hero__prova{max-width:30.64rem}
+
 /* --- 2. Pecas que tinham branco fixo e nao seguem os tokens --------------- */
 body.inicial .nav{background:rgba(31,32,35,.90);border-bottom:1px solid var(--line)}
 body.inicial .dock{background:rgba(31,32,35,.96);border-top:1px solid var(--line)}
@@ -863,7 +879,17 @@ html.in-js.in-pronto body.inicial .hero__h1{visibility:visible}
    chega, mas ocupam o espaco certo e nada se mexe na troca. */
 @font-face{font-family:'Serif ajustada';src:local('Georgia');size-adjust:73.8%;font-display:swap}
 @font-face{font-family:'Serif ajustada 2';src:local('Times New Roman'),local('Liberation Serif'),local('Noto Serif');size-adjust:81.3%;font-display:swap}
-body.inicial .hero__h1{font-family:"Instrument Serif",'Serif ajustada','Serif ajustada 2',Georgia,serif}
+/* O mesmo para a fonte de interface, que desenha o corpo, os botoes e os
+   campos: 3622 px contra 3541 na Arial e 3160 na Roboto, que e a do Android. */
+@font-face{font-family:'Sans ajustada';src:local('Arial'),local('Helvetica'),local('Liberation Sans');size-adjust:102.3%;font-display:swap}
+@font-face{font-family:'Sans ajustada 2';src:local('Roboto'),local('Segoe UI');size-adjust:114.6%;font-display:swap}
+/* As duas entram pelos proprios tokens, que e por onde todo o CSS do site
+   pede as fontes. Assim nenhuma regra fica de fora. */
+body.inicial{
+  --serif:"Instrument Serif",'Serif ajustada','Serif ajustada 2',Georgia,serif;
+  --ui:"Instrument Sans",'Sans ajustada','Sans ajustada 2',system-ui,sans-serif;
+  font-family:var(--ui);
+}
 html.in-anima body.inicial .hero__h1 .in-p>span{display:inline-block;transform:translateY(112%);animation:in-sobe .95s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d)}
 @keyframes in-sobe{to{transform:none}}
 html.in-anima body.inicial .hero__h1 em{opacity:0;transform:translateY(.35em);animation:in-aparece .9s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d)}
@@ -927,9 +953,13 @@ body.inicial .campo input{width:100%;background:var(--campo);border:1px solid va
   padding:.8rem .85rem;color:var(--ink);font:inherit;font-size:1rem}
 body.inicial .campo input::placeholder{color:#85837f}
 body.inicial .campo input:focus-visible{outline:2px solid var(--ink);outline-offset:1px}
-body.inicial .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1rem;padding:0;border:0}
-body.inicial .chips legend{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:.45rem;padding:0}
-body.inicial .chips label{border:1px solid var(--line);border-radius:999px;padding:.45rem .85rem;font-size:.9rem;color:var(--ink-soft);cursor:pointer}
+/* Os quatro botoes de escolha numa grelha de duas colunas, e nao em linha com
+   quebra automatica. Em linha, a largura de cada um depende das letras: quando
+   a fonte de interface trocava pela de recurso, um deles mudava de linha e o
+   formulario crescia 23 px de uma vez. Em grelha a caixa e a mesma sempre. */
+body.inicial .chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem;margin:0 0 1rem;padding:0;border:0}
+body.inicial .chips legend{grid-column:1/-1;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:-.1rem;padding:0;float:left;width:100%}
+body.inicial .chips label{border:1px solid var(--line);border-radius:999px;padding:.45rem .85rem;font-size:.9rem;color:var(--ink-soft);cursor:pointer;text-align:center}
 body.inicial .chips input{position:absolute;opacity:0;width:1px;height:1px}
 body.inicial .chips input:checked+label{border-color:var(--ink);color:var(--ink);background:var(--campo)}
 body.inicial .chips input:focus-visible+label{outline:2px solid var(--red);outline-offset:2px}
