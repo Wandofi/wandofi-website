@@ -800,6 +800,25 @@ p a:not(.btn):hover,
    ferramentas/paginas.css, porque o refrescador cola esse ficheiro depois
    deste bloco e as regras de la ganham sempre. */
 
+/* --- 4c. A palavra destacada, em todo o site ----------------------------
+   A pincelada de tinta deixa de ser so da pagina inicial. A regra de qual e a
+   palavra fica escrita no ferramentas/ e e sempre a mesma: a palavra que a
+   pagina defende, nunca a mesma em duas paginas, nunca a ultima da frase por
+   habito. As paginas legais e os artigos do blog nao levam nenhuma.
+
+   O ::before leva z-index negativo e o titulo cria o plano com isolation, por
+   isso a tinta fica atras de todas as letras e nunca tapa nenhuma. */
+.hero__h1,
+.page-hero__title{position:relative;isolation:isolate}
+.hero__h1 em,
+.page-hero__title em{
+  font-style:italic;color:#fff;-webkit-text-fill-color:#fff;text-shadow:none;
+  position:relative;padding:0 .08em;white-space:nowrap;display:inline-block}
+.hero__h1 em::before,
+.page-hero__title em::before{
+  content:"";position:absolute;z-index:-1;left:-.16em;right:-.2em;top:.06em;bottom:-.08em;
+  background:url(/assets/tinta.svg) center/100% 100% no-repeat;transform:rotate(-1.2deg)}
+
 /* --- 5. Diagrama ---------------------------------------------------------
    Ja usava tokens, por isso o traco acompanha. Os preenchimentos e que
    precisavam de levantar do fundo. */
@@ -1183,54 +1202,166 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 @media (min-width:821px){.quadro-wrap--largo .quadro{min-width:0;width:100%}}
 
 /* =========================================================================
-   ZONA DE LEITURA DOS ARTIGOS, CLARA. 16 de Novembro de 2026.
+   O BLOG INTEIRO EM CINZENTO CLARO. 16 de Novembro de 2026.
 
-   Decisao do Mauro: o site passa a cinzento escuro, mas a parte onde se le o
-   artigo fica numa folha clara com letra preta. Dez minutos de leitura em
-   letra clara sobre fundo escuro cansam, e assim nao e preciso mexer na cor
-   da letra do corpo.
+   Decisao do Mauro: nao e so a coluna de texto, e a seccao toda, e e cinzento
+   claro e nao branco. Vale para a listagem e para os artigos, que sao as
+   paginas marcadas com maximalismo-asterisco no main.
 
-   A folha e o .artigo__body, que ja existia e que envolve todas as seccoes
-   de texto do artigo. Fora dela fica tudo escuro: a barra, as migalhas, o
-   titulo do artigo, a capa, o indice lateral e o rodape.
+   Por fora fica tudo como esta: a barra em cinzento escuro e o rodape em
+   vermelho. O blog fica como uma placa clara entre as duas, que e o que
+   separa a leitura do resto do site.
 
-   A tecnica e a mesma do resto do site: nao se reescreve regra a regra,
-   o que muda sao os valores dos tokens dentro da folha. Tudo o que esta la dentro
-   volta sozinho ao tema claro.
+   A tecnica e a mesma do resto: o que muda sao os valores dos tokens dentro
+   do main, e tudo o que esta la dentro volta sozinho ao tema claro.
    ========================================================================= */
-.artigo .artigo__body{
+main[data-dm*="maximalismo-asterisco:"]{
   color-scheme:light;
-  --paper:#f6f4ef;                  /* a folha */
-  --panel:#efece4;                  /* as seccoes alternadas, dentro da folha */
+  --paper:#dcdde1;                  /* o cinzento claro da seccao */
+  --panel:#d3d4d9;                  /* usado em caixas, nao em faixas */
   --campo:#ffffff;
   --ink:#050505;
   --ink-soft:#2a2a2a;
-  --mute:#5c5c5c;
-  --line:rgba(5,5,5,.13);
-  --line-soft:rgba(5,5,5,.07);
-  /* O #e1251b sobre o creme da 4,18:1, abaixo dos 4,5 de AA. Como letra passa
-     ao vermelho escuro da marca, que da 7,7:1. Como fundo de botao com letras
-     brancas, o #e1251b fica como esta. */
+  --mute:#55565a;
+  --line:rgba(5,5,5,.15);
+  --line-soft:rgba(5,5,5,.08);
+  /* O #e1251b sobre este cinzento da 3,8:1, abaixo dos 4,5 de AA. Como letra
+     passa ao vermelho escuro da marca, que da 7:1. Como fundo de botao com
+     letras brancas, o #e1251b fica como esta. */
   --red-txt:#99140f;
   background:var(--paper);
   color:var(--ink-soft);
-  border-radius:16px;
-  padding:clamp(.5rem,2vw,1.5rem) 0;
-  box-shadow:0 40px 80px -50px rgba(0,0,0,.85);
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
 }
-/* A primeira e a ultima seccao arredondam com a folha, para o creme nao
-   encostar aos cantos. */
-.artigo .artigo__body>.section:first-child{border-radius:16px 16px 0 0}
-.artigo .artigo__body>.section:last-child{border-radius:0 0 16px 16px}
-/* Os titulos do artigo perdem o relevo gravado, que foi desenhado para o
-   cinzento e nao faz sentido nenhum sobre o creme. */
-.artigo .artigo__body .h2,
-.artigo .artigo__body .h3{text-shadow:none;-webkit-text-fill-color:currentColor}
-/* O cinzento das etiquetas volta ao do tema claro: o #95938f sobre o creme da
-   2,8:1 e nao se le. */
-.artigo .artigo__body .eyebrow{color:var(--red-txt)}
-.artigo .artigo__body ::selection{background:var(--red);color:#fff}
-/* A barra das citacoes e os quadros herdam os tokens e nao precisam de nada. */
+/* As faixas alternadas deixam de alternar dentro do blog: a seccao e uma so
+   cor, como foi pedido, e e tambem o que deixa os hexagonos atravessar a
+   pagina toda em vez de desaparecerem de faixa em faixa. */
+main[data-dm*="maximalismo-asterisco:"] .section--panel{background:transparent}
+/* A caixa de accao fica em cartao claro sobre o cinzento, em vez de continuar
+   escura no meio de uma seccao clara. */
+main[data-dm*="maximalismo-asterisco:"] .aside__cta{border:1px solid rgba(255,255,255,.75)}
+
+/* --- O indice do artigo, encostado a margem direita ---------------------
+   Era uma caixa alta ao lado do texto. Passa a um botao fechado, do tamanho
+   de uma etiqueta, encostado ao canto da coluna da direita. Aberto, a lista
+   sai por cima, para a direita, e por isso nao empurra nem estreita o texto
+   do artigo: a coluna de leitura fica onde estava, com a mesma largura.
+
+   E um <details> nativo: abre e fecha sem JavaScript, responde ao teclado e
+   e anunciado como botao que expande. */
+main[data-dm*="maximalismo-asterisco:"] .artigo__aside .toc{background:none;border:0;padding:0;margin:0}
+.toc__cx{position:relative;display:flex;justify-content:flex-end}
+.toc__label{
+  display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;list-style:none;
+  margin:0;padding:.42rem .7rem;border:1px solid var(--line);border-radius:999px;
+  background:rgba(255,255,255,.45);color:var(--mute);
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  transition:color .18s var(--ease),border-color .18s var(--ease)}
+.toc__label::-webkit-details-marker{display:none}
+.toc__label::after{content:"+";font-size:.95rem;line-height:1;color:var(--red-txt)}
+.toc__cx[open] .toc__label::after{content:"\2212"}
+.toc__label:hover{color:var(--ink);border-color:var(--mute)}
+.toc__cx[open] .toc__label{color:var(--ink);border-color:var(--mute)}
+.toc__lista{
+  position:absolute;top:calc(100% + .5rem);right:0;z-index:5;width:17rem;max-width:80vw;
+  padding:1rem 1.1rem;border:1px solid var(--line);border-radius:var(--r);
+  background:#eceef1;box-shadow:0 26px 46px -28px rgba(0,0,0,.6);
+  max-height:min(62vh,34rem);overflow:auto;overscroll-behavior:contain}
+/* Em telemovel o indice esta no meio do texto e nao ha margem onde encostar:
+   o botao alinha a esquerda e a lista abre por baixo, dentro da coluna. */
+@media (max-width:980px){
+  .toc__cx{justify-content:flex-start}
+  .toc__lista{position:static;width:auto;max-width:none;margin-top:.6rem;box-shadow:none}
+}
+
+/* --- O artigo a ocupar mais largura no computador -----------------------
+   Com o indice a passar a botao, a coluna da direita deixou de precisar de
+   17rem e ficou quase vazia. A coluna do texto fica com a diferenca.
+
+   A largura cresce junto com o corpo da letra, e nao sozinha. Medido antes:
+   a linha ja ia em 90 caracteres, que e acima dos 75 onde a leitura comeca a
+   perder velocidade. Alargar a coluna sem mexer na letra punha a linha acima
+   dos 100. Assim o bloco fica fisicamente maior e ocupa mais pagina, mas a
+   linha continua com o mesmo numero de caracteres. */
+@media (min-width:981px){
+  main[data-dm*="maximalismo-asterisco:"] .artigo__grid{
+    grid-template-columns:minmax(0,1fr) minmax(0,12rem);
+    gap:clamp(1.5rem,.5rem + 2vw,2.75rem)}
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose,
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .faq,
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .morelist{max-width:54rem}
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose .body,
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose>p,
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose .answer,
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .prose li,
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .deliver li,
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body .faq .a{
+    max-width:none;font-size:clamp(1.0625rem,.86rem + .55vw,1.2rem);line-height:1.6}
+}
+/* A palavra fantasma em contorno volta ao contorno escuro, que e o que tinha
+   sobre papel. */
+main[data-dm*="maximalismo-asterisco:"] .dm-fantasma{-webkit-text-stroke-color:rgba(5,5,5,.24)}
+
+﻿/* --- Hexagonos a acender e a apagar no fundo do blog ---------------------
+   O hexagono e a forma da marca. Tres camadas de pontos, cada uma com o seu
+   ladrilho, o seu tamanho e o seu periodo: como os periodos nao sao multiplos
+   uns dos outros, nunca voltam a coincidir e o olho le pontos soltos a acender
+   e a apagar, em vez de um padrao a piscar. So opacidade, que o browser
+   resolve na placa grafica e nao obriga a recalcular nada.
+   As camadas ficam atras do conteudo pelo isolation do proprio main. */
+main[data-dm*="maximalismo-asterisco:"] .hexes{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+main[data-dm*="maximalismo-asterisco:"] .hexes__a{position:absolute;inset:-180px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180' fill='rgba(5,5,5,.42)'><polygon points='26.0,24.0 36.4,30.0 36.4,42.0 26.0,48.0 15.6,42.0 15.6,30.0'/><polygon points='110.0,14.5 116.5,18.2 116.5,25.8 110.0,29.5 103.5,25.8 103.5,18.2'/><polygon points='62.0,109.5 71.1,114.8 71.1,125.2 62.0,130.5 52.9,125.2 52.9,114.8'/><polygon points='152.0,137.5 157.6,140.8 157.6,147.2 152.0,150.5 146.4,147.2 146.4,140.8'/><polygon points='134.0,74.0 139.2,77.0 139.2,83.0 134.0,86.0 128.8,83.0 128.8,77.0'/></svg>");background-size:180px 180px;background-position:0 0;animation:hex-a 7.5s ease-in-out 0s infinite;will-change:opacity}
+main[data-dm*="maximalismo-asterisco:"] .hexes__b{position:absolute;inset:-180px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180' fill='rgba(153,20,15,.38)'><polygon points='132.0,48.5 140.2,53.2 140.2,62.8 132.0,67.5 123.8,62.8 123.8,53.2'/><polygon points='18.0,123.0 24.1,126.5 24.1,133.5 18.0,137.0 11.9,133.5 11.9,126.5'/><polygon points='82.0,33.0 93.3,39.5 93.3,52.5 82.0,59.0 70.7,52.5 70.7,39.5'/><polygon points='166.0,12.0 172.9,16.0 172.9,24.0 166.0,28.0 159.1,24.0 159.1,16.0'/><polygon points='46.0,159.8 51.4,162.9 51.4,169.1 46.0,172.2 40.6,169.1 40.6,162.9'/></svg>");background-size:150px 150px;background-position:37px 61px;animation:hex-b 11s ease-in-out -3.1s infinite;will-change:opacity}
+main[data-dm*="maximalismo-asterisco:"] .hexes__c{position:absolute;inset:-180px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180' fill='rgba(5,5,5,.42)'><polygon points='52.0,73.2 57.9,76.6 57.9,83.4 52.0,86.8 46.1,83.4 46.1,76.6'/><polygon points='112.0,138.5 122.0,144.2 122.0,155.8 112.0,161.5 102.0,155.8 102.0,144.2'/><polygon points='174.0,91.5 181.4,95.8 181.4,104.2 174.0,108.5 166.6,104.2 166.6,95.8'/><polygon points='10.0,52.0 18.7,57.0 18.7,67.0 10.0,72.0 1.3,67.0 1.3,57.0'/><polygon points='96.0,96.4 100.8,99.2 100.8,104.8 96.0,107.6 91.2,104.8 91.2,99.2'/></svg>");background-size:210px 210px;background-position:91px 23px;animation:hex-c 9.5s ease-in-out -6.4s infinite;will-change:opacity}
+@keyframes hex-a{0%,100%{opacity:.12}28%{opacity:.55}52%{opacity:.08}76%{opacity:.38}}
+@keyframes hex-b{0%,100%{opacity:.12}28%{opacity:.55}52%{opacity:.08}76%{opacity:.38}}
+@keyframes hex-c{0%,100%{opacity:.12}28%{opacity:.55}52%{opacity:.08}76%{opacity:.38}}
+@media (prefers-reduced-motion:reduce){main[data-dm*="maximalismo-asterisco:"] [class^="hexes__"]{animation:none;opacity:.26}}
+
+/* --- O vidro por tras do texto do artigo --------------------------------
+   Os hexagonos atras das linhas estavam a atrapalhar a leitura. O texto passa
+   a assentar numa placa de vidro: branco a 64 por cento com desfoque do que
+   esta por tras, por isso os hexagonos continuam visiveis, mas suaves e sem
+   bordos a competir com as letras.
+
+   O desfoque e so no computador. Em telemovel a placa ocupa o ecra todo e o
+   custo de desfocar uma coluna comprida num telefone fraco nao compensa: la
+   o branco sobe para 76 por cento e resolve o mesmo sem desfoque nenhum. */
+main[data-dm*="maximalismo-asterisco:"] .artigo__body{
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:18px;
+  padding:clamp(1.1rem,2.2vw,2rem);
+  box-shadow:0 30px 60px -46px rgba(0,0,0,.45)}
+@media (min-width:981px){
+  main[data-dm*="maximalismo-asterisco:"] .artigo__body{
+    background:rgba(255,255,255,.64);
+    backdrop-filter:blur(7px) saturate(1.06);
+    -webkit-backdrop-filter:blur(7px) saturate(1.06)}
+}
+/* A caixa de accao da coluna da direita acompanha, para as duas lerem como a
+   mesma materia. */
+main[data-dm*="maximalismo-asterisco:"] .aside__cta,
+main[data-dm*="maximalismo-asterisco:"] .toc__lista{
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(7px) saturate(1.06);
+  -webkit-backdrop-filter:blur(7px) saturate(1.06)}
+
+/* Os titulos dentro do blog perdem o relevo gravado, que foi desenhado para o
+   cinzento escuro e nao tem sentido sobre o claro. */
+main[data-dm*="maximalismo-asterisco:"] .h1,
+main[data-dm*="maximalismo-asterisco:"] .h2,
+main[data-dm*="maximalismo-asterisco:"] .h3,
+main[data-dm*="maximalismo-asterisco:"] .page-hero__title{text-shadow:none;-webkit-text-fill-color:currentColor}
+/* A pincelada de tinta nao entra nos titulos dos artigos: ja ha a palavra
+   fantasma em contorno no mesmo sitio, e as duas juntas sao demais. */
+main[data-dm*="maximalismo-asterisco:"] .page-hero__title em{
+  -webkit-text-fill-color:var(--red-txt);color:var(--red-txt);background:none;
+  padding:0;display:inline;white-space:normal}
+main[data-dm*="maximalismo-asterisco:"] .page-hero__title em::before{display:none}
+main[data-dm*="maximalismo-asterisco:"] ::selection{background:var(--red);color:#fff}
 /* ===== fim da zona de leitura clara ===== */
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BlogPosting", "headline": "PHP2Shell: o que fiz pelos dados dos clientes", "description": "Duas falhas críticas no PHP, corrigidas a 21 de Outubro de 2026, permitem executar código sem palavra-passe. O que fiz nos sites que mantenho, o que um dono de site deve fazer esta semana, e o cuidado com dados de terceiros.", "inLanguage": "pt-PT", "datePublished": "2026-10-23", "dateModified": "2026-10-23", "author": {"@type": "Person", "name": "Mauro Cordeiro", "url": "https://wandofi.pt/"}, "publisher": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt"}, "mainEntityOfPage": "https://wandofi.pt/blog/php2shell-dados-de-clientes/", "url": "https://wandofi.pt/blog/php2shell-dados-de-clientes/", "image": "https://wandofi.pt/assets/blog/php2shell-dados-de-clientes-og.jpg"}</script>
@@ -1269,6 +1400,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
       </div>
     </header>
     <main id="main" data-dm="maximalismo-asterisco:3 tipografia-cinetica:1" class="artigo">
+      <div class="hexes" aria-hidden="true"><i class="hexes__a"></i><i class="hexes__b"></i><i class="hexes__c"></i></div>
       <section class="page-hero page-hero--artigo">
         <div class="container">
           <p class="page-hero__crumb"><a href="/">Início</a><span class="sep">/</span><a href="/blog/">Blog</a><span class="sep">/</span><a href="/blog/php2shell-dados-de-clientes/">PHP2Shell: a falha crítica do PHP e o qu</a></p>
@@ -1279,7 +1411,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 </div>
 </section>
 <div class="container"><figure class="artigo__capa"><img src="/assets/blog/php2shell-dados-de-clientes-1200.webp" srcset="/assets/blog/php2shell-dados-de-clientes-480.webp 480w, /assets/blog/php2shell-dados-de-clientes-720.webp 720w, /assets/blog/php2shell-dados-de-clientes-1200.webp 1200w" sizes="(max-width: 1180px) calc(100vw - 2.3rem), 1084px" width="1344" height="752" alt="Ilustração de um armário de servidor com um painel rachado a ser tapado por uma placa luminosa, com um escudo à volta e cadeados a flutuar" fetchpriority="high" decoding="async" /></figure></div>
-<div class="container artigo__grid"><aside class="artigo__aside"><nav class="toc" aria-label="Neste artigo"><p class="toc__label">Neste artigo</p><ol><li><a href="#duas-falhas-criticas-no-php-corrigidas-a-21-de-outubro">Duas falhas críticas no PHP, corrigidas a 21 de Outubro</a></li><li><a href="#metade-da-web-portuguesa-corre-em-php-sem-saber">Metade da web portuguesa corre em PHP sem saber</a></li><li><a href="#a-lista-que-segui-nos-sites-que-mantenho">A lista que segui nos sites que mantenho</a></li><li><a href="#o-que-fazer-esta-semana-mesmo-sem-ser-tecnico">O que fazer esta semana, mesmo sem ser técnico</a></li><li><a href="#o-cuidado-que-passou-a-ser-obrigatorio">O cuidado que passou a ser obrigatório</a></li></ol></nav><div class="aside__cta"><p class="aside__cta-text">Quer isto a funcionar no seu negócio? Começa com um diagnóstico de 30 minutos, sem compromisso.</p><a class="btn btn--red" data-cta="artigo" href="https://calendar.app.google/zDSGkBP7xeXmWkmx8" target="_blank" rel="noopener">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a><a class="aside__whats" data-cta="artigo" href="https://wa.me/351937733527?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Wandofi%20e%20queria%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg>WhatsApp</a></div></aside><div class="artigo__body">
+<div class="container artigo__grid"><aside class="artigo__aside"><nav class="toc" aria-label="Neste artigo"><details class="toc__cx"><summary class="toc__label">Neste artigo</summary><div class="toc__lista"><ol><li><a href="#duas-falhas-criticas-no-php-corrigidas-a-21-de-outubro">Duas falhas críticas no PHP, corrigidas a 21 de Outubro</a></li><li><a href="#metade-da-web-portuguesa-corre-em-php-sem-saber">Metade da web portuguesa corre em PHP sem saber</a></li><li><a href="#a-lista-que-segui-nos-sites-que-mantenho">A lista que segui nos sites que mantenho</a></li><li><a href="#o-que-fazer-esta-semana-mesmo-sem-ser-tecnico">O que fazer esta semana, mesmo sem ser técnico</a></li><li><a href="#o-cuidado-que-passou-a-ser-obrigatorio">O cuidado que passou a ser obrigatório</a></li></ol></div></details></nav><div class="aside__cta"><p class="aside__cta-text">Quer isto a funcionar no seu negócio? Começa com um diagnóstico de 30 minutos, sem compromisso.</p><a class="btn btn--red" data-cta="artigo" href="https://calendar.app.google/zDSGkBP7xeXmWkmx8" target="_blank" rel="noopener">Marcar diagnóstico <span class="arrow" aria-hidden="true">↗</span></a><a class="aside__whats" data-cta="artigo" href="https://wa.me/351937733527?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Wandofi%20e%20queria%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c.6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.2Z"/></svg>WhatsApp</a></div></aside><div class="artigo__body">
 <section class="section"><div class="container"><div class="prose">
 <p class="answer">A 21 de Outubro de 2026 o PHP corrigiu duas falhas críticas, CVE-2026-109618 e CVE-2026-109619, que permitem executar código num servidor sem conta nem palavra-passe. Qualquer site em PHP que receba pedidos da web está exposto até correr a 8.2.35, a 8.3.36, a 8.4.27 ou a 8.5.12. Nos sites que mantenho, a resposta foi um inventário, a versão corrigida fixada no único site em PHP, uma revisão do que estava à volta, a Cloudflare à frente como protecção temporária e uma auditoria de exposição a cada site. O que se segue é essa lista, para a copiar.</p>
 <p class="body">Escrevo isto dois dias depois do aviso, com as fontes oficiais ao lado e sem alarmismo: a maior parte dos sites de pequenas empresas em Portugal corre em PHP sem o dono saber, e a única coisa que decide se estão seguros é uma pergunta ao alojamento. Explico o que aconteceu, o que fiz pelos meus activos digitais e pelos dos meus clientes, e o que a lei passou a pedir a quem guarda dados de outros.</p>

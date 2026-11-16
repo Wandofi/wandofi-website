@@ -815,6 +815,25 @@ p a:not(.btn):hover,
    ferramentas/paginas.css, porque o refrescador cola esse ficheiro depois
    deste bloco e as regras de la ganham sempre. */
 
+/* --- 4c. A palavra destacada, em todo o site ----------------------------
+   A pincelada de tinta deixa de ser so da pagina inicial. A regra de qual e a
+   palavra fica escrita no ferramentas/ e e sempre a mesma: a palavra que a
+   pagina defende, nunca a mesma em duas paginas, nunca a ultima da frase por
+   habito. As paginas legais e os artigos do blog nao levam nenhuma.
+
+   O ::before leva z-index negativo e o titulo cria o plano com isolation, por
+   isso a tinta fica atras de todas as letras e nunca tapa nenhuma. */
+.hero__h1,
+.page-hero__title{position:relative;isolation:isolate}
+.hero__h1 em,
+.page-hero__title em{
+  font-style:italic;color:#fff;-webkit-text-fill-color:#fff;text-shadow:none;
+  position:relative;padding:0 .08em;white-space:nowrap;display:inline-block}
+.hero__h1 em::before,
+.page-hero__title em::before{
+  content:"";position:absolute;z-index:-1;left:-.16em;right:-.2em;top:.06em;bottom:-.08em;
+  background:url(/assets/tinta.svg) center/100% 100% no-repeat;transform:rotate(-1.2deg)}
+
 /* --- 5. Diagrama ---------------------------------------------------------
    Ja usava tokens, por isso o traco acompanha. Os preenchimentos e que
    precisavam de levantar do fundo. */
@@ -921,16 +940,10 @@ body.inicial .album__more .album__name{text-shadow:none}
 body.inicial .pedido__tit{text-shadow:none}
 
 /* --- 3. Pincelada de tinta na palavra do titulo --------------------------
-   Substitui o rabisco vermelho do toque-humano, so aqui. O ::before leva
-   z-index:-1 e o h1 cria o plano com isolation, por isso a tinta fica atras
-   de todas as letras e nunca tapa nenhuma. */
+   O desenho da pincelada passou para o bloco partilhado, porque agora existe
+   no titulo de todas as paginas de venda. Aqui fica so o que e desta pagina:
+   apagar o rabisco vermelho do toque-humano, que so o index tem. */
 body.inicial .hero__h1 .dm-rabisco{background:none;padding-bottom:0}
-body.inicial .hero__h1 em{
-  font-style:italic;color:#fff;-webkit-text-fill-color:#fff;text-shadow:none;
-  position:relative;padding:0 .08em;white-space:nowrap;display:inline-block}
-body.inicial .hero__h1 em::before{
-  content:"";position:absolute;z-index:-1;left:-.16em;right:-.2em;top:.06em;bottom:-.08em;
-  background:url(/assets/tinta.svg) center/100% 100% no-repeat;transform:rotate(-1.2deg)}
 
 /* --- 4. Entrada: as palavras sobem de tras de uma mascara -----------------
    O texto do h1 fica no HTML tal como esta. A divisao em palavras e feita em
@@ -940,7 +953,13 @@ body.inicial .hero__h1 em::before{
    Sem enchimento lateral: qualquer largura acrescentada a cada palavra podia
    mudar o sitio onde a linha quebra. So o fundo tem folga, para a mascara nao
    cortar as descidas do q e do g. */
-body.inicial .hero__h1 .in-p{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 0 .14em;margin-bottom:-.14em}
+/* A caixa da mascara tem de ser mais alta do que a linha. O titulo corre a
+   line-height .9, ou seja a caixa da linha e mais curta do que as letras: com
+   overflow:hidden e sem folga, o topo do S e do O e o pe do g ficavam
+   cortados. A folga entra como enchimento e sai como margem negativa, por
+   isso a caixa cresce para desenhar e nao ocupa mais espaco nenhum. */
+body.inicial .hero__h1 .in-p{display:inline-block;overflow:hidden;vertical-align:bottom;
+  padding:.34em 0 .2em;margin:-.34em 0 -.2em}
 /* Pôr cada palavra na sua caixa muda a medida de cada uma por fraccoes de
    pixel, e em quase todas as larguras de computador isso chega para uma
    palavra mudar de linha. Desenhado antes e remedido depois, o Chrome conta
@@ -950,7 +969,10 @@ body.inicial .hero__h1 .in-p{display:inline-block;overflow:hidden;vertical-align
    fim de 700 ms se o script de baixo nao chegar a correr. */
 html.in-js body.inicial .hero__h1{visibility:hidden}
 html.in-js.in-pronto body.inicial .hero__h1{visibility:visible}
-html.in-anima body.inicial .hero__h1 .in-p>span{display:inline-block;transform:translateY(112%);animation:in-sobe .95s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d)}
+/* 140 por cento e nao 112: a palavra tem de descer a sua propria altura mais
+   o enchimento de baixo da caixa, senao o pe das letras espreita por baixo da
+   mascara antes de a animacao comecar. */
+html.in-anima body.inicial .hero__h1 .in-p>span{display:inline-block;transform:translateY(140%);animation:in-sobe .95s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d)}
 @keyframes in-sobe{to{transform:none}}
 html.in-anima body.inicial .hero__h1 em{opacity:0;transform:translateY(.35em);animation:in-aparece .9s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d)}
 @keyframes in-aparece{to{opacity:1;transform:none}}
