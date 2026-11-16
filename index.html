@@ -932,7 +932,12 @@ body.inicial .vitrine:hover .fila{animation-play-state:paused}
    direita tinha so o botao e dois contactos. Com o formulario a coluna passa a
    ser muito mais alta e o titulo caia para o fundo do ecra: passa a alinhar em
    cima, que e onde a pergunta e a resposta se encontram. */
-body.inicial .close__grid{align-items:start;grid-template-columns:minmax(0,1fr) minmax(0,25rem)}
+/* Dentro do media query, senao esta regra vencia a que colapsa o fecho numa
+   coluna a partir dos 860 px e o formulario ficava encostado ao titulo numa
+   tira estreita, em telemovel. */
+@media (min-width:861px){
+  body.inicial .close__grid{align-items:start;grid-template-columns:minmax(0,1fr) minmax(0,25rem)}
+}
 
 body.inicial .pedido{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:clamp(1.4rem,3vw,2rem);margin-top:1.6rem}
 body.inicial .pedido__tit{font-family:var(--serif);font-weight:400;font-size:1.6rem;line-height:1.1;margin:0 0 .3rem;color:var(--ink);text-shadow:none}
