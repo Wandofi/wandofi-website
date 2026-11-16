@@ -12,6 +12,8 @@
         window.wandofiConsent=v;
         document.documentElement.classList.add('in-js');
         setTimeout(function(){ document.documentElement.classList.add('in-pronto'); }, 700);
+        document.documentElement.classList.add('in-js');
+        setTimeout(function(){ document.documentElement.classList.add('in-pronto'); }, 700);
         window.wandofiCarregaGA=function(){
           if(window.wandofiGAOn) return; window.wandofiGAOn=true;
           var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-510WQZ4YQ7'; document.head.appendChild(s);
@@ -1119,7 +1121,12 @@ body.inicial .pedido__isco{position:absolute;left:-9999px}
         }
 
         if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(function () { decide(true); });
+          document.fonts.ready.then(function () {
+            /* O fonts.ready pode resolver antes de as fontes sequer entrarem na
+               fila, se nessa altura nao houver nenhuma por carregar. Por isso a
+               pergunta e feita a serio: a serifa do titulo esta mesmo pronta? */
+            decide(document.fonts.check('400 1em "Instrument Serif"'));
+          });
           setTimeout(function () { decide(false); }, 360);
         } else {
           decide(false);
