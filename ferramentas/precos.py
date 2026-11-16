@@ -327,9 +327,15 @@ corpo = re.search(r'(<main id="main"[^>]*>)(.*?)(</main>)', h, re.S)
 if not corpo:
     sys.exit('nao encontrei o main')
 novo_corpo = (corpo.group(1) + '\n' + HERO_E_CARTOES + BLOCO_QUIZ + FECHO_QUIZ
+              # Os textos destas ancoras tem de ser os mesmos que o ANCORA do
+              # ferramentas/linkagem.py tem para cada destino, porque as duas
+              # ferramentas escrevem este bloco e a regra do site e uma pagina,
+              # uma ancora, sempre igual. Eu escrevia "Diagnostico" e o
+              # linkagem.py escrevia "Teste de diagnostico": cada corrida
+              # desfazia a anterior e o git mostrava a pagina sempre suja.
               + '<section class="section"><div class="container"><header class="section__head">'
                 '<h2 class="h2">Onde ir a partir daqui</h2></header><div class="related">'
-                '<a href="/diagnostico/">Diagnóstico</a><a href="/seo/">SEO</a>'
+                '<a href="/diagnostico/">Teste de diagnóstico</a><a href="/seo/">SEO</a>'
                 '<a href="/criacao-de-sites/">Criação de sites</a>'
                 '<a href="/automacoes/">Automações</a><a href="/casos/">Casos</a>'
                 '<a href="/sobre/">Sobre</a></div></div></section>\n'
@@ -358,7 +364,76 @@ h, n = re.subn(r'\n</body>', lambda _m: '\n' + ESPELHO + '\n</body>', h, count=1
 if not n:
     sys.exit('nao encontrei o fim do corpo')
 
+# ------------------------------------------------- 7. conferir antes de gravar
+#
+# Procurar a etiqueta so depois do home-light resolve a armadilha conhecida,
+# mas nao resolve a proxima. As duas vezes que isto partiu, partiu em silencio:
+# nenhuma ferramenta deu erro, so sairam paginas erradas. Por isso o gerador
+# nao confia em ter encontrado a etiqueta certa, confere que o bloco que
+# apanhou tem mesmo la dentro as regras que devia ter.
+#
+# Se alguma destas falhar, nada e gravado. Mais vale a pagina de ontem do que
+# uma pagina nova e partida.
+def confere(texto):
+    problemas = []
+
+    abre_h = texto.index('<style id="home-light">')
+    fim_h = texto.index('</style>', abre_h) + len('</style>')
+    bloco_home = texto[abre_h:fim_h]
+
+    abre_p = texto.find('<style id="pagina">', fim_h)
+    if abre_p < 0:
+        return ['nao ha bloco de estilo proprio da pagina']
+    bloco_pagina = texto[abre_p:texto.index('</style>', abre_p)]
+
+    # 1. o CSS dos cartoes tem de estar no bloco proprio, e nunca no partilhado,
+    #    que o refresca_css.py reescreve por inteiro e apagaria tudo.
+    for regra in ('.preco__cheio{display:none}', '.preco.tem-valor .preco__vazio',
+                  '.preco.tem-valor .preco__cheio', '.precos{display:grid'):
+        if regra not in bloco_pagina:
+            problemas.append(f'falta no bloco proprio: {regra}')
+        if regra in bloco_home:
+            problemas.append(f'foi parar ao bloco partilhado, e o refrescador apaga-o: {regra}')
+
+    # 2. o CSS do teste tem de ter vindo do diagnostico
+    for regra in ('.quiz{', '.res__valor', '.captura'):
+        if regra not in bloco_pagina:
+            problemas.append(f'o CSS do teste nao veio: {regra}')
+
+    # 3. as pecas do teste e as do cartao tem de estar no corpo
+    for peca in ('id="quiz"', 'var CONFIG = {', 'id="res-valor"', 'id="cartao-estimativa"',
+                 'id="cartao-valor"', 'id="cartao-prazo"', 'MutationObserver'):
+        if peca not in texto:
+            problemas.append(f'falta no corpo: {peca}')
+
+    # 4. nenhum pedaco de comentario pode ter entrado no meio do CSS: se entrou,
+    #    o bloco deixa de fechar e o resto da pagina perde o estilo.
+    if bloco_pagina.count('/*') != bloco_pagina.count('*/'):
+        problemas.append('o CSS do bloco proprio tem comentarios por fechar')
+
+    # 5. tres blocos de dados estruturados, nem mais nem menos
+    quantos = texto.count('<script type="application/ld+json">')
+    if quantos != 3:
+        problemas.append(f'dados estruturados: esperava 3 blocos, ha {quantos}')
+
+    # 6. o canonico tem de ser o desta pagina e nao o da fonte
+    if 'rel="canonical" href="https://wandofi.pt/precos/"' not in texto:
+        problemas.append('o canonico nao aponta para a propria pagina')
+    if '/diagnostico/"' in texto[:texto.index('</head>')]:
+        problemas.append('sobrou um endereco do diagnostico na cabeca')
+
+    return problemas
+
+erros = confere(h)
+if erros:
+    print('NADA FOI GRAVADO. A pagina que saiu nao passou na conferencia:')
+    for e in erros:
+        print('  - ' + e)
+    sys.exit(1)
+
 os.makedirs('precos', exist_ok=True)
 io.open(DESTINO, 'w', encoding='utf-8', newline='\n').write(h)
 print(f'{DESTINO} escrito, {len(h):,} bytes')
 print('o teste veio do diagnostico sem uma linha de diferenca')
+print('conferencia passada: CSS dos cartoes no bloco proprio, CSS do teste no sitio, '
+      'pecas todas no corpo, tres blocos de dados, canonico proprio')
