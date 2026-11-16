@@ -14,6 +14,8 @@
         setTimeout(function(){ document.documentElement.classList.add('in-pronto'); }, 700);
         document.documentElement.classList.add('in-js');
         setTimeout(function(){ document.documentElement.classList.add('in-pronto'); }, 700);
+        document.documentElement.classList.add('in-js');
+        setTimeout(function(){ document.documentElement.classList.add('in-pronto'); }, 700);
         window.wandofiCarregaGA=function(){
           if(window.wandofiGAOn) return; window.wandofiGAOn=true;
           var s=document.createElement('script'); s.async=true; s.src='https://www.googletagmanager.com/gtag/js?id=G-510WQZ4YQ7'; document.head.appendChild(s);
@@ -852,6 +854,16 @@ body.inicial .hero__h1 .in-p{display:inline-block;overflow:hidden;vertical-align
    <head> devolve-o ao fim de 1,2 s se o script de baixo nao chegar a correr. */
 html.in-js body.inicial .hero__h1{visibility:hidden}
 html.in-js.in-pronto body.inicial .hero__h1{visibility:visible}
+
+/* Fonte de recurso com a mesma medida. A mesma frase a 100 px ocupa 1477 px na
+   Instrument Serif, 2002 na Georgia e 1816 na Times. Quando a serifa chega por
+   cima de uma fonte 23 a 36 por cento mais larga, o titulo quebra as linhas
+   noutro sitio e a pagina salta. Com o size-adjust a fonte de recurso passa a
+   medir o mesmo: as letras ficam um pouco mais pequenas enquanto a serifa nao
+   chega, mas ocupam o espaco certo e nada se mexe na troca. */
+@font-face{font-family:'Serif ajustada';src:local('Georgia');size-adjust:73.8%;font-display:swap}
+@font-face{font-family:'Serif ajustada 2';src:local('Times New Roman'),local('Liberation Serif'),local('Noto Serif');size-adjust:81.3%;font-display:swap}
+body.inicial .hero__h1{font-family:"Instrument Serif",'Serif ajustada','Serif ajustada 2',Georgia,serif}
 html.in-anima body.inicial .hero__h1 .in-p>span{display:inline-block;transform:translateY(112%);animation:in-sobe .95s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d)}
 @keyframes in-sobe{to{transform:none}}
 html.in-anima body.inicial .hero__h1 em{opacity:0;transform:translateY(.35em);animation:in-aparece .9s cubic-bezier(.16,1,.3,1) forwards;animation-delay:var(--d)}
