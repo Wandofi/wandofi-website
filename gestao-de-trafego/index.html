@@ -766,6 +766,12 @@ p a:not(.btn):hover,
    saltava. Com o size-adjust as de recurso passam a medir o mesmo. */
 @font-face{font-family:'Serif ajustada';src:local('Georgia');size-adjust:73.8%;font-display:swap}
 @font-face{font-family:'Serif ajustada 2';src:local('Times New Roman'),local('Liberation Serif'),local('Noto Serif');size-adjust:81.3%;font-display:swap}
+/* A italica e outro ficheiro e chega depois da redonda. E a letra da palavra
+   destacada do titulo, por isso quando chegava o titulo mudava de largura e
+   quebrava noutra linha: na pagina francesa dava 0,249 de CLS. As proporcoes
+   da italica sao outras, 79,4 e 88,7 por cento, e por isso leva par proprio. */
+@font-face{font-family:'Serif ajustada';font-style:italic;src:local('Georgia Italic'),local('Georgia');size-adjust:79.4%;font-display:swap}
+@font-face{font-family:'Serif ajustada 2';font-style:italic;src:local('Times New Roman Italic'),local('Liberation Serif Italic'),local('Times New Roman');size-adjust:88.7%;font-display:swap}
 @font-face{font-family:'Sans ajustada';src:local('Arial'),local('Helvetica'),local('Liberation Sans');size-adjust:102.3%;font-display:swap}
 @font-face{font-family:'Sans ajustada 2';src:local('Roboto'),local('Segoe UI');size-adjust:114.6%;font-display:swap}
 :root{
