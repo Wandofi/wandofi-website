@@ -683,6 +683,132 @@ div.proof .stat:hover .stat__v{transform:translateY(-2px)}
 .dm-feito .dm-cinetico,.dm-feito .dm-cinetico::after{animation:none!important;clip-path:none!important}
 @media (prefers-reduced-motion:reduce){[data-dm] .dm-cinetico{animation:none}.js .diagrama.reveal .placa,.js .diagrama.reveal .chamada{stroke-dasharray:none;stroke-dashoffset:0;transition:none}}
 
+/* ===== TEMA CINZENTO, PARTILHADO. Gerado por ferramentas, nao editar a mao. ===== */
+/* =========================================================================
+   TEMA CINZENTO, PARTILHADO POR TODAS AS PAGINAS. 16 de Novembro de 2026.
+
+   Este bloco vive no fim do <style id="home-light"> do index.html, que e a
+   fonte que o ferramentas/refresca_css.py copia para as outras 54 paginas.
+   Por isso o que esta aqui muda o site inteiro. O que for so da pagina
+   inicial fica no <style id="pagina">, logo a seguir, e o que for so das
+   paginas internas fica no ferramentas/paginas.css.
+
+   A zona de leitura dos artigos do blog e a excepcao: fica clara, com letra
+   preta, e essa regra esta no paginas.css.
+   ========================================================================= */
+
+/* --- 1. Paleta ----------------------------------------------------------
+   Os nomes dos tokens nao mudam: muda o valor que cada um tem. Assim todas
+   as seccoes que ja existiam passam a escuro sem reescrever regra a regra, e
+   so fica por corrigir a mao o que tinha branco fixo no CSS. */
+:root{
+  color-scheme:dark;
+  --paper:#1f2023;                  /* fundo da pagina */
+  --panel:#26272b;                  /* seccoes alternadas e cartoes */
+  --campo:#2d2e33;                  /* campos e paineis */
+  --ink:#f1f0ec;                    /* titulos e texto principal */
+  --ink-soft:#d9d7d2;               /* corpo de texto */
+  --mute:#95938f;                   /* etiquetas mono */
+  --line:#3b3c42;
+  --line-soft:#33343a;
+  /* O #8d8c88 da maqueta da 4,43:1 sobre o --panel, abaixo dos 4,5 que a
+     norma AA pede para texto normal. #95938f da 4,87:1 e e a mesma cor a
+     olho. */
+}
+body{background:var(--paper);color:var(--ink-soft)}
+
+/* --- 2. O vermelho como letra -------------------------------------------
+   O #e1251b da 3,41:1 sobre o cinzento, abaixo dos 4,5 de AA. Como fundo de
+   botao com letras brancas continua a dar 4,64:1 e fica como esta, mas onde
+   o vermelho e a propria letra passa a #ff6a5f, 5,63:1, que se le na mesma
+   como vermelho da marca. */
+:root{--red-txt:#ff6a5f}
+.eyebrow,
+.hero__prova b,
+.proof__num .to,
+.stat__value .to,
+.signal__num,
+.signal__anchor em,
+.step__num,
+.card__tag,
+.diagrama__num,
+.prefsrc__label,
+.cookies__label,
+.album__more .eyebrow,
+.tag--accent,
+.nav__brand span b,
+.faq summary::after,
+.page-hero__crumb a:hover,
+.card__num,
+.toc__label,
+p a:not(.btn):hover,
+.nav__links a:hover,
+.card__more:hover,
+.related a:hover,
+.close__whats:hover,
+.close__email:hover,
+.album__btn:hover,
+.cookies__text a:hover,
+#servicos .card:hover .card__tag,
+#servicos .card:hover .card__more{color:var(--red-txt)}
+.tag--accent{border-color:rgba(255,106,95,.45)}
+.hero__prova a{border-bottom-color:rgba(255,106,95,.55)}
+.hero__trust li::before{background:var(--red-txt)}
+
+/* --- 3. Fontes de recurso com a mesma medida ----------------------------
+   A mesma frase a 100 px ocupa 1477 px na Instrument Serif, 2002 na Georgia
+   e 1816 na Times; na Instrument Sans 3622 px, contra 3541 na Arial e 3160
+   na Roboto. Enquanto as fontes do site nao chegam, o texto era desenhado
+   muito mais largo e quebrava as linhas noutro sitio: na troca, a pagina
+   saltava. Com o size-adjust as de recurso passam a medir o mesmo. */
+@font-face{font-family:'Serif ajustada';src:local('Georgia');size-adjust:73.8%;font-display:swap}
+@font-face{font-family:'Serif ajustada 2';src:local('Times New Roman'),local('Liberation Serif'),local('Noto Serif');size-adjust:81.3%;font-display:swap}
+@font-face{font-family:'Sans ajustada';src:local('Arial'),local('Helvetica'),local('Liberation Sans');size-adjust:102.3%;font-display:swap}
+@font-face{font-family:'Sans ajustada 2';src:local('Roboto'),local('Segoe UI');size-adjust:114.6%;font-display:swap}
+:root{
+  --serif:"Instrument Serif",'Serif ajustada','Serif ajustada 2',Georgia,serif;
+  --ui:"Instrument Sans",'Sans ajustada','Sans ajustada 2',system-ui,sans-serif;
+}
+
+/* --- 4. Pecas que tinham branco fixo e nao seguem os tokens -------------- */
+.nav{background:rgba(31,32,35,.90);border-bottom:1px solid var(--line)}
+.dock{background:rgba(31,32,35,.96);border-top:1px solid var(--line)}
+.skip-link{background:var(--red);color:#fff}
+.band{background:#121316;border:1px solid var(--line)}
+.band p{color:#c9c7c2}
+.band__note{color:var(--mute)}
+.album__more{background:#121316;border:1px solid var(--line)}
+.album__more .btn{background:var(--ink);color:#15161a;border-color:var(--ink)}
+.btn--ghost{border-color:var(--line);color:var(--ink)}
+.btn--ghost:hover{border-color:var(--mute);background:var(--campo)}
+.btn--ink{background:var(--ink);color:#15161a}
+.btn--ink:hover{background:#fff}
+.proof__src,.worklist__tag{color:var(--mute)}
+.nav__brand span{text-shadow:none}
+/* A marca da barra e o hexagono vermelho com a seta branca, que tem leitura
+   no cinzento tal como esta e nao leva filtro nenhum. O nome ao lado ja usa
+   var(--ink) e acompanhou os tokens sozinho. */
+
+/* O rodape ja era vermelho com letras brancas, decisao anterior e registada
+   mais acima neste mesmo bloco. Continua com boa leitura sobre o cinzento. */
+
+/* A palavra fantasma em contorno, no topo das paginas do blog, estava
+   desenhada a preto translucido. Passa a branco translucido, com a mesma
+   presenca que tinha sobre o papel. */
+[data-dm*="maximalismo-asterisco:"] .dm-fantasma{-webkit-text-stroke-color:rgba(241,240,236,.17)}
+/* As correccoes das pecas que so existem nas paginas internas estao no fim do
+   ferramentas/paginas.css, porque o refrescador cola esse ficheiro depois
+   deste bloco e as regras de la ganham sempre. */
+
+/* --- 5. Diagrama ---------------------------------------------------------
+   Ja usava tokens, por isso o traco acompanha. Os preenchimentos e que
+   precisavam de levantar do fundo. */
+.diagrama__svg .placa{fill:var(--panel);stroke:var(--ink)}
+.diagrama__svg .placa--topo{fill:rgba(225,37,27,.16);stroke:var(--red)}
+.diagrama__svg .guia{stroke:var(--ink-soft);opacity:.3}
+.diagrama__svg .chamada{stroke:var(--ink-soft);opacity:.45}
+/* ===== fim do tema cinzento partilhado ===== */
+
 /* ================= PAGINAS INTERNAS =================
    Regra: nada aqui redefine tipografia nem ritmo. As paginas
    internas usam as mesmas classes da pagina inicial (.h1 .h2 .h3
@@ -1027,7 +1153,85 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
    736 disponíveis, ou seja deslizava para o lado já no computador. Estes
    quadros deixam a primeira coluna quebrar como qualquer outra. */
 .quadro--par td:first-child{white-space:normal}
+/* ===== ZONA DE LEITURA CLARA. Gerado por ferramentas, nao editar a mao. ===== */
+/* =========================================================================
+   PAGINAS INTERNAS NO CINZENTO. 16 de Novembro de 2026.
 
+   Estas regras estao no fim deste ficheiro de proposito: o refrescador cola o
+   paginas.css a seguir ao bloco do tema cinzento, por isso e aqui que se
+   corrige o que as paginas internas tinham com preto fixo.
+   ========================================================================= */
+
+/* O vermelho #e1251b sobre o cinzento da 3,48:1, abaixo dos 4,5 de AA. Como
+   letra passa ao mesmo tom claro que o resto do site usa. */
+.card__num,
+.toc__label{color:var(--red-txt)}
+/* A barra que separa as migalhas era rgba(5,5,5,.28): dava 1,25:1. */
+.page-hero__crumb .sep{color:var(--mute)}
+/* Fundos e sombras feitos de preto translucido, que sobre o cinzento ou
+   desaparecem ou escurecem a mais. */
+.mono-inline{background:rgba(255,255,255,.07)}
+.post__link:hover{box-shadow:0 28px 50px -30px rgba(0,0,0,.6);border-color:var(--line)}
+.luz__a,.luz__b{opacity:.5}
+.luz .page-hero::before{opacity:.5}
+/* Um quadro de quatro colunas nao cabe na coluna de leitura de 46rem: este
+   vive fora do .prose e usa a largura do contentor.
+   Em telemovel nao leva regra nenhuma: o ferramentas/rotula_quadros.py ja o
+   passa a cartoes, e qualquer min-width posta aqui vencia essa regra e punha
+   barra de deslocacao horizontal no telemovel. */
+.quadro-wrap--largo{max-width:none}
+@media (min-width:821px){.quadro-wrap--largo .quadro{min-width:0;width:100%}}
+
+/* =========================================================================
+   ZONA DE LEITURA DOS ARTIGOS, CLARA. 16 de Novembro de 2026.
+
+   Decisao do Mauro: o site passa a cinzento escuro, mas a parte onde se le o
+   artigo fica numa folha clara com letra preta. Dez minutos de leitura em
+   letra clara sobre fundo escuro cansam, e assim nao e preciso mexer na cor
+   da letra do corpo.
+
+   A folha e o .artigo__body, que ja existia e que envolve todas as seccoes
+   de texto do artigo. Fora dela fica tudo escuro: a barra, as migalhas, o
+   titulo do artigo, a capa, o indice lateral e o rodape.
+
+   A tecnica e a mesma do resto do site: nao se reescreve regra a regra,
+   o que muda sao os valores dos tokens dentro da folha. Tudo o que esta la dentro
+   volta sozinho ao tema claro.
+   ========================================================================= */
+.artigo .artigo__body{
+  color-scheme:light;
+  --paper:#f6f4ef;                  /* a folha */
+  --panel:#efece4;                  /* as seccoes alternadas, dentro da folha */
+  --campo:#ffffff;
+  --ink:#050505;
+  --ink-soft:#2a2a2a;
+  --mute:#5c5c5c;
+  --line:rgba(5,5,5,.13);
+  --line-soft:rgba(5,5,5,.07);
+  /* O #e1251b sobre o creme da 4,18:1, abaixo dos 4,5 de AA. Como letra passa
+     ao vermelho escuro da marca, que da 7,7:1. Como fundo de botao com letras
+     brancas, o #e1251b fica como esta. */
+  --red-txt:#99140f;
+  background:var(--paper);
+  color:var(--ink-soft);
+  border-radius:16px;
+  padding:clamp(.5rem,2vw,1.5rem) 0;
+  box-shadow:0 40px 80px -50px rgba(0,0,0,.85);
+}
+/* A primeira e a ultima seccao arredondam com a folha, para o creme nao
+   encostar aos cantos. */
+.artigo .artigo__body>.section:first-child{border-radius:16px 16px 0 0}
+.artigo .artigo__body>.section:last-child{border-radius:0 0 16px 16px}
+/* Os titulos do artigo perdem o relevo gravado, que foi desenhado para o
+   cinzento e nao faz sentido nenhum sobre o creme. */
+.artigo .artigo__body .h2,
+.artigo .artigo__body .h3{text-shadow:none;-webkit-text-fill-color:currentColor}
+/* O cinzento das etiquetas volta ao do tema claro: o #95938f sobre o creme da
+   2,8:1 e nao se le. */
+.artigo .artigo__body .eyebrow{color:var(--red-txt)}
+.artigo .artigo__body ::selection{background:var(--red);color:#fff}
+/* A barra das citacoes e os quadros herdam os tokens e nao precisam de nada. */
+/* ===== fim da zona de leitura clara ===== */
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Service", "name": "Construção de apps Android para Angola", "serviceType": "Desenvolvimento de aplicações móveis", "provider": {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt", "email": "geral@wandofi.pt"}, "areaServed": {"@type": "Country", "name": "Angola"}, "availableLanguage": "pt", "description": "Construção de apps Android, front-end e back-end, com submissão no Google Play, para negócios em Angola. Gestão a partir de Portugal, facturação em euros ou em kwanzas.", "url": "https://wandofi.pt/criacao-de-sites/apps-android-angola/"}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa uma app para Angola?", "acceptedAnswer": {"@type": "Answer", "text": "Não há tabela. Depende do que a app faz, de quantos ecrãs tem, de precisar ou não de pagamentos e notificações, e de quem a vai manter. Os valores do teste de diagnóstico deste site são para o mercado português. Para Angola, faço um estudo caso a caso e apresento o orçamento por escrito, em euros ou em kwanzas, depois do diagnóstico."}}, {"@type": "Question", "name": "Quanto tempo demora até estar no Google Play?", "acceptedAnswer": {"@type": "Answer", "text": "Uma app simples, com contas, uma lista de serviços e marcações ou pedidos, leva em regra entre seis e dez semanas a construir. Depois há os testes fechados que o Google exige a contas novas, com 12 testadores durante 14 dias, e a revisão da loja, que costuma demorar até uma semana. Conte com três meses do início à publicação, e menos se a conta de programador já existir."}}, {"@type": "Question", "name": "A app fica em meu nome?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. A conta de programador no Google Play é aberta em nome do seu negócio, o código fica numa conta sua e a base de dados também. Se um dia quiser trabalhar com outra pessoa, leva tudo. Deixo documentado como a app está montada."}}, {"@type": "Question", "name": "E para iPhone?", "acceptedAnswer": {"@type": "Answer", "text": "Começo pelo Android, porque é onde estão 8 em cada 10 telemóveis em Angola. A base da app é feita de forma a poder sair também para iPhone numa segunda fase, com uma conta Apple Developer, que custa 99 dólares por ano, e a revisão da App Store."}}, {"@type": "Question", "name": "Preciso de um site além da app?", "acceptedAnswer": {"@type": "Answer", "text": "Precisa de pelo menos uma página com a política de privacidade, porque o Google Play exige uma ligação pública para a aceitar, e de uma página simples de apresentação para onde apontar os anúncios. Faço as duas no mesmo projecto."}}]}</script>
