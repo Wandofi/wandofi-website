@@ -520,6 +520,28 @@ main[data-dm*="maximalismo-asterisco:"] .toc__lista{
   backdrop-filter:blur(7px) saturate(1.06);
   -webkit-backdrop-filter:blur(7px) saturate(1.06)}
 
+/* --- A listagem do blog, bloco a bloco ----------------------------------
+   Na listagem nao ha uma coluna de texto, ha cartoes. Sem fundo proprio, cada
+   cartao ficava com os hexagonos a passar por tras das letras e a leitura
+   enchia de ruido. Cada cartao ganha a mesma materia do artigo: branco com
+   desfoque do que esta atras.
+
+   O cabecalho da listagem e o do artigo em destaque ficam de fora, porque sao
+   titulos grandes e nao texto corrido, e porque e ai que o fundo se ve. */
+main[data-dm*="maximalismo-asterisco:"] .post__link,
+main[data-dm*="maximalismo-asterisco:"] .morelist a,
+main[data-dm*="maximalismo-asterisco:"] .posts__destaque .post--destaque{
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:14px;
+  backdrop-filter:blur(7px) saturate(1.06);
+  -webkit-backdrop-filter:blur(7px) saturate(1.06)}
+main[data-dm*="maximalismo-asterisco:"] .posts__destaque .post--destaque .post__link{
+  background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none}
+main[data-dm*="maximalismo-asterisco:"] .post__link{padding:clamp(.9rem,1.6vw,1.3rem)}
+main[data-dm*="maximalismo-asterisco:"] .post__link:hover{
+  background:rgba(255,255,255,.88);border-color:rgba(255,255,255,.95)}
+
 /* Os titulos dentro do blog perdem o relevo gravado, que foi desenhado para o
    cinzento escuro e nao tem sentido sobre o claro. */
 main[data-dm*="maximalismo-asterisco:"] .h1,

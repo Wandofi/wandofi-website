@@ -819,6 +819,18 @@ p a:not(.btn):hover,
   content:"";position:absolute;z-index:-1;left:-.16em;right:-.2em;top:.06em;bottom:-.08em;
   background:url(/assets/tinta.svg) center/100% 100% no-repeat;transform:rotate(-1.2deg)}
 
+/* --- 4d. Selector de lingua ---------------------------------------------
+   Tres codigos de duas letras, o da lingua em uso marcado e sem ligacao. Em
+   vez da ligacao unica que havia, que so dizia para onde se ia e nunca onde
+   se estava. */
+.idiomas{display:inline-flex;align-items:center;gap:.1rem;font-family:var(--mono);
+  font-size:.7rem;letter-spacing:.08em;border:1px solid var(--line);border-radius:999px;padding:.12rem}
+.idiomas a,.idiomas span{padding:.26rem .5rem;border-radius:999px;line-height:1;text-decoration:none}
+.idiomas a{color:var(--mute);transition:color .18s var(--ease),background-color .18s var(--ease)}
+.idiomas a:hover{color:var(--ink);background:var(--campo)}
+.idiomas [aria-current]{color:var(--ink);background:var(--campo);font-weight:500}
+.nav__panel .idiomas{margin:.4rem 0}
+
 /* --- 5. Diagrama ---------------------------------------------------------
    Ja usava tokens, por isso o traco acompanha. Os preenchimentos e que
    precisavam de levantar do fundo. */
@@ -1349,6 +1361,28 @@ main[data-dm*="maximalismo-asterisco:"] .toc__lista{
   backdrop-filter:blur(7px) saturate(1.06);
   -webkit-backdrop-filter:blur(7px) saturate(1.06)}
 
+/* --- A listagem do blog, bloco a bloco ----------------------------------
+   Na listagem nao ha uma coluna de texto, ha cartoes. Sem fundo proprio, cada
+   cartao ficava com os hexagonos a passar por tras das letras e a leitura
+   enchia de ruido. Cada cartao ganha a mesma materia do artigo: branco com
+   desfoque do que esta atras.
+
+   O cabecalho da listagem e o do artigo em destaque ficam de fora, porque sao
+   titulos grandes e nao texto corrido, e porque e ai que o fundo se ve. */
+main[data-dm*="maximalismo-asterisco:"] .post__link,
+main[data-dm*="maximalismo-asterisco:"] .morelist a,
+main[data-dm*="maximalismo-asterisco:"] .posts__destaque .post--destaque{
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:14px;
+  backdrop-filter:blur(7px) saturate(1.06);
+  -webkit-backdrop-filter:blur(7px) saturate(1.06)}
+main[data-dm*="maximalismo-asterisco:"] .posts__destaque .post--destaque .post__link{
+  background:none;border:0;backdrop-filter:none;-webkit-backdrop-filter:none}
+main[data-dm*="maximalismo-asterisco:"] .post__link{padding:clamp(.9rem,1.6vw,1.3rem)}
+main[data-dm*="maximalismo-asterisco:"] .post__link:hover{
+  background:rgba(255,255,255,.88);border-color:rgba(255,255,255,.95)}
+
 /* Os titulos dentro do blog perdem o relevo gravado, que foi desenhado para o
    cinzento escuro e nao tem sentido sobre o claro. */
 main[data-dm*="maximalismo-asterisco:"] .h1,
@@ -1380,7 +1414,7 @@ main[data-dm*="maximalismo-asterisco:"] ::selection{background:var(--red);color:
           <a href="/#servicos">Serviços</a>
           <a href="/casos/">Casos</a>
           <a href="/blog/">Blog</a>
-          <a href="/en/" hreflang="en" lang="en">English</a>
+          <span class="idiomas" role="group" aria-label="Idioma"><span aria-current="true" lang="pt-PT">PT</span><a href="/en/" hreflang="en" lang="en" title="English">EN</a><a href="/fr/" hreflang="fr" lang="fr" title="Français">FR</a><!--/idiomas--></span>
         </nav>
         <div class="nav__cta">
           <a class="btn btn--red" data-cta="navegacao" href="https://calendar.app.google/zDSGkBP7xeXmWkmx8" target="_blank" rel="noopener">Marcar diagnóstico</a>
@@ -1391,7 +1425,7 @@ main[data-dm*="maximalismo-asterisco:"] ::selection{background:var(--red);color:
             <a href="/#servicos">Serviços</a>
             <a href="/casos/">Casos</a>
             <a href="/blog/">Blog</a>
-            <a href="/en/" hreflang="en" lang="en">English</a>
+            <span class="idiomas" role="group" aria-label="Idioma"><span aria-current="true" lang="pt-PT">PT</span><a href="/en/" hreflang="en" lang="en" title="English">EN</a><a href="/fr/" hreflang="fr" lang="fr" title="Français">FR</a><!--/idiomas--></span>
             <a data-cta="menu-movel" href="mailto:geral@wandofi.pt">geral@wandofi.pt</a>
             <a data-cta="menu-movel" href="https://wa.me/351937733527?text=Ol%C3%A1%2C%20vim%20do%20site%20da%20Wandofi%20e%20queria%20falar%20sobre%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener">WhatsApp +351 937 733 527</a>
           </nav>

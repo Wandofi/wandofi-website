@@ -6,7 +6,7 @@ NAV=re.search(r'(<header class="nav">.*?</header>)',home,re.S).group(1).replace(
 FOOT=re.search(r'(<footer class="footer">.*?</footer>)',home,re.S).group(1)
 n=0
 for p in [q for q in (x.replace(os.sep,'/') for x in glob.glob('**/index.html',recursive=True)) if not q.startswith('propostas/')]:
-    if p=='index.html' or p.startswith('en/'): continue
+    if p=='index.html' or p.startswith('en/') or p.startswith('fr/'): continue
     h=io.open(p,encoding='utf-8').read(); a=h
     h=re.sub(r'<header class="nav"[^>]*>.*?</header>', lambda m:NAV, h, flags=re.S)
     h=re.sub(r'<footer class="footer"[^>]*>.*?</footer>', lambda m:FOOT, h, flags=re.S)
@@ -26,3 +26,17 @@ if os.path.isfile('en/index.html'):
         h=re.sub(r'<footer class="footer"[^>]*>.*?</footer>', lambda z:FOOT_EN, h, flags=re.S)
         if h!=a: io.open(p,'w',encoding='utf-8',newline='\n').write(h); m+=1
     print(f"nav e rodape em ingles sincronizados em {m} paginas")
+
+# As paginas em frances tem navegacao e rodape proprios, com a fonte em fr/index.html.
+if os.path.isfile('fr/index.html'):
+    casa=io.open('fr/index.html',encoding='utf-8').read()
+    NAV_FR=re.search(r'(<header class="nav">.*?</header>)',casa,re.S).group(1)
+    FOOT_FR=re.search(r'(<footer class="footer">.*?</footer>)',casa,re.S).group(1)
+    m=0
+    for p in (x.replace(os.sep,'/') for x in glob.glob('fr/**/index.html',recursive=True)):
+        if p=='fr/index.html': continue
+        h=io.open(p,encoding='utf-8').read(); a=h
+        h=re.sub(r'<header class="nav"[^>]*>.*?</header>', lambda z:NAV_FR, h, flags=re.S)
+        h=re.sub(r'<footer class="footer"[^>]*>.*?</footer>', lambda z:FOOT_FR, h, flags=re.S)
+        if h!=a: io.open(p,'w',encoding='utf-8',newline='\n').write(h); m+=1
+    print(f"nav e rodape em frances sincronizados em {m} paginas")
