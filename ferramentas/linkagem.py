@@ -45,6 +45,7 @@ ANCORA = {
  '/sobre/':                      'Sobre',
  '/contactos/':                  'Contactos',
  '/diagnostico/':                'Teste de diagnóstico',
+ '/precos/':                     'Preços',
  '/blog/':                       'Blog',
  '/blog/google-preferred-sources/':          'Fonte preferida no Google',
  '/blog/agentes-de-ia-simples-grok-bot-muse-dots/': 'Grok Bot, Muse e Dots',
@@ -98,7 +99,7 @@ JUNTAR = {
  '/criacao-de-sites/sintra/': ['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
  '/criacao-de-sites/queluz/': ['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
  '/criacao-de-sites/marvila/':['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
- '/gestao-de-trafego/':       ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/blog/lancar-um-negocio-em-2027/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
+ '/gestao-de-trafego/':       ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/blog/lancar-um-negocio-em-2027/', '/blog/ai-act-ia-no-marketing/', '/precos/', '/diagnostico/'],
  '/gestao-de-trafego/google-ads/': ['/gestao-de-trafego/chatgpt-ads/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
  '/gestao-de-trafego/meta-ads/':   ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/diagnostico/'],
  '/gestao-de-trafego/angola/':     ['/gestao-de-trafego/meta-ads/', '/gestao-de-trafego/google-ads/', '/criacao-de-sites/apps-android-angola/', '/criacao-de-sites/', '/diagnostico/'],
@@ -127,12 +128,13 @@ JUNTAR = {
  '/blog/php2shell-dados-de-clientes/':       ['/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/reconciliacao-bancaria-toconline/':  ['/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/tendencias-de-ia-em-portugal/':      ['/blog/agentes-de-ia-a-medida/'],
- '/casos/':                   ['/blog/reconciliacao-bancaria-toconline/', '/blog/', '/diagnostico/'],
- '/sobre/':                   ['/en/', '/casos/', '/diagnostico/'],
+ '/precos/':                  ['/diagnostico/', '/seo/', '/criacao-de-sites/', '/automacoes/', '/casos/', '/sobre/'],
+ '/casos/':                   ['/blog/reconciliacao-bancaria-toconline/', '/blog/', '/precos/', '/diagnostico/'],
+ '/sobre/':                   ['/en/', '/casos/', '/precos/', '/diagnostico/'],
  '/contactos/':               ['/sobre/', '/en/', '/diagnostico/'],
  # Faltava aqui um dos quatro pilares: quem acaba o diagnostico via SEO,
  # sites e automacoes, e nao via a gestao de trafego nem o blog.
- '/diagnostico/':             ['/seo/', '/criacao-de-sites/', '/automacoes/', '/gestao-de-trafego/', '/casos/', '/blog/'],
+ '/diagnostico/':             ['/precos/', '/seo/', '/criacao-de-sites/', '/automacoes/', '/gestao-de-trafego/', '/casos/', '/blog/'],
 }
 
 MAX = 6
@@ -159,6 +161,7 @@ MAX = 6
 # 15 de Novembro de 2026: mais tres excepcoes, pelos dois artigos novos. A
 # /criacao-de-sites/ nao tinha artigo nenhum no bloco e passa a ter dois.
 TECTO = {'/seo/': 12,
+'/diagnostico/': 7,
          '/seo/sectores/': 8,
          '/seo/geo-aeo/': 9,
          '/seo/consultor-seo/': 7,
