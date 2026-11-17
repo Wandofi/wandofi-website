@@ -33,8 +33,8 @@
     <meta name="theme-color" content="#ffffff" />
     <link rel="canonical" href="https://wandofi.pt/fr/" />
     <link rel="alternate" hreflang="pt-PT" href="https://wandofi.pt/" />
-    <link rel="alternate" hreflang="en" href="https://wandofi.pt/en/" />
     <link rel="alternate" hreflang="fr" href="https://wandofi.pt/fr/" />
+    <link rel="alternate" hreflang="en" href="https://wandofi.pt/en/" />
     <link rel="alternate" hreflang="x-default" href="https://wandofi.pt/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://wandofi.pt/fr/" />
@@ -1725,6 +1725,37 @@ body.inicial .pedido__aviso{margin:.7rem 0 0;font-size:.85rem;color:#ff8d84}
 }
 @media (prefers-reduced-motion:reduce){
   .steps .step,[data-dm*="manual-de-nave:"] .steps .dm-cotas::before{animation:none}
+}
+
+/* --- O termometro dos tres passos (17/11/2026) -------------------------
+   O Mauro esperava que a barra destes tres andasse conforme nos aproximamos
+   do fim do projecto. Barra nao havia nenhuma: eram tres riscos separados por
+   cima dos cartoes, e tres riscos em fila dao a ideia de uma barra partida.
+
+   Agora o risco de cada passo e a pista, e enche a medida que o passo chega.
+   Os tres juntos dao um termometro do processo: quanto mais perto do fim,
+   mais cheio.
+
+   O enchimento NAO e vermelho, de proposito. Neste bloco ja ha tres elementos
+   vermelhos, os numeros 01, 02 e 03, e a regra da marca sao tres visiveis ao
+   mesmo tempo. Em --ink o risco cheio fica exactamente como ja estava, e so o
+   que falta e que fica mais apagado, que e o que um termometro faz.
+
+   Onde o browser nao souber de animation-timeline, ou com movimento
+   reduzido, fica tudo cheio e igual ao que estava antes disto. */
+.steps .step{position:relative}
+.steps .step__num::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:100%;
+  background:var(--ink);transform-origin:left;pointer-events:none}
+@supports (animation-timeline:view()){
+  .steps .step{border-top-color:var(--line)}
+  .steps .step__num::before{transform:scaleX(0);
+    animation:termometro linear both;animation-timeline:view();
+    animation-range:entry 10% cover 40%}
+  @keyframes termometro{to{transform:scaleX(1)}}
+  @media (prefers-reduced-motion:reduce){
+    .steps .step{border-top-color:var(--ink)}
+    .steps .step__num::before{animation:none;transform:scaleX(1)}
+  }
 }
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "name": "Mauro Cordeiro", "jobTitle": "Consultant SEO et chef de projet", "worksFor": {"@type": "Organization", "name": "Wandofi PM"}, "url": "https://wandofi.pt/fr/", "email": "geral@wandofi.pt", "knowsAbout": ["SEO technique", "Conseil SEO", "Migration de sites", "Automatisation des processus", "LMS", "Structure d’entreprise"]}, {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/fr/", "email": "geral@wandofi.pt", "telephone": "+351937733527", "description": "Consultant SEO à Lisbonne. SEO technique, création et migration de sites, et automatisation pour les entreprises au Portugal.", "logo": "https://wandofi.pt/assets/wandofi-pm-logo-dark.webp", "image": "https://wandofi.pt/assets/og-card.jpg", "sameAs": ["https://www.linkedin.com/in/mauro-cordeiro-5162a1293/", "https://github.com/Wandofi", "https://www.instagram.com/seo.wandofi/"], "areaServed": "Portugal", "serviceType": ["Conseil SEO", "SEO technique", "Création de sites", "Migration de sites", "Automatisation et intégrations", "Structure et démarches", "Plateformes et LMS"], "founder": {"@type": "Person", "name": "Mauro Cordeiro"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Combien coûte de travailler avec vous ?", "acceptedAnswer": {"@type": "Answer", "text": "L’entretien dure quinze minutes et sert à comprendre ce qu’il faut. Le devis vient après, fermé et par projet, sans forfait obligatoire et sans propositions de vingt pages."}}, {"@type": "Question", "name": "En combien de temps vois-je des résultats SEO ?", "acceptedAnswer": {"@type": "Answer", "text": "Les corrections techniques et d’indexation peuvent apparaître en quelques semaines. Les gains de position sur des recherches concurrentielles prennent en général trois à six mois. Qui promet la première page en trente jours vend autre chose."}}, {"@type": "Question", "name": "Que vous faut-il de ma part pour commencer ?", "acceptedAnswer": {"@type": "Answer", "text": "Un accès en lecture à Google Analytics et à la Search Console, s’ils existent, et l’accès au site. S’il n’y a rien en place, cela devient le premier point du plan."}}]}]}</script>

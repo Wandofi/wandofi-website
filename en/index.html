@@ -1726,6 +1726,37 @@ body.inicial .pedido__aviso{margin:.7rem 0 0;font-size:.85rem;color:#ff8d84}
 @media (prefers-reduced-motion:reduce){
   .steps .step,[data-dm*="manual-de-nave:"] .steps .dm-cotas::before{animation:none}
 }
+
+/* --- O termometro dos tres passos (17/11/2026) -------------------------
+   O Mauro esperava que a barra destes tres andasse conforme nos aproximamos
+   do fim do projecto. Barra nao havia nenhuma: eram tres riscos separados por
+   cima dos cartoes, e tres riscos em fila dao a ideia de uma barra partida.
+
+   Agora o risco de cada passo e a pista, e enche a medida que o passo chega.
+   Os tres juntos dao um termometro do processo: quanto mais perto do fim,
+   mais cheio.
+
+   O enchimento NAO e vermelho, de proposito. Neste bloco ja ha tres elementos
+   vermelhos, os numeros 01, 02 e 03, e a regra da marca sao tres visiveis ao
+   mesmo tempo. Em --ink o risco cheio fica exactamente como ja estava, e so o
+   que falta e que fica mais apagado, que e o que um termometro faz.
+
+   Onde o browser nao souber de animation-timeline, ou com movimento
+   reduzido, fica tudo cheio e igual ao que estava antes disto. */
+.steps .step{position:relative}
+.steps .step__num::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:100%;
+  background:var(--ink);transform-origin:left;pointer-events:none}
+@supports (animation-timeline:view()){
+  .steps .step{border-top-color:var(--line)}
+  .steps .step__num::before{transform:scaleX(0);
+    animation:termometro linear both;animation-timeline:view();
+    animation-range:entry 10% cover 40%}
+  @keyframes termometro{to{transform:scaleX(1)}}
+  @media (prefers-reduced-motion:reduce){
+    .steps .step{border-top-color:var(--ink)}
+    .steps .step__num::before{animation:none;transform:scaleX(1)}
+  }
+}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "name": "Mauro Cordeiro", "jobTitle": "SEO Consultant and Project Manager", "worksFor": {"@type": "Organization", "name": "Wandofi PM"}, "url": "https://wandofi.pt/en/", "email": "geral@wandofi.pt", "knowsAbout": ["Technical SEO", "SEO consulting", "Site migration", "Process automation", "LMS", "Business structure"]}, {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/en/", "email": "geral@wandofi.pt", "telephone": "+351937733527", "description": "SEO consultant in Lisbon. Technical SEO, website builds and migrations, and automation for businesses in Portugal.", "logo": "https://wandofi.pt/assets/wandofi-pm-logo-dark.webp", "image": "https://wandofi.pt/assets/og-card.jpg", "sameAs": ["https://www.linkedin.com/in/mauro-cordeiro-5162a1293/", "https://github.com/Wandofi", "https://www.instagram.com/seo.wandofi/"], "areaServed": "Portugal", "serviceType": ["SEO consulting", "Technical SEO", "Website build", "Site migration", "Automation and integrations", "Structure and paperwork", "Platforms and LMS"], "founder": {"@type": "Person", "name": "Mauro Cordeiro"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does it cost to work with you?", "acceptedAnswer": {"@type": "Answer", "text": "The call is fifteen minutes and is there to work out what is needed. The quote comes after, fixed and per project, with no mandatory retainer and no twenty page proposals."}}, {"@type": "Question", "name": "How long until I see SEO results?", "acceptedAnswer": {"@type": "Answer", "text": "Technical and indexing fixes can show in weeks. Position gains on competitive searches typically take three to six months. Anyone promising first page in thirty days is selling something else."}}, {"@type": "Question", "name": "What do you need from me to start?", "acceptedAnswer": {"@type": "Answer", "text": "Read access to Google Analytics and Search Console, if they exist, and access to the site. If nothing is set up, that becomes the first item in the plan."}}]}]}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you work in English?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Calls, email, reports and documentation in English. The content I write for a Portuguese audience is written in European Portuguese, because that is what the market searches in."}}, {"@type": "Question", "name": "Are you an agency?", "acceptedAnswer": {"@type": "Answer", "text": "No. I am one consultant. You talk to the person doing the work, and I bring in a designer, a developer or a copywriter when the project needs one."}}, {"@type": "Question", "name": "Can you help if my company is registered in Portugal but I live abroad?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Most of the work is remote anyway. I am based in Lisbon when something has to happen in person."}}, {"@type": "Question", "name": "Are you a lawyer or an accountant?", "acceptedAnswer": {"@type": "Answer", "text": "No. I give technical and operational support, not legal or accounting advice. I know those processes well enough to tell you when a lawyer or an accountant is needed, and to coordinate their part."}}, {"@type": "Question", "name": "How much does it cost?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on scope. I would rather define a project with objectives than sell loose hours, and the first call is what sizes it."}}]}</script>

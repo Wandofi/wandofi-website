@@ -1160,6 +1160,37 @@ body.inicial .pedido__aviso{margin:.7rem 0 0;font-size:.85rem;color:#ff8d84}
 @media (prefers-reduced-motion:reduce){
   .steps .step,[data-dm*="manual-de-nave:"] .steps .dm-cotas::before{animation:none}
 }
+
+/* --- O termometro dos tres passos (17/11/2026) -------------------------
+   O Mauro esperava que a barra destes tres andasse conforme nos aproximamos
+   do fim do projecto. Barra nao havia nenhuma: eram tres riscos separados por
+   cima dos cartoes, e tres riscos em fila dao a ideia de uma barra partida.
+
+   Agora o risco de cada passo e a pista, e enche a medida que o passo chega.
+   Os tres juntos dao um termometro do processo: quanto mais perto do fim,
+   mais cheio.
+
+   O enchimento NAO e vermelho, de proposito. Neste bloco ja ha tres elementos
+   vermelhos, os numeros 01, 02 e 03, e a regra da marca sao tres visiveis ao
+   mesmo tempo. Em --ink o risco cheio fica exactamente como ja estava, e so o
+   que falta e que fica mais apagado, que e o que um termometro faz.
+
+   Onde o browser nao souber de animation-timeline, ou com movimento
+   reduzido, fica tudo cheio e igual ao que estava antes disto. */
+.steps .step{position:relative}
+.steps .step__num::before{content:"";position:absolute;left:0;top:-2px;height:2px;width:100%;
+  background:var(--ink);transform-origin:left;pointer-events:none}
+@supports (animation-timeline:view()){
+  .steps .step{border-top-color:var(--line)}
+  .steps .step__num::before{transform:scaleX(0);
+    animation:termometro linear both;animation-timeline:view();
+    animation-range:entry 10% cover 40%}
+  @keyframes termometro{to{transform:scaleX(1)}}
+  @media (prefers-reduced-motion:reduce){
+    .steps .step{border-top-color:var(--ink)}
+    .steps .step__num::before{animation:none;transform:scaleX(1)}
+  }
+}
     </style>
 
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "name": "Mauro Cordeiro", "jobTitle": "Consultor de SEO e Project Manager", "worksFor": {"@type": "Organization", "name": "Wandofi PM"}, "url": "https://wandofi.pt/", "email": "geral@wandofi.pt", "knowsAbout": ["SEO técnico", "Consultoria de SEO", "Migração de sites", "Automação de processos", "LMS", "Estrutura de negócio"]}, {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt", "telephone": "+351937733527", "description": "Consultor de SEO em Lisboa. SEO técnico, criação e migração de sites e automações para negócios em Portugal.", "logo": "https://wandofi.pt/assets/wandofi-pm-logo-dark.webp", "image": "https://wandofi.pt/assets/og-card.jpg", "sameAs": ["https://www.linkedin.com/in/mauro-cordeiro-5162a1293/", "https://github.com/Wandofi", "https://www.instagram.com/seo.wandofi/"], "areaServed": "Portugal", "serviceType": ["Consultoria de SEO", "SEO técnico", "Criação de sites", "Migração de sites", "Automações e integrações", "Estrutura e burocracia", "Plataformas e LMS"], "founder": {"@type": "Person", "name": "Mauro Cordeiro"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa trabalhar consigo?", "acceptedAnswer": {"@type": "Answer", "text": "O diagnóstico é uma conversa de 15 minutos e serve para perceber o que faz falta. O orçamento vem depois, fechado e por projecto, sem retainer obrigatório e sem propostas de vinte páginas."}}, {"@type": "Question", "name": "Em quanto tempo vejo resultados de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Correcções técnicas e de indexação podem aparecer em semanas. Ganhos de posição em pesquisas com concorrência levam tipicamente três a seis meses. Quem prometer primeira página em trinta dias está a vender outra coisa."}}, {"@type": "Question", "name": "O que precisa de mim para começar?", "acceptedAnswer": {"@type": "Answer", "text": "Acesso de leitura ao Google Analytics e ao Search Console, se existirem, e acesso ao site. Se não existir nada montado, isso passa a ser o primeiro ponto do plano."}}]}]}</script>

@@ -1475,11 +1475,15 @@ main[data-dm*="maximalismo-asterisco:"] ::selection{background:var(--red);color:
   /* A barra, lida como um cilindro fino. */
   .rail__line{position:absolute;left:.25rem;top:-.4rem;bottom:-.4rem;width:3px;border-radius:3px;
     background:linear-gradient(90deg,rgba(255,255,255,.16),var(--line) 48%,rgba(0,0,0,.5))}
-  /* O enchimento desce com a rolagem, com brilho proprio. */
+  /* O enchimento para no ponto do capitulo em que se esta, e a fraccao vem do
+     guiao, que a mede no proprio elemento. Antes vinha da rolagem da pagina
+     toda e andava atrasado meio carril: ver a nota no guiao. O deslizar e so
+     para a mudanca nao ser um salto. */
   .rail__line::after{content:"";position:absolute;inset:0;border-radius:inherit;
     background:linear-gradient(90deg,var(--red-txt),var(--red) 48%,var(--red-deep));
-    box-shadow:0 0 12px rgba(225,37,27,.45);
-    transform:scaleY(0);transform-origin:top}
+    box-shadow:0 0 12px rgba(225,37,27,.45);transform-origin:top;
+    transform:scaleY(var(--rail-ate,0));
+    transition:transform .5s cubic-bezier(.22,1,.36,1)}
 
   .rail__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.1rem;
     transform-style:preserve-3d}
@@ -1503,14 +1507,12 @@ main[data-dm*="maximalismo-asterisco:"] ::selection{background:var(--red);color:
     box-shadow:inset 0 -1px 2px rgba(0,0,0,.4),0 0 0 4px rgba(225,37,27,.15),
       0 0 14px rgba(225,37,27,.5)}
 
-  @supports (animation-timeline:scroll()){
-    .rail__line::after{animation:rail-fill linear both;animation-timeline:scroll()}
-    @keyframes rail-fill{to{transform:scaleY(1)}}
-  }
+  /* Chegou o rodape: os capitulos acabaram e o rodape e todo vermelho. */
+  .rail.fora{opacity:0;visibility:hidden;transform:translateY(-50%) translateX(-14px)}
+  .rail{transition:opacity .35s var(--ease),transform .35s var(--ease)}
 }
 @media (prefers-reduced-motion:reduce){
-  .rail__list a,.rail__dot{transition:none}
-  .rail__line::after{animation:none}
+  .rail,.rail__list a,.rail__dot,.rail__line::after{transition:none}
 }
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Posso falar com antigos fornecedores e gestores de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Ponho em contacto com fornecedores e gestores de SEO com quem trabalhei, para confirmarem como trabalho e o que entrego."}}, {"@type": "Question", "name": "Tem casos de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, dois estão nesta página com números: um escritório de advogados e um gabinete de contabilidade, ambos em Lisboa, mais sites de serviços locais na primeira página do Google. Os clientes ficam anónimos por regra. Em reunião mostro os relatórios do Search Console e do Mangools."}}]}</script>
@@ -1750,11 +1752,49 @@ main[data-dm*="maximalismo-asterisco:"] ::selection{background:var(--red);color:
       /* carril */
       var ligas = [].slice.call(document.querySelectorAll("[data-rail]"));
       if (ligas.length && "IntersectionObserver" in window) {
+        var carril = document.querySelector(".rail");
+        var linha = document.querySelector(".rail__line");
         var alvos = ligas.map(function(a){ return document.getElementById(a.getAttribute("data-rail")); }).filter(Boolean);
+
+        /* Onde fica o ponto de um capitulo, medido dentro da barra.
+           A barra enchia pela rolagem da pagina toda, e os pontos eram
+           marcados por este observador: dois relogios a contar a mesma coisa.
+           Os capitulos ocupam do 8% ao 42% da altura da pagina, por isso ao
+           chegar ao ultimo a barra ia em 44 por cento quando devia ir em 100,
+           e quem chegava ao SEO via a barra ainda na reconciliacao.
+
+           Agora ha um relogio so: a barra para EXACTAMENTE no ponto aceso,
+           com a fraccao medida no proprio elemento. Nao se pode desencontrar
+           porque e a mesma conta a mandar nos dois. */
+        function fraccaoDo(a) {
+          var ponto = a.querySelector(".rail__dot");
+          if (!ponto || !linha) return 0;
+          var rl = linha.getBoundingClientRect(), rp = ponto.getBoundingClientRect();
+          if (!rl.height) return 0;
+          return Math.min(1, Math.max(0, (rp.top + rp.height / 2 - rl.top) / rl.height));
+        }
+
         var io = new IntersectionObserver(function(es){
-          es.forEach(function(e){ if (e.isIntersecting) { ligas.forEach(function(a){ a.classList.toggle("is-on", a.getAttribute("data-rail") === e.target.id); }); } });
+          es.forEach(function(e){
+            if (!e.isIntersecting) return;
+            ligas.forEach(function(a){
+              var aceso = a.getAttribute("data-rail") === e.target.id;
+              a.classList.toggle("is-on", aceso);
+              if (aceso && carril) carril.style.setProperty("--rail-ate", fraccaoDo(a).toFixed(4));
+            });
+          });
         }, { rootMargin: "-40% 0px -50% 0px" });
         alvos.forEach(function(t){ io.observe(t); });
+
+        /* O carril sai de cena quando o rodape chega. O rodape e todo vermelho
+           e um carril vermelho por cima dele nao se le nem quer dizer nada: os
+           capitulos ja acabaram. */
+        var rodape = document.querySelector(".footer");
+        if (rodape && carril && !reduzido) {
+          new IntersectionObserver(function(es){
+            es.forEach(function(e){ carril.classList.toggle("fora", e.isIntersecting); });
+          }, { rootMargin: "0px 0px -15% 0px" }).observe(rodape);
+        }
       }
       /* números */
       var nums = [].slice.call(document.querySelectorAll("[data-conta]"));
