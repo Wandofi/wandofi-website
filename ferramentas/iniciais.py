@@ -161,8 +161,18 @@ def traduz_nos(html, dic, lingua):
 
 
 def traduz_atributos(html, lingua):
+    """Texto que o visitante le mas que vive num atributo, nao entre etiquetas.
+
+    O traduz() so olha para o que esta entre > e <, por isso texto dentro de um
+    atributo passava-lhe ao lado sem erro nenhum. Foi o que aconteceu as cotas
+    dos tres passos do processo, o data-cota: a inicial inglesa e a francesa
+    mostravam "30 min . videochamada" em portugues desde que foram geradas, e
+    nada se queixou. Qualquer atributo novo que leve texto visivel tem de ser
+    acrescentado aqui.
+    """
     for pt, novo in textos.ATRIBUTOS[lingua].items():
         html = html.replace(f'placeholder="{pt}"', f'placeholder="{novo}"')
+        html = html.replace(f'data-cota="{pt}"', f'data-cota="{novo}"')
     return html
 
 

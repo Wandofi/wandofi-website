@@ -1136,6 +1136,30 @@ body.inicial .pedido__aviso{margin:.7rem 0 0;font-size:.85rem;color:#ff8d84}
   body.inicial .vitrine{height:360px;margin-inline:calc(var(--gutter) * -1)}
   body.inicial .cartao{width:240px}
 }
+
+/* --- Os tres passos do processo, no telemovel (16/11/2026) --------------
+   Empilhados ficam altos, e o stagger do bloco ja tinha disparado la em cima
+   quando se chegava ao segundo e ao terceiro: a animacao existia e ninguem a
+   via. Aqui cada passo anima quando E ELE a entrar no ecra, pela linha do
+   tempo da rolagem, sem guiao nenhum. So mexe em opacity e transform, que o
+   compositor trata sem refazer o esquema da pagina, e a marca de cota cresce
+   com o passo. Onde o browser nao souber de animation-timeline fica o stagger
+   de sempre. Isto esta no bloco proprio e nao no partilhado porque os passos
+   so existem nestas tres iniciais, e no partilhado viajava nas 67 paginas. */
+@media (max-width:760px){
+  @supports (animation-timeline:view()){
+    .js .stagger.steps>*{opacity:1;transform:none;transition:none}
+    .steps .step{animation:passo-entra linear both;animation-timeline:view();
+      animation-range:entry 0% cover 24%}
+    @keyframes passo-entra{from{opacity:0;transform:translate3d(0,26px,0)}to{opacity:1;transform:none}}
+    [data-dm*="manual-de-nave:"] .steps .dm-cotas::before{transform-origin:bottom;
+      animation:passo-cota linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+    @keyframes passo-cota{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .steps .step,[data-dm*="manual-de-nave:"] .steps .dm-cotas::before{animation:none}
+}
     </style>
 
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "name": "Mauro Cordeiro", "jobTitle": "Consultor de SEO e Project Manager", "worksFor": {"@type": "Organization", "name": "Wandofi PM"}, "url": "https://wandofi.pt/", "email": "geral@wandofi.pt", "knowsAbout": ["SEO técnico", "Consultoria de SEO", "Migração de sites", "Automação de processos", "LMS", "Estrutura de negócio"]}, {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/", "email": "geral@wandofi.pt", "telephone": "+351937733527", "description": "Consultor de SEO em Lisboa. SEO técnico, criação e migração de sites e automações para negócios em Portugal.", "logo": "https://wandofi.pt/assets/wandofi-pm-logo-dark.webp", "image": "https://wandofi.pt/assets/og-card.jpg", "sameAs": ["https://www.linkedin.com/in/mauro-cordeiro-5162a1293/", "https://github.com/Wandofi", "https://www.instagram.com/seo.wandofi/"], "areaServed": "Portugal", "serviceType": ["Consultoria de SEO", "SEO técnico", "Criação de sites", "Migração de sites", "Automações e integrações", "Estrutura e burocracia", "Plataformas e LMS"], "founder": {"@type": "Person", "name": "Mauro Cordeiro"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quanto custa trabalhar consigo?", "acceptedAnswer": {"@type": "Answer", "text": "O diagnóstico é uma conversa de 15 minutos e serve para perceber o que faz falta. O orçamento vem depois, fechado e por projecto, sem retainer obrigatório e sem propostas de vinte páginas."}}, {"@type": "Question", "name": "Em quanto tempo vejo resultados de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Correcções técnicas e de indexação podem aparecer em semanas. Ganhos de posição em pesquisas com concorrência levam tipicamente três a seis meses. Quem prometer primeira página em trinta dias está a vender outra coisa."}}, {"@type": "Question", "name": "O que precisa de mim para começar?", "acceptedAnswer": {"@type": "Answer", "text": "Acesso de leitura ao Google Analytics e ao Search Console, se existirem, e acesso ao site. Se não existir nada montado, isso passa a ser o primeiro ponto do plano."}}]}]}</script>
@@ -1539,7 +1563,7 @@ body.inicial .pedido__aviso{margin:.7rem 0 0;font-size:.85rem;color:#ff8d84}
             <h2 class="h2">Do diagnóstico à entrega</h2>
           </header>
           <div class="steps stagger">
-            <article class="step dm-cotas" data-cota="30 min · videochamada">
+            <article class="step dm-cotas" data-cota="15 min · videochamada">
               <span class="step__num">01</span>
               <h3 class="h3">Diagnóstico</h3>
               <p class="body">Conversa guiada e leitura dos documentos, ferramentas e bloqueios.</p>

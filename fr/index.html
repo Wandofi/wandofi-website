@@ -1143,20 +1143,9 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   @keyframes luz-a{to{transform:translate3d(-6rem,10rem,0)}}
   @keyframes luz-b{to{transform:translate3d(6rem,-4rem,0)}}
 }
-/* carril de capítulos */
-.rail{display:none}
-@media (min-width:1180px){
-  .rail{display:block;position:fixed;left:max(1.2rem,calc((100vw - 1180px) / 2 - 7.5rem));top:50%;transform:translateY(-50%);z-index:5;width:7rem}
-  .rail__line{position:absolute;left:.3rem;top:-.2rem;bottom:-.2rem;width:1px;background:var(--line)}
-  .rail__line::after{content:"";position:absolute;left:0;top:0;width:1px;height:100%;background:var(--red);transform:scaleY(0);transform-origin:top}
-  .rail__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.1rem}
-  .rail__list a{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--mute);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .25s var(--ease)}
-  .rail__dot{width:.6rem;height:.6rem;border-radius:50%;border:1px solid var(--line);background:var(--paper);box-shadow:0 0 0 0 rgba(225,37,27,0);transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .35s var(--ease)}
-  .rail__list a.is-on{color:var(--ink)}
-  .rail__list a.is-on .rail__dot{background:var(--red);border-color:var(--red);box-shadow:0 0 0 5px rgba(225,37,27,.14)}
-  .rail__list a:hover{color:var(--red)}
-  @supports (animation-timeline: scroll()){.rail__line::after{animation:rail-fill linear both;animation-timeline:scroll()}@keyframes rail-fill{to{transform:scaleY(1)}}}
-}
+/* O carril de capítulos saiu daqui a 16/11/2026 e foi para o bloco de estilo
+   próprio da /casos/, que é a única página que o tem. Eram 1,4 KB a viajar nas
+   67 páginas para serem usados numa. */
 /* linha que se desenha sob o sobretítulo de cada secção */
 .luz .section__head .eyebrow{position:relative;display:inline-block;padding-bottom:.45rem}
 .luz .section__head .eyebrow::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left}
@@ -1168,7 +1157,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .luz .site:hover{box-shadow:0 24px 44px -26px rgba(5,5,5,.42),0 0 0 1px rgba(225,37,27,.18),0 0 40px -10px rgba(225,37,27,.25)}
 .luz div.proof .stat:hover{box-shadow:inset 0 0 0 1px rgba(225,37,27,.14)}
 .luz .stat__v{font-variant-numeric:tabular-nums}
-@media (prefers-reduced-motion:reduce){.luz__a,.luz__b,.rail__line::after,.luz .section__head .eyebrow::after{animation:none}.luz .section__head .eyebrow::after{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.luz__a,.luz__b,.luz .section__head .eyebrow::after{animation:none}.luz .section__head .eyebrow::after{transform:scaleX(1)}}
 
 /* telemóvel: grelha de sites numa só coluna, por cima da regra da coluna única */
 @media (max-width:760px){.estreito .sites{grid-template-columns:1fr}}
@@ -1713,6 +1702,30 @@ body.inicial .pedido__aviso{margin:.7rem 0 0;font-size:.85rem;color:#ff8d84}
   body.inicial .vitrine{height:360px;margin-inline:calc(var(--gutter) * -1)}
   body.inicial .cartao{width:240px}
 }
+
+/* --- Os tres passos do processo, no telemovel (16/11/2026) --------------
+   Empilhados ficam altos, e o stagger do bloco ja tinha disparado la em cima
+   quando se chegava ao segundo e ao terceiro: a animacao existia e ninguem a
+   via. Aqui cada passo anima quando E ELE a entrar no ecra, pela linha do
+   tempo da rolagem, sem guiao nenhum. So mexe em opacity e transform, que o
+   compositor trata sem refazer o esquema da pagina, e a marca de cota cresce
+   com o passo. Onde o browser nao souber de animation-timeline fica o stagger
+   de sempre. Isto esta no bloco proprio e nao no partilhado porque os passos
+   so existem nestas tres iniciais, e no partilhado viajava nas 67 paginas. */
+@media (max-width:760px){
+  @supports (animation-timeline:view()){
+    .js .stagger.steps>*{opacity:1;transform:none;transition:none}
+    .steps .step{animation:passo-entra linear both;animation-timeline:view();
+      animation-range:entry 0% cover 24%}
+    @keyframes passo-entra{from{opacity:0;transform:translate3d(0,26px,0)}to{opacity:1;transform:none}}
+    [data-dm*="manual-de-nave:"] .steps .dm-cotas::before{transform-origin:bottom;
+      animation:passo-cota linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+    @keyframes passo-cota{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .steps .step,[data-dm*="manual-de-nave:"] .steps .dm-cotas::before{animation:none}
+}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Person", "name": "Mauro Cordeiro", "jobTitle": "Consultant SEO et chef de projet", "worksFor": {"@type": "Organization", "name": "Wandofi PM"}, "url": "https://wandofi.pt/fr/", "email": "geral@wandofi.pt", "knowsAbout": ["SEO technique", "Conseil SEO", "Migration de sites", "Automatisation des processus", "LMS", "Structure d’entreprise"]}, {"@type": "ProfessionalService", "name": "Wandofi PM", "url": "https://wandofi.pt/fr/", "email": "geral@wandofi.pt", "telephone": "+351937733527", "description": "Consultant SEO à Lisbonne. SEO technique, création et migration de sites, et automatisation pour les entreprises au Portugal.", "logo": "https://wandofi.pt/assets/wandofi-pm-logo-dark.webp", "image": "https://wandofi.pt/assets/og-card.jpg", "sameAs": ["https://www.linkedin.com/in/mauro-cordeiro-5162a1293/", "https://github.com/Wandofi", "https://www.instagram.com/seo.wandofi/"], "areaServed": "Portugal", "serviceType": ["Conseil SEO", "SEO technique", "Création de sites", "Migration de sites", "Automatisation et intégrations", "Structure et démarches", "Plateformes et LMS"], "founder": {"@type": "Person", "name": "Mauro Cordeiro"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Combien coûte de travailler avec vous ?", "acceptedAnswer": {"@type": "Answer", "text": "L’entretien dure quinze minutes et sert à comprendre ce qu’il faut. Le devis vient après, fermé et par projet, sans forfait obligatoire et sans propositions de vingt pages."}}, {"@type": "Question", "name": "En combien de temps vois-je des résultats SEO ?", "acceptedAnswer": {"@type": "Answer", "text": "Les corrections techniques et d’indexation peuvent apparaître en quelques semaines. Les gains de position sur des recherches concurrentielles prennent en général trois à six mois. Qui promet la première page en trente jours vend autre chose."}}, {"@type": "Question", "name": "Que vous faut-il de ma part pour commencer ?", "acceptedAnswer": {"@type": "Answer", "text": "Un accès en lecture à Google Analytics et à la Search Console, s’ils existent, et l’accès au site. S’il n’y a rien en place, cela devient le premier point du plan."}}]}]}</script>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Do you work in English?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Calls, email, reports and documentation in English. The content I write for a Portuguese audience is written in European Portuguese, because that is what the market searches in."}}, {"@type": "Question", "name": "Are you an agency?", "acceptedAnswer": {"@type": "Answer", "text": "No. I am one consultant. You talk to the person doing the work, and I bring in a designer, a developer or a copywriter when the project needs one."}}, {"@type": "Question", "name": "Can you help if my company is registered in Portugal but I live abroad?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Most of the work is remote anyway. I am based in Lisbon when something has to happen in person."}}, {"@type": "Question", "name": "Are you a lawyer or an accountant?", "acceptedAnswer": {"@type": "Answer", "text": "No. I give technical and operational support, not legal or accounting advice. I know those processes well enough to tell you when a lawyer or an accountant is needed, and to coordinate their part."}}, {"@type": "Question", "name": "How much does it cost?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on scope. I would rather define a project with objectives than sell loose hours, and the first call is what sizes it."}}]}</script>
@@ -2115,17 +2128,17 @@ body.inicial .pedido__aviso{margin:.7rem 0 0;font-size:.85rem;color:#ff8d84}
             <h2 class="h2">De l’entretien à la livraison</h2>
           </header>
           <div class="steps stagger">
-            <article class="step dm-cotas" data-cota="30 min · videochamada">
+            <article class="step dm-cotas" data-cota="15 min · visioconférence">
               <span class="step__num">01</span>
               <h3 class="h3">Diagnostic</h3>
               <p class="body">Un entretien guidé et une lecture des documents, des outils et des blocages.</p>
             </article>
-            <article class="step dm-cotas" data-cota="2 a 8 semanas">
+            <article class="step dm-cotas" data-cota="2 à 8 semaines">
               <span class="step__num">02</span>
               <h3 class="h3">Sprint</h3>
               <p class="body">Priorisation, mise en œuvre et coordination des prestataires.</p>
             </article>
-            <article class="step dm-cotas" data-cota="documentado · sem retainer">
+            <article class="step dm-cotas" data-cota="documenté · sans forfait">
               <span class="step__num">03</span>
               <h3 class="h3">Livraison</h3>
               <p class="body">Système prêt, décisions documentées et prochaines étapes claires.</p>

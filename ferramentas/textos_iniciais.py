@@ -389,16 +389,26 @@ FR = {
 }
 
 # --- atributos que a pessoa le ------------------------------------------
+# Texto que o visitante le mas que vive num atributo. O traduz() so olha para o
+# que esta entre > e <, por isso isto tem de vir a mao. As tres cotas dos
+# passos do processo (data-cota) estiveram em portugues nas iniciais inglesa e
+# francesa ate 16/11/2026, sem nada se queixar, porque faltavam aqui.
 ATRIBUTOS = {
     'en': {
         'O seu nome': 'Your name',
         'Barbearia em Alvalade, sem site': 'Barber shop in Alvalade, no website',
         'Onde lhe respondo': 'Where I reply to you',
+        '15 min · videochamada': '15 min · video call',
+        '2 a 8 semanas': '2 to 8 weeks',
+        'documentado · sem retainer': 'documented · no retainer',
     },
     'fr': {
         'O seu nome': 'Votre nom',
         'Barbearia em Alvalade, sem site': 'Salon de coiffure à Alvalade, sans site',
         'Onde lhe respondo': 'Où je vous réponds',
+        '15 min · videochamada': '15 min · visioconférence',
+        '2 a 8 semanas': '2 à 8 semaines',
+        'documentado · sem retainer': 'documenté · sans forfait',
     },
 }
 

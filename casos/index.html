@@ -1141,20 +1141,9 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
   @keyframes luz-a{to{transform:translate3d(-6rem,10rem,0)}}
   @keyframes luz-b{to{transform:translate3d(6rem,-4rem,0)}}
 }
-/* carril de capítulos */
-.rail{display:none}
-@media (min-width:1180px){
-  .rail{display:block;position:fixed;left:max(1.2rem,calc((100vw - 1180px) / 2 - 7.5rem));top:50%;transform:translateY(-50%);z-index:5;width:7rem}
-  .rail__line{position:absolute;left:.3rem;top:-.2rem;bottom:-.2rem;width:1px;background:var(--line)}
-  .rail__line::after{content:"";position:absolute;left:0;top:0;width:1px;height:100%;background:var(--red);transform:scaleY(0);transform-origin:top}
-  .rail__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.1rem}
-  .rail__list a{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--mute);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:color .25s var(--ease)}
-  .rail__dot{width:.6rem;height:.6rem;border-radius:50%;border:1px solid var(--line);background:var(--paper);box-shadow:0 0 0 0 rgba(225,37,27,0);transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .35s var(--ease)}
-  .rail__list a.is-on{color:var(--ink)}
-  .rail__list a.is-on .rail__dot{background:var(--red);border-color:var(--red);box-shadow:0 0 0 5px rgba(225,37,27,.14)}
-  .rail__list a:hover{color:var(--red)}
-  @supports (animation-timeline: scroll()){.rail__line::after{animation:rail-fill linear both;animation-timeline:scroll()}@keyframes rail-fill{to{transform:scaleY(1)}}}
-}
+/* O carril de capítulos saiu daqui a 16/11/2026 e foi para o bloco de estilo
+   próprio da /casos/, que é a única página que o tem. Eram 1,4 KB a viajar nas
+   67 páginas para serem usados numa. */
 /* linha que se desenha sob o sobretítulo de cada secção */
 .luz .section__head .eyebrow{position:relative;display:inline-block;padding-bottom:.45rem}
 .luz .section__head .eyebrow::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left}
@@ -1166,7 +1155,7 @@ div.proof .stat{background:var(--paper);padding:clamp(1.4rem,2.4vw,1.8rem)}
 .luz .site:hover{box-shadow:0 24px 44px -26px rgba(5,5,5,.42),0 0 0 1px rgba(225,37,27,.18),0 0 40px -10px rgba(225,37,27,.25)}
 .luz div.proof .stat:hover{box-shadow:inset 0 0 0 1px rgba(225,37,27,.14)}
 .luz .stat__v{font-variant-numeric:tabular-nums}
-@media (prefers-reduced-motion:reduce){.luz__a,.luz__b,.rail__line::after,.luz .section__head .eyebrow::after{animation:none}.luz .section__head .eyebrow::after{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){.luz__a,.luz__b,.luz .section__head .eyebrow::after{animation:none}.luz .section__head .eyebrow::after{transform:scaleX(1)}}
 
 /* telemóvel: grelha de sites numa só coluna, por cima da regra da coluna única */
 @media (max-width:760px){.estreito .sites{grid-template-columns:1fr}}
@@ -1461,6 +1450,68 @@ main[data-dm*="maximalismo-asterisco:"] .page-hero__title em{
 main[data-dm*="maximalismo-asterisco:"] .page-hero__title em::before{display:none}
 main[data-dm*="maximalismo-asterisco:"] ::selection{background:var(--red);color:#fff}
 /* ===== fim da zona de leitura clara ===== */
+    </style>
+    <style id="pagina">
+/* ===== Carril de capitulos ==============================================
+   So esta pagina o tem, por isso o CSS vive aqui e nao no
+   ferramentas/paginas.css, que viaja nas 67 paginas do site.
+
+   O relevo e feito com gradientes e transform. A barra tem tres paragens de
+   cor para ler como um cilindro: luz na aresta esquerda, cor no meio, sombra
+   na direita. Os pontos sao esferas pelo mesmo truque, com um ponto de luz em
+   cima a esquerda e sombra de contacto em baixo. O capitulo activo roda para
+   ficar de frente e avanca para o leitor com translateZ, que e o que da a
+   profundidade a serio e nao so o desenho dela.
+
+   Tudo isto e opacity e transform, que o compositor trata sem refazer o
+   esquema da pagina. Zero imagens, zero guiao novo.
+   ====================================================================== */
+.rail{display:none}
+@media (min-width:1180px){
+  .rail{display:block;position:fixed;left:max(1.2rem,calc((100vw - 1180px) / 2 - 7.5rem));
+    top:50%;transform:translateY(-50%);z-index:5;width:7rem;
+    perspective:620px;perspective-origin:left center}
+
+  /* A barra, lida como um cilindro fino. */
+  .rail__line{position:absolute;left:.25rem;top:-.4rem;bottom:-.4rem;width:3px;border-radius:3px;
+    background:linear-gradient(90deg,rgba(255,255,255,.16),var(--line) 48%,rgba(0,0,0,.5))}
+  /* O enchimento desce com a rolagem, com brilho proprio. */
+  .rail__line::after{content:"";position:absolute;inset:0;border-radius:inherit;
+    background:linear-gradient(90deg,var(--red-txt),var(--red) 48%,var(--red-deep));
+    box-shadow:0 0 12px rgba(225,37,27,.45);
+    transform:scaleY(0);transform-origin:top}
+
+  .rail__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1.1rem;
+    transform-style:preserve-3d}
+  .rail__list a{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:var(--mute);
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+    transform:rotateY(-26deg);transform-origin:left center;
+    transition:color .3s var(--ease),transform .45s cubic-bezier(.22,1,.36,1)}
+
+  /* A esfera: luz em cima a esquerda, sombra de contacto em baixo. */
+  .rail__dot{width:.62rem;height:.62rem;border-radius:50%;flex:none;
+    background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.34),rgba(255,255,255,0) 58%),var(--panel);
+    box-shadow:inset 0 -1px 2px rgba(0,0,0,.55),0 1px 2px rgba(0,0,0,.45);
+    transition:transform .45s cubic-bezier(.22,1,.36,1),background .3s var(--ease),
+      box-shadow .45s var(--ease)}
+
+  .rail__list a:hover{color:var(--red-txt);transform:rotateY(-13deg)}
+  /* O capitulo onde se esta roda de frente e avanca para o leitor. */
+  .rail__list a.is-on{color:var(--ink);transform:rotateY(0) translateZ(16px)}
+  .rail__list a.is-on .rail__dot{transform:scale(1.2);
+    background:radial-gradient(circle at 34% 28%,rgba(255,255,255,.5),rgba(255,255,255,0) 58%),var(--red);
+    box-shadow:inset 0 -1px 2px rgba(0,0,0,.4),0 0 0 4px rgba(225,37,27,.15),
+      0 0 14px rgba(225,37,27,.5)}
+
+  @supports (animation-timeline:scroll()){
+    .rail__line::after{animation:rail-fill linear both;animation-timeline:scroll()}
+    @keyframes rail-fill{to{transform:scaleY(1)}}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .rail__list a,.rail__dot{transition:none}
+  .rail__line::after{animation:none}
+}
     </style>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Posso falar com antigos fornecedores e gestores de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Ponho em contacto com fornecedores e gestores de SEO com quem trabalhei, para confirmarem como trabalho e o que entrego."}}, {"@type": "Question", "name": "Tem casos de SEO?", "acceptedAnswer": {"@type": "Answer", "text": "Sim, dois estão nesta página com números: um escritório de advogados e um gabinete de contabilidade, ambos em Lisboa, mais sites de serviços locais na primeira página do Google. Os clientes ficam anónimos por regra. Em reunião mostro os relatórios do Search Console e do Mangools."}}]}</script>
       <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://wandofi.pt/"}, {"@type": "ListItem", "position": 2, "name": "Casos", "item": "https://wandofi.pt/casos/"}]}</script>
