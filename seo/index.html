@@ -817,16 +817,24 @@ p a:not(.btn):hover,
    habito. As paginas legais e os artigos do blog nao levam nenhuma.
 
    O ::before leva z-index negativo e o titulo cria o plano com isolation, por
-   isso a tinta fica atras de todas as letras e nunca tapa nenhuma. */
+   isso a tinta fica atras de todas as letras e nunca tapa nenhuma.
+
+   A PALAVRA NAO LEVA PADDING LATERAL, de proposito (16/11/2026). Levava .08em
+   de cada lado, e esse padding afastava da palavra o que viesse a seguir: com
+   um espaco nao se via, com pontuacao a virgula ficava a flutuar fora da
+   pincelada, em 21 paginas das tres linguas. Quem da folga a pincelada e o
+   ::before com os seus avancos, nao o padding, por isso o padding so estorvava.
+   Os avancos (-.22em e -.1em) foram medidos no browser: a cauda direita acaba
+   junto a ultima letra, para a pontuacao vir logo a seguir. */
 .hero__h1,
 .page-hero__title{position:relative;isolation:isolate}
 .hero__h1 em,
 .page-hero__title em{
   font-style:italic;color:#fff;-webkit-text-fill-color:#fff;text-shadow:none;
-  position:relative;padding:0 .08em;white-space:nowrap;display:inline-block}
+  position:relative;padding:0;white-space:nowrap;display:inline-block}
 .hero__h1 em::before,
 .page-hero__title em::before{
-  content:"";position:absolute;z-index:-1;left:-.16em;right:-.2em;top:.06em;bottom:-.08em;
+  content:"";position:absolute;z-index:-1;left:-.22em;right:-.1em;top:.06em;bottom:-.08em;
   background:url(/assets/tinta.svg) center/100% 100% no-repeat;transform:rotate(-1.2deg)}
 
 /* --- 4d. Selector de lingua ---------------------------------------------
