@@ -138,21 +138,23 @@ JUNTAR = {
  '/diagnostico/':             ['/precos/', '/seo/', '/criacao-de-sites/', '/automacoes/', '/gestao-de-trafego/', '/casos/', '/blog/'],
 }
 
-MAX = 6
+MAX = 7
 # Os indices levam o conjunto todo, sem tecto de 6. O /seo/sectores/ estava a
 # cortar no sexto item e ficava sem as escolas de linguas, ou seja, o indice
 # dos cinco sectores so mostrava quatro. Um indice que esconde um dos seus
 # itens esta errado, nao e uma questao de gosto.
-# As paginas abaixo levam 7 porque ja estavam no tecto e o artigo novo nao
-# entrava: a fusao e "atuais + juntar", por isso uma pagina cheia ignora em
-# silencio tudo o que se lhe acrescente. Subir o tecto acrescenta sem tirar
-# nada, que e o contrario de trocar uma ligacao por outra.
+# As paginas abaixo levam mais do que o tecto normal porque sao indices ou
+# paginas com muitos vizinhos legitimos. A fusao e "atuais + juntar" cortada no
+# tecto, por isso uma pagina cheia ignora o que se lhe acrescente; desde
+# 18/11/2026 a ferramenta queixa-se quando isso acontece, em vez de o fazer
+# calada. Subir um tecto acrescenta sem tirar nada, que e o contrario de trocar
+# uma ligacao por outra.
 #
-# ATENCAO: esta lista cresce um pouco a cada artigo novo, e isso e sintoma.
-# Ha duas decisoes por tomar, as duas do Mauro, e ambas mexem no site inteiro:
-# subir o MAX de 6 para 7 em todas as paginas, ou dar prioridade ao JUNTAR
-# sobre as ligacoes ja presentes, o que reordena os blocos de 40 paginas.
-# Enquanto nao estiver decidido, cada excepcao fica escrita aqui.
+# 18 de Novembro de 2026: o Mauro decidiu subir o MAX de 6 para 7, e isso
+# apagou dezassete linhas desta tabela de uma vez, que era o que a nota antiga
+# previa. A outra decisao que estava em cima da mesa, dar prioridade ao JUNTAR
+# sobre as ligacoes ja presentes, fica por tomar e deixou de ser urgente: a
+# ferramenta passou a dizer quando uma ligacao nao cabe.
 #
 # 11 de Novembro de 2026: o artigo do core update entrou e obrigou a mais seis
 # excepcoes. Onze linhas de excepcao para um tecto de seis e a prova de que o
@@ -164,35 +166,18 @@ MAX = 6
 TECTO = {'/seo/': 14,
 '/casos/': 8,
 '/automacoes/agentes-de-ia/': 8,
-'/gestao-de-trafego/chatgpt-ads/': 7,
-'/gestao-de-trafego/meta-ads/': 7,
 '/seo/agencia-seo-porto/': 8,
-'/seo/advogados/': 7,
-'/seo/clinicas/': 7,
-'/seo/imobiliarias/': 7,
-'/seo/escolas-de-linguas/': 7,
 '/seo/contabilistas/': 8,
-'/blog/criar-site-com-ia/': 7,
-'/blog/sites-e-ia-em-2027/': 7,
-'/criacao-de-sites/sintra/': 7,
-'/criacao-de-sites/queluz/': 7,
-'/criacao-de-sites/marvila/': 7,
-'/diagnostico/': 7,
          '/seo/sectores/': 9,
          '/seo/geo-aeo/': 10,
          '/seo/consultor-seo/': 8,
          '/seo/seo-tecnico/': 9,
          '/seo/seo-local/': 8,
-         '/seo/seo-para-empresas/': 7,
-         '/seo/agencia-seo-lisboa/': 7,
          '/criacao-de-sites/': 9,
          '/automacoes/': 11,
          '/gestao-de-trafego/': 8,
-         '/blog/como-abrir-uma-empresa-em-portugal/': 7,
          '/blog/aparecer-nas-respostas-do-chatgpt/': 8,
          '/blog/seo-ai-overviews-modo-ia-google/': 8,
-         '/blog/siglas-seo-marketing-digital/': 7,
-         '/blog/google-preferred-sources/': 7,
          '/blog/': 10}
 
 def caminho(u):
