@@ -70,7 +70,7 @@ SECTORES = ['/seo/advogados/', '/seo/clinicas/', '/seo/contabilistas/',
 JUNTAR = {
  '/automacoes/agentes-de-ia/': ['/automacoes/', '/automacoes/chatbot-whatsapp/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/blog/reconciliacao-bancaria-toconline/', '/diagnostico/'],
  '/automacoes/chatbot-whatsapp/': ['/automacoes/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/casos/', '/diagnostico/'],
- '/seo/':                     ['/blog/lancar-um-negocio-em-2027/', '/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
+ '/seo/':                     ['/blog/lancar-um-negocio-em-2027/', '/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
                                '/seo/seo-local/', '/seo/seo-para-empresas/', '/seo/geo-aeo/',
                                '/seo/agencia-seo-lisboa/', '/seo/agencia-seo-porto/',
                                '/blog/google-core-update-novembro-2026/',
@@ -78,9 +78,9 @@ JUNTAR = {
  '/seo/sectores/':            SECTORES + ['/diagnostico/'],
  # O artigo do core update entra nas paginas de SEO todas. E noticia datada:
  # quando a actualizacao acabar, o valor desta ligacao cai e sai daqui.
- '/seo/consultor-seo/':       ['/seo/sectores/', '/blog/google-core-update-novembro-2026/', '/sobre/', '/diagnostico/'],
+ '/seo/consultor-seo/':       ['/seo/agencia-seo-lisboa/', '/seo/sectores/', '/blog/google-core-update-novembro-2026/', '/sobre/', '/diagnostico/'],
  '/seo/geo-aeo/':             ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/chatgpt-ads/', '/blog/google-preferred-sources/', '/blog/tendencias-de-ia-em-portugal/', '/blog/google-core-update-novembro-2026/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
- '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/seo/consultor-seo/', '/blog/siglas-seo-marketing-digital/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
+ '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/seo/consultor-seo/', '/seo/agencia-seo-lisboa/', '/blog/siglas-seo-marketing-digital/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/seo/seo-local/':           ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-core-update-novembro-2026/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
  '/seo/seo-para-empresas/':   ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/seo/agencia-seo-lisboa/':  ['/seo/consultor-seo/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
@@ -96,9 +96,9 @@ JUNTAR = {
  # As tres paginas de bairro nao apontavam sequer para o servico de que sao
  # filhas: so umas para as outras e para o diagnostico. Quem chega por "sites
  # em Sintra" ficava sem caminho nenhum para a pagina que vende o servico.
- '/criacao-de-sites/sintra/': ['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
- '/criacao-de-sites/queluz/': ['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
- '/criacao-de-sites/marvila/':['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
+ '/criacao-de-sites/sintra/': ['/criacao-de-sites/', '/blog/criar-site-com-ia/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
+ '/criacao-de-sites/queluz/': ['/criacao-de-sites/', '/blog/criar-site-com-ia/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
+ '/criacao-de-sites/marvila/':['/criacao-de-sites/', '/blog/criar-site-com-ia/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
  '/gestao-de-trafego/':       ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/blog/lancar-um-negocio-em-2027/', '/blog/ai-act-ia-no-marketing/', '/precos/', '/diagnostico/'],
  '/gestao-de-trafego/google-ads/': ['/gestao-de-trafego/chatgpt-ads/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
  '/gestao-de-trafego/meta-ads/':   ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/diagnostico/'],
@@ -129,7 +129,7 @@ JUNTAR = {
  '/blog/reconciliacao-bancaria-toconline/':  ['/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/tendencias-de-ia-em-portugal/':      ['/blog/agentes-de-ia-a-medida/'],
  '/precos/':                  ['/diagnostico/', '/seo/', '/criacao-de-sites/', '/automacoes/', '/casos/', '/sobre/'],
- '/casos/':                   ['/blog/reconciliacao-bancaria-toconline/', '/blog/', '/precos/', '/diagnostico/'],
+ '/casos/':                   ['/blog/reconciliacao-bancaria-toconline/', '/seo/agencia-seo-lisboa/', '/blog/', '/precos/', '/diagnostico/'],
  '/sobre/':                   ['/en/', '/casos/', '/precos/', '/diagnostico/'],
  '/contactos/':               ['/sobre/', '/en/', '/diagnostico/'],
  # Faltava aqui um dos quatro pilares: quem acaba o diagnostico via SEO,
@@ -160,12 +160,16 @@ MAX = 6
 #
 # 15 de Novembro de 2026: mais tres excepcoes, pelos dois artigos novos. A
 # /criacao-de-sites/ nao tinha artigo nenhum no bloco e passa a ter dois.
-TECTO = {'/seo/': 12,
+TECTO = {'/seo/': 13,
+'/casos/': 7,
+'/criacao-de-sites/sintra/': 7,
+'/criacao-de-sites/queluz/': 7,
+'/criacao-de-sites/marvila/': 7,
 '/diagnostico/': 7,
          '/seo/sectores/': 8,
          '/seo/geo-aeo/': 9,
-         '/seo/consultor-seo/': 7,
-         '/seo/seo-tecnico/': 7,
+         '/seo/consultor-seo/': 8,
+         '/seo/seo-tecnico/': 8,
          '/seo/seo-local/': 8,
          '/seo/seo-para-empresas/': 7,
          '/seo/agencia-seo-lisboa/': 7,
