@@ -70,26 +70,27 @@ SECTORES = ['/seo/advogados/', '/seo/clinicas/', '/seo/contabilistas/',
 JUNTAR = {
  '/automacoes/agentes-de-ia/': ['/automacoes/', '/automacoes/chatbot-whatsapp/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/blog/reconciliacao-bancaria-toconline/', '/diagnostico/'],
  '/automacoes/chatbot-whatsapp/': ['/automacoes/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/casos/', '/diagnostico/'],
- '/seo/':                     ['/blog/lancar-um-negocio-em-2027/', '/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
+ '/seo/':                     ['/blog/lancar-um-negocio-em-2027/', '/blog/siglas-seo-marketing-digital/',
+                              '/blog/aparecer-nas-respostas-do-chatgpt/', '/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
                                '/seo/seo-local/', '/seo/seo-para-empresas/', '/seo/geo-aeo/',
                                '/seo/agencia-seo-lisboa/', '/seo/agencia-seo-porto/',
                                '/blog/google-core-update-novembro-2026/',
                                '/blog/', '/diagnostico/'],
- '/seo/sectores/':            SECTORES + ['/diagnostico/'],
+ '/seo/sectores/':            SECTORES + ['/blog/tendencias-de-ia-em-portugal/', '/diagnostico/'],
  # O artigo do core update entra nas paginas de SEO todas. E noticia datada:
  # quando a actualizacao acabar, o valor desta ligacao cai e sai daqui.
  '/seo/consultor-seo/':       ['/seo/agencia-seo-lisboa/', '/seo/sectores/', '/blog/google-core-update-novembro-2026/', '/sobre/', '/diagnostico/'],
  '/seo/geo-aeo/':             ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/chatgpt-ads/', '/blog/google-preferred-sources/', '/blog/tendencias-de-ia-em-portugal/', '/blog/google-core-update-novembro-2026/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
- '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/seo/consultor-seo/', '/seo/agencia-seo-lisboa/', '/blog/siglas-seo-marketing-digital/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
+ '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/blog/google-preferred-sources/', '/seo/consultor-seo/', '/seo/agencia-seo-lisboa/', '/blog/siglas-seo-marketing-digital/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/seo/seo-local/':           ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-core-update-novembro-2026/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
  '/seo/seo-para-empresas/':   ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/seo/agencia-seo-lisboa/':  ['/seo/consultor-seo/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
- '/seo/agencia-seo-porto/':   ['/seo/consultor-seo/', '/seo/', '/diagnostico/'],
- '/seo/advogados/':           ['/seo/sectores/', '/diagnostico/'],
- '/seo/clinicas/':            ['/seo/sectores/', '/diagnostico/'],
- '/seo/contabilistas/':       ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/diagnostico/'],
- '/seo/imobiliarias/':        ['/seo/sectores/', '/diagnostico/'],
- '/seo/escolas-de-linguas/':  ['/seo/sectores/', '/diagnostico/'],
+ '/seo/agencia-seo-porto/':   ['/seo/consultor-seo/', '/seo/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
+ '/seo/advogados/':           ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/diagnostico/'],
+ '/seo/clinicas/':            ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/diagnostico/'],
+ '/seo/contabilistas/':       ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/blog/reconciliacao-bancaria-toconline/', '/diagnostico/'],
+ '/seo/imobiliarias/':        ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/diagnostico/'],
+ '/seo/escolas-de-linguas/':  ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/diagnostico/'],
  # A criacao de sites nao tinha artigo nenhum no bloco. Os dois de 15 de
  # Novembro sao os primeiros escritos para quem compra um site.
  '/criacao-de-sites/':        ['/criacao-de-sites/apps-android-angola/', '/seo/seo-local/', '/blog/lancar-um-negocio-em-2027/', '/blog/php2shell-dados-de-clientes/', '/blog/criar-site-com-ia/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
@@ -101,7 +102,7 @@ JUNTAR = {
  '/criacao-de-sites/marvila/':['/criacao-de-sites/', '/blog/criar-site-com-ia/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
  '/gestao-de-trafego/':       ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/blog/lancar-um-negocio-em-2027/', '/blog/ai-act-ia-no-marketing/', '/precos/', '/diagnostico/'],
  '/gestao-de-trafego/google-ads/': ['/gestao-de-trafego/chatgpt-ads/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
- '/gestao-de-trafego/meta-ads/':   ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/diagnostico/'],
+ '/gestao-de-trafego/meta-ads/':   ['/gestao-de-trafego/chatgpt-ads/', '/blog/ai-act-ia-no-marketing/', '/gestao-de-trafego/angola/', '/diagnostico/'],
  '/gestao-de-trafego/angola/':     ['/gestao-de-trafego/meta-ads/', '/gestao-de-trafego/google-ads/', '/criacao-de-sites/apps-android-angola/', '/criacao-de-sites/', '/diagnostico/'],
  '/criacao-de-sites/apps-android-angola/': ['/gestao-de-trafego/angola/', '/criacao-de-sites/', '/automacoes/', '/blog/php2shell-dados-de-clientes/', '/diagnostico/'],
  '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/', '/diagnostico/'],
@@ -160,28 +161,39 @@ MAX = 6
 #
 # 15 de Novembro de 2026: mais tres excepcoes, pelos dois artigos novos. A
 # /criacao-de-sites/ nao tinha artigo nenhum no bloco e passa a ter dois.
-TECTO = {'/seo/': 13,
-'/casos/': 7,
+TECTO = {'/seo/': 14,
+'/casos/': 8,
+'/automacoes/agentes-de-ia/': 8,
+'/gestao-de-trafego/chatgpt-ads/': 7,
+'/gestao-de-trafego/meta-ads/': 7,
+'/seo/agencia-seo-porto/': 8,
+'/seo/advogados/': 7,
+'/seo/clinicas/': 7,
+'/seo/imobiliarias/': 7,
+'/seo/escolas-de-linguas/': 7,
+'/seo/contabilistas/': 8,
+'/blog/criar-site-com-ia/': 7,
+'/blog/sites-e-ia-em-2027/': 7,
 '/criacao-de-sites/sintra/': 7,
 '/criacao-de-sites/queluz/': 7,
 '/criacao-de-sites/marvila/': 7,
 '/diagnostico/': 7,
-         '/seo/sectores/': 8,
-         '/seo/geo-aeo/': 9,
+         '/seo/sectores/': 9,
+         '/seo/geo-aeo/': 10,
          '/seo/consultor-seo/': 8,
-         '/seo/seo-tecnico/': 8,
+         '/seo/seo-tecnico/': 9,
          '/seo/seo-local/': 8,
          '/seo/seo-para-empresas/': 7,
          '/seo/agencia-seo-lisboa/': 7,
          '/criacao-de-sites/': 9,
-         '/automacoes/': 9,
-         '/gestao-de-trafego/': 7,
+         '/automacoes/': 11,
+         '/gestao-de-trafego/': 8,
          '/blog/como-abrir-uma-empresa-em-portugal/': 7,
          '/blog/aparecer-nas-respostas-do-chatgpt/': 8,
          '/blog/seo-ai-overviews-modo-ia-google/': 8,
          '/blog/siglas-seo-marketing-digital/': 7,
          '/blog/google-preferred-sources/': 7,
-         '/blog/': 9}
+         '/blog/': 10}
 
 def caminho(u):
     return 'index.html' if u == '/' else u.strip('/') + '/index.html'
@@ -191,6 +203,7 @@ def bloco(ligacoes):
     return f'<div class="related">{itens}</div>'
 
 relat = []
+cortados = []
 for u, juntar in sorted(JUNTAR.items()):
     p = caminho(u)
     h = io.open(p, encoding='utf-8').read()
@@ -209,6 +222,21 @@ for u, juntar in sorted(JUNTAR.items()):
             continue
         final.append(x)
     final = final[:TECTO.get(u, MAX)]
+
+    # O que se pediu e nao coube. A fusao e "atuais + juntar" cortada no tecto,
+    # por isso uma pagina cheia ignora tudo o que se lhe acrescente ao JUNTAR.
+    # Ate 18/11/2026 ignorava EM SILENCIO, e isso ja tinha custado uma ligacao
+    # a serio: o /gestao-de-trafego/chatgpt-ads/ tinha o artigo de aparecer nas
+    # respostas do ChatGPT no JUNTAR desde sempre, e a pagina nunca o mostrou.
+    # Quem olhasse para a configuracao via uma ligacao que nao existia.
+    #
+    # Nao da para decidir aqui se o tecto sobe: isso muda os blocos de dezenas
+    # de paginas e e decisao do Mauro, e esta escrita na nota do TECTO. O que
+    # da, e o que falta, e dizer. Uma ferramenta que engole o que lhe pedem sem
+    # se queixar poe a configuracao a mentir sobre o site.
+    for x in juntar:
+        if x in ANCORA and x != u and x not in final:
+            cortados.append((u, x))
 
     novo = bloco(final)
     if alvo:
@@ -236,6 +264,14 @@ for u, juntar in sorted(JUNTAR.items()):
 print(f"{len(relat)} paginas com a ligacao interna refeita\n")
 for u, a, d, f in relat:
     print(f"  {u:34} {a} -> {d}")
+
+if cortados:
+    print(f"\nPEDIDAS NO JUNTAR E NAO MOSTRADAS: {len(cortados)}")
+    print("  A pagina estava no tecto e o que ja la estava ganhou o lugar.")
+    print("  Ou se sobe o tecto dessa pagina, ou se tira a ligacao do JUNTAR,")
+    print("  senao a configuracao fica a dizer uma coisa e o site a mostrar outra.")
+    for u, x in cortados:
+        print(f"    {u:34} queria mostrar {x}")
 
 # A lista "Outros artigos do blog" de cada artigo, refeita a partir do indice
 # do blog. O indice ja esta por ordem, do mais recente para o mais antigo, e e
