@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Organiza a ligacao interna do site da Wandofi."""
+"""Organiza a ligacao interna do site da Wandofi.
+
+Quem manda nas ligacoes PARA artigos do blog e o ferramentas/artigos.py, onde
+cada artigo diz a que paginas de servico pertence. Aqui ficam as ligacoes
+entre paginas de servico e os indices. Sao dois ficheiros porque sao duas
+decisoes diferentes: uma e de conteudo, a outra e de arrumacao do site.
+"""
 import io, os, re, os, glob
+
+import artigos as mapa_artigos
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(BASE)
@@ -68,45 +76,43 @@ SECTORES = ['/seo/advogados/', '/seo/clinicas/', '/seo/contabilistas/',
 # Ligacoes a acrescentar ao bloco "related" de cada pagina.
 # A ordem conta: o que estiver primeiro fica primeiro.
 JUNTAR = {
- '/automacoes/agentes-de-ia/': ['/automacoes/', '/automacoes/chatbot-whatsapp/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/blog/reconciliacao-bancaria-toconline/', '/diagnostico/'],
- '/automacoes/chatbot-whatsapp/': ['/automacoes/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/casos/', '/diagnostico/'],
- '/seo/':                     ['/blog/lancar-um-negocio-em-2027/', '/blog/siglas-seo-marketing-digital/',
-                              '/blog/aparecer-nas-respostas-do-chatgpt/', '/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
+ '/automacoes/agentes-de-ia/': ['/automacoes/', '/automacoes/chatbot-whatsapp/', '/diagnostico/'],
+ '/automacoes/chatbot-whatsapp/': ['/automacoes/', '/automacoes/agentes-de-ia/', '/casos/', '/diagnostico/'],
+ '/seo/':                     ['/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
                                '/seo/seo-local/', '/seo/seo-para-empresas/', '/seo/geo-aeo/',
                                '/seo/agencia-seo-lisboa/', '/seo/agencia-seo-porto/',
-                               '/blog/google-core-update-novembro-2026/',
                                '/blog/', '/diagnostico/'],
- '/seo/sectores/':            SECTORES + ['/blog/tendencias-de-ia-em-portugal/', '/diagnostico/'],
+ '/seo/sectores/':            SECTORES + ['/diagnostico/'],
  # O artigo do core update entra nas paginas de SEO todas. E noticia datada:
  # quando a actualizacao acabar, o valor desta ligacao cai e sai daqui.
- '/seo/consultor-seo/':       ['/seo/agencia-seo-lisboa/', '/seo/sectores/', '/blog/google-core-update-novembro-2026/', '/sobre/', '/diagnostico/'],
- '/seo/geo-aeo/':             ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/chatgpt-ads/', '/blog/google-preferred-sources/', '/blog/tendencias-de-ia-em-portugal/', '/blog/google-core-update-novembro-2026/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
- '/seo/seo-tecnico/':         ['/blog/php2shell-dados-de-clientes/', '/blog/google-preferred-sources/', '/seo/consultor-seo/', '/seo/agencia-seo-lisboa/', '/blog/siglas-seo-marketing-digital/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
- '/seo/seo-local/':           ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-core-update-novembro-2026/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
- '/seo/seo-para-empresas/':   ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
- '/seo/agencia-seo-lisboa/':  ['/seo/consultor-seo/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
- '/seo/agencia-seo-porto/':   ['/seo/consultor-seo/', '/seo/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
- '/seo/advogados/':           ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/diagnostico/'],
- '/seo/clinicas/':            ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/diagnostico/'],
- '/seo/contabilistas/':       ['/seo/sectores/', '/blog/como-abrir-uma-empresa-em-portugal/', '/blog/reconciliacao-bancaria-toconline/', '/diagnostico/'],
- '/seo/imobiliarias/':        ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/diagnostico/'],
- '/seo/escolas-de-linguas/':  ['/seo/sectores/', '/blog/seo-ai-overviews-modo-ia-google/', '/diagnostico/'],
+ '/seo/consultor-seo/':       ['/seo/agencia-seo-lisboa/', '/seo/sectores/', '/sobre/', '/diagnostico/'],
+ '/seo/geo-aeo/':             ['/gestao-de-trafego/chatgpt-ads/', '/diagnostico/'],
+ '/seo/seo-tecnico/':         ['/seo/consultor-seo/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
+ '/seo/seo-local/':           ['/seo/sectores/', '/diagnostico/'],
+ '/seo/seo-para-empresas/':   ['/seo/sectores/', '/diagnostico/'],
+ '/seo/agencia-seo-lisboa/':  ['/seo/consultor-seo/', '/diagnostico/'],
+ '/seo/agencia-seo-porto/':   ['/seo/consultor-seo/', '/seo/', '/diagnostico/'],
+ '/seo/advogados/':           ['/seo/sectores/', '/diagnostico/'],
+ '/seo/clinicas/':            ['/seo/sectores/', '/diagnostico/'],
+ '/seo/contabilistas/':       ['/seo/sectores/', '/diagnostico/'],
+ '/seo/imobiliarias/':        ['/seo/sectores/', '/diagnostico/'],
+ '/seo/escolas-de-linguas/':  ['/seo/sectores/', '/diagnostico/'],
  # A criacao de sites nao tinha artigo nenhum no bloco. Os dois de 15 de
  # Novembro sao os primeiros escritos para quem compra um site.
- '/criacao-de-sites/':        ['/criacao-de-sites/apps-android-angola/', '/seo/seo-local/', '/blog/lancar-um-negocio-em-2027/', '/blog/php2shell-dados-de-clientes/', '/blog/criar-site-com-ia/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
+ '/criacao-de-sites/':        ['/criacao-de-sites/apps-android-angola/', '/seo/seo-local/', '/diagnostico/'],
  # As tres paginas de bairro nao apontavam sequer para o servico de que sao
  # filhas: so umas para as outras e para o diagnostico. Quem chega por "sites
  # em Sintra" ficava sem caminho nenhum para a pagina que vende o servico.
- '/criacao-de-sites/sintra/': ['/criacao-de-sites/', '/blog/criar-site-com-ia/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
- '/criacao-de-sites/queluz/': ['/criacao-de-sites/', '/blog/criar-site-com-ia/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
- '/criacao-de-sites/marvila/':['/criacao-de-sites/', '/blog/criar-site-com-ia/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
- '/gestao-de-trafego/':       ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/blog/lancar-um-negocio-em-2027/', '/blog/ai-act-ia-no-marketing/', '/precos/', '/diagnostico/'],
- '/gestao-de-trafego/google-ads/': ['/gestao-de-trafego/chatgpt-ads/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
- '/gestao-de-trafego/meta-ads/':   ['/gestao-de-trafego/chatgpt-ads/', '/blog/ai-act-ia-no-marketing/', '/gestao-de-trafego/angola/', '/diagnostico/'],
+ '/criacao-de-sites/sintra/': ['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
+ '/criacao-de-sites/queluz/': ['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
+ '/criacao-de-sites/marvila/':['/criacao-de-sites/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
+ '/gestao-de-trafego/':       ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/precos/', '/diagnostico/'],
+ '/gestao-de-trafego/google-ads/': ['/gestao-de-trafego/chatgpt-ads/', '/diagnostico/'],
+ '/gestao-de-trafego/meta-ads/':   ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/diagnostico/'],
  '/gestao-de-trafego/angola/':     ['/gestao-de-trafego/meta-ads/', '/gestao-de-trafego/google-ads/', '/criacao-de-sites/apps-android-angola/', '/criacao-de-sites/', '/diagnostico/'],
- '/criacao-de-sites/apps-android-angola/': ['/gestao-de-trafego/angola/', '/criacao-de-sites/', '/automacoes/', '/blog/php2shell-dados-de-clientes/', '/diagnostico/'],
- '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/', '/diagnostico/'],
- '/automacoes/':              ['/blog/lancar-um-negocio-em-2027/', '/automacoes/chatbot-whatsapp/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/reconciliacao-bancaria-toconline/', '/blog/agentes-de-ia-a-medida/', '/diagnostico/'],
+ '/criacao-de-sites/apps-android-angola/': ['/gestao-de-trafego/angola/', '/criacao-de-sites/', '/automacoes/', '/diagnostico/'],
+ '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/gestao-de-trafego/', '/diagnostico/'],
+ '/automacoes/':              ['/automacoes/chatbot-whatsapp/', '/automacoes/agentes-de-ia/', '/diagnostico/'],
  # O blog. Cada artigo leva artigos vizinhos e as paginas de servico do tema.
  '/blog/':                    ['/blog/criar-site-com-ia/', '/blog/sites-e-ia-em-2027/', '/blog/google-core-update-novembro-2026/', '/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/automacoes/', '/diagnostico/'],
  '/blog/google-core-update-novembro-2026/':  ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/consultor-seo/', '/seo/seo-tecnico/', '/blog/siglas-seo-marketing-digital/', '/seo/', '/diagnostico/'],
@@ -130,13 +136,35 @@ JUNTAR = {
  '/blog/reconciliacao-bancaria-toconline/':  ['/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/tendencias-de-ia-em-portugal/':      ['/blog/agentes-de-ia-a-medida/'],
  '/precos/':                  ['/diagnostico/', '/seo/', '/criacao-de-sites/', '/automacoes/', '/casos/', '/sobre/'],
- '/casos/':                   ['/blog/reconciliacao-bancaria-toconline/', '/seo/agencia-seo-lisboa/', '/blog/', '/precos/', '/diagnostico/'],
+ '/casos/':                   ['/seo/agencia-seo-lisboa/', '/blog/', '/precos/', '/diagnostico/'],
  '/sobre/':                   ['/en/', '/casos/', '/precos/', '/diagnostico/'],
  '/contactos/':               ['/sobre/', '/en/', '/diagnostico/'],
  # Faltava aqui um dos quatro pilares: quem acaba o diagnostico via SEO,
  # sites e automacoes, e nao via a gestao de trafego nem o blog.
  '/diagnostico/':             ['/precos/', '/seo/', '/criacao-de-sites/', '/automacoes/', '/gestao-de-trafego/', '/casos/', '/blog/'],
 }
+
+# As ligacoes das paginas de servico para os artigos delas entram aqui,
+# calculadas a partir do ferramentas/artigos.py. Vao a FRENTE do que estiver
+# escrito a mao no JUNTAR: um artigo novo nao pode ficar de fora do bloco so
+# porque a pagina ja tinha ligacoes antigas a ocupar o tecto, que foi
+# exactamente o que aconteceu ao /blog/criar-site-com-ia/.
+for _servico, _arts in mapa_artigos.por_servico().items():
+    JUNTAR[_servico] = _arts + [x for x in JUNTAR.get(_servico, []) if x not in _arts]
+
+# Um artigo que ninguem declare fica dependente do sitemap, e ja se viu o que
+# isso da. Mais vale a ferramenta recusar correr do que publicar um site com um
+# artigo esquecido.
+_queixas = mapa_artigos.confere(
+    ['/blog/' + os.path.basename(os.path.dirname(p)) + '/'
+     for p in glob.glob('blog/*/index.html')],
+    ANCORA)
+if _queixas:
+    import sys
+    print('O mapa de artigos e servicos nao bate certo com o que esta no disco:')
+    for q in _queixas:
+        print('  ' + q)
+    sys.exit('nada escrito')
 
 MAX = 7
 # Os indices levam o conjunto todo, sem tecto de 6. O /seo/sectores/ estava a
