@@ -40,6 +40,7 @@ ANCORA = {
  '/automacoes/':                 'Automações',
  '/automacoes/chatbot-whatsapp/': 'Chatbot de WhatsApp',
  '/blog/n8n-o-que-e-para-que-serve/': 'n8n: o que é e para que serve',
+ '/blog/mcp-execucao-de-codigo/': 'O MCP e a execução de código agêntica',
  '/casos/':                      'Casos',
  '/casos/#caso-reconciliacao':   'Caso: reconciliação bancária',
  '/sobre/':                      'Sobre',
@@ -68,8 +69,8 @@ SECTORES = ['/seo/advogados/', '/seo/clinicas/', '/seo/contabilistas/',
 # Ligacoes a acrescentar ao bloco "related" de cada pagina.
 # A ordem conta: o que estiver primeiro fica primeiro.
 JUNTAR = {
- '/automacoes/agentes-de-ia/': ['/automacoes/', '/automacoes/chatbot-whatsapp/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/blog/reconciliacao-bancaria-toconline/', '/diagnostico/'],
- '/automacoes/chatbot-whatsapp/': ['/automacoes/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/casos/', '/diagnostico/'],
+ '/automacoes/agentes-de-ia/': ['/automacoes/', '/automacoes/chatbot-whatsapp/', '/blog/mcp-execucao-de-codigo/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/blog/reconciliacao-bancaria-toconline/', '/diagnostico/'],
+ '/automacoes/chatbot-whatsapp/': ['/automacoes/', '/automacoes/agentes-de-ia/', '/blog/mcp-execucao-de-codigo/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/agentes-de-ia-a-medida/', '/casos/', '/diagnostico/'],
  '/seo/':                     ['/blog/lancar-um-negocio-em-2027/', '/blog/siglas-seo-marketing-digital/',
                               '/blog/aparecer-nas-respostas-do-chatgpt/', '/seo/consultor-seo/', '/seo/sectores/', '/seo/seo-tecnico/',
                                '/seo/seo-local/', '/seo/seo-para-empresas/', '/seo/geo-aeo/',
