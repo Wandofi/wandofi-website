@@ -41,6 +41,7 @@ ANCORA = {
  '/automacoes/chatbot-whatsapp/': 'Chatbot de WhatsApp',
  '/blog/n8n-o-que-e-para-que-serve/': 'n8n: o que é e para que serve',
  '/blog/mcp-execucao-de-codigo/': 'O MCP e a execução de código agêntica',
+ '/blog/anuncios-chatgpt-google-ai-mode/': 'O novo mapa dos anúncios com IA',
  '/casos/':                      'Casos',
  '/casos/#caso-reconciliacao':   'Caso: reconciliação bancária',
  '/sobre/':                      'Sobre',
@@ -102,13 +103,14 @@ JUNTAR = {
  '/criacao-de-sites/queluz/': ['/criacao-de-sites/', '/blog/criar-site-com-ia/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
  '/criacao-de-sites/marvila/':['/criacao-de-sites/', '/blog/criar-site-com-ia/', '/seo/seo-local/', '/seo/agencia-seo-lisboa/', '/diagnostico/'],
  '/gestao-de-trafego/':       ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/angola/', '/blog/lancar-um-negocio-em-2027/', '/blog/ai-act-ia-no-marketing/', '/precos/', '/diagnostico/'],
- '/gestao-de-trafego/google-ads/': ['/gestao-de-trafego/chatgpt-ads/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
+ '/gestao-de-trafego/google-ads/': ['/gestao-de-trafego/chatgpt-ads/', '/blog/anuncios-chatgpt-google-ai-mode/', '/blog/ai-act-ia-no-marketing/', '/diagnostico/'],
  '/gestao-de-trafego/meta-ads/':   ['/gestao-de-trafego/chatgpt-ads/', '/blog/ai-act-ia-no-marketing/', '/gestao-de-trafego/angola/', '/diagnostico/'],
  '/gestao-de-trafego/angola/':     ['/gestao-de-trafego/meta-ads/', '/gestao-de-trafego/google-ads/', '/criacao-de-sites/apps-android-angola/', '/criacao-de-sites/', '/diagnostico/'],
  '/criacao-de-sites/apps-android-angola/': ['/gestao-de-trafego/angola/', '/criacao-de-sites/', '/automacoes/', '/blog/php2shell-dados-de-clientes/', '/diagnostico/'],
- '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/', '/diagnostico/'],
+ '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/blog/anuncios-chatgpt-google-ai-mode/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/gestao-de-trafego/', '/diagnostico/'],
  '/automacoes/':              ['/blog/lancar-um-negocio-em-2027/', '/automacoes/chatbot-whatsapp/', '/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/', '/blog/reconciliacao-bancaria-toconline/', '/blog/agentes-de-ia-a-medida/', '/diagnostico/'],
  # O blog. Cada artigo leva artigos vizinhos e as paginas de servico do tema.
+ '/blog/anuncios-chatgpt-google-ai-mode/': ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/', '/seo/geo-aeo/', '/criacao-de-sites/', '/blog/seo-ai-overviews-modo-ia-google/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
  '/blog/':                    ['/blog/criar-site-com-ia/', '/blog/sites-e-ia-em-2027/', '/blog/google-core-update-novembro-2026/', '/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/automacoes/', '/diagnostico/'],
  '/blog/google-core-update-novembro-2026/':  ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/consultor-seo/', '/seo/seo-tecnico/', '/blog/siglas-seo-marketing-digital/', '/seo/', '/diagnostico/'],
  # Os dois de 15 de Novembro falam um com o outro: um e sobre como o site e
@@ -177,6 +179,9 @@ TECTO = {'/seo/': 14,
          '/criacao-de-sites/': 9,
          '/automacoes/': 11,
          '/gestao-de-trafego/': 8,
+         # 26/11/2026: subiu de 7 para 8 para a pagina de servico mostrar o
+         # artigo de analise do proprio canal, sem tirar nada do que la estava.
+         '/gestao-de-trafego/chatgpt-ads/': 8,
          '/blog/aparecer-nas-respostas-do-chatgpt/': 8,
          '/blog/seo-ai-overviews-modo-ia-google/': 8,
          '/blog/': 10}

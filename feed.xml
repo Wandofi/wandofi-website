@@ -5,8 +5,15 @@
     <link>https://wandofi.pt/blog/</link>
     <description>SEO, sites e automacoes para negocios em Portugal. Escrito por Mauro Cordeiro, consultor de projectos em Lisboa.</description>
     <language>pt-PT</language>
-    <lastBuildDate>Mon, 23 Nov 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://wandofi.pt/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Anúncios no ChatGPT e no AI Mode: o novo mapa da publicidade</title>
+      <link>https://wandofi.pt/blog/anuncios-chatgpt-google-ai-mode/</link>
+      <guid isPermaLink="true">https://wandofi.pt/blog/anuncios-chatgpt-google-ai-mode/</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+      <description>O ChatGPT mostra anúncios em Portugal desde Agosto, a Google leva publicidade ao AI Mode e o Claude recusou. O que muda no orgânico, no Google Ads e no Meta Ads, e porque é que o site continua a ser a porta de entrada.</description>
+    </item>
     <item>
       <title>O MCP está a morrer? O que é a execução de código agêntica</title>
       <link>https://wandofi.pt/blog/mcp-execucao-de-codigo/</link>
