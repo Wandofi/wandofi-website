@@ -43,10 +43,14 @@ SERVICOS = {
         ['/automacoes/', '/automacoes/agentes-de-ia/'],
     '/blog/n8n-o-que-e-para-que-serve/':
         ['/automacoes/', '/automacoes/agentes-de-ia/', '/automacoes/chatbot-whatsapp/'],
+    '/blog/mcp-execucao-de-codigo/':
+        ['/automacoes/agentes-de-ia/', '/automacoes/chatbot-whatsapp/'],
     '/blog/reconciliacao-bancaria-toconline/':
         ['/automacoes/', '/automacoes/agentes-de-ia/', '/casos/', '/seo/contabilistas/'],
 
     # --- anuncios -----------------------------------------------------------
+    '/blog/anuncios-chatgpt-google-ai-mode/':
+        ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/google-ads/'],
     '/blog/ai-act-ia-no-marketing/':
         ['/gestao-de-trafego/', '/gestao-de-trafego/google-ads/', '/gestao-de-trafego/meta-ads/'],
 
@@ -60,6 +64,8 @@ SERVICOS = {
         ['/criacao-de-sites/', '/seo/geo-aeo/', '/seo/seo-local/'],
 
     # --- SEO e respostas de IA ----------------------------------------------
+    '/blog/business-hub-chatgpt/':
+        ['/seo/geo-aeo/'],
     '/blog/aparecer-nas-respostas-do-chatgpt/':
         ['/gestao-de-trafego/chatgpt-ads/', '/seo/', '/seo/geo-aeo/'],
     '/blog/google-preferred-sources/':

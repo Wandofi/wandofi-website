@@ -48,6 +48,9 @@ ANCORA = {
  '/automacoes/':                 'Automações',
  '/automacoes/chatbot-whatsapp/': 'Chatbot de WhatsApp',
  '/blog/n8n-o-que-e-para-que-serve/': 'n8n: o que é e para que serve',
+ '/blog/mcp-execucao-de-codigo/': 'O MCP e a execução de código agêntica',
+ '/blog/anuncios-chatgpt-google-ai-mode/': 'O novo mapa dos anúncios com IA',
+ '/blog/business-hub-chatgpt/': 'Reclamar o negócio no ChatGPT',
  '/casos/':                      'Casos',
  '/casos/#caso-reconciliacao':   'Caso: reconciliação bancária',
  '/sobre/':                      'Sobre',
@@ -114,6 +117,8 @@ JUNTAR = {
  '/gestao-de-trafego/chatgpt-ads/':['/seo/geo-aeo/', '/gestao-de-trafego/', '/diagnostico/'],
  '/automacoes/':              ['/automacoes/chatbot-whatsapp/', '/automacoes/agentes-de-ia/', '/diagnostico/'],
  # O blog. Cada artigo leva artigos vizinhos e as paginas de servico do tema.
+ '/blog/business-hub-chatgpt/': ['/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/seo/seo-local/', '/gestao-de-trafego/chatgpt-ads/', '/blog/anuncios-chatgpt-google-ai-mode/', '/diagnostico/'],
+ '/blog/anuncios-chatgpt-google-ai-mode/': ['/gestao-de-trafego/chatgpt-ads/', '/gestao-de-trafego/', '/seo/geo-aeo/', '/criacao-de-sites/', '/blog/seo-ai-overviews-modo-ia-google/', '/blog/sites-e-ia-em-2027/', '/diagnostico/'],
  '/blog/':                    ['/blog/criar-site-com-ia/', '/blog/sites-e-ia-em-2027/', '/blog/google-core-update-novembro-2026/', '/blog/siglas-seo-marketing-digital/', '/seo/consultor-seo/', '/automacoes/', '/diagnostico/'],
  '/blog/google-core-update-novembro-2026/':  ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/consultor-seo/', '/seo/seo-tecnico/', '/blog/siglas-seo-marketing-digital/', '/seo/', '/diagnostico/'],
  # Os dois de 15 de Novembro falam um com o outro: um e sobre como o site e
@@ -123,7 +128,7 @@ JUNTAR = {
  '/blog/agentes-de-ia-simples-grok-bot-muse-dots/': ['/automacoes/', '/blog/agentes-de-ia-a-medida/', '/seo/geo-aeo/', '/diagnostico/'],
  '/blog/agentes-de-ia-a-medida/':            ['/automacoes/agentes-de-ia/', '/blog/n8n-o-que-e-para-que-serve/'],
  '/blog/ai-act-ia-no-marketing/':            ['/blog/tendencias-de-ia-em-portugal/', '/gestao-de-trafego/'],
- '/blog/aparecer-nas-respostas-do-chatgpt/': ['/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-preferred-sources/', '/blog/google-core-update-novembro-2026/'],
+ '/blog/aparecer-nas-respostas-do-chatgpt/': ['/blog/business-hub-chatgpt/', '/blog/seo-ai-overviews-modo-ia-google/', '/blog/google-preferred-sources/', '/blog/google-core-update-novembro-2026/'],
  '/blog/seo-ai-overviews-modo-ia-google/':   ['/blog/siglas-seo-marketing-digital/', '/seo/geo-aeo/', '/blog/aparecer-nas-respostas-do-chatgpt/', '/blog/google-preferred-sources/', '/seo/consultor-seo/', '/casos/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/blog/siglas-seo-marketing-digital/':      ['/blog/seo-ai-overviews-modo-ia-google/', '/seo/geo-aeo/', '/gestao-de-trafego/', '/blog/como-abrir-uma-empresa-em-portugal/', '/seo/consultor-seo/', '/blog/google-core-update-novembro-2026/', '/diagnostico/'],
  '/blog/como-abrir-uma-empresa-em-portugal/':['/seo/contabilistas/', '/blog/lancar-um-negocio-em-2027/', '/blog/reconciliacao-bancaria-toconline/'],
@@ -197,14 +202,20 @@ TECTO = {'/seo/': 14,
 '/seo/agencia-seo-porto/': 8,
 '/seo/contabilistas/': 8,
          '/seo/sectores/': 9,
-         '/seo/geo-aeo/': 10,
+         '/seo/geo-aeo/': 11,
          '/seo/consultor-seo/': 8,
          '/seo/seo-tecnico/': 9,
          '/seo/seo-local/': 8,
          '/criacao-de-sites/': 9,
          '/automacoes/': 11,
          '/gestao-de-trafego/': 8,
-         '/blog/aparecer-nas-respostas-do-chatgpt/': 8,
+         # 26/11/2026: subiu de 7 para 8 para a pagina de servico mostrar o
+         # artigo de analise do proprio canal, sem tirar nada do que la estava.
+         '/gestao-de-trafego/chatgpt-ads/': 8,
+         # 27/11/2026: o artigo do Business Hub e o guia de aparecer nas respostas
+         # falam um do outro, e o GEO e AEO leva o artigo novo sem perder nenhum.
+         '/blog/aparecer-nas-respostas-do-chatgpt/': 9,
+         '/blog/business-hub-chatgpt/': 10,
          '/blog/seo-ai-overviews-modo-ia-google/': 8,
          '/blog/': 10}
 

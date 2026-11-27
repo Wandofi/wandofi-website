@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://wandofi.pt/blog/</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -53,6 +53,18 @@
     <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wandofi.pt/blog/anuncios-chatgpt-google-ai-mode/</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wandofi.pt/blog/mcp-execucao-de-codigo/</loc>
+    <lastmod>2026-11-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://wandofi.pt/blog/lancar-um-negocio-em-2027/</loc>
@@ -401,5 +413,11 @@
     <lastmod>2026-11-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://wandofi.pt/blog/business-hub-chatgpt/</loc>
+    <lastmod>2026-11-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
